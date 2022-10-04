@@ -1,0 +1,18 @@
+{
+  "name": "gs2/gs2-php-cdk",
+  "version": "1.0.00",
+  "license": "Apache-2.0",
+  "require": {
+    "php": ">= 8.0",
+    "ext-json": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9",
+    "symfony/yaml": "^v6.1.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "Gs2Cdk\\": "src/"
+    }
+  }
+}
