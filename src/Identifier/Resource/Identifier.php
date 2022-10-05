@@ -63,6 +63,14 @@ class Identifier extends CdkResource {
         );
     }
 
+    public static function AdministratorAccessGrn(): String {
+        return "grn:gs2::system:identifier:securityPolicy:AdministratorAccess";
+    }
+
+    public static function ApplicationAccessGrn(): String {
+        return "grn:gs2::system:identifier:securityPolicy:ApplicationAccess";
+    }
+
     public function getAttrClientId(): GetAttr {
         return new GetAttr(
             key: "Item.ClientId"
