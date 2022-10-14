@@ -57,6 +57,7 @@ class Namespace_ extends CdkResource {
             string $completeMatchmakingTriggerRealtimeNamespaceId,
             string $completeMatchmakingTriggerScriptId,
             string $description = null,
+            ScriptSetting $changeRatingScript = null,
             NotificationSetting $joinNotification = null,
             NotificationSetting $leaveNotification = null,
             NotificationSetting $completeNotification = null,
@@ -74,6 +75,7 @@ class Namespace_ extends CdkResource {
         $this->completeMatchmakingTriggerType = $completeMatchmakingTriggerType;
         $this->completeMatchmakingTriggerRealtimeNamespaceId = $completeMatchmakingTriggerRealtimeNamespaceId;
         $this->completeMatchmakingTriggerScriptId = $completeMatchmakingTriggerScriptId;
+        $this->changeRatingScript = $changeRatingScript;
         $this->joinNotification = $joinNotification;
         $this->leaveNotification = $leaveNotification;
         $this->completeNotification = $completeNotification;
@@ -114,6 +116,9 @@ class Namespace_ extends CdkResource {
         }
         if ($this->completeMatchmakingTriggerScriptId != null) {
             $properties["CompleteMatchmakingTriggerScriptId"] = $this->completeMatchmakingTriggerScriptId;
+        }
+        if ($this->changeRatingScript != null) {
+            $properties["ChangeRatingScript"] = $this->changeRatingScript->properties();
         }
         if ($this->joinNotification != null) {
             $properties["JoinNotification"] = $this->joinNotification->properties();
