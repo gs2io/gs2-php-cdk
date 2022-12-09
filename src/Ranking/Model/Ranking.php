@@ -29,6 +29,7 @@ use Gs2Cdk\Core\Model\ConsumeAction;
 class Ranking {
 	public int $rank;
 	public int $index;
+	public string $categoryName;
 	public string $userId;
 	public int $score;
 	public ?string $metadata;
@@ -37,6 +38,7 @@ class Ranking {
     public function __construct(
             int $rank,
             int $index,
+            string $categoryName,
             string $userId,
             int $score,
             int $createdAt,
@@ -44,6 +46,7 @@ class Ranking {
     ) {
         $this->rank = $rank;
         $this->index = $index;
+        $this->categoryName = $categoryName;
         $this->userId = $userId;
         $this->score = $score;
         $this->metadata = $metadata;
@@ -57,6 +60,9 @@ class Ranking {
         }
         if ($this->index != null) {
             $properties["Index"] = $this->index;
+        }
+        if ($this->categoryName != null) {
+            $properties["CategoryName"] = $this->categoryName;
         }
         if ($this->userId != null) {
             $properties["UserId"] = $this->userId;
