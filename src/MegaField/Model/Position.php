@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,44 +14,39 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\MegaField\Model;
-
-
-use Gs2Cdk\Core\Model\TransactionSetting;
-use Gs2Cdk\Core\Model\ScriptSetting;
-use Gs2Cdk\Core\Model\NotificationSetting;
-use Gs2Cdk\Core\Model\LogSetting;
-use Gs2Cdk\Core\Model\Config;
-use Gs2Cdk\Core\Model\AcquireAction;
-use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\MegaField\Model\Options\PositionOptions;
 
 class Position {
-	public float $x;
-	public float $y;
-	public float $z;
+    private float $x;
+    private float $y;
+    private float $z;
 
     public function __construct(
-            float $x,
-            float $y,
-            float $z,
+        float $x,
+        float $y,
+        float $z,
+        ?PositionOptions $options = null,
     ) {
         $this->x = $x;
         $this->y = $y;
         $this->z = $z;
     }
 
-    public function properties(): array {
+    public function properties(
+    ): array {
         $properties = [];
+
         if ($this->x != null) {
-            $properties["X"] = $this->x;
+            $properties["x"] = $this->x;
         }
         if ($this->y != null) {
-            $properties["Y"] = $this->y;
+            $properties["y"] = $this->y;
         }
         if ($this->z != null) {
-            $properties["Z"] = $this->z;
+            $properties["z"] = $this->z;
         }
+
         return $properties;
     }
 }

@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,44 +14,45 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Lottery\Model;
-
-
-use Gs2Cdk\Core\Model\TransactionSetting;
-use Gs2Cdk\Core\Model\ScriptSetting;
-use Gs2Cdk\Core\Model\NotificationSetting;
-use Gs2Cdk\Core\Model\LogSetting;
-use Gs2Cdk\Core\Model\Config;
 use Gs2Cdk\Core\Model\AcquireAction;
-use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Lottery\Model\Options\BoxItemOptions;
 
 class BoxItem {
-	public ?array $acquireActions;
-	public int $remaining;
-	public int $initial;
+    private int $remaining;
+    private int $initial;
+    private ?array $acquireActions = null;
 
     public function __construct(
-            int $remaining,
-            int $initial,
-            array $acquireActions = null,
+        int $remaining,
+        int $initial,
+        ?BoxItemOptions $options = null,
     ) {
-        $this->acquireActions = $acquireActions;
         $this->remaining = $remaining;
         $this->initial = $initial;
+        $this->acquireActions = $options?->acquireActions ?? null;
     }
 
-    public function properties(): array {
+    public function properties(
+    ): array {
         $properties = [];
+
         if ($this->acquireActions != null) {
-            $properties["AcquireActions"] = array_map(fn($v) => $v->properties(), $this->acquireActions);
+            $properties["acquireActions"] = array_map(
+                function ($v) {
+                    return $v->properties(
+                    );
+                },
+                $this->acquireActions
+            );
         }
         if ($this->remaining != null) {
-            $properties["Remaining"] = $this->remaining;
+            $properties["remaining"] = $this->remaining;
         }
         if ($this->initial != null) {
-            $properties["Initial"] = $this->initial;
+            $properties["initial"] = $this->initial;
         }
+
         return $properties;
     }
 }

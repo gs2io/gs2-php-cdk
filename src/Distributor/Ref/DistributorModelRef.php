@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,37 +14,42 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Distributor\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 
 class DistributorModelRef {
-    public String $namespaceName;
-    public String $distributorName;
+    private string $namespaceName;
+    private string $distributorName;
 
     public function __construct(
-            String $namespaceName,
-            String $distributorName,
+        string $namespaceName,
+        string $distributorName,
     ) {
         $this->namespaceName = $namespaceName;
         $this->distributorName = $distributorName;
     }
 
-    public function grn(): String {
+    public function grn(
+    ): string {
         return (new Join(
             ":",
             [
                 "grn",
                 "gs2",
-                GetAttr::region()->str(),
-                GetAttr::ownerId()->str(),
+                GetAttr::region(
+                )->str(
+                ),
+                GetAttr::ownerId(
+                )->str(
+                ),
                 "distributor",
                 $this->namespaceName,
                 "model",
-                $this->distributorName
-            ]
-        ))->str();
+                $this->distributorName,
+            ],
+        ))->str(
+        );
     }
 }

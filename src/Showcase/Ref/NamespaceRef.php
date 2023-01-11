@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,73 +14,47 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Showcase\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
+use Gs2Cdk\Showcase\Ref\DisplayItemRef;
 
 class NamespaceRef {
-    public String $namespaceName;
+    private string $namespaceName;
 
     public function __construct(
-            String $namespaceName,
+        string $namespaceName,
     ) {
         $this->namespaceName = $namespaceName;
     }
 
-    public function currentShowcaseMaster(
-    ): CurrentShowcaseMasterRef {
-        return new CurrentShowcaseMasterRef(
-            namespaceName: $this->namespaceName,
-        );
-    }
-
     public function displayItem(
+        string $displayItemId,
     ): DisplayItemRef {
-        return new DisplayItemRef(
-            namespaceName: $this->namespaceName,
-        );
+        return (new DisplayItemRef(
+            $this->namespaceName,
+            $displayItemId,
+        ));
     }
 
-    public function salesItemMaster(
-            String $salesItemName,
-    ): SalesItemMasterRef {
-        return new SalesItemMasterRef(
-            namespaceName: $this->namespaceName,
-            salesItemName: $salesItemName,
-        );
-    }
-
-    public function salesItemGroupMaster(
-            String $salesItemGroupName,
-    ): SalesItemGroupMasterRef {
-        return new SalesItemGroupMasterRef(
-            namespaceName: $this->namespaceName,
-            salesItemGroupName: $salesItemGroupName,
-        );
-    }
-
-    public function showcaseMaster(
-            String $showcaseName,
-    ): ShowcaseMasterRef {
-        return new ShowcaseMasterRef(
-            namespaceName: $this->namespaceName,
-            showcaseName: $showcaseName,
-        );
-    }
-
-    public function grn(): String {
+    public function grn(
+    ): string {
         return (new Join(
             ":",
             [
                 "grn",
                 "gs2",
-                GetAttr::region()->str(),
-                GetAttr::ownerId()->str(),
+                GetAttr::region(
+                )->str(
+                ),
+                GetAttr::ownerId(
+                )->str(
+                ),
                 "showcase",
-                $this->namespaceName
-            ]
-        ))->str();
+                $this->namespaceName,
+            ],
+        ))->str(
+        );
     }
 }

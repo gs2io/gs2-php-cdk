@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,7 +14,6 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Identifier;
 use Gs2Cdk\Identifier\Ref\UserRef;
 use Gs2Cdk\Identifier\Ref\SecurityPolicyRef;
@@ -22,18 +21,18 @@ use Gs2Cdk\Identifier\Ref\SecurityPolicyRef;
 class Identifier {
 
     public static function user(
-            String $userName,
+        string $userName,
     ): UserRef {
-        return new UserRef(
-            userName: $userName,
-        );
+        return (new UserRef(
+            $userName,
+        ));
     }
 
     public static function securityPolicy(
-            String $securityPolicyName,
+        string $securityPolicyName,
     ): SecurityPolicyRef {
-        return new SecurityPolicyRef(
-            securityPolicyName: $securityPolicyName,
-        );
+        return (new SecurityPolicyRef(
+            $securityPolicyName,
+        ));
     }
 }

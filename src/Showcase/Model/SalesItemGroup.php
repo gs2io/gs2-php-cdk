@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,44 +14,47 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Showcase\Model;
-
-
-use Gs2Cdk\Core\Model\TransactionSetting;
-use Gs2Cdk\Core\Model\ScriptSetting;
-use Gs2Cdk\Core\Model\NotificationSetting;
-use Gs2Cdk\Core\Model\LogSetting;
-use Gs2Cdk\Core\Model\Config;
-use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Core\Model\AcquireAction;
+use Gs2Cdk\Showcase\Model\SalesItem;
+use Gs2Cdk\Showcase\Model\Options\SalesItemGroupOptions;
 
 class SalesItemGroup {
-	public string $name;
-	public ?string $metadata;
-	public array $salesItems;
+    private string $name;
+    private array $salesItems;
+    private ?string $metadata = null;
 
     public function __construct(
-            string $name,
-            array $salesItems,
-            string $metadata = null,
+        string $name,
+        array $salesItems,
+        ?SalesItemGroupOptions $options = null,
     ) {
         $this->name = $name;
-        $this->metadata = $metadata;
         $this->salesItems = $salesItems;
+        $this->metadata = $options?->metadata ?? null;
     }
 
-    public function properties(): array {
+    public function properties(
+    ): array {
         $properties = [];
+
         if ($this->name != null) {
-            $properties["Name"] = $this->name;
+            $properties["name"] = $this->name;
         }
         if ($this->metadata != null) {
-            $properties["Metadata"] = $this->metadata;
+            $properties["metadata"] = $this->metadata;
         }
         if ($this->salesItems != null) {
-            $properties["SalesItems"] = array_map(fn($v) => $v->properties(), $this->salesItems);
+            $properties["salesItems"] = array_map(
+                function ($v) {
+                    return $v->properties(
+                    );
+                },
+                $this->salesItems
+            );
         }
+
         return $properties;
     }
 }

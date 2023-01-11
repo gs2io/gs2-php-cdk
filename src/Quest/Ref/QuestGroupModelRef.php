@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,47 +14,53 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Quest\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
+use Gs2Cdk\Quest\Ref\QuestModelRef;
 
 class QuestGroupModelRef {
-    public String $namespaceName;
-    public String $questGroupName;
+    private string $namespaceName;
+    private string $questGroupName;
 
     public function __construct(
-            String $namespaceName,
-            String $questGroupName,
+        string $namespaceName,
+        string $questGroupName,
     ) {
         $this->namespaceName = $namespaceName;
         $this->questGroupName = $questGroupName;
     }
 
     public function questModel(
-            String $questName,
+        string $questName,
     ): QuestModelRef {
-        return new QuestModelRef(
-            namespaceName: $this->namespaceName,
-            questGroupName: $this->questGroupName,
-            questName: $questName,
-        );
+        return (new QuestModelRef(
+            $this->namespaceName,
+            $this->questGroupName,
+            $questName,
+        ));
     }
 
-    public function grn(): String {
+    public function grn(
+    ): string {
         return (new Join(
             ":",
             [
                 "grn",
                 "gs2",
-                GetAttr::region()->str(),
-                GetAttr::ownerId()->str(),
+                GetAttr::region(
+                )->str(
+                ),
+                GetAttr::ownerId(
+                )->str(
+                ),
                 "quest",
                 $this->namespaceName,
                 "group",
-                $this->questGroupName
-            ]
-        ))->str();
+                $this->questGroupName,
+            ],
+        ))->str(
+        );
     }
 }

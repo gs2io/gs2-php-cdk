@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,44 +14,43 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\MegaField\Model;
-
-
-use Gs2Cdk\Core\Model\TransactionSetting;
-use Gs2Cdk\Core\Model\ScriptSetting;
-use Gs2Cdk\Core\Model\NotificationSetting;
-use Gs2Cdk\Core\Model\LogSetting;
-use Gs2Cdk\Core\Model\Config;
-use Gs2Cdk\Core\Model\AcquireAction;
-use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\MegaField\Model\Position;
+use Gs2Cdk\MegaField\Model\Vector;
+use Gs2Cdk\MegaField\Model\Options\MyPositionOptions;
 
 class MyPosition {
-	public Position $position;
-	public Vector $vector;
-	public float $r;
+    private Position $position;
+    private Vector $vector;
+    private float $r;
 
     public function __construct(
-            Position $position,
-            Vector $vector,
-            float $r,
+        Position $position,
+        Vector $vector,
+        float $r,
+        ?MyPositionOptions $options = null,
     ) {
         $this->position = $position;
         $this->vector = $vector;
         $this->r = $r;
     }
 
-    public function properties(): array {
+    public function properties(
+    ): array {
         $properties = [];
+
         if ($this->position != null) {
-            $properties["Position"] = $this->position->properties();
+            $properties["position"] = $this->position?->properties(
+            );
         }
         if ($this->vector != null) {
-            $properties["Vector"] = $this->vector->properties();
+            $properties["vector"] = $this->vector?->properties(
+            );
         }
         if ($this->r != null) {
-            $properties["R"] = $this->r;
+            $properties["r"] = $this->r;
         }
+
         return $properties;
     }
 }

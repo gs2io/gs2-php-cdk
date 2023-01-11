@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,71 +14,92 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Exchange\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
+use Gs2Cdk\Exchange\Ref\RateModelRef;
+use Gs2Cdk\Exchange\StampSheet\ExchangeByUserId;
+use Gs2Cdk\Exchange\Model\Array;
 use Gs2Cdk\Exchange\StampSheet\CreateAwaitByUserId;
+use Gs2Cdk\Exchange\StampSheet\DeleteAwaitByUserId;
 
 class NamespaceRef {
-    public String $namespaceName;
+    private string $namespaceName;
 
     public function __construct(
-            String $namespaceName,
+        string $namespaceName,
     ) {
         $this->namespaceName = $namespaceName;
     }
 
-    public function rateModelMaster(
-            String $rateName,
-    ): RateModelMasterRef {
-        return new RateModelMasterRef(
-            namespaceName: $this->namespaceName,
-            rateName: $rateName,
-        );
-    }
-
-    public function currentRateMaster(
-    ): CurrentRateMasterRef {
-        return new CurrentRateMasterRef(
-            namespaceName: $this->namespaceName,
-        );
-    }
-
     public function rateModel(
-            String $rateName,
+        string $rateName,
     ): RateModelRef {
-        return new RateModelRef(
-            namespaceName: $this->namespaceName,
-            rateName: $rateName,
-        );
+        return (new RateModelRef(
+            $this->namespaceName,
+            $rateName,
+        ));
+    }
+
+    public function exchange(
+        string $rateName,
+        int $count,
+        ?array $config = null,
+        ?string $userId = "#{userId}",
+    ): ExchangeByUserId {
+        return (new ExchangeByUserId(
+            $this->namespaceName,
+            $rateName,
+            $count,
+            $config,
+            $userId,
+        ));
     }
 
     public function createAwait(
-            string $rateName,
-            int $count,
-            string $userId = '#{userId}',
+        string $rateName,
+        int $count,
+        ?string $userId = "#{userId}",
     ): CreateAwaitByUserId {
-        return new CreateAwaitByUserId(
-            namespaceName: $this->namespaceName,
-            userId: $userId,
-            rateName: $rateName,
-            count: $count,
-        );
+        return (new CreateAwaitByUserId(
+            $this->namespaceName,
+            $rateName,
+            $count,
+            $userId,
+        ));
     }
 
-    public function grn(): String {
+    public function deleteAwait(
+        string $rateName,
+        string $awaitName,
+        ?string $userId = "#{userId}",
+    ): DeleteAwaitByUserId {
+        return (new DeleteAwaitByUserId(
+            $this->namespaceName,
+            $rateName,
+            $awaitName,
+            $userId,
+        ));
+    }
+
+    public function grn(
+    ): string {
         return (new Join(
             ":",
             [
                 "grn",
                 "gs2",
-                GetAttr::region()->str(),
-                GetAttr::ownerId()->str(),
+                GetAttr::region(
+                )->str(
+                ),
+                GetAttr::ownerId(
+                )->str(
+                ),
                 "exchange",
-                $this->namespaceName
-            ]
-        ))->str();
+                $this->namespaceName,
+            ],
+        ))->str(
+        );
     }
 }

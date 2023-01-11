@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,46 +14,83 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Money\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
+use Gs2Cdk\Money\StampSheet\DepositByUserId;
+use Gs2Cdk\Money\StampSheet\WithdrawByUserId;
 use Gs2Cdk\Money\StampSheet\RecordReceipt;
 
 class NamespaceRef {
-    public String $namespaceName;
+    private string $namespaceName;
 
     public function __construct(
-            String $namespaceName,
+        string $namespaceName,
     ) {
         $this->namespaceName = $namespaceName;
     }
 
-    public function recordReceipt(
-            string $contentsId,
-            string $receipt,
-            string $userId = '#{userId}',
-    ): RecordReceipt {
-        return new RecordReceipt(
-            namespaceName: $this->namespaceName,
-            userId: $userId,
-            contentsId: $contentsId,
-            receipt: $receipt,
-        );
+    public function deposit(
+        int $slot,
+        float $price,
+        int $count,
+        ?string $userId = "#{userId}",
+    ): DepositByUserId {
+        return (new DepositByUserId(
+            $this->namespaceName,
+            $slot,
+            $price,
+            $count,
+            $userId,
+        ));
     }
 
-    public function grn(): String {
+    public function withdraw(
+        int $slot,
+        int $count,
+        bool $paidOnly,
+        ?string $userId = "#{userId}",
+    ): WithdrawByUserId {
+        return (new WithdrawByUserId(
+            $this->namespaceName,
+            $slot,
+            $count,
+            $paidOnly,
+            $userId,
+        ));
+    }
+
+    public function recordReceipt(
+        string $contentsId,
+        string $receipt,
+        ?string $userId = "#{userId}",
+    ): RecordReceipt {
+        return (new RecordReceipt(
+            $this->namespaceName,
+            $contentsId,
+            $receipt,
+            $userId,
+        ));
+    }
+
+    public function grn(
+    ): string {
         return (new Join(
             ":",
             [
                 "grn",
                 "gs2",
-                GetAttr::region()->str(),
-                GetAttr::ownerId()->str(),
+                GetAttr::region(
+                )->str(
+                ),
+                GetAttr::ownerId(
+                )->str(
+                ),
                 "money",
-                $this->namespaceName
-            ]
-        ))->str();
+                $this->namespaceName,
+            ],
+        ))->str(
+        );
     }
 }

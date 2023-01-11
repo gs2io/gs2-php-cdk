@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,38 +14,36 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Version\Model;
-
-
-use Gs2Cdk\Core\Model\TransactionSetting;
-use Gs2Cdk\Core\Model\ScriptSetting;
-use Gs2Cdk\Core\Model\NotificationSetting;
-use Gs2Cdk\Core\Model\LogSetting;
-use Gs2Cdk\Core\Model\Config;
-use Gs2Cdk\Core\Model\AcquireAction;
-use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Version\Model\Version;
+use Gs2Cdk\Version\Model\VersionModel;
+use Gs2Cdk\Version\Model\Options\StatusOptions;
 
 class Status {
-	public VersionModel $versionModel;
-	public ?Version $currentVersion;
+    private VersionModel $versionModel;
+    private ?Version $currentVersion = null;
 
     public function __construct(
-            VersionModel $versionModel,
-            Version $currentVersion = null,
+        VersionModel $versionModel,
+        ?StatusOptions $options = null,
     ) {
         $this->versionModel = $versionModel;
-        $this->currentVersion = $currentVersion;
+        $this->currentVersion = $options?->currentVersion ?? null;
     }
 
-    public function properties(): array {
+    public function properties(
+    ): array {
         $properties = [];
+
         if ($this->versionModel != null) {
-            $properties["VersionModel"] = $this->versionModel->properties();
+            $properties["versionModel"] = $this->versionModel?->properties(
+            );
         }
         if ($this->currentVersion != null) {
-            $properties["CurrentVersion"] = $this->currentVersion->properties();
+            $properties["currentVersion"] = $this->currentVersion?->properties(
+            );
         }
+
         return $properties;
     }
 }

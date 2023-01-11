@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,7 +14,6 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Stamina\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
@@ -27,102 +26,108 @@ use Gs2Cdk\Stamina\StampSheet\SetRecoverValueByUserId;
 use Gs2Cdk\Stamina\StampSheet\ConsumeStaminaByUserId;
 
 class StaminaModelRef {
-    public String $namespaceName;
-    public String $staminaName;
+    private string $namespaceName;
+    private string $staminaName;
 
     public function __construct(
-            String $namespaceName,
-            String $staminaName,
+        string $namespaceName,
+        string $staminaName,
     ) {
         $this->namespaceName = $namespaceName;
         $this->staminaName = $staminaName;
     }
 
     public function recoverStamina(
-            int $recoverValue,
-            string $userId = '#{userId}',
+        int $recoverValue,
+        ?string $userId = "#{userId}",
     ): RecoverStaminaByUserId {
-        return new RecoverStaminaByUserId(
-            namespaceName: $this->namespaceName,
-            staminaName: $this->staminaName,
-            userId: $userId,
-            recoverValue: $recoverValue,
-        );
+        return (new RecoverStaminaByUserId(
+            $this->namespaceName,
+            $this->staminaName,
+            $recoverValue,
+            $userId,
+        ));
     }
 
     public function raiseMaxValue(
-            int $raiseValue,
-            string $userId = '#{userId}',
+        int $raiseValue,
+        ?string $userId = "#{userId}",
     ): RaiseMaxValueByUserId {
-        return new RaiseMaxValueByUserId(
-            namespaceName: $this->namespaceName,
-            staminaName: $this->staminaName,
-            userId: $userId,
-            raiseValue: $raiseValue,
-        );
+        return (new RaiseMaxValueByUserId(
+            $this->namespaceName,
+            $this->staminaName,
+            $raiseValue,
+            $userId,
+        ));
     }
 
     public function setMaxValue(
-            int $maxValue,
-            string $userId = '#{userId}',
+        int $maxValue,
+        ?string $userId = "#{userId}",
     ): SetMaxValueByUserId {
-        return new SetMaxValueByUserId(
-            namespaceName: $this->namespaceName,
-            staminaName: $this->staminaName,
-            userId: $userId,
-            maxValue: $maxValue,
-        );
+        return (new SetMaxValueByUserId(
+            $this->namespaceName,
+            $this->staminaName,
+            $maxValue,
+            $userId,
+        ));
     }
 
     public function setRecoverInterval(
-            int $recoverIntervalMinutes,
-            string $userId = '#{userId}',
+        int $recoverIntervalMinutes,
+        ?string $userId = "#{userId}",
     ): SetRecoverIntervalByUserId {
-        return new SetRecoverIntervalByUserId(
-            namespaceName: $this->namespaceName,
-            staminaName: $this->staminaName,
-            userId: $userId,
-            recoverIntervalMinutes: $recoverIntervalMinutes,
-        );
+        return (new SetRecoverIntervalByUserId(
+            $this->namespaceName,
+            $this->staminaName,
+            $recoverIntervalMinutes,
+            $userId,
+        ));
     }
 
     public function setRecoverValue(
-            int $recoverValue,
-            string $userId = '#{userId}',
+        int $recoverValue,
+        ?string $userId = "#{userId}",
     ): SetRecoverValueByUserId {
-        return new SetRecoverValueByUserId(
-            namespaceName: $this->namespaceName,
-            staminaName: $this->staminaName,
-            userId: $userId,
-            recoverValue: $recoverValue,
-        );
+        return (new SetRecoverValueByUserId(
+            $this->namespaceName,
+            $this->staminaName,
+            $recoverValue,
+            $userId,
+        ));
     }
 
     public function consumeStamina(
-            int $consumeValue,
-            string $userId = '#{userId}',
+        int $consumeValue,
+        ?string $userId = "#{userId}",
     ): ConsumeStaminaByUserId {
-        return new ConsumeStaminaByUserId(
-            namespaceName: $this->namespaceName,
-            staminaName: $this->staminaName,
-            userId: $userId,
-            consumeValue: $consumeValue,
-        );
+        return (new ConsumeStaminaByUserId(
+            $this->namespaceName,
+            $this->staminaName,
+            $consumeValue,
+            $userId,
+        ));
     }
 
-    public function grn(): String {
+    public function grn(
+    ): string {
         return (new Join(
             ":",
             [
                 "grn",
                 "gs2",
-                GetAttr::region()->str(),
-                GetAttr::ownerId()->str(),
+                GetAttr::region(
+                )->str(
+                ),
+                GetAttr::ownerId(
+                )->str(
+                ),
                 "stamina",
                 $this->namespaceName,
                 "model",
-                $this->staminaName
-            ]
-        ))->str();
+                $this->staminaName,
+            ],
+        ))->str(
+        );
     }
 }

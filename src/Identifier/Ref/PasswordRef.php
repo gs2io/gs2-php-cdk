@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,33 +14,36 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Identifier\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 
 class PasswordRef {
-    public String $userName;
+    private string $userName;
 
     public function __construct(
-            String $userName,
+        string $userName,
     ) {
         $this->userName = $userName;
     }
 
-    public function grn(): String {
+    public function grn(
+    ): string {
         return (new Join(
             ":",
             [
                 "grn",
                 "gs2",
                 "",
-                GetAttr::ownerId()->str(),
+                GetAttr::ownerId(
+                )->str(
+                ),
                 "identifier",
                 "user",
-                $this->userName
-            ]
-        ))->str();
+                $this->userName,
+            ],
+        ))->str(
+        );
     }
 }

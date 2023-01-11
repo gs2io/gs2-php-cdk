@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,38 +14,29 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Exchange\StampSheet;
 
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
-
+use Gs2Cdk\Core\Model\Config;
 
 class ExchangeByUserId extends AcquireAction {
 
     public function __construct(
-            string $namespaceName,
-            string $rateName,
-            int $count,
-            array $config = null,
-            string $userId = '#{userId}',
+        string $namespaceName,
+        string $rateName,
+        int $count,
+        ?array $config = null,
+        ?string $userId = "#{userId}",
     ) {
         $properties = [];
-        if ($namespaceName != null) {
-            $properties["namespaceName"] = $namespaceName;
-        }
-        if ($rateName != null) {
-            $properties["rateName"] = $rateName;
-        }
-        if ($userId != null) {
-            $properties["userId"] = $userId;
-        }
-        if ($count != null) {
-            $properties["count"] = $count;
-        }
-        if ($config != null) {
-            $properties["config"] = $config;
-        }
+
+        $properties["namespaceName"] = $namespaceName;
+        $properties["rateName"] = $rateName;
+        $properties["count"] = $count;
+        $properties["config"] = $config;
+        $properties["userId"] = $userId;
+
         parent::__construct(
             "Gs2Exchange:ExchangeByUserId",
             $properties,

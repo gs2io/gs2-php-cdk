@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,47 +14,43 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Lottery\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
+use Gs2Cdk\Lottery\Ref\PrizeLimitRef;
 
 class PrizeTableRef {
-    public String $namespaceName;
-    public String $prizeTableName;
+    private string $namespaceName;
+    private string $prizeTableName;
 
     public function __construct(
-            String $namespaceName,
-            String $prizeTableName,
+        string $namespaceName,
+        string $prizeTableName,
     ) {
         $this->namespaceName = $namespaceName;
         $this->prizeTableName = $prizeTableName;
     }
 
-    public function prizeLimit(
-            String $prizeId,
-    ): PrizeLimitRef {
-        return new PrizeLimitRef(
-            namespaceName: $this->namespaceName,
-            prizeTableName: $this->prizeTableName,
-            prizeId: $prizeId,
-        );
-    }
-
-    public function grn(): String {
+    public function grn(
+    ): string {
         return (new Join(
             ":",
             [
                 "grn",
                 "gs2",
-                GetAttr::region()->str(),
-                GetAttr::ownerId()->str(),
+                GetAttr::region(
+                )->str(
+                ),
+                GetAttr::ownerId(
+                )->str(
+                ),
                 "lottery",
                 $this->namespaceName,
                 "table",
-                $this->prizeTableName
-            ]
-        ))->str();
+                $this->prizeTableName,
+            ],
+        ))->str(
+        );
     }
 }

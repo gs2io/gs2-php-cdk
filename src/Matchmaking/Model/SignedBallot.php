@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,38 +14,33 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Matchmaking\Model;
-
-
-use Gs2Cdk\Core\Model\TransactionSetting;
-use Gs2Cdk\Core\Model\ScriptSetting;
-use Gs2Cdk\Core\Model\NotificationSetting;
-use Gs2Cdk\Core\Model\LogSetting;
-use Gs2Cdk\Core\Model\Config;
-use Gs2Cdk\Core\Model\AcquireAction;
-use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Matchmaking\Model\Options\SignedBallotOptions;
 
 class SignedBallot {
-	public string $body;
-	public string $signature;
+    private string $body;
+    private string $signature;
 
     public function __construct(
-            string $body,
-            string $signature,
+        string $body,
+        string $signature,
+        ?SignedBallotOptions $options = null,
     ) {
         $this->body = $body;
         $this->signature = $signature;
     }
 
-    public function properties(): array {
+    public function properties(
+    ): array {
         $properties = [];
+
         if ($this->body != null) {
-            $properties["Body"] = $this->body;
+            $properties["body"] = $this->body;
         }
         if ($this->signature != null) {
-            $properties["Signature"] = $this->signature;
+            $properties["signature"] = $this->signature;
         }
+
         return $properties;
     }
 }

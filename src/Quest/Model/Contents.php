@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,44 +14,44 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Quest\Model;
-
-
-use Gs2Cdk\Core\Model\TransactionSetting;
-use Gs2Cdk\Core\Model\ScriptSetting;
-use Gs2Cdk\Core\Model\NotificationSetting;
-use Gs2Cdk\Core\Model\LogSetting;
-use Gs2Cdk\Core\Model\Config;
 use Gs2Cdk\Core\Model\AcquireAction;
-use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Quest\Model\Options\ContentsOptions;
 
 class Contents {
-	public ?string $metadata;
-	public ?array $completeAcquireActions;
-	public int $weight;
+    private int $weight;
+    private ?string $metadata = null;
+    private ?array $completeAcquireActions = null;
 
     public function __construct(
-            int $weight,
-            string $metadata = null,
-            array $completeAcquireActions = null,
+        int $weight,
+        ?ContentsOptions $options = null,
     ) {
-        $this->metadata = $metadata;
-        $this->completeAcquireActions = $completeAcquireActions;
         $this->weight = $weight;
+        $this->metadata = $options?->metadata ?? null;
+        $this->completeAcquireActions = $options?->completeAcquireActions ?? null;
     }
 
-    public function properties(): array {
+    public function properties(
+    ): array {
         $properties = [];
+
         if ($this->metadata != null) {
-            $properties["Metadata"] = $this->metadata;
+            $properties["metadata"] = $this->metadata;
         }
         if ($this->completeAcquireActions != null) {
-            $properties["CompleteAcquireActions"] = array_map(fn($v) => $v->properties(), $this->completeAcquireActions);
+            $properties["completeAcquireActions"] = array_map(
+                function ($v) {
+                    return $v->properties(
+                    );
+                },
+                $this->completeAcquireActions
+            );
         }
         if ($this->weight != null) {
-            $properties["Weight"] = $this->weight;
+            $properties["weight"] = $this->weight;
         }
+
         return $properties;
     }
 }

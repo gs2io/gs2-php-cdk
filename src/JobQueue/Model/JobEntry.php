@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,44 +14,39 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\JobQueue\Model;
-
-
-use Gs2Cdk\Core\Model\TransactionSetting;
-use Gs2Cdk\Core\Model\ScriptSetting;
-use Gs2Cdk\Core\Model\NotificationSetting;
-use Gs2Cdk\Core\Model\LogSetting;
-use Gs2Cdk\Core\Model\Config;
-use Gs2Cdk\Core\Model\AcquireAction;
-use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\JobQueue\Model\Options\JobEntryOptions;
 
 class JobEntry {
-	public string $scriptId;
-	public string $args;
-	public int $maxTryCount;
+    private string $scriptId;
+    private string $args;
+    private int $maxTryCount;
 
     public function __construct(
-            string $scriptId,
-            string $args,
-            int $maxTryCount,
+        string $scriptId,
+        string $args,
+        int $maxTryCount,
+        ?JobEntryOptions $options = null,
     ) {
         $this->scriptId = $scriptId;
         $this->args = $args;
         $this->maxTryCount = $maxTryCount;
     }
 
-    public function properties(): array {
+    public function properties(
+    ): array {
         $properties = [];
+
         if ($this->scriptId != null) {
-            $properties["ScriptId"] = $this->scriptId;
+            $properties["scriptId"] = $this->scriptId;
         }
         if ($this->args != null) {
-            $properties["Args"] = $this->args;
+            $properties["args"] = $this->args;
         }
         if ($this->maxTryCount != null) {
-            $properties["MaxTryCount"] = $this->maxTryCount;
+            $properties["maxTryCount"] = $this->maxTryCount;
         }
+
         return $properties;
     }
 }

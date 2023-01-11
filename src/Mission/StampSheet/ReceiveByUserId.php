@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,34 +14,26 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Mission\StampSheet;
 
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
 
-
 class ReceiveByUserId extends ConsumeAction {
 
     public function __construct(
-            string $namespaceName,
-            string $missionGroupName,
-            string $missionTaskName,
-            string $userId = '#{userId}',
+        string $namespaceName,
+        string $missionGroupName,
+        string $missionTaskName,
+        ?string $userId = "#{userId}",
     ) {
         $properties = [];
-        if ($namespaceName != null) {
-            $properties["namespaceName"] = $namespaceName;
-        }
-        if ($missionGroupName != null) {
-            $properties["missionGroupName"] = $missionGroupName;
-        }
-        if ($missionTaskName != null) {
-            $properties["missionTaskName"] = $missionTaskName;
-        }
-        if ($userId != null) {
-            $properties["userId"] = $userId;
-        }
+
+        $properties["namespaceName"] = $namespaceName;
+        $properties["missionGroupName"] = $missionGroupName;
+        $properties["missionTaskName"] = $missionTaskName;
+        $properties["userId"] = $userId;
+
         parent::__construct(
             "Gs2Mission:ReceiveByUserId",
             $properties,

@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,7 +14,6 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Mission\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
@@ -22,42 +21,48 @@ use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Mission\StampSheet\IncreaseCounterByUserId;
 
 class CounterModelRef {
-    public String $namespaceName;
-    public String $counterName;
+    private string $namespaceName;
+    private string $counterName;
 
     public function __construct(
-            String $namespaceName,
-            String $counterName,
+        string $namespaceName,
+        string $counterName,
     ) {
         $this->namespaceName = $namespaceName;
         $this->counterName = $counterName;
     }
 
     public function increaseCounter(
-            int $value,
-            string $userId = '#{userId}',
+        int $value,
+        ?string $userId = "#{userId}",
     ): IncreaseCounterByUserId {
-        return new IncreaseCounterByUserId(
-            namespaceName: $this->namespaceName,
-            counterName: $this->counterName,
-            userId: $userId,
-            value: $value,
-        );
+        return (new IncreaseCounterByUserId(
+            $this->namespaceName,
+            $this->counterName,
+            $value,
+            $userId,
+        ));
     }
 
-    public function grn(): String {
+    public function grn(
+    ): string {
         return (new Join(
             ":",
             [
                 "grn",
                 "gs2",
-                GetAttr::region()->str(),
-                GetAttr::ownerId()->str(),
+                GetAttr::region(
+                )->str(
+                ),
+                GetAttr::ownerId(
+                )->str(
+                ),
                 "mission",
                 $this->namespaceName,
                 "counter",
-                $this->counterName
-            ]
-        ))->str();
+                $this->counterName,
+            ],
+        ))->str(
+        );
     }
 }

@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,56 +14,47 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Log\Model;
-
-
-use Gs2Cdk\Core\Model\TransactionSetting;
-use Gs2Cdk\Core\Model\ScriptSetting;
-use Gs2Cdk\Core\Model\NotificationSetting;
-use Gs2Cdk\Core\Model\LogSetting;
-use Gs2Cdk\Core\Model\Config;
-use Gs2Cdk\Core\Model\AcquireAction;
-use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Log\Model\Options\IssueStampSheetLogCountOptions;
 
 class IssueStampSheetLogCount {
-	public ?string $service;
-	public ?string $method;
-	public ?string $userId;
-	public ?string $action;
-	public int $count;
+    private int $count;
+    private ?string $service = null;
+    private ?string $method = null;
+    private ?string $userId = null;
+    private ?string $action = null;
 
     public function __construct(
-            int $count,
-            string $service = null,
-            string $method = null,
-            string $userId = null,
-            string $action = null,
+        int $count,
+        ?IssueStampSheetLogCountOptions $options = null,
     ) {
-        $this->service = $service;
-        $this->method = $method;
-        $this->userId = $userId;
-        $this->action = $action;
         $this->count = $count;
+        $this->service = $options?->service ?? null;
+        $this->method = $options?->method ?? null;
+        $this->userId = $options?->userId ?? null;
+        $this->action = $options?->action ?? null;
     }
 
-    public function properties(): array {
+    public function properties(
+    ): array {
         $properties = [];
+
         if ($this->service != null) {
-            $properties["Service"] = $this->service;
+            $properties["service"] = $this->service;
         }
         if ($this->method != null) {
-            $properties["Method"] = $this->method;
+            $properties["method"] = $this->method;
         }
         if ($this->userId != null) {
-            $properties["UserId"] = $this->userId;
+            $properties["userId"] = $this->userId;
         }
         if ($this->action != null) {
-            $properties["Action"] = $this->action;
+            $properties["action"] = $this->action;
         }
         if ($this->count != null) {
-            $properties["Count"] = $this->count;
+            $properties["count"] = $this->count;
         }
+
         return $properties;
     }
 }

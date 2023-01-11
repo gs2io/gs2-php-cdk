@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,75 +14,79 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Inbox\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
+use Gs2Cdk\Inbox\Ref\GlobalMessageRef;
 use Gs2Cdk\Inbox\StampSheet\SendMessageByUserId;
+use Gs2Cdk\Inbox\Model\Array;
+use Gs2Cdk\Inbox\Model\TimeSpan;
+use Gs2Cdk\Inbox\StampSheet\OpenMessageByUserId;
 
 class NamespaceRef {
-    public String $namespaceName;
+    private string $namespaceName;
 
     public function __construct(
-            String $namespaceName,
+        string $namespaceName,
     ) {
         $this->namespaceName = $namespaceName;
     }
 
-    public function currentMessageMaster(
-    ): CurrentMessageMasterRef {
-        return new CurrentMessageMasterRef(
-            namespaceName: $this->namespaceName,
-        );
-    }
-
     public function globalMessage(
-            String $globalMessageName,
+        string $globalMessageName,
     ): GlobalMessageRef {
-        return new GlobalMessageRef(
-            namespaceName: $this->namespaceName,
-            globalMessageName: $globalMessageName,
-        );
-    }
-
-    public function globalMessageMaster(
-            String $globalMessageName,
-    ): GlobalMessageMasterRef {
-        return new GlobalMessageMasterRef(
-            namespaceName: $this->namespaceName,
-            globalMessageName: $globalMessageName,
-        );
+        return (new GlobalMessageRef(
+            $this->namespaceName,
+            $globalMessageName,
+        ));
     }
 
     public function sendMessage(
-            string $metadata,
-            array $readAcquireActions = null,
-            int $expiresAt = null,
-            TimeSpan $expiresTimeSpan = null,
-            string $userId = '#{userId}',
+        string $metadata,
+        ?array $readAcquireActions = null,
+        ?int $expiresAt = null,
+        ?TimeSpan $expiresTimeSpan = null,
+        ?string $userId = "#{userId}",
     ): SendMessageByUserId {
-        return new SendMessageByUserId(
-            namespaceName: $this->namespaceName,
-            userId: $userId,
-            metadata: $metadata,
-            readAcquireActions: $readAcquireActions,
-            expiresAt: $expiresAt,
-            expiresTimeSpan: $expiresTimeSpan,
-        );
+        return (new SendMessageByUserId(
+            $this->namespaceName,
+            $metadata,
+            $readAcquireActions,
+            $expiresAt,
+            $expiresTimeSpan,
+            $userId,
+        ));
     }
 
-    public function grn(): String {
+    public function openMessage(
+        string $messageName,
+        ?string $userId = "#{userId}",
+    ): OpenMessageByUserId {
+        return (new OpenMessageByUserId(
+            $this->namespaceName,
+            $messageName,
+            $userId,
+        ));
+    }
+
+    public function grn(
+    ): string {
         return (new Join(
             ":",
             [
                 "grn",
                 "gs2",
-                GetAttr::region()->str(),
-                GetAttr::ownerId()->str(),
+                GetAttr::region(
+                )->str(
+                ),
+                GetAttr::ownerId(
+                )->str(
+                ),
                 "inbox",
-                $this->namespaceName
-            ]
-        ))->str();
+                $this->namespaceName,
+            ],
+        ))->str(
+        );
     }
 }

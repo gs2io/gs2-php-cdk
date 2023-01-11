@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,37 +14,54 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Dictionary\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
+use Gs2Cdk\Dictionary\StampSheet\AddEntriesByUserId;
 
 class EntryModelRef {
-    public String $namespaceName;
-    public String $entryName;
+    private string $namespaceName;
+    private string $entryName;
 
     public function __construct(
-            String $namespaceName,
-            String $entryName,
+        string $namespaceName,
+        string $entryName,
     ) {
         $this->namespaceName = $namespaceName;
         $this->entryName = $entryName;
     }
 
-    public function grn(): String {
+    public function addEntries(
+        ?array $entryModelNames = null,
+        ?string $userId = "#{userId}",
+    ): AddEntriesByUserId {
+        return (new AddEntriesByUserId(
+            $this->namespaceName,
+            $entryModelNames,
+            $userId,
+        ));
+    }
+
+    public function grn(
+    ): string {
         return (new Join(
             ":",
             [
                 "grn",
                 "gs2",
-                GetAttr::region()->str(),
-                GetAttr::ownerId()->str(),
+                GetAttr::region(
+                )->str(
+                ),
+                GetAttr::ownerId(
+                )->str(
+                ),
                 "dictionary",
                 $this->namespaceName,
                 "model",
-                $this->entryName
-            ]
-        ))->str();
+                $this->entryName,
+            ],
+        ))->str(
+        );
     }
 }

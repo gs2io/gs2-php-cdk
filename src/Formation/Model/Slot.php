@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,44 +14,38 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Formation\Model;
-
-
-use Gs2Cdk\Core\Model\TransactionSetting;
-use Gs2Cdk\Core\Model\ScriptSetting;
-use Gs2Cdk\Core\Model\NotificationSetting;
-use Gs2Cdk\Core\Model\LogSetting;
-use Gs2Cdk\Core\Model\Config;
-use Gs2Cdk\Core\Model\AcquireAction;
-use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Formation\Model\Options\SlotOptions;
 
 class Slot {
-	public string $name;
-	public string $propertyId;
-	public ?string $metadata;
+    private string $name;
+    private string $propertyId;
+    private ?string $metadata = null;
 
     public function __construct(
-            string $name,
-            string $propertyId,
-            string $metadata = null,
+        string $name,
+        string $propertyId,
+        ?SlotOptions $options = null,
     ) {
         $this->name = $name;
         $this->propertyId = $propertyId;
-        $this->metadata = $metadata;
+        $this->metadata = $options?->metadata ?? null;
     }
 
-    public function properties(): array {
+    public function properties(
+    ): array {
         $properties = [];
+
         if ($this->name != null) {
-            $properties["Name"] = $this->name;
+            $properties["name"] = $this->name;
         }
         if ($this->propertyId != null) {
-            $properties["PropertyId"] = $this->propertyId;
+            $properties["propertyId"] = $this->propertyId;
         }
         if ($this->metadata != null) {
-            $properties["Metadata"] = $this->metadata;
+            $properties["metadata"] = $this->metadata;
         }
+
         return $properties;
     }
 }

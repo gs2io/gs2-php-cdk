@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,56 +14,63 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Formation\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Formation\StampSheet\AcquireActionsToFormProperties;
+use Gs2Cdk\Core\Model\AcquireAction;
+use Gs2Cdk\Formation\Model\AcquireActionConfig;
 
 class FormModelRef {
-    public String $namespaceName;
-    public String $formModelName;
+    private string $namespaceName;
+    private string $formModelName;
 
     public function __construct(
-            String $namespaceName,
-            String $formModelName,
+        string $namespaceName,
+        string $formModelName,
     ) {
         $this->namespaceName = $namespaceName;
         $this->formModelName = $formModelName;
     }
 
     public function acquireActionsToFormProperties(
-            string $moldName,
-            int $index,
-            AcquireAction $acquireAction,
-            array $config = null,
-            string $userId = '#{userId}',
+        string $moldName,
+        int $index,
+        AcquireAction $acquireAction,
+        ?array $config = null,
+        ?string $userId = "#{userId}",
     ): AcquireActionsToFormProperties {
-        return new AcquireActionsToFormProperties(
-            namespaceName: $this->namespaceName,
-            userId: $userId,
-            moldName: $moldName,
-            index: $index,
-            acquireAction: $acquireAction,
-            config: $config,
-        );
+        return (new AcquireActionsToFormProperties(
+            $this->namespaceName,
+            $moldName,
+            $index,
+            $acquireAction,
+            $config,
+            $userId,
+        ));
     }
 
-    public function grn(): String {
+    public function grn(
+    ): string {
         return (new Join(
             ":",
             [
                 "grn",
                 "gs2",
-                GetAttr::region()->str(),
-                GetAttr::ownerId()->str(),
+                GetAttr::region(
+                )->str(
+                ),
+                GetAttr::ownerId(
+                )->str(
+                ),
                 "formation",
                 $this->namespaceName,
                 "model",
                 "form",
-                $this->formModelName
-            ]
-        ))->str();
+                $this->formModelName,
+            ],
+        ))->str(
+        );
     }
 }

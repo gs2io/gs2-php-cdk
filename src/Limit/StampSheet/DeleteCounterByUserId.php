@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,34 +14,26 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Limit\StampSheet;
 
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
 
-
 class DeleteCounterByUserId extends AcquireAction {
 
     public function __construct(
-            string $namespaceName,
-            string $limitName,
-            string $counterName,
-            string $userId = '#{userId}',
+        string $namespaceName,
+        string $limitName,
+        string $counterName,
+        ?string $userId = "#{userId}",
     ) {
         $properties = [];
-        if ($namespaceName != null) {
-            $properties["namespaceName"] = $namespaceName;
-        }
-        if ($limitName != null) {
-            $properties["limitName"] = $limitName;
-        }
-        if ($userId != null) {
-            $properties["userId"] = $userId;
-        }
-        if ($counterName != null) {
-            $properties["counterName"] = $counterName;
-        }
+
+        $properties["namespaceName"] = $namespaceName;
+        $properties["limitName"] = $limitName;
+        $properties["counterName"] = $counterName;
+        $properties["userId"] = $userId;
+
         parent::__construct(
             "Gs2Limit:DeleteCounterByUserId",
             $properties,

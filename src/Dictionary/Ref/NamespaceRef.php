@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,69 +14,59 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Dictionary\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
+use Gs2Cdk\Dictionary\Ref\EntryModelRef;
 use Gs2Cdk\Dictionary\StampSheet\AddEntriesByUserId;
 
 class NamespaceRef {
-    public String $namespaceName;
+    private string $namespaceName;
 
     public function __construct(
-            String $namespaceName,
+        string $namespaceName,
     ) {
         $this->namespaceName = $namespaceName;
     }
 
-    public function currentEntryMaster(
-    ): CurrentEntryMasterRef {
-        return new CurrentEntryMasterRef(
-            namespaceName: $this->namespaceName,
-        );
-    }
-
     public function entryModel(
-            String $entryName,
+        string $entryName,
     ): EntryModelRef {
-        return new EntryModelRef(
-            namespaceName: $this->namespaceName,
-            entryName: $entryName,
-        );
-    }
-
-    public function entryModelMaster(
-            String $entryName,
-    ): EntryModelMasterRef {
-        return new EntryModelMasterRef(
-            namespaceName: $this->namespaceName,
-            entryName: $entryName,
-        );
+        return (new EntryModelRef(
+            $this->namespaceName,
+            $entryName,
+        ));
     }
 
     public function addEntries(
-            array $entryModelNames = null,
-            string $userId = '#{userId}',
+        ?array $entryModelNames = null,
+        ?string $userId = "#{userId}",
     ): AddEntriesByUserId {
-        return new AddEntriesByUserId(
-            namespaceName: $this->namespaceName,
-            userId: $userId,
-            entryModelNames: $entryModelNames,
-        );
+        return (new AddEntriesByUserId(
+            $this->namespaceName,
+            $entryModelNames,
+            $userId,
+        ));
     }
 
-    public function grn(): String {
+    public function grn(
+    ): string {
         return (new Join(
             ":",
             [
                 "grn",
                 "gs2",
-                GetAttr::region()->str(),
-                GetAttr::ownerId()->str(),
+                GetAttr::region(
+                )->str(
+                ),
+                GetAttr::ownerId(
+                )->str(
+                ),
                 "dictionary",
-                $this->namespaceName
-            ]
-        ))->str();
+                $this->namespaceName,
+            ],
+        ))->str(
+        );
     }
 }

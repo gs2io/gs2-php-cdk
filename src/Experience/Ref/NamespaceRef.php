@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,66 +14,95 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Experience\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
+use Gs2Cdk\Experience\Ref\ExperienceModelRef;
+use Gs2Cdk\Experience\StampSheet\AddExperienceByUserId;
+use Gs2Cdk\Experience\StampSheet\AddRankCapByUserId;
+use Gs2Cdk\Experience\StampSheet\SetRankCapByUserId;
 
 class NamespaceRef {
-    public String $namespaceName;
+    private string $namespaceName;
 
     public function __construct(
-            String $namespaceName,
+        string $namespaceName,
     ) {
         $this->namespaceName = $namespaceName;
     }
 
-    public function currentExperienceMaster(
-    ): CurrentExperienceMasterRef {
-        return new CurrentExperienceMasterRef(
-            namespaceName: $this->namespaceName,
-        );
-    }
-
     public function experienceModel(
-            String $experienceName,
+        string $experienceName,
     ): ExperienceModelRef {
-        return new ExperienceModelRef(
-            namespaceName: $this->namespaceName,
-            experienceName: $experienceName,
-        );
+        return (new ExperienceModelRef(
+            $this->namespaceName,
+            $experienceName,
+        ));
     }
 
-    public function thresholdMaster(
-            String $thresholdName,
-    ): ThresholdMasterRef {
-        return new ThresholdMasterRef(
-            namespaceName: $this->namespaceName,
-            thresholdName: $thresholdName,
-        );
+    public function addExperience(
+        string $experienceName,
+        string $propertyId,
+        int $experienceValue,
+        ?string $userId = "#{userId}",
+    ): AddExperienceByUserId {
+        return (new AddExperienceByUserId(
+            $this->namespaceName,
+            $experienceName,
+            $propertyId,
+            $experienceValue,
+            $userId,
+        ));
     }
 
-    public function experienceModelMaster(
-            String $experienceName,
-    ): ExperienceModelMasterRef {
-        return new ExperienceModelMasterRef(
-            namespaceName: $this->namespaceName,
-            experienceName: $experienceName,
-        );
+    public function addRankCap(
+        string $experienceName,
+        string $propertyId,
+        int $rankCapValue,
+        ?string $userId = "#{userId}",
+    ): AddRankCapByUserId {
+        return (new AddRankCapByUserId(
+            $this->namespaceName,
+            $experienceName,
+            $propertyId,
+            $rankCapValue,
+            $userId,
+        ));
     }
 
-    public function grn(): String {
+    public function setRankCap(
+        string $experienceName,
+        string $propertyId,
+        int $rankCapValue,
+        ?string $userId = "#{userId}",
+    ): SetRankCapByUserId {
+        return (new SetRankCapByUserId(
+            $this->namespaceName,
+            $experienceName,
+            $propertyId,
+            $rankCapValue,
+            $userId,
+        ));
+    }
+
+    public function grn(
+    ): string {
         return (new Join(
             ":",
             [
                 "grn",
                 "gs2",
-                GetAttr::region()->str(),
-                GetAttr::ownerId()->str(),
+                GetAttr::region(
+                )->str(
+                ),
+                GetAttr::ownerId(
+                )->str(
+                ),
                 "experience",
-                $this->namespaceName
-            ]
-        ))->str();
+                $this->namespaceName,
+            ],
+        ))->str(
+        );
     }
 }

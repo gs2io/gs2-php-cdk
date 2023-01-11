@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,57 +14,52 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Formation\Model;
-
+use Gs2Cdk\Formation\Model\Options\SlotWithSignatureOptions;
 use Gs2Cdk\Formation\Model\Enum\SlotWithSignaturePropertyType;
 
-use Gs2Cdk\Core\Model\TransactionSetting;
-use Gs2Cdk\Core\Model\ScriptSetting;
-use Gs2Cdk\Core\Model\NotificationSetting;
-use Gs2Cdk\Core\Model\LogSetting;
-use Gs2Cdk\Core\Model\Config;
-use Gs2Cdk\Core\Model\AcquireAction;
-use Gs2Cdk\Core\Model\ConsumeAction;
-
 class SlotWithSignature {
-	public string $name;
-	public SlotWithSignaturePropertyType $propertyType;
-	public string $body;
-	public string $signature;
-	public ?string $metadata;
+    private string $name;
+    private SlotWithSignaturePropertyType $propertyType;
+    private string $body;
+    private string $signature;
+    private ?string $metadata = null;
 
     public function __construct(
-            string $name,
-            SlotWithSignaturePropertyType $propertyType,
-            string $body,
-            string $signature,
-            string $metadata = null,
+        string $name,
+        SlotWithSignaturePropertyType $propertyType,
+        string $body,
+        string $signature,
+        ?SlotWithSignatureOptions $options = null,
     ) {
         $this->name = $name;
         $this->propertyType = $propertyType;
         $this->body = $body;
         $this->signature = $signature;
-        $this->metadata = $metadata;
+        $this->metadata = $options?->metadata ?? null;
     }
 
-    public function properties(): array {
+    public function properties(
+    ): array {
         $properties = [];
+
         if ($this->name != null) {
-            $properties["Name"] = $this->name;
+            $properties["name"] = $this->name;
         }
         if ($this->propertyType != null) {
-            $properties["PropertyType"] = $this->propertyType->toString();
+            $properties["propertyType"] = $this->propertyType?->toString(
+            );
         }
         if ($this->body != null) {
-            $properties["Body"] = $this->body;
+            $properties["body"] = $this->body;
         }
         if ($this->signature != null) {
-            $properties["Signature"] = $this->signature;
+            $properties["signature"] = $this->signature;
         }
         if ($this->metadata != null) {
-            $properties["Metadata"] = $this->metadata;
+            $properties["metadata"] = $this->metadata;
         }
+
         return $properties;
     }
 }

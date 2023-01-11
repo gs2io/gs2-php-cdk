@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,51 +14,46 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Mission\Model;
-
+use Gs2Cdk\Mission\Model\Options\ScopedValueOptions;
 use Gs2Cdk\Mission\Model\Enum\ScopedValueResetType;
 
-use Gs2Cdk\Core\Model\TransactionSetting;
-use Gs2Cdk\Core\Model\ScriptSetting;
-use Gs2Cdk\Core\Model\NotificationSetting;
-use Gs2Cdk\Core\Model\LogSetting;
-use Gs2Cdk\Core\Model\Config;
-use Gs2Cdk\Core\Model\AcquireAction;
-use Gs2Cdk\Core\Model\ConsumeAction;
-
 class ScopedValue {
-	public ScopedValueResetType $resetType;
-	public int $value;
-	public ?int $nextResetAt;
-	public int $updatedAt;
+    private ScopedValueResetType $resetType;
+    private int $value;
+    private int $updatedAt;
+    private ?int $nextResetAt = null;
 
     public function __construct(
-            ScopedValueResetType $resetType,
-            int $value,
-            int $updatedAt,
-            int $nextResetAt = null,
+        ScopedValueResetType $resetType,
+        int $value,
+        int $updatedAt,
+        ?ScopedValueOptions $options = null,
     ) {
         $this->resetType = $resetType;
         $this->value = $value;
-        $this->nextResetAt = $nextResetAt;
         $this->updatedAt = $updatedAt;
+        $this->nextResetAt = $options?->nextResetAt ?? null;
     }
 
-    public function properties(): array {
+    public function properties(
+    ): array {
         $properties = [];
+
         if ($this->resetType != null) {
-            $properties["ResetType"] = $this->resetType->toString();
+            $properties["resetType"] = $this->resetType?->toString(
+            );
         }
         if ($this->value != null) {
-            $properties["Value"] = $this->value;
+            $properties["value"] = $this->value;
         }
         if ($this->nextResetAt != null) {
-            $properties["NextResetAt"] = $this->nextResetAt;
+            $properties["nextResetAt"] = $this->nextResetAt;
         }
         if ($this->updatedAt != null) {
-            $properties["UpdatedAt"] = $this->updatedAt;
+            $properties["updatedAt"] = $this->updatedAt;
         }
+
         return $properties;
     }
 }

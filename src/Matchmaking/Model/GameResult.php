@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,38 +14,33 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Matchmaking\Model;
-
-
-use Gs2Cdk\Core\Model\TransactionSetting;
-use Gs2Cdk\Core\Model\ScriptSetting;
-use Gs2Cdk\Core\Model\NotificationSetting;
-use Gs2Cdk\Core\Model\LogSetting;
-use Gs2Cdk\Core\Model\Config;
-use Gs2Cdk\Core\Model\AcquireAction;
-use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Matchmaking\Model\Options\GameResultOptions;
 
 class GameResult {
-	public int $rank;
-	public string $userId;
+    private int $rank;
+    private string $userId;
 
     public function __construct(
-            int $rank,
-            string $userId,
+        int $rank,
+        string $userId,
+        ?GameResultOptions $options = null,
     ) {
         $this->rank = $rank;
         $this->userId = $userId;
     }
 
-    public function properties(): array {
+    public function properties(
+    ): array {
         $properties = [];
+
         if ($this->rank != null) {
-            $properties["Rank"] = $this->rank;
+            $properties["rank"] = $this->rank;
         }
         if ($this->userId != null) {
-            $properties["UserId"] = $this->userId;
+            $properties["userId"] = $this->userId;
         }
+
         return $properties;
     }
 }

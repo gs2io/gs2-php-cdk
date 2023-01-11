@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,38 +14,33 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Enhance\Model;
-
-
-use Gs2Cdk\Core\Model\TransactionSetting;
-use Gs2Cdk\Core\Model\ScriptSetting;
-use Gs2Cdk\Core\Model\NotificationSetting;
-use Gs2Cdk\Core\Model\LogSetting;
-use Gs2Cdk\Core\Model\Config;
-use Gs2Cdk\Core\Model\AcquireAction;
-use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Enhance\Model\Options\MaterialOptions;
 
 class Material {
-	public string $materialItemSetId;
-	public int $count;
+    private string $materialItemSetId;
+    private int $count;
 
     public function __construct(
-            string $materialItemSetId,
-            int $count,
+        string $materialItemSetId,
+        int $count,
+        ?MaterialOptions $options = null,
     ) {
         $this->materialItemSetId = $materialItemSetId;
         $this->count = $count;
     }
 
-    public function properties(): array {
+    public function properties(
+    ): array {
         $properties = [];
+
         if ($this->materialItemSetId != null) {
-            $properties["MaterialItemSetId"] = $this->materialItemSetId;
+            $properties["materialItemSetId"] = $this->materialItemSetId;
         }
         if ($this->count != null) {
-            $properties["Count"] = $this->count;
+            $properties["count"] = $this->count;
         }
+
         return $properties;
     }
 }

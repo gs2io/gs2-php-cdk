@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,90 +14,100 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Mission\Model;
-
+use Gs2Cdk\Mission\Model\Options\CounterScopeModelOptions;
+use Gs2Cdk\Mission\Model\Options\CounterScopeModelResetTypeIsNotResetOptions;
+use Gs2Cdk\Mission\Model\Options\CounterScopeModelResetTypeIsDailyOptions;
+use Gs2Cdk\Mission\Model\Options\CounterScopeModelResetTypeIsWeeklyOptions;
+use Gs2Cdk\Mission\Model\Options\CounterScopeModelResetTypeIsMonthlyOptions;
 use Gs2Cdk\Mission\Model\Enum\CounterScopeModelResetType;
 use Gs2Cdk\Mission\Model\Enum\CounterScopeModelResetDayOfWeek;
 
-use Gs2Cdk\Core\Model\TransactionSetting;
-use Gs2Cdk\Core\Model\ScriptSetting;
-use Gs2Cdk\Core\Model\NotificationSetting;
-use Gs2Cdk\Core\Model\LogSetting;
-use Gs2Cdk\Core\Model\Config;
-use Gs2Cdk\Core\Model\AcquireAction;
-use Gs2Cdk\Core\Model\ConsumeAction;
-
 class CounterScopeModel {
-	public CounterScopeModelResetType $resetType;
-	public ?int $resetDayOfMonth;
-	public ?CounterScopeModelResetDayOfWeek $resetDayOfWeek;
-	public ?int $resetHour;
+    private CounterScopeModelResetType $resetType;
+    private ?int $resetDayOfMonth = null;
+    private ?CounterScopeModelResetDayOfWeek $resetDayOfWeek = null;
+    private ?int $resetHour = null;
 
     public function __construct(
-            CounterScopeModelResetType $resetType,
-            int $resetDayOfMonth = null,
-            CounterScopeModelResetDayOfWeek $resetDayOfWeek = null,
-            int $resetHour = null,
+        CounterScopeModelResetType $resetType,
+        ?CounterScopeModelOptions $options = null,
     ) {
         $this->resetType = $resetType;
-        $this->resetDayOfMonth = $resetDayOfMonth;
-        $this->resetDayOfWeek = $resetDayOfWeek;
-        $this->resetHour = $resetHour;
+        $this->resetDayOfMonth = $options?->resetDayOfMonth ?? null;
+        $this->resetDayOfWeek = $options?->resetDayOfWeek ?? null;
+        $this->resetHour = $options?->resetHour ?? null;
     }
 
-    public static function notReset(
+    public static function resetTypeIsNotReset(
+        ?CounterScopeModelResetTypeIsNotResetOptions $options = null,
     ): CounterScopeModel {
-        return new CounterScopeModel(
-            resetType: CounterScopeModelResetType::NOT_RESET,
-        );
+        return (new CounterScopeModel(
+            CounterScopeModelResetType::NOT_RESET,
+            new CounterScopeModelOptions(
+            ),
+        ));
     }
 
-    public static function daily(
+    public static function resetTypeIsDaily(
         int $resetHour,
+        ?CounterScopeModelResetTypeIsDailyOptions $options = null,
     ): CounterScopeModel {
-        return new CounterScopeModel(
-            resetType: CounterScopeModelResetType::DAILY,
-            resetHour: $resetHour,
-        );
+        return (new CounterScopeModel(
+            CounterScopeModelResetType::DAILY,
+            new CounterScopeModelOptions(
+                resetHour: $resetHour,
+            ),
+        ));
     }
 
-    public static function weekly(
-        string $resetDayOfWeek,
+    public static function resetTypeIsWeekly(
+        CounterScopeModelResetDayOfWeek $resetDayOfWeek,
         int $resetHour,
+        ?CounterScopeModelResetTypeIsWeeklyOptions $options = null,
     ): CounterScopeModel {
-        return new CounterScopeModel(
-            resetType: CounterScopeModelResetType::WEEKLY,
-            resetDayOfWeek: $resetDayOfWeek,
-            resetHour: $resetHour,
-        );
+        return (new CounterScopeModel(
+            CounterScopeModelResetType::WEEKLY,
+            new CounterScopeModelOptions(
+                resetDayOfWeek: $resetDayOfWeek,
+                resetHour: $resetHour,
+            ),
+        ));
     }
 
-    public static function monthly(
+    public static function resetTypeIsMonthly(
         int $resetDayOfMonth,
         int $resetHour,
+        ?CounterScopeModelResetTypeIsMonthlyOptions $options = null,
     ): CounterScopeModel {
-        return new CounterScopeModel(
-            resetType: CounterScopeModelResetType::MONTHLY,
-            resetDayOfMonth: $resetDayOfMonth,
-            resetHour: $resetHour,
-        );
+        return (new CounterScopeModel(
+            CounterScopeModelResetType::MONTHLY,
+            new CounterScopeModelOptions(
+                resetDayOfMonth: $resetDayOfMonth,
+                resetHour: $resetHour,
+            ),
+        ));
     }
 
-    public function properties(): array {
+    public function properties(
+    ): array {
         $properties = [];
+
         if ($this->resetType != null) {
-            $properties["ResetType"] = $this->resetType->toString();
+            $properties["resetType"] = $this->resetType?->toString(
+            );
         }
         if ($this->resetDayOfMonth != null) {
-            $properties["ResetDayOfMonth"] = $this->resetDayOfMonth;
+            $properties["resetDayOfMonth"] = $this->resetDayOfMonth;
         }
         if ($this->resetDayOfWeek != null) {
-            $properties["ResetDayOfWeek"] = $this->resetDayOfWeek->toString();
+            $properties["resetDayOfWeek"] = $this->resetDayOfWeek?->toString(
+            );
         }
         if ($this->resetHour != null) {
-            $properties["ResetHour"] = $this->resetHour;
+            $properties["resetHour"] = $this->resetHour;
         }
+
         return $properties;
     }
 }

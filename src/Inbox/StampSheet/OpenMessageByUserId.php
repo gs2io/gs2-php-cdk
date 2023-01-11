@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,30 +14,24 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Inbox\StampSheet;
 
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
 
-
 class OpenMessageByUserId extends ConsumeAction {
 
     public function __construct(
-            string $namespaceName,
-            string $messageName,
-            string $userId = '#{userId}',
+        string $namespaceName,
+        string $messageName,
+        ?string $userId = "#{userId}",
     ) {
         $properties = [];
-        if ($namespaceName != null) {
-            $properties["namespaceName"] = $namespaceName;
-        }
-        if ($userId != null) {
-            $properties["userId"] = $userId;
-        }
-        if ($messageName != null) {
-            $properties["messageName"] = $messageName;
-        }
+
+        $properties["namespaceName"] = $namespaceName;
+        $properties["messageName"] = $messageName;
+        $properties["userId"] = $userId;
+
         parent::__construct(
             "Gs2Inbox:OpenMessageByUserId",
             $properties,

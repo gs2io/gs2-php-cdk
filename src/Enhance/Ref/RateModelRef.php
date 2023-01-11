@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,37 +14,42 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Enhance\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 
 class RateModelRef {
-    public String $namespaceName;
-    public String $rateName;
+    private string $namespaceName;
+    private string $rateName;
 
     public function __construct(
-            String $namespaceName,
-            String $rateName,
+        string $namespaceName,
+        string $rateName,
     ) {
         $this->namespaceName = $namespaceName;
         $this->rateName = $rateName;
     }
 
-    public function grn(): String {
+    public function grn(
+    ): string {
         return (new Join(
             ":",
             [
                 "grn",
                 "gs2",
-                GetAttr::region()->str(),
-                GetAttr::ownerId()->str(),
+                GetAttr::region(
+                )->str(
+                ),
+                GetAttr::ownerId(
+                )->str(
+                ),
                 "enhance",
                 $this->namespaceName,
                 "rateModel",
-                $this->rateName
-            ]
-        ))->str();
+                $this->rateName,
+            ],
+        ))->str(
+        );
     }
 }

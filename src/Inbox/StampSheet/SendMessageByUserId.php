@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,42 +14,31 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Inbox\StampSheet;
 
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
-
+use Gs2Cdk\Inbox\Model\TimeSpan;
 
 class SendMessageByUserId extends AcquireAction {
 
     public function __construct(
-            string $namespaceName,
-            string $metadata,
-            array $readAcquireActions = null,
-            int $expiresAt = null,
-            TimeSpan $expiresTimeSpan = null,
-            string $userId = '#{userId}',
+        string $namespaceName,
+        string $metadata,
+        ?array $readAcquireActions = null,
+        ?int $expiresAt = null,
+        ?TimeSpan $expiresTimeSpan = null,
+        ?string $userId = "#{userId}",
     ) {
         $properties = [];
-        if ($namespaceName != null) {
-            $properties["namespaceName"] = $namespaceName;
-        }
-        if ($userId != null) {
-            $properties["userId"] = $userId;
-        }
-        if ($metadata != null) {
-            $properties["metadata"] = $metadata;
-        }
-        if ($readAcquireActions != null) {
-            $properties["readAcquireActions"] = $readAcquireActions;
-        }
-        if ($expiresAt != null) {
-            $properties["expiresAt"] = $expiresAt;
-        }
-        if ($expiresTimeSpan != null) {
-            $properties["expiresTimeSpan"] = $expiresTimeSpan;
-        }
+
+        $properties["namespaceName"] = $namespaceName;
+        $properties["metadata"] = $metadata;
+        $properties["readAcquireActions"] = $readAcquireActions;
+        $properties["expiresAt"] = $expiresAt;
+        $properties["expiresTimeSpan"] = $expiresTimeSpan;
+        $properties["userId"] = $userId;
+
         parent::__construct(
             "Gs2Inbox:SendMessageByUserId",
             $properties,

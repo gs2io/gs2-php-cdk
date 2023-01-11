@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,31 +14,24 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Version\Model;
-
-
-use Gs2Cdk\Core\Model\TransactionSetting;
-use Gs2Cdk\Core\Model\ScriptSetting;
-use Gs2Cdk\Core\Model\NotificationSetting;
-use Gs2Cdk\Core\Model\LogSetting;
-use Gs2Cdk\Core\Model\Config;
-use Gs2Cdk\Core\Model\AcquireAction;
-use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Version\Model\Version;
+use Gs2Cdk\Version\Model\Options\SignTargetVersionOptions;
 
 class SignTargetVersion {
-	public string $region;
-	public string $ownerId;
-	public string $namespaceName;
-	public string $versionName;
-	public Version $version;
+    private string $region;
+    private string $ownerId;
+    private string $namespaceName;
+    private string $versionName;
+    private Version $version;
 
     public function __construct(
-            string $region,
-            string $ownerId,
-            string $namespaceName,
-            string $versionName,
-            Version $version,
+        string $region,
+        string $ownerId,
+        string $namespaceName,
+        string $versionName,
+        Version $version,
+        ?SignTargetVersionOptions $options = null,
     ) {
         $this->region = $region;
         $this->ownerId = $ownerId;
@@ -47,23 +40,27 @@ class SignTargetVersion {
         $this->version = $version;
     }
 
-    public function properties(): array {
+    public function properties(
+    ): array {
         $properties = [];
+
         if ($this->region != null) {
-            $properties["Region"] = $this->region;
+            $properties["region"] = $this->region;
         }
         if ($this->ownerId != null) {
-            $properties["OwnerId"] = $this->ownerId;
+            $properties["ownerId"] = $this->ownerId;
         }
         if ($this->namespaceName != null) {
-            $properties["NamespaceName"] = $this->namespaceName;
+            $properties["namespaceName"] = $this->namespaceName;
         }
         if ($this->versionName != null) {
-            $properties["VersionName"] = $this->versionName;
+            $properties["versionName"] = $this->versionName;
         }
         if ($this->version != null) {
-            $properties["Version"] = $this->version->properties();
+            $properties["version"] = $this->version?->properties(
+            );
         }
+
         return $properties;
     }
 }

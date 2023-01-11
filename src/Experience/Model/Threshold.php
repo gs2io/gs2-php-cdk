@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,38 +14,32 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Experience\Model;
-
-
-use Gs2Cdk\Core\Model\TransactionSetting;
-use Gs2Cdk\Core\Model\ScriptSetting;
-use Gs2Cdk\Core\Model\NotificationSetting;
-use Gs2Cdk\Core\Model\LogSetting;
-use Gs2Cdk\Core\Model\Config;
-use Gs2Cdk\Core\Model\AcquireAction;
-use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Experience\Model\Options\ThresholdOptions;
 
 class Threshold {
-	public ?string $metadata;
-	public array $values;
+    private array $values;
+    private ?string $metadata = null;
 
     public function __construct(
-            array $values,
-            string $metadata = null,
+        array $values,
+        ?ThresholdOptions $options = null,
     ) {
-        $this->metadata = $metadata;
         $this->values = $values;
+        $this->metadata = $options?->metadata ?? null;
     }
 
-    public function properties(): array {
+    public function properties(
+    ): array {
         $properties = [];
+
         if ($this->metadata != null) {
-            $properties["Metadata"] = $this->metadata;
+            $properties["metadata"] = $this->metadata;
         }
         if ($this->values != null) {
-            $properties["Values"] = $this->values;
+            $properties["values"] = $this->values;
         }
+
         return $properties;
     }
 }

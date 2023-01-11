@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,101 +14,104 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Lottery\Model;
-
+use Gs2Cdk\Core\Model\AcquireAction;
+use Gs2Cdk\Lottery\Model\Options\PrizeOptions;
+use Gs2Cdk\Lottery\Model\Options\PrizeTypeIsActionOptions;
+use Gs2Cdk\Lottery\Model\Options\PrizeTypeIsPrizeTableOptions;
 use Gs2Cdk\Lottery\Model\Enum\PrizeType;
 
-use Gs2Cdk\Core\Model\TransactionSetting;
-use Gs2Cdk\Core\Model\ScriptSetting;
-use Gs2Cdk\Core\Model\NotificationSetting;
-use Gs2Cdk\Core\Model\LogSetting;
-use Gs2Cdk\Core\Model\Config;
-use Gs2Cdk\Core\Model\AcquireAction;
-use Gs2Cdk\Core\Model\ConsumeAction;
-
 class Prize {
-	public string $prizeId;
-	public PrizeType $type;
-	public ?array $acquireActions;
-	public ?int $drawnLimit;
-	public ?string $limitFailOverPrizeId;
-	public ?string $prizeTableName;
-	public int $weight;
+    private string $prizeId;
+    private PrizeType $type;
+    private int $weight;
+    private ?array $acquireActions = null;
+    private ?int $drawnLimit = null;
+    private ?string $limitFailOverPrizeId = null;
+    private ?string $prizeTableName = null;
 
     public function __construct(
-            string $prizeId,
-            PrizeType $type,
-            int $weight,
-            array $acquireActions = null,
-            int $drawnLimit = null,
-            string $limitFailOverPrizeId = null,
-            string $prizeTableName = null,
+        string $prizeId,
+        PrizeType $type,
+        int $weight,
+        ?PrizeOptions $options = null,
     ) {
         $this->prizeId = $prizeId;
         $this->type = $type;
-        $this->acquireActions = $acquireActions;
-        $this->drawnLimit = $drawnLimit;
-        $this->limitFailOverPrizeId = $limitFailOverPrizeId;
-        $this->prizeTableName = $prizeTableName;
         $this->weight = $weight;
+        $this->acquireActions = $options?->acquireActions ?? null;
+        $this->drawnLimit = $options?->drawnLimit ?? null;
+        $this->limitFailOverPrizeId = $options?->limitFailOverPrizeId ?? null;
+        $this->prizeTableName = $options?->prizeTableName ?? null;
     }
 
-    public static function action(
+    public static function typeIsAction(
+        string $prizeId,
+        int $weight,
         array $acquireActions,
-        string $prizeId = null,
-        int $drawnLimit = null,
-        string $limitFailOverPrizeId = null,
-        int $weight = null,
+        ?PrizeTypeIsActionOptions $options = null,
     ): Prize {
-        return new Prize(
-            type: PrizeType::ACTION,
-            prizeId: $prizeId,
-            acquireActions: $acquireActions,
-            drawnLimit: $drawnLimit,
-            limitFailOverPrizeId: $limitFailOverPrizeId,
-            weight: $weight,
-        );
+        return (new Prize(
+            $prizeId,
+            PrizeType::ACTION,
+            $weight,
+            new PrizeOptions(
+                acquireActions: $acquireActions,
+                drawnLimit: $options?->drawnLimit,
+            ),
+        ));
     }
 
-    public static function prizeTable(
+    public static function typeIsPrizeTable(
+        string $prizeId,
+        int $weight,
         string $prizeTableName,
-        string $prizeId = null,
-        int $drawnLimit = null,
-        int $weight = null,
+        ?PrizeTypeIsPrizeTableOptions $options = null,
     ): Prize {
-        return new Prize(
-            type: PrizeType::PRIZE_TABLE,
-            prizeId: $prizeId,
-            drawnLimit: $drawnLimit,
-            prizeTableName: $prizeTableName,
-            weight: $weight,
-        );
+        return (new Prize(
+            $prizeId,
+            PrizeType::PRIZE_TABLE,
+            $weight,
+            new PrizeOptions(
+                prizeTableName: $prizeTableName,
+                drawnLimit: $options?->drawnLimit,
+            ),
+        ));
     }
 
-    public function properties(): array {
+    public function properties(
+    ): array {
         $properties = [];
+
         if ($this->prizeId != null) {
-            $properties["PrizeId"] = $this->prizeId;
+            $properties["prizeId"] = $this->prizeId;
         }
         if ($this->type != null) {
-            $properties["Type"] = $this->type->toString();
+            $properties["type"] = $this->type?->toString(
+            );
         }
         if ($this->acquireActions != null) {
-            $properties["AcquireActions"] = array_map(fn($v) => $v->properties(), $this->acquireActions);
+            $properties["acquireActions"] = array_map(
+                function ($v) {
+                    return $v->properties(
+                    );
+                },
+                $this->acquireActions
+            );
         }
         if ($this->drawnLimit != null) {
-            $properties["DrawnLimit"] = $this->drawnLimit;
+            $properties["drawnLimit"] = $this->drawnLimit;
         }
         if ($this->limitFailOverPrizeId != null) {
-            $properties["LimitFailOverPrizeId"] = $this->limitFailOverPrizeId;
+            $properties["limitFailOverPrizeId"] = $this->limitFailOverPrizeId;
         }
         if ($this->prizeTableName != null) {
-            $properties["PrizeTableName"] = $this->prizeTableName;
+            $properties["prizeTableName"] = $this->prizeTableName;
         }
         if ($this->weight != null) {
-            $properties["Weight"] = $this->weight;
+            $properties["weight"] = $this->weight;
         }
+
         return $properties;
     }
 }

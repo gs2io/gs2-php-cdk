@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,34 +14,26 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Exchange\StampSheet;
 
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
 
-
 class CreateAwaitByUserId extends AcquireAction {
 
     public function __construct(
-            string $namespaceName,
-            string $rateName,
-            int $count,
-            string $userId = '#{userId}',
+        string $namespaceName,
+        string $rateName,
+        int $count,
+        ?string $userId = "#{userId}",
     ) {
         $properties = [];
-        if ($namespaceName != null) {
-            $properties["namespaceName"] = $namespaceName;
-        }
-        if ($userId != null) {
-            $properties["userId"] = $userId;
-        }
-        if ($rateName != null) {
-            $properties["rateName"] = $rateName;
-        }
-        if ($count != null) {
-            $properties["count"] = $count;
-        }
+
+        $properties["namespaceName"] = $namespaceName;
+        $properties["rateName"] = $rateName;
+        $properties["count"] = $count;
+        $properties["userId"] = $userId;
+
         parent::__construct(
             "Gs2Exchange:CreateAwaitByUserId",
             $properties,

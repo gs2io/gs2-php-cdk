@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,38 +14,33 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Chat\Model;
-
-
-use Gs2Cdk\Core\Model\TransactionSetting;
-use Gs2Cdk\Core\Model\ScriptSetting;
-use Gs2Cdk\Core\Model\NotificationSetting;
-use Gs2Cdk\Core\Model\LogSetting;
-use Gs2Cdk\Core\Model\Config;
-use Gs2Cdk\Core\Model\AcquireAction;
-use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Chat\Model\Options\NotificationTypeOptions;
 
 class NotificationType {
-	public int $category;
-	public bool $enableTransferMobilePushNotification;
+    private int $category;
+    private bool $enableTransferMobilePushNotification;
 
     public function __construct(
-            int $category,
-            bool $enableTransferMobilePushNotification,
+        int $category,
+        bool $enableTransferMobilePushNotification,
+        ?NotificationTypeOptions $options = null,
     ) {
         $this->category = $category;
         $this->enableTransferMobilePushNotification = $enableTransferMobilePushNotification;
     }
 
-    public function properties(): array {
+    public function properties(
+    ): array {
         $properties = [];
+
         if ($this->category != null) {
-            $properties["Category"] = $this->category;
+            $properties["category"] = $this->category;
         }
         if ($this->enableTransferMobilePushNotification != null) {
-            $properties["EnableTransferMobilePushNotification"] = $this->enableTransferMobilePushNotification;
+            $properties["enableTransferMobilePushNotification"] = $this->enableTransferMobilePushNotification;
         }
+
         return $properties;
     }
 }

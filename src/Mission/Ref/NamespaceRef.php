@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,75 +14,85 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Mission\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
+use Gs2Cdk\Mission\Ref\MissionGroupModelRef;
+use Gs2Cdk\Mission\Ref\CounterModelRef;
+use Gs2Cdk\Mission\StampSheet\IncreaseCounterByUserId;
+use Gs2Cdk\Mission\StampSheet\ReceiveByUserId;
 
 class NamespaceRef {
-    public String $namespaceName;
+    private string $namespaceName;
 
     public function __construct(
-            String $namespaceName,
+        string $namespaceName,
     ) {
         $this->namespaceName = $namespaceName;
     }
 
-    public function currentMissionMaster(
-    ): CurrentMissionMasterRef {
-        return new CurrentMissionMasterRef(
-            namespaceName: $this->namespaceName,
-        );
-    }
-
     public function missionGroupModel(
-            String $missionGroupName,
+        string $missionGroupName,
     ): MissionGroupModelRef {
-        return new MissionGroupModelRef(
-            namespaceName: $this->namespaceName,
-            missionGroupName: $missionGroupName,
-        );
+        return (new MissionGroupModelRef(
+            $this->namespaceName,
+            $missionGroupName,
+        ));
     }
 
     public function counterModel(
-            String $counterName,
+        string $counterName,
     ): CounterModelRef {
-        return new CounterModelRef(
-            namespaceName: $this->namespaceName,
-            counterName: $counterName,
-        );
+        return (new CounterModelRef(
+            $this->namespaceName,
+            $counterName,
+        ));
     }
 
-    public function missionGroupModelMaster(
-            String $missionGroupName,
-    ): MissionGroupModelMasterRef {
-        return new MissionGroupModelMasterRef(
-            namespaceName: $this->namespaceName,
-            missionGroupName: $missionGroupName,
-        );
+    public function increaseCounter(
+        string $counterName,
+        int $value,
+        ?string $userId = "#{userId}",
+    ): IncreaseCounterByUserId {
+        return (new IncreaseCounterByUserId(
+            $this->namespaceName,
+            $counterName,
+            $value,
+            $userId,
+        ));
     }
 
-    public function counterModelMaster(
-            String $counterName,
-    ): CounterModelMasterRef {
-        return new CounterModelMasterRef(
-            namespaceName: $this->namespaceName,
-            counterName: $counterName,
-        );
+    public function receive(
+        string $missionGroupName,
+        string $missionTaskName,
+        ?string $userId = "#{userId}",
+    ): ReceiveByUserId {
+        return (new ReceiveByUserId(
+            $this->namespaceName,
+            $missionGroupName,
+            $missionTaskName,
+            $userId,
+        ));
     }
 
-    public function grn(): String {
+    public function grn(
+    ): string {
         return (new Join(
             ":",
             [
                 "grn",
                 "gs2",
-                GetAttr::region()->str(),
-                GetAttr::ownerId()->str(),
+                GetAttr::region(
+                )->str(
+                ),
+                GetAttr::ownerId(
+                )->str(
+                ),
                 "mission",
-                $this->namespaceName
-            ]
-        ))->str();
+                $this->namespaceName,
+            ],
+        ))->str(
+        );
     }
 }

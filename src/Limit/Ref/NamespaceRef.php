@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,57 +14,79 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Limit\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
+use Gs2Cdk\Limit\Ref\LimitModelRef;
+use Gs2Cdk\Limit\StampSheet\DeleteCounterByUserId;
+use Gs2Cdk\Limit\StampSheet\CountUpByUserId;
 
 class NamespaceRef {
-    public String $namespaceName;
+    private string $namespaceName;
 
     public function __construct(
-            String $namespaceName,
+        string $namespaceName,
     ) {
         $this->namespaceName = $namespaceName;
     }
 
-    public function currentLimitMaster(
-    ): CurrentLimitMasterRef {
-        return new CurrentLimitMasterRef(
-            namespaceName: $this->namespaceName,
-        );
-    }
-
     public function limitModel(
-            String $limitName,
+        string $limitName,
     ): LimitModelRef {
-        return new LimitModelRef(
-            namespaceName: $this->namespaceName,
-            limitName: $limitName,
-        );
+        return (new LimitModelRef(
+            $this->namespaceName,
+            $limitName,
+        ));
     }
 
-    public function limitModelMaster(
-            String $limitName,
-    ): LimitModelMasterRef {
-        return new LimitModelMasterRef(
-            namespaceName: $this->namespaceName,
-            limitName: $limitName,
-        );
+    public function deleteCounter(
+        string $limitName,
+        string $counterName,
+        ?string $userId = "#{userId}",
+    ): DeleteCounterByUserId {
+        return (new DeleteCounterByUserId(
+            $this->namespaceName,
+            $limitName,
+            $counterName,
+            $userId,
+        ));
     }
 
-    public function grn(): String {
+    public function countUp(
+        string $limitName,
+        string $counterName,
+        int $countUpValue,
+        ?int $maxValue = null,
+        ?string $userId = "#{userId}",
+    ): CountUpByUserId {
+        return (new CountUpByUserId(
+            $this->namespaceName,
+            $limitName,
+            $counterName,
+            $countUpValue,
+            $maxValue,
+            $userId,
+        ));
+    }
+
+    public function grn(
+    ): string {
         return (new Join(
             ":",
             [
                 "grn",
                 "gs2",
-                GetAttr::region()->str(),
-                GetAttr::ownerId()->str(),
+                GetAttr::region(
+                )->str(
+                ),
+                GetAttr::ownerId(
+                )->str(
+                ),
                 "limit",
-                $this->namespaceName
-            ]
-        ))->str();
+                $this->namespaceName,
+            ],
+        ))->str(
+        );
     }
 }

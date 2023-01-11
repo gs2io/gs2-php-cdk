@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,50 +14,45 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Version\Model;
-
-
-use Gs2Cdk\Core\Model\TransactionSetting;
-use Gs2Cdk\Core\Model\ScriptSetting;
-use Gs2Cdk\Core\Model\NotificationSetting;
-use Gs2Cdk\Core\Model\LogSetting;
-use Gs2Cdk\Core\Model\Config;
-use Gs2Cdk\Core\Model\AcquireAction;
-use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Version\Model\Version;
+use Gs2Cdk\Version\Model\Options\TargetVersionOptions;
 
 class TargetVersion {
-	public string $versionName;
-	public Version $version;
-	public ?string $body;
-	public ?string $signature;
+    private string $versionName;
+    private Version $version;
+    private ?string $body = null;
+    private ?string $signature = null;
 
     public function __construct(
-            string $versionName,
-            Version $version,
-            string $body = null,
-            string $signature = null,
+        string $versionName,
+        Version $version,
+        ?TargetVersionOptions $options = null,
     ) {
         $this->versionName = $versionName;
         $this->version = $version;
-        $this->body = $body;
-        $this->signature = $signature;
+        $this->body = $options?->body ?? null;
+        $this->signature = $options?->signature ?? null;
     }
 
-    public function properties(): array {
+    public function properties(
+    ): array {
         $properties = [];
+
         if ($this->versionName != null) {
-            $properties["VersionName"] = $this->versionName;
+            $properties["versionName"] = $this->versionName;
         }
         if ($this->version != null) {
-            $properties["Version"] = $this->version->properties();
+            $properties["version"] = $this->version?->properties(
+            );
         }
         if ($this->body != null) {
-            $properties["Body"] = $this->body;
+            $properties["body"] = $this->body;
         }
         if ($this->signature != null) {
-            $properties["Signature"] = $this->signature;
+            $properties["signature"] = $this->signature;
         }
+
         return $properties;
     }
 }

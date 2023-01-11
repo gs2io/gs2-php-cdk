@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,50 +14,57 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Showcase\Model;
-
-
-use Gs2Cdk\Core\Model\TransactionSetting;
-use Gs2Cdk\Core\Model\ScriptSetting;
-use Gs2Cdk\Core\Model\NotificationSetting;
-use Gs2Cdk\Core\Model\LogSetting;
-use Gs2Cdk\Core\Model\Config;
-use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Core\Model\AcquireAction;
+use Gs2Cdk\Showcase\Model\Options\SalesItemOptions;
 
 class SalesItem {
-	public string $name;
-	public ?string $metadata;
-	public array $consumeActions;
-	public array $acquireActions;
+    private string $name;
+    private array $acquireActions;
+    private ?string $metadata = null;
+    private ?array $consumeActions = null;
 
     public function __construct(
-            string $name,
-            array $consumeActions,
-            array $acquireActions,
-            string $metadata = null,
+        string $name,
+        array $acquireActions,
+        ?SalesItemOptions $options = null,
     ) {
         $this->name = $name;
-        $this->metadata = $metadata;
-        $this->consumeActions = $consumeActions;
         $this->acquireActions = $acquireActions;
+        $this->metadata = $options?->metadata ?? null;
+        $this->consumeActions = $options?->consumeActions ?? null;
     }
 
-    public function properties(): array {
+    public function properties(
+    ): array {
         $properties = [];
+
         if ($this->name != null) {
-            $properties["Name"] = $this->name;
+            $properties["name"] = $this->name;
         }
         if ($this->metadata != null) {
-            $properties["Metadata"] = $this->metadata;
+            $properties["metadata"] = $this->metadata;
         }
         if ($this->consumeActions != null) {
-            $properties["ConsumeActions"] = array_map(fn($v) => $v->properties(), $this->consumeActions);
+            $properties["consumeActions"] = array_map(
+                function ($v) {
+                    return $v->properties(
+                    );
+                },
+                $this->consumeActions
+            );
         }
         if ($this->acquireActions != null) {
-            $properties["AcquireActions"] = array_map(fn($v) => $v->properties(), $this->acquireActions);
+            $properties["acquireActions"] = array_map(
+                function ($v) {
+                    return $v->properties(
+                    );
+                },
+                $this->acquireActions
+            );
         }
+
         return $properties;
     }
 }

@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,66 +14,60 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\SerialKey\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
+use Gs2Cdk\SerialKey\Ref\CampaignModelRef;
+use Gs2Cdk\SerialKey\Ref\SerialKeyRef;
+use Gs2Cdk\SerialKey\StampSheet\UseByUserId;
 
 class NamespaceRef {
-    public String $namespaceName;
+    private string $namespaceName;
 
     public function __construct(
-            String $namespaceName,
+        string $namespaceName,
     ) {
         $this->namespaceName = $namespaceName;
     }
 
-    public function currentCampaignMaster(
-    ): CurrentCampaignMasterRef {
-        return new CurrentCampaignMasterRef(
-            namespaceName: $this->namespaceName,
-        );
-    }
-
     public function campaignModel(
-            String $campaignModelName,
+        string $campaignModelName,
     ): CampaignModelRef {
-        return new CampaignModelRef(
-            namespaceName: $this->namespaceName,
-            campaignModelName: $campaignModelName,
-        );
+        return (new CampaignModelRef(
+            $this->namespaceName,
+            $campaignModelName,
+        ));
     }
 
-    public function serialKey(
-            String $serialKeyCode,
-    ): SerialKeyRef {
-        return new SerialKeyRef(
-            namespaceName: $this->namespaceName,
-            serialKeyCode: $serialKeyCode,
-        );
+    public function use(
+        string $code,
+        ?string $userId = "#{userId}",
+    ): UseByUserId {
+        return (new UseByUserId(
+            $this->namespaceName,
+            $code,
+            $userId,
+        ));
     }
 
-    public function campaignModelMaster(
-            String $campaignModelName,
-    ): CampaignModelMasterRef {
-        return new CampaignModelMasterRef(
-            namespaceName: $this->namespaceName,
-            campaignModelName: $campaignModelName,
-        );
-    }
-
-    public function grn(): String {
+    public function grn(
+    ): string {
         return (new Join(
             ":",
             [
                 "grn",
                 "gs2",
-                GetAttr::region()->str(),
-                GetAttr::ownerId()->str(),
+                GetAttr::region(
+                )->str(
+                ),
+                GetAttr::ownerId(
+                )->str(
+                ),
                 "serialKey",
-                $this->namespaceName
-            ]
-        ))->str();
+                $this->namespaceName,
+            ],
+        ))->str(
+        );
     }
 }

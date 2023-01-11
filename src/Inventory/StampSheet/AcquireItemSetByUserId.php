@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,50 +14,34 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Inventory\StampSheet;
 
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
 
-
 class AcquireItemSetByUserId extends AcquireAction {
 
     public function __construct(
-            string $namespaceName,
-            string $inventoryName,
-            string $itemName,
-            int $acquireCount,
-            int $expiresAt,
-            bool $createNewItemSet,
-            string $itemSetName = null,
-            string $userId = '#{userId}',
+        string $namespaceName,
+        string $inventoryName,
+        string $itemName,
+        int $acquireCount,
+        int $expiresAt,
+        bool $createNewItemSet,
+        ?string $itemSetName = null,
+        ?string $userId = "#{userId}",
     ) {
         $properties = [];
-        if ($namespaceName != null) {
-            $properties["namespaceName"] = $namespaceName;
-        }
-        if ($inventoryName != null) {
-            $properties["inventoryName"] = $inventoryName;
-        }
-        if ($itemName != null) {
-            $properties["itemName"] = $itemName;
-        }
-        if ($userId != null) {
-            $properties["userId"] = $userId;
-        }
-        if ($acquireCount != null) {
-            $properties["acquireCount"] = $acquireCount;
-        }
-        if ($expiresAt != null) {
-            $properties["expiresAt"] = $expiresAt;
-        }
-        if ($createNewItemSet != null) {
-            $properties["createNewItemSet"] = $createNewItemSet;
-        }
-        if ($itemSetName != null) {
-            $properties["itemSetName"] = $itemSetName;
-        }
+
+        $properties["namespaceName"] = $namespaceName;
+        $properties["inventoryName"] = $inventoryName;
+        $properties["itemName"] = $itemName;
+        $properties["acquireCount"] = $acquireCount;
+        $properties["expiresAt"] = $expiresAt;
+        $properties["createNewItemSet"] = $createNewItemSet;
+        $properties["itemSetName"] = $itemSetName;
+        $properties["userId"] = $userId;
+
         parent::__construct(
             "Gs2Inventory:AcquireItemSetByUserId",
             $properties,

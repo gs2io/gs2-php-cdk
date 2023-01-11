@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,29 +14,21 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\JobQueue\Model;
-
-
-use Gs2Cdk\Core\Model\TransactionSetting;
-use Gs2Cdk\Core\Model\ScriptSetting;
-use Gs2Cdk\Core\Model\NotificationSetting;
-use Gs2Cdk\Core\Model\LogSetting;
-use Gs2Cdk\Core\Model\Config;
-use Gs2Cdk\Core\Model\AcquireAction;
-use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\JobQueue\Model\Options\JobResultBodyOptions;
 
 class JobResultBody {
-	public int $tryNumber;
-	public int $statusCode;
-	public string $result;
-	public int $tryAt;
+    private int $tryNumber;
+    private int $statusCode;
+    private string $result;
+    private int $tryAt;
 
     public function __construct(
-            int $tryNumber,
-            int $statusCode,
-            string $result,
-            int $tryAt,
+        int $tryNumber,
+        int $statusCode,
+        string $result,
+        int $tryAt,
+        ?JobResultBodyOptions $options = null,
     ) {
         $this->tryNumber = $tryNumber;
         $this->statusCode = $statusCode;
@@ -44,20 +36,23 @@ class JobResultBody {
         $this->tryAt = $tryAt;
     }
 
-    public function properties(): array {
+    public function properties(
+    ): array {
         $properties = [];
+
         if ($this->tryNumber != null) {
-            $properties["TryNumber"] = $this->tryNumber;
+            $properties["tryNumber"] = $this->tryNumber;
         }
         if ($this->statusCode != null) {
-            $properties["StatusCode"] = $this->statusCode;
+            $properties["statusCode"] = $this->statusCode;
         }
         if ($this->result != null) {
-            $properties["Result"] = $this->result;
+            $properties["result"] = $this->result;
         }
         if ($this->tryAt != null) {
-            $properties["TryAt"] = $this->tryAt;
+            $properties["tryAt"] = $this->tryAt;
         }
+
         return $properties;
     }
 }

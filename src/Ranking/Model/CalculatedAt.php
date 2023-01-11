@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,38 +14,33 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Ranking\Model;
-
-
-use Gs2Cdk\Core\Model\TransactionSetting;
-use Gs2Cdk\Core\Model\ScriptSetting;
-use Gs2Cdk\Core\Model\NotificationSetting;
-use Gs2Cdk\Core\Model\LogSetting;
-use Gs2Cdk\Core\Model\Config;
-use Gs2Cdk\Core\Model\AcquireAction;
-use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Ranking\Model\Options\CalculatedAtOptions;
 
 class CalculatedAt {
-	public string $categoryName;
-	public int $calculatedAt;
+    private string $categoryName;
+    private int $calculatedAt;
 
     public function __construct(
-            string $categoryName,
-            int $calculatedAt,
+        string $categoryName,
+        int $calculatedAt,
+        ?CalculatedAtOptions $options = null,
     ) {
         $this->categoryName = $categoryName;
         $this->calculatedAt = $calculatedAt;
     }
 
-    public function properties(): array {
+    public function properties(
+    ): array {
         $properties = [];
+
         if ($this->categoryName != null) {
-            $properties["CategoryName"] = $this->categoryName;
+            $properties["categoryName"] = $this->categoryName;
         }
         if ($this->calculatedAt != null) {
-            $properties["CalculatedAt"] = $this->calculatedAt;
+            $properties["calculatedAt"] = $this->calculatedAt;
         }
+
         return $properties;
     }
 }

@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,38 +14,28 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Experience\StampSheet;
 
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
 
-
 class SetRankCapByUserId extends AcquireAction {
 
     public function __construct(
-            string $namespaceName,
-            string $experienceName,
-            string $propertyId,
-            int $rankCapValue,
-            string $userId = '#{userId}',
+        string $namespaceName,
+        string $experienceName,
+        string $propertyId,
+        int $rankCapValue,
+        ?string $userId = "#{userId}",
     ) {
         $properties = [];
-        if ($namespaceName != null) {
-            $properties["namespaceName"] = $namespaceName;
-        }
-        if ($userId != null) {
-            $properties["userId"] = $userId;
-        }
-        if ($experienceName != null) {
-            $properties["experienceName"] = $experienceName;
-        }
-        if ($propertyId != null) {
-            $properties["propertyId"] = $propertyId;
-        }
-        if ($rankCapValue != null) {
-            $properties["rankCapValue"] = $rankCapValue;
-        }
+
+        $properties["namespaceName"] = $namespaceName;
+        $properties["experienceName"] = $experienceName;
+        $properties["propertyId"] = $propertyId;
+        $properties["rankCapValue"] = $rankCapValue;
+        $properties["userId"] = $userId;
+
         parent::__construct(
             "Gs2Experience:SetRankCapByUserId",
             $properties,

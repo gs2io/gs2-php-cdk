@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,44 +14,39 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Version\Model;
-
-
-use Gs2Cdk\Core\Model\TransactionSetting;
-use Gs2Cdk\Core\Model\ScriptSetting;
-use Gs2Cdk\Core\Model\NotificationSetting;
-use Gs2Cdk\Core\Model\LogSetting;
-use Gs2Cdk\Core\Model\Config;
-use Gs2Cdk\Core\Model\AcquireAction;
-use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Version\Model\Options\VersionOptions;
 
 class Version {
-	public int $major;
-	public int $minor;
-	public int $micro;
+    private int $major;
+    private int $minor;
+    private int $micro;
 
     public function __construct(
-            int $major,
-            int $minor,
-            int $micro,
+        int $major,
+        int $minor,
+        int $micro,
+        ?VersionOptions $options = null,
     ) {
         $this->major = $major;
         $this->minor = $minor;
         $this->micro = $micro;
     }
 
-    public function properties(): array {
+    public function properties(
+    ): array {
         $properties = [];
+
         if ($this->major != null) {
-            $properties["Major"] = $this->major;
+            $properties["major"] = $this->major;
         }
         if ($this->minor != null) {
-            $properties["Minor"] = $this->minor;
+            $properties["minor"] = $this->minor;
         }
         if ($this->micro != null) {
-            $properties["Micro"] = $this->micro;
+            $properties["micro"] = $this->micro;
         }
+
         return $properties;
     }
 }

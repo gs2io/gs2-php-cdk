@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,37 +14,42 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Experience\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 
 class ExperienceModelRef {
-    public String $namespaceName;
-    public String $experienceName;
+    private string $namespaceName;
+    private string $experienceName;
 
     public function __construct(
-            String $namespaceName,
-            String $experienceName,
+        string $namespaceName,
+        string $experienceName,
     ) {
         $this->namespaceName = $namespaceName;
         $this->experienceName = $experienceName;
     }
 
-    public function grn(): String {
+    public function grn(
+    ): string {
         return (new Join(
             ":",
             [
                 "grn",
                 "gs2",
-                GetAttr::region()->str(),
-                GetAttr::ownerId()->str(),
+                GetAttr::region(
+                )->str(
+                ),
+                GetAttr::ownerId(
+                )->str(
+                ),
                 "experience",
                 $this->namespaceName,
                 "model",
-                $this->experienceName
-            ]
-        ))->str();
+                $this->experienceName,
+            ],
+        ))->str(
+        );
     }
 }

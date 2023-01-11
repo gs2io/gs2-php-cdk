@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,35 +14,27 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Log\Model;
-
-
-use Gs2Cdk\Core\Model\TransactionSetting;
-use Gs2Cdk\Core\Model\ScriptSetting;
-use Gs2Cdk\Core\Model\NotificationSetting;
-use Gs2Cdk\Core\Model\LogSetting;
-use Gs2Cdk\Core\Model\Config;
-use Gs2Cdk\Core\Model\AcquireAction;
-use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Log\Model\Options\ExecuteStampSheetLogOptions;
 
 class ExecuteStampSheetLog {
-	public int $timestamp;
-	public string $transactionId;
-	public string $service;
-	public string $method;
-	public string $userId;
-	public string $action;
-	public string $args;
+    private int $timestamp;
+    private string $transactionId;
+    private string $service;
+    private string $method;
+    private string $userId;
+    private string $action;
+    private string $args;
 
     public function __construct(
-            int $timestamp,
-            string $transactionId,
-            string $service,
-            string $method,
-            string $userId,
-            string $action,
-            string $args,
+        int $timestamp,
+        string $transactionId,
+        string $service,
+        string $method,
+        string $userId,
+        string $action,
+        string $args,
+        ?ExecuteStampSheetLogOptions $options = null,
     ) {
         $this->timestamp = $timestamp;
         $this->transactionId = $transactionId;
@@ -53,29 +45,32 @@ class ExecuteStampSheetLog {
         $this->args = $args;
     }
 
-    public function properties(): array {
+    public function properties(
+    ): array {
         $properties = [];
+
         if ($this->timestamp != null) {
-            $properties["Timestamp"] = $this->timestamp;
+            $properties["timestamp"] = $this->timestamp;
         }
         if ($this->transactionId != null) {
-            $properties["TransactionId"] = $this->transactionId;
+            $properties["transactionId"] = $this->transactionId;
         }
         if ($this->service != null) {
-            $properties["Service"] = $this->service;
+            $properties["service"] = $this->service;
         }
         if ($this->method != null) {
-            $properties["Method"] = $this->method;
+            $properties["method"] = $this->method;
         }
         if ($this->userId != null) {
-            $properties["UserId"] = $this->userId;
+            $properties["userId"] = $this->userId;
         }
         if ($this->action != null) {
-            $properties["Action"] = $this->action;
+            $properties["action"] = $this->action;
         }
         if ($this->args != null) {
-            $properties["Args"] = $this->args;
+            $properties["args"] = $this->args;
         }
+
         return $properties;
     }
 }

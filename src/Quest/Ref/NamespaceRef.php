@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,83 +14,74 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Quest\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
+use Gs2Cdk\Quest\Ref\QuestGroupModelRef;
 use Gs2Cdk\Quest\StampSheet\CreateProgressByUserId;
+use Gs2Cdk\Quest\Model\Array;
 use Gs2Cdk\Quest\StampSheet\DeleteProgressByUserId;
 
 class NamespaceRef {
-    public String $namespaceName;
+    private string $namespaceName;
 
     public function __construct(
-            String $namespaceName,
+        string $namespaceName,
     ) {
         $this->namespaceName = $namespaceName;
     }
 
-    public function currentQuestMaster(
-    ): CurrentQuestMasterRef {
-        return new CurrentQuestMasterRef(
-            namespaceName: $this->namespaceName,
-        );
-    }
-
     public function questGroupModel(
-            String $questGroupName,
+        string $questGroupName,
     ): QuestGroupModelRef {
-        return new QuestGroupModelRef(
-            namespaceName: $this->namespaceName,
-            questGroupName: $questGroupName,
-        );
-    }
-
-    public function questGroupModelMaster(
-            String $questGroupName,
-    ): QuestGroupModelMasterRef {
-        return new QuestGroupModelMasterRef(
-            namespaceName: $this->namespaceName,
-            questGroupName: $questGroupName,
-        );
+        return (new QuestGroupModelRef(
+            $this->namespaceName,
+            $questGroupName,
+        ));
     }
 
     public function createProgress(
-            string $questModelId,
-            bool $force,
-            array $config = null,
-            string $userId = '#{userId}',
+        string $questModelId,
+        bool $force,
+        ?array $config = null,
+        ?string $userId = "#{userId}",
     ): CreateProgressByUserId {
-        return new CreateProgressByUserId(
-            namespaceName: $this->namespaceName,
-            userId: $userId,
-            questModelId: $questModelId,
-            force: $force,
-            config: $config,
-        );
+        return (new CreateProgressByUserId(
+            $this->namespaceName,
+            $questModelId,
+            $force,
+            $config,
+            $userId,
+        ));
     }
 
     public function deleteProgress(
-            string $userId = '#{userId}',
+        ?string $userId = "#{userId}",
     ): DeleteProgressByUserId {
-        return new DeleteProgressByUserId(
-            namespaceName: $this->namespaceName,
-            userId: $userId,
-        );
+        return (new DeleteProgressByUserId(
+            $this->namespaceName,
+            $userId,
+        ));
     }
 
-    public function grn(): String {
+    public function grn(
+    ): string {
         return (new Join(
             ":",
             [
                 "grn",
                 "gs2",
-                GetAttr::region()->str(),
-                GetAttr::ownerId()->str(),
+                GetAttr::region(
+                )->str(
+                ),
+                GetAttr::ownerId(
+                )->str(
+                ),
                 "quest",
-                $this->namespaceName
-            ]
-        ))->str();
+                $this->namespaceName,
+            ],
+        ))->str(
+        );
     }
 }

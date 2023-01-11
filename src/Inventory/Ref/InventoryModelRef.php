@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,73 +14,170 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Inventory\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
+use Gs2Cdk\Inventory\Ref\ItemModelRef;
 use Gs2Cdk\Inventory\StampSheet\AddCapacityByUserId;
 use Gs2Cdk\Inventory\StampSheet\SetCapacityByUserId;
+use Gs2Cdk\Inventory\StampSheet\AcquireItemSetByUserId;
+use Gs2Cdk\Inventory\StampSheet\AddReferenceOfByUserId;
+use Gs2Cdk\Inventory\StampSheet\DeleteReferenceOfByUserId;
+use Gs2Cdk\Inventory\StampSheet\ConsumeItemSetByUserId;
+use Gs2Cdk\Inventory\StampSheet\VerifyReferenceOfByUserId;
 
 class InventoryModelRef {
-    public String $namespaceName;
-    public String $inventoryName;
+    private string $namespaceName;
+    private string $inventoryName;
 
     public function __construct(
-            String $namespaceName,
-            String $inventoryName,
+        string $namespaceName,
+        string $inventoryName,
     ) {
         $this->namespaceName = $namespaceName;
         $this->inventoryName = $inventoryName;
     }
 
     public function itemModel(
-            String $itemName,
+        string $itemName,
     ): ItemModelRef {
-        return new ItemModelRef(
-            namespaceName: $this->namespaceName,
-            inventoryName: $this->inventoryName,
-            itemName: $itemName,
-        );
+        return (new ItemModelRef(
+            $this->namespaceName,
+            $this->inventoryName,
+            $itemName,
+        ));
     }
 
     public function addCapacity(
-            int $addCapacityValue,
-            string $userId = '#{userId}',
+        int $addCapacityValue,
+        ?string $userId = "#{userId}",
     ): AddCapacityByUserId {
-        return new AddCapacityByUserId(
-            namespaceName: $this->namespaceName,
-            inventoryName: $this->inventoryName,
-            userId: $userId,
-            addCapacityValue: $addCapacityValue,
-        );
+        return (new AddCapacityByUserId(
+            $this->namespaceName,
+            $this->inventoryName,
+            $addCapacityValue,
+            $userId,
+        ));
     }
 
     public function setCapacity(
-            int $newCapacityValue,
-            string $userId = '#{userId}',
+        int $newCapacityValue,
+        ?string $userId = "#{userId}",
     ): SetCapacityByUserId {
-        return new SetCapacityByUserId(
-            namespaceName: $this->namespaceName,
-            inventoryName: $this->inventoryName,
-            userId: $userId,
-            newCapacityValue: $newCapacityValue,
-        );
+        return (new SetCapacityByUserId(
+            $this->namespaceName,
+            $this->inventoryName,
+            $newCapacityValue,
+            $userId,
+        ));
     }
 
-    public function grn(): String {
+    public function acquireItemSet(
+        string $itemName,
+        int $acquireCount,
+        int $expiresAt,
+        bool $createNewItemSet,
+        ?string $itemSetName = null,
+        ?string $userId = "#{userId}",
+    ): AcquireItemSetByUserId {
+        return (new AcquireItemSetByUserId(
+            $this->namespaceName,
+            $this->inventoryName,
+            $itemName,
+            $acquireCount,
+            $expiresAt,
+            $createNewItemSet,
+            $itemSetName,
+            $userId,
+        ));
+    }
+
+    public function addReferenceOf(
+        string $itemName,
+        string $itemSetName,
+        string $referenceOf,
+        ?string $userId = "#{userId}",
+    ): AddReferenceOfByUserId {
+        return (new AddReferenceOfByUserId(
+            $this->namespaceName,
+            $this->inventoryName,
+            $itemName,
+            $itemSetName,
+            $referenceOf,
+            $userId,
+        ));
+    }
+
+    public function deleteReferenceOf(
+        string $itemName,
+        string $itemSetName,
+        string $referenceOf,
+        ?string $userId = "#{userId}",
+    ): DeleteReferenceOfByUserId {
+        return (new DeleteReferenceOfByUserId(
+            $this->namespaceName,
+            $this->inventoryName,
+            $itemName,
+            $itemSetName,
+            $referenceOf,
+            $userId,
+        ));
+    }
+
+    public function consumeItemSet(
+        string $itemName,
+        int $consumeCount,
+        ?string $itemSetName = null,
+        ?string $userId = "#{userId}",
+    ): ConsumeItemSetByUserId {
+        return (new ConsumeItemSetByUserId(
+            $this->namespaceName,
+            $this->inventoryName,
+            $itemName,
+            $consumeCount,
+            $itemSetName,
+            $userId,
+        ));
+    }
+
+    public function verifyReferenceOf(
+        string $itemName,
+        string $itemSetName,
+        string $referenceOf,
+        string $verifyType,
+        ?string $userId = "#{userId}",
+    ): VerifyReferenceOfByUserId {
+        return (new VerifyReferenceOfByUserId(
+            $this->namespaceName,
+            $this->inventoryName,
+            $itemName,
+            $itemSetName,
+            $referenceOf,
+            $verifyType,
+            $userId,
+        ));
+    }
+
+    public function grn(
+    ): string {
         return (new Join(
             ":",
             [
                 "grn",
                 "gs2",
-                GetAttr::region()->str(),
-                GetAttr::ownerId()->str(),
+                GetAttr::region(
+                )->str(
+                ),
+                GetAttr::ownerId(
+                )->str(
+                ),
                 "inventory",
                 $this->namespaceName,
                 "model",
-                $this->inventoryName
-            ]
-        ))->str();
+                $this->inventoryName,
+            ],
+        ))->str(
+        );
     }
 }

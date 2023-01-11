@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,38 +14,29 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Quest\StampSheet;
 
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
-
+use Gs2Cdk\Core\Model\Config;
 
 class CreateProgressByUserId extends AcquireAction {
 
     public function __construct(
-            string $namespaceName,
-            string $questModelId,
-            bool $force,
-            array $config = null,
-            string $userId = '#{userId}',
+        string $namespaceName,
+        string $questModelId,
+        bool $force,
+        ?array $config = null,
+        ?string $userId = "#{userId}",
     ) {
         $properties = [];
-        if ($namespaceName != null) {
-            $properties["namespaceName"] = $namespaceName;
-        }
-        if ($userId != null) {
-            $properties["userId"] = $userId;
-        }
-        if ($questModelId != null) {
-            $properties["questModelId"] = $questModelId;
-        }
-        if ($force != null) {
-            $properties["force"] = $force;
-        }
-        if ($config != null) {
-            $properties["config"] = $config;
-        }
+
+        $properties["namespaceName"] = $namespaceName;
+        $properties["questModelId"] = $questModelId;
+        $properties["force"] = $force;
+        $properties["config"] = $config;
+        $properties["userId"] = $userId;
+
         parent::__construct(
             "Gs2Quest:CreateProgressByUserId",
             $properties,

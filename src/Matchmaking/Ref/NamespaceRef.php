@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,68 +14,47 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\Matchmaking\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
+use Gs2Cdk\Matchmaking\Ref\RatingModelRef;
 
 class NamespaceRef {
-    public String $namespaceName;
+    private string $namespaceName;
 
     public function __construct(
-            String $namespaceName,
+        string $namespaceName,
     ) {
         $this->namespaceName = $namespaceName;
     }
 
-    public function currentRatingModelMaster(
-    ): CurrentRatingModelMasterRef {
-        return new CurrentRatingModelMasterRef(
-            namespaceName: $this->namespaceName,
-        );
-    }
-
     public function ratingModel(
-            String $ratingName,
+        string $ratingName,
     ): RatingModelRef {
-        return new RatingModelRef(
-            namespaceName: $this->namespaceName,
-            ratingName: $ratingName,
-        );
+        return (new RatingModelRef(
+            $this->namespaceName,
+            $ratingName,
+        ));
     }
 
-    public function vote(
-            String $ratingName,
-            String $gatheringName,
-    ): VoteRef {
-        return new VoteRef(
-            namespaceName: $this->namespaceName,
-            ratingName: $ratingName,
-            gatheringName: $gatheringName,
-        );
-    }
-
-    public function ratingModelMaster(
-            String $ratingName,
-    ): RatingModelMasterRef {
-        return new RatingModelMasterRef(
-            namespaceName: $this->namespaceName,
-            ratingName: $ratingName,
-        );
-    }
-
-    public function grn(): String {
+    public function grn(
+    ): string {
         return (new Join(
             ":",
             [
                 "grn",
                 "gs2",
-                GetAttr::region()->str(),
-                GetAttr::ownerId()->str(),
+                GetAttr::region(
+                )->str(
+                ),
+                GetAttr::ownerId(
+                )->str(
+                ),
                 "matchmaking",
-                $this->namespaceName
-            ]
-        ))->str();
+                $this->namespaceName,
+            ],
+        ))->str(
+        );
     }
 }

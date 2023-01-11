@@ -1,6 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
 /*
- * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Copyright 2016- Game Server Services, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,44 +14,39 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 namespace Gs2Cdk\MegaField\Model;
-
-
-use Gs2Cdk\Core\Model\TransactionSetting;
-use Gs2Cdk\Core\Model\ScriptSetting;
-use Gs2Cdk\Core\Model\NotificationSetting;
-use Gs2Cdk\Core\Model\LogSetting;
-use Gs2Cdk\Core\Model\Config;
-use Gs2Cdk\Core\Model\AcquireAction;
-use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\MegaField\Model\Options\ScopeOptions;
 
 class Scope {
-	public string $layerName;
-	public float $r;
-	public int $limit;
+    private string $layerName;
+    private float $r;
+    private int $limit;
 
     public function __construct(
-            string $layerName,
-            float $r,
-            int $limit,
+        string $layerName,
+        float $r,
+        int $limit,
+        ?ScopeOptions $options = null,
     ) {
         $this->layerName = $layerName;
         $this->r = $r;
         $this->limit = $limit;
     }
 
-    public function properties(): array {
+    public function properties(
+    ): array {
         $properties = [];
+
         if ($this->layerName != null) {
-            $properties["LayerName"] = $this->layerName;
+            $properties["layerName"] = $this->layerName;
         }
         if ($this->r != null) {
-            $properties["R"] = $this->r;
+            $properties["r"] = $this->r;
         }
         if ($this->limit != null) {
-            $properties["Limit"] = $this->limit;
+            $properties["limit"] = $this->limit;
         }
+
         return $properties;
     }
 }
