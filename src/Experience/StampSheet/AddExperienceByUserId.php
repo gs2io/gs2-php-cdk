@@ -25,7 +25,7 @@ class AddExperienceByUserId extends AcquireAction {
         string $namespaceName,
         string $experienceName,
         string $propertyId,
-        int $experienceValue,
+        ?int $experienceValue = null,
         ?string $userId = "#{userId}",
     ) {
         $properties = [];

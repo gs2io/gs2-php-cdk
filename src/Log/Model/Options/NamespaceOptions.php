@@ -18,6 +18,7 @@ namespace Gs2Cdk\Log\Model\Options;
 
 class NamespaceOptions {
     public ?string $description;
+    public ?NamespaceType $type;
     public ?string $gcpCredentialJson;
     public ?string $bigQueryDatasetName;
     public ?int $logExpireDays;
@@ -28,6 +29,7 @@ class NamespaceOptions {
     
     public function __construct(
         ?string $description = null,
+        ?NamespaceType $type = null,
         ?string $gcpCredentialJson = null,
         ?string $bigQueryDatasetName = null,
         ?int $logExpireDays = null,
@@ -37,6 +39,7 @@ class NamespaceOptions {
         ?string $firehoseStreamName = null,
     ) {
         $this->description = $description;
+        $this->type = $type;
         $this->gcpCredentialJson = $gcpCredentialJson;
         $this->bigQueryDatasetName = $bigQueryDatasetName;
         $this->logExpireDays = $logExpireDays;

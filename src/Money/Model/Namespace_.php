@@ -34,10 +34,10 @@ class Namespace_ extends CdkResource {
     private NamespacePriority $priority;
     private bool $shareFree;
     private NamespaceCurrency $currency;
-    private bool $enableFakeReceipt;
     private ?string $description = null;
     private ?string $appleKey = null;
     private ?string $googleKey = null;
+    private ?bool $enableFakeReceipt = null;
     private ?ScriptSetting $createWalletScript = null;
     private ?ScriptSetting $depositScript = null;
     private ?ScriptSetting $withdrawScript = null;
@@ -49,7 +49,6 @@ class Namespace_ extends CdkResource {
         NamespacePriority $priority,
         bool $shareFree,
         NamespaceCurrency $currency,
-        bool $enableFakeReceipt,
         ?NamespaceOptions $options = null,
     ) {
         parent::__construct(
@@ -61,10 +60,10 @@ class Namespace_ extends CdkResource {
         $this->priority = $priority;
         $this->shareFree = $shareFree;
         $this->currency = $currency;
-        $this->enableFakeReceipt = $enableFakeReceipt;
         $this->description = $options?->description ?? null;
         $this->appleKey = $options?->appleKey ?? null;
         $this->googleKey = $options?->googleKey ?? null;
+        $this->enableFakeReceipt = $options?->enableFakeReceipt ?? null;
         $this->createWalletScript = $options?->createWalletScript ?? null;
         $this->depositScript = $options?->depositScript ?? null;
         $this->withdrawScript = $options?->withdrawScript ?? null;

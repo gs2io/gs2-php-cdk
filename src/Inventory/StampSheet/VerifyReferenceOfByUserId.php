@@ -25,9 +25,9 @@ class VerifyReferenceOfByUserId extends ConsumeAction {
         string $namespaceName,
         string $inventoryName,
         string $itemName,
-        string $itemSetName,
         string $referenceOf,
         string $verifyType,
+        ?string $itemSetName = null,
         ?string $userId = "#{userId}",
     ) {
         $properties = [];
@@ -35,9 +35,9 @@ class VerifyReferenceOfByUserId extends ConsumeAction {
         $properties["namespaceName"] = $namespaceName;
         $properties["inventoryName"] = $inventoryName;
         $properties["itemName"] = $itemName;
-        $properties["itemSetName"] = $itemSetName;
         $properties["referenceOf"] = $referenceOf;
         $properties["verifyType"] = $verifyType;
+        $properties["itemSetName"] = $itemSetName;
         $properties["userId"] = $userId;
 
         parent::__construct(

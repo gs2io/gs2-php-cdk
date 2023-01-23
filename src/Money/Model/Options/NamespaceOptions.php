@@ -22,6 +22,7 @@ class NamespaceOptions {
     public ?string $description;
     public ?string $appleKey;
     public ?string $googleKey;
+    public ?bool $enableFakeReceipt;
     public ?ScriptSetting $createWalletScript;
     public ?ScriptSetting $depositScript;
     public ?ScriptSetting $withdrawScript;
@@ -31,6 +32,7 @@ class NamespaceOptions {
         ?string $description = null,
         ?string $appleKey = null,
         ?string $googleKey = null,
+        ?bool $enableFakeReceipt = null,
         ?ScriptSetting $createWalletScript = null,
         ?ScriptSetting $depositScript = null,
         ?ScriptSetting $withdrawScript = null,
@@ -39,6 +41,7 @@ class NamespaceOptions {
         $this->description = $description;
         $this->appleKey = $appleKey;
         $this->googleKey = $googleKey;
+        $this->enableFakeReceipt = $enableFakeReceipt;
         $this->createWalletScript = $createWalletScript;
         $this->depositScript = $depositScript;
         $this->withdrawScript = $withdrawScript;

@@ -20,6 +20,8 @@ use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    public ?bool $changePasswordIfTakeOver;
+    public ?bool $differentUserIdForLoginAndDataRetention;
     public ?ScriptSetting $createAccountScript;
     public ?ScriptSetting $authenticationScript;
     public ?ScriptSetting $createTakeOverScript;
@@ -28,6 +30,8 @@ class NamespaceOptions {
     
     public function __construct(
         ?string $description = null,
+        ?bool $changePasswordIfTakeOver = null,
+        ?bool $differentUserIdForLoginAndDataRetention = null,
         ?ScriptSetting $createAccountScript = null,
         ?ScriptSetting $authenticationScript = null,
         ?ScriptSetting $createTakeOverScript = null,
@@ -35,6 +39,8 @@ class NamespaceOptions {
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
+        $this->changePasswordIfTakeOver = $changePasswordIfTakeOver;
+        $this->differentUserIdForLoginAndDataRetention = $differentUserIdForLoginAndDataRetention;
         $this->createAccountScript = $createAccountScript;
         $this->authenticationScript = $authenticationScript;
         $this->createTakeOverScript = $createTakeOverScript;

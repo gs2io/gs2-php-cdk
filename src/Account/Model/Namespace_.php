@@ -29,9 +29,9 @@ use Gs2Cdk\Account\Model\Options\NamespaceOptions;
 class Namespace_ extends CdkResource {
     private Stack $stack;
     private string $name;
-    private bool $changePasswordIfTakeOver;
-    private bool $differentUserIdForLoginAndDataRetention;
     private ?string $description = null;
+    private ?bool $changePasswordIfTakeOver = null;
+    private ?bool $differentUserIdForLoginAndDataRetention = null;
     private ?ScriptSetting $createAccountScript = null;
     private ?ScriptSetting $authenticationScript = null;
     private ?ScriptSetting $createTakeOverScript = null;
@@ -41,8 +41,6 @@ class Namespace_ extends CdkResource {
     public function __construct(
         Stack $stack,
         string $name,
-        bool $changePasswordIfTakeOver,
-        bool $differentUserIdForLoginAndDataRetention,
         ?NamespaceOptions $options = null,
     ) {
         parent::__construct(
@@ -51,9 +49,9 @@ class Namespace_ extends CdkResource {
 
         $this->stack = $stack;
         $this->name = $name;
-        $this->changePasswordIfTakeOver = $changePasswordIfTakeOver;
-        $this->differentUserIdForLoginAndDataRetention = $differentUserIdForLoginAndDataRetention;
         $this->description = $options?->description ?? null;
+        $this->changePasswordIfTakeOver = $options?->changePasswordIfTakeOver ?? null;
+        $this->differentUserIdForLoginAndDataRetention = $options?->differentUserIdForLoginAndDataRetention ?? null;
         $this->createAccountScript = $options?->createAccountScript ?? null;
         $this->authenticationScript = $options?->authenticationScript ?? null;
         $this->createTakeOverScript = $options?->createTakeOverScript ?? null;

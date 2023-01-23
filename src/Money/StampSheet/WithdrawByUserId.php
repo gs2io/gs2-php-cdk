@@ -25,7 +25,7 @@ class WithdrawByUserId extends ConsumeAction {
         string $namespaceName,
         int $slot,
         int $count,
-        bool $paidOnly,
+        ?bool $paidOnly = null,
         ?string $userId = "#{userId}",
     ) {
         $properties = [];

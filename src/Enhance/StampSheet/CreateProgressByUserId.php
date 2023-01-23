@@ -26,8 +26,8 @@ class CreateProgressByUserId extends AcquireAction {
         string $namespaceName,
         string $rateName,
         string $targetItemSetId,
-        bool $force,
         ?array $materials = null,
+        ?bool $force = null,
         ?string $userId = "#{userId}",
     ) {
         $properties = [];
@@ -35,8 +35,8 @@ class CreateProgressByUserId extends AcquireAction {
         $properties["namespaceName"] = $namespaceName;
         $properties["rateName"] = $rateName;
         $properties["targetItemSetId"] = $targetItemSetId;
-        $properties["force"] = $force;
         $properties["materials"] = $materials;
+        $properties["force"] = $force;
         $properties["userId"] = $userId;
 
         parent::__construct(

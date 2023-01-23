@@ -26,8 +26,8 @@ class AcquireItemSetByUserId extends AcquireAction {
         string $inventoryName,
         string $itemName,
         int $acquireCount,
-        int $expiresAt,
-        bool $createNewItemSet,
+        ?int $expiresAt = null,
+        ?bool $createNewItemSet = null,
         ?string $itemSetName = null,
         ?string $userId = "#{userId}",
     ) {

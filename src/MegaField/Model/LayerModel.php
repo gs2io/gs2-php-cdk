@@ -18,16 +18,13 @@ namespace Gs2Cdk\MegaField\Model;
 use Gs2Cdk\MegaField\Model\Options\LayerModelOptions;
 
 class LayerModel {
-    private string $areaModelName;
     private string $name;
     private ?string $metadata = null;
 
     public function __construct(
-        string $areaModelName,
         string $name,
         ?LayerModelOptions $options = null,
     ) {
-        $this->areaModelName = $areaModelName;
         $this->name = $name;
         $this->metadata = $options?->metadata ?? null;
     }
@@ -36,9 +33,6 @@ class LayerModel {
     ): array {
         $properties = [];
 
-        if ($this->areaModelName != null) {
-            $properties["areaModelName"] = $this->areaModelName;
-        }
         if ($this->name != null) {
             $properties["name"] = $this->name;
         }

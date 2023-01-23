@@ -23,7 +23,7 @@ class OpenMessageByUserId extends ConsumeAction {
 
     public function __construct(
         string $namespaceName,
-        string $messageName,
+        ?string $messageName = null,
         ?string $userId = "#{userId}",
     ) {
         $properties = [];

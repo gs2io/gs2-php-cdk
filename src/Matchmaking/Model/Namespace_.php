@@ -34,10 +34,10 @@ use Gs2Cdk\Matchmaking\Model\Options\NamespaceOptions;
 class Namespace_ extends CdkResource {
     private Stack $stack;
     private string $name;
-    private bool $enableRating;
     private NamespaceCreateGatheringTriggerType $createGatheringTriggerType;
     private NamespaceCompleteMatchmakingTriggerType $completeMatchmakingTriggerType;
     private ?string $description = null;
+    private ?bool $enableRating = null;
     private ?string $createGatheringTriggerRealtimeNamespaceId = null;
     private ?string $createGatheringTriggerScriptId = null;
     private ?string $completeMatchmakingTriggerRealtimeNamespaceId = null;
@@ -51,7 +51,6 @@ class Namespace_ extends CdkResource {
     public function __construct(
         Stack $stack,
         string $name,
-        bool $enableRating,
         NamespaceCreateGatheringTriggerType $createGatheringTriggerType,
         NamespaceCompleteMatchmakingTriggerType $completeMatchmakingTriggerType,
         ?NamespaceOptions $options = null,
@@ -62,10 +61,10 @@ class Namespace_ extends CdkResource {
 
         $this->stack = $stack;
         $this->name = $name;
-        $this->enableRating = $enableRating;
         $this->createGatheringTriggerType = $createGatheringTriggerType;
         $this->completeMatchmakingTriggerType = $completeMatchmakingTriggerType;
         $this->description = $options?->description ?? null;
+        $this->enableRating = $options?->enableRating ?? null;
         $this->createGatheringTriggerRealtimeNamespaceId = $options?->createGatheringTriggerRealtimeNamespaceId ?? null;
         $this->createGatheringTriggerScriptId = $options?->createGatheringTriggerScriptId ?? null;
         $this->completeMatchmakingTriggerRealtimeNamespaceId = $options?->completeMatchmakingTriggerRealtimeNamespaceId ?? null;

@@ -21,6 +21,7 @@ use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    public ?bool $allowCreateRoom;
     public ?ScriptSetting $postMessageScript;
     public ?ScriptSetting $createRoomScript;
     public ?ScriptSetting $deleteRoomScript;
@@ -31,6 +32,7 @@ class NamespaceOptions {
     
     public function __construct(
         ?string $description = null,
+        ?bool $allowCreateRoom = null,
         ?ScriptSetting $postMessageScript = null,
         ?ScriptSetting $createRoomScript = null,
         ?ScriptSetting $deleteRoomScript = null,
@@ -40,6 +42,7 @@ class NamespaceOptions {
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
+        $this->allowCreateRoom = $allowCreateRoom;
         $this->postMessageScript = $postMessageScript;
         $this->createRoomScript = $createRoomScript;
         $this->deleteRoomScript = $deleteRoomScript;

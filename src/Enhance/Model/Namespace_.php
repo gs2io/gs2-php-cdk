@@ -32,16 +32,15 @@ use Gs2Cdk\Enhance\Model\Options\NamespaceOptions;
 class Namespace_ extends CdkResource {
     private Stack $stack;
     private string $name;
-    private bool $enableDirectEnhance;
     private TransactionSetting $transactionSetting;
     private ?string $description = null;
+    private ?bool $enableDirectEnhance = null;
     private ?ScriptSetting $enhanceScript = null;
     private ?LogSetting $logSetting = null;
 
     public function __construct(
         Stack $stack,
         string $name,
-        bool $enableDirectEnhance,
         TransactionSetting $transactionSetting,
         ?NamespaceOptions $options = null,
     ) {
@@ -51,9 +50,9 @@ class Namespace_ extends CdkResource {
 
         $this->stack = $stack;
         $this->name = $name;
-        $this->enableDirectEnhance = $enableDirectEnhance;
         $this->transactionSetting = $transactionSetting;
         $this->description = $options?->description ?? null;
+        $this->enableDirectEnhance = $options?->enableDirectEnhance ?? null;
         $this->enhanceScript = $options?->enhanceScript ?? null;
         $this->logSetting = $options?->logSetting ?? null;
         $stack->addResource(

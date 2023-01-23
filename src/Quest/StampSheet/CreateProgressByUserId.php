@@ -25,7 +25,7 @@ class CreateProgressByUserId extends AcquireAction {
     public function __construct(
         string $namespaceName,
         string $questModelId,
-        bool $force,
+        ?bool $force = null,
         ?array $config = null,
         ?string $userId = "#{userId}",
     ) {

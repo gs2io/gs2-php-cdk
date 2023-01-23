@@ -21,6 +21,8 @@ use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    public ?bool $enableAwaitExchange;
+    public ?bool $enableDirectExchange;
     public ?ScriptSetting $exchangeScript;
     public ?LogSetting $logSetting;
     public ?string $queueNamespaceId;
@@ -28,12 +30,16 @@ class NamespaceOptions {
     
     public function __construct(
         ?string $description = null,
+        ?bool $enableAwaitExchange = null,
+        ?bool $enableDirectExchange = null,
         ?ScriptSetting $exchangeScript = null,
         ?LogSetting $logSetting = null,
         ?string $queueNamespaceId = null,
         ?string $keyId = null,
     ) {
         $this->description = $description;
+        $this->enableAwaitExchange = $enableAwaitExchange;
+        $this->enableDirectExchange = $enableDirectExchange;
         $this->exchangeScript = $exchangeScript;
         $this->logSetting = $logSetting;
         $this->queueNamespaceId = $queueNamespaceId;

@@ -25,8 +25,8 @@ class DeleteReferenceOfByUserId extends AcquireAction {
         string $namespaceName,
         string $inventoryName,
         string $itemName,
-        string $itemSetName,
         string $referenceOf,
+        ?string $itemSetName = null,
         ?string $userId = "#{userId}",
     ) {
         $properties = [];
@@ -34,8 +34,8 @@ class DeleteReferenceOfByUserId extends AcquireAction {
         $properties["namespaceName"] = $namespaceName;
         $properties["inventoryName"] = $inventoryName;
         $properties["itemName"] = $itemName;
-        $properties["itemSetName"] = $itemSetName;
         $properties["referenceOf"] = $referenceOf;
+        $properties["itemSetName"] = $itemSetName;
         $properties["userId"] = $userId;
 
         parent::__construct(

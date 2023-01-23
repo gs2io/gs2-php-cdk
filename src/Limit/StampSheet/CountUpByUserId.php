@@ -25,7 +25,7 @@ class CountUpByUserId extends ConsumeAction {
         string $namespaceName,
         string $limitName,
         string $counterName,
-        int $countUpValue,
+        ?int $countUpValue = null,
         ?int $maxValue = null,
         ?string $userId = "#{userId}",
     ) {

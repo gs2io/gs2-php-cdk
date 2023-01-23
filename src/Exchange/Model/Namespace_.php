@@ -32,18 +32,16 @@ use Gs2Cdk\Exchange\Model\Options\NamespaceOptions;
 class Namespace_ extends CdkResource {
     private Stack $stack;
     private string $name;
-    private bool $enableAwaitExchange;
-    private bool $enableDirectExchange;
     private TransactionSetting $transactionSetting;
     private ?string $description = null;
+    private ?bool $enableAwaitExchange = null;
+    private ?bool $enableDirectExchange = null;
     private ?ScriptSetting $exchangeScript = null;
     private ?LogSetting $logSetting = null;
 
     public function __construct(
         Stack $stack,
         string $name,
-        bool $enableAwaitExchange,
-        bool $enableDirectExchange,
         TransactionSetting $transactionSetting,
         ?NamespaceOptions $options = null,
     ) {
@@ -53,10 +51,10 @@ class Namespace_ extends CdkResource {
 
         $this->stack = $stack;
         $this->name = $name;
-        $this->enableAwaitExchange = $enableAwaitExchange;
-        $this->enableDirectExchange = $enableDirectExchange;
         $this->transactionSetting = $transactionSetting;
         $this->description = $options?->description ?? null;
+        $this->enableAwaitExchange = $options?->enableAwaitExchange ?? null;
+        $this->enableDirectExchange = $options?->enableDirectExchange ?? null;
         $this->exchangeScript = $options?->exchangeScript ?? null;
         $this->logSetting = $options?->logSetting ?? null;
         $stack->addResource(

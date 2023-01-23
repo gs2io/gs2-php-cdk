@@ -20,17 +20,20 @@ use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    public ?bool $enableAutoRun;
     public ?NotificationSetting $pushNotification;
     public ?NotificationSetting $runNotification;
     public ?LogSetting $logSetting;
     
     public function __construct(
         ?string $description = null,
+        ?bool $enableAutoRun = null,
         ?NotificationSetting $pushNotification = null,
         ?NotificationSetting $runNotification = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
+        $this->enableAutoRun = $enableAutoRun;
         $this->pushNotification = $pushNotification;
         $this->runNotification = $runNotification;
         $this->logSetting = $logSetting;

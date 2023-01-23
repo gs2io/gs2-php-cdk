@@ -21,6 +21,7 @@ use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    public ?bool $enableRating;
     public ?string $createGatheringTriggerRealtimeNamespaceId;
     public ?string $createGatheringTriggerScriptId;
     public ?string $completeMatchmakingTriggerRealtimeNamespaceId;
@@ -33,6 +34,7 @@ class NamespaceOptions {
     
     public function __construct(
         ?string $description = null,
+        ?bool $enableRating = null,
         ?string $createGatheringTriggerRealtimeNamespaceId = null,
         ?string $createGatheringTriggerScriptId = null,
         ?string $completeMatchmakingTriggerRealtimeNamespaceId = null,
@@ -44,6 +46,7 @@ class NamespaceOptions {
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
+        $this->enableRating = $enableRating;
         $this->createGatheringTriggerRealtimeNamespaceId = $createGatheringTriggerRealtimeNamespaceId;
         $this->createGatheringTriggerScriptId = $createGatheringTriggerScriptId;
         $this->completeMatchmakingTriggerRealtimeNamespaceId = $completeMatchmakingTriggerRealtimeNamespaceId;

@@ -28,8 +28,8 @@ use Gs2Cdk\Log\Model\Options\NamespaceOptions;
 class Namespace_ extends CdkResource {
     private Stack $stack;
     private string $name;
-    private NamespaceType $type;
     private ?string $description = null;
+    private ?NamespaceType $type = null;
     private ?string $gcpCredentialJson = null;
     private ?string $bigQueryDatasetName = null;
     private ?int $logExpireDays = null;
@@ -41,7 +41,6 @@ class Namespace_ extends CdkResource {
     public function __construct(
         Stack $stack,
         string $name,
-        NamespaceType $type,
         ?NamespaceOptions $options = null,
     ) {
         parent::__construct(
@@ -50,8 +49,8 @@ class Namespace_ extends CdkResource {
 
         $this->stack = $stack;
         $this->name = $name;
-        $this->type = $type;
         $this->description = $options?->description ?? null;
+        $this->type = $options?->type ?? null;
         $this->gcpCredentialJson = $options?->gcpCredentialJson ?? null;
         $this->bigQueryDatasetName = $options?->bigQueryDatasetName ?? null;
         $this->logExpireDays = $options?->logExpireDays ?? null;

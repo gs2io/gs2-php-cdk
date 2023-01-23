@@ -29,8 +29,8 @@ use Gs2Cdk\JobQueue\Model\Options\NamespaceOptions;
 class Namespace_ extends CdkResource {
     private Stack $stack;
     private string $name;
-    private bool $enableAutoRun;
     private ?string $description = null;
+    private ?bool $enableAutoRun = null;
     private ?NotificationSetting $pushNotification = null;
     private ?NotificationSetting $runNotification = null;
     private ?LogSetting $logSetting = null;
@@ -38,7 +38,6 @@ class Namespace_ extends CdkResource {
     public function __construct(
         Stack $stack,
         string $name,
-        bool $enableAutoRun,
         ?NamespaceOptions $options = null,
     ) {
         parent::__construct(
@@ -47,8 +46,8 @@ class Namespace_ extends CdkResource {
 
         $this->stack = $stack;
         $this->name = $name;
-        $this->enableAutoRun = $enableAutoRun;
         $this->description = $options?->description ?? null;
+        $this->enableAutoRun = $options?->enableAutoRun ?? null;
         $this->pushNotification = $options?->pushNotification ?? null;
         $this->runNotification = $options?->runNotification ?? null;
         $this->logSetting = $options?->logSetting ?? null;

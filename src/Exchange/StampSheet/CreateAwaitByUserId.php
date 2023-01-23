@@ -24,7 +24,7 @@ class CreateAwaitByUserId extends AcquireAction {
     public function __construct(
         string $namespaceName,
         string $rateName,
-        int $count,
+        ?int $count = null,
         ?string $userId = "#{userId}",
     ) {
         $properties = [];

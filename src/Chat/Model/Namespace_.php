@@ -30,8 +30,8 @@ use Gs2Cdk\Chat\Model\Options\NamespaceOptions;
 class Namespace_ extends CdkResource {
     private Stack $stack;
     private string $name;
-    private bool $allowCreateRoom;
     private ?string $description = null;
+    private ?bool $allowCreateRoom = null;
     private ?ScriptSetting $postMessageScript = null;
     private ?ScriptSetting $createRoomScript = null;
     private ?ScriptSetting $deleteRoomScript = null;
@@ -43,7 +43,6 @@ class Namespace_ extends CdkResource {
     public function __construct(
         Stack $stack,
         string $name,
-        bool $allowCreateRoom,
         ?NamespaceOptions $options = null,
     ) {
         parent::__construct(
@@ -52,8 +51,8 @@ class Namespace_ extends CdkResource {
 
         $this->stack = $stack;
         $this->name = $name;
-        $this->allowCreateRoom = $allowCreateRoom;
         $this->description = $options?->description ?? null;
+        $this->allowCreateRoom = $options?->allowCreateRoom ?? null;
         $this->postMessageScript = $options?->postMessageScript ?? null;
         $this->createRoomScript = $options?->createRoomScript ?? null;
         $this->deleteRoomScript = $options?->deleteRoomScript ?? null;
