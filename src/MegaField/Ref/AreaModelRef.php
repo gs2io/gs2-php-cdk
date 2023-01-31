@@ -32,6 +32,16 @@ class AreaModelRef {
         $this->areaModelName = $areaModelName;
     }
 
+    public function layerModel(
+        string $layerModelName,
+    ): LayerModelRef {
+        return (new LayerModelRef(
+            $this->namespaceName,
+            $this->areaModelName,
+            $layerModelName,
+        ));
+    }
+
     public function grn(
     ): string {
         return (new Join(
