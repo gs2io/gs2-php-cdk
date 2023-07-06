@@ -23,14 +23,12 @@ class DeleteAwaitByUserId extends ConsumeAction {
 
     public function __construct(
         string $namespaceName,
-        string $rateName,
         ?string $awaitName = null,
         ?string $userId = "#{userId}",
     ) {
         $properties = [];
 
         $properties["namespaceName"] = $namespaceName;
-        $properties["rateName"] = $rateName;
         $properties["awaitName"] = $awaitName;
         $properties["userId"] = $userId;
 

@@ -24,18 +24,20 @@ use Gs2Cdk\Formation\Model\AcquireActionConfig;
 
 class FormModelRef {
     private string $namespaceName;
+    private string $moldName;
     private string $formModelName;
 
     public function __construct(
         string $namespaceName,
+        string $moldName,
         string $formModelName,
     ) {
         $this->namespaceName = $namespaceName;
+        $this->moldName = $moldName;
         $this->formModelName = $formModelName;
     }
 
     public function acquireActionsToFormProperties(
-        string $moldName,
         int $index,
         AcquireAction $acquireAction,
         ?array $config = null,
@@ -43,7 +45,7 @@ class FormModelRef {
     ): AcquireActionsToFormProperties {
         return (new AcquireActionsToFormProperties(
             $this->namespaceName,
-            $moldName,
+            $this->moldName,
             $index,
             $acquireAction,
             $config,

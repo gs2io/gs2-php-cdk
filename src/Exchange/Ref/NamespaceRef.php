@@ -71,13 +71,11 @@ class NamespaceRef {
     }
 
     public function deleteAwait(
-        string $rateName,
         string $awaitName,
         ?string $userId = "#{userId}",
     ): DeleteAwaitByUserId {
         return (new DeleteAwaitByUserId(
             $this->namespaceName,
-            $rateName,
             $awaitName,
             $userId,
         ));

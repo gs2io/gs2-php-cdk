@@ -18,7 +18,6 @@ namespace Gs2Cdk\Formation\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
-use Gs2Cdk\Formation\Ref\FormModelRef;
 use Gs2Cdk\Formation\Ref\MoldModelRef;
 use Gs2Cdk\Formation\StampSheet\AddMoldCapacityByUserId;
 use Gs2Cdk\Formation\StampSheet\SetMoldCapacityByUserId;
@@ -34,15 +33,6 @@ class NamespaceRef {
         string $namespaceName,
     ) {
         $this->namespaceName = $namespaceName;
-    }
-
-    public function formModel(
-        string $formModelName,
-    ): FormModelRef {
-        return (new FormModelRef(
-            $this->namespaceName,
-            $formModelName,
-        ));
     }
 
     public function moldModel(
