@@ -14,37 +14,19 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\Showcase\Ref;
+namespace Gs2Cdk\Exchange\Model\Options;
+use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Core\Model\AcquireAction;
+use Gs2Cdk\Exchange\Model\Enum\IncrementalRateModelCalculateType;
 
-use Gs2Cdk\Core\Func\GetAttr;
-use Gs2Cdk\Core\Func\Join;
-
-class NamespaceRef {
-    private string $namespaceName;
-
+class IncrementalRateModelCalculateTypeIsPowerOptions {
+    public ?string $metadata;
+    public ?array $acquireActions;
+    
     public function __construct(
-        string $namespaceName,
+        ?string $metadata = null,
+        ?array $acquireActions = null,
     ) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    public function grn(
-    ): string {
-        return (new Join(
-            ":",
-            [
-                "grn",
-                "gs2",
-                GetAttr::region(
-                )->str(
-                ),
-                GetAttr::ownerId(
-                )->str(
-                ),
-                "showcase",
-                $this->namespaceName,
-            ],
-        ))->str(
-        );
-    }
-}
+        $this->metadata = $metadata;
+        $this->acquireActions = $acquireActions;
+    }}

@@ -30,8 +30,8 @@ use Gs2Cdk\Schedule\Model\Enum\EventRepeatEndDayOfWeek;
 class Event {
     private string $name;
     private EventScheduleType $scheduleType;
+    private EventRepeatType $repeatType;
     private ?string $metadata = null;
-    private ?EventRepeatType $repeatType = null;
     private ?int $absoluteBegin = null;
     private ?int $absoluteEnd = null;
     private ?int $repeatBeginDayOfMonth = null;
@@ -41,17 +41,17 @@ class Event {
     private ?int $repeatBeginHour = null;
     private ?int $repeatEndHour = null;
     private ?string $relativeTriggerName = null;
-    private ?int $relativeDuration = null;
 
     public function __construct(
         string $name,
         EventScheduleType $scheduleType,
+        EventRepeatType $repeatType,
         ?EventOptions $options = null,
     ) {
         $this->name = $name;
         $this->scheduleType = $scheduleType;
+        $this->repeatType = $repeatType;
         $this->metadata = $options?->metadata ?? null;
-        $this->repeatType = $options?->repeatType ?? null;
         $this->absoluteBegin = $options?->absoluteBegin ?? null;
         $this->absoluteEnd = $options?->absoluteEnd ?? null;
         $this->repeatBeginDayOfMonth = $options?->repeatBeginDayOfMonth ?? null;
@@ -61,7 +61,6 @@ class Event {
         $this->repeatBeginHour = $options?->repeatBeginHour ?? null;
         $this->repeatEndHour = $options?->repeatEndHour ?? null;
         $this->relativeTriggerName = $options?->relativeTriggerName ?? null;
-        $this->relativeDuration = $options?->relativeDuration ?? null;
     }
 
     public static function scheduleTypeIsAbsolute(
@@ -74,8 +73,8 @@ class Event {
         return (new Event(
             $name,
             EventScheduleType::ABSOLUTE,
+            $repeatType,
             new EventOptions(
-                repeatType: $repeatType,
                 absoluteBegin: $absoluteBegin,
                 absoluteEnd: $absoluteEnd,
                 metadata: $options?->metadata,
@@ -85,16 +84,16 @@ class Event {
 
     public static function scheduleTypeIsRelative(
         string $name,
+        EventRepeatType $repeatType,
         string $relativeTriggerName,
-        int $relativeDuration,
         ?EventScheduleTypeIsRelativeOptions $options = null,
     ): Event {
         return (new Event(
             $name,
             EventScheduleType::RELATIVE,
+            $repeatType,
             new EventOptions(
                 relativeTriggerName: $relativeTriggerName,
-                relativeDuration: $relativeDuration,
                 metadata: $options?->metadata,
             ),
         ));
@@ -108,6 +107,7 @@ class Event {
         return (new Event(
             $name,
             $scheduleType,
+            EventRepeatType::ALWAYS,
             new EventOptions(
                 metadata: $options?->metadata,
             ),
@@ -124,6 +124,7 @@ class Event {
         return (new Event(
             $name,
             $scheduleType,
+            EventRepeatType::DAILY,
             new EventOptions(
                 repeatBeginHour: $repeatBeginHour,
                 repeatEndHour: $repeatEndHour,
@@ -144,6 +145,7 @@ class Event {
         return (new Event(
             $name,
             $scheduleType,
+            EventRepeatType::WEEKLY,
             new EventOptions(
                 repeatBeginDayOfWeek: $repeatBeginDayOfWeek,
                 repeatEndDayOfWeek: $repeatEndDayOfWeek,
@@ -166,6 +168,7 @@ class Event {
         return (new Event(
             $name,
             $scheduleType,
+            EventRepeatType::MONTHLY,
             new EventOptions(
                 repeatBeginDayOfMonth: $repeatBeginDayOfMonth,
                 repeatEndDayOfMonth: $repeatEndDayOfMonth,
@@ -222,9 +225,6 @@ class Event {
         }
         if ($this->relativeTriggerName != null) {
             $properties["relativeTriggerName"] = $this->relativeTriggerName;
-        }
-        if ($this->relativeDuration != null) {
-            $properties["relativeDuration"] = $this->relativeDuration;
         }
 
         return $properties;

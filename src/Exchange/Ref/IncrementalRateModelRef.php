@@ -14,19 +14,21 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\News\Ref;
+namespace Gs2Cdk\Exchange\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
-use Gs2Cdk\News\Ref\ProgressRef;
 
-class NamespaceRef {
+class IncrementalRateModelRef {
     private string $namespaceName;
+    private string $rateName;
 
     public function __construct(
         string $namespaceName,
+        string $rateName,
     ) {
         $this->namespaceName = $namespaceName;
+        $this->rateName = $rateName;
     }
 
     public function grn(
@@ -42,8 +44,11 @@ class NamespaceRef {
                 GetAttr::ownerId(
                 )->str(
                 ),
-                "news",
+                "exchange",
                 $this->namespaceName,
+                "incremental",
+                "model",
+                $this->rateName,
             ],
         ))->str(
         );

@@ -13,6 +13,8 @@
  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
+ *
+ * deny overwrite
  */
 namespace Gs2Cdk\Lottery\Model;
 use Gs2Cdk\Lottery\Model\Options\LotteryModelOptions;
@@ -46,7 +48,6 @@ class LotteryModel {
     public static function methodIsPrizeTable(
         string $name,
         LotteryModelMode $mode,
-        string $prizeTableName,
         ?LotteryModelMethodIsPrizeTableOptions $options = null,
     ): LotteryModel {
         return (new LotteryModel(
@@ -54,8 +55,8 @@ class LotteryModel {
             $mode,
             LotteryModelMethod::PRIZE_TABLE,
             new LotteryModelOptions(
-                prizeTableName: $prizeTableName,
                 metadata: $options?->metadata,
+                prizeTableName: $options?->prizeTableName,
             ),
         ));
     }
@@ -63,7 +64,6 @@ class LotteryModel {
     public static function methodIsScript(
         string $name,
         LotteryModelMode $mode,
-        string $choicePrizeTableScriptId,
         ?LotteryModelMethodIsScriptOptions $options = null,
     ): LotteryModel {
         return (new LotteryModel(
@@ -71,8 +71,8 @@ class LotteryModel {
             $mode,
             LotteryModelMethod::SCRIPT,
             new LotteryModelOptions(
-                choicePrizeTableScriptId: $choicePrizeTableScriptId,
                 metadata: $options?->metadata,
+                choicePrizeTableScriptId: $options?->choicePrizeTableScriptId,
             ),
         ));
     }

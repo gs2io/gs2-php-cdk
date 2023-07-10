@@ -14,15 +14,29 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\Lottery\Model\Options;
-use Gs2Cdk\Lottery\Model\Enum\LotteryModelMode;
-use Gs2Cdk\Lottery\Model\Enum\LotteryModelMethod;
+namespace Gs2Cdk\Exchange\Model\Options;
+use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Core\Model\AcquireAction;
+use Gs2Cdk\Exchange\Model\Enum\IncrementalRateModelCalculateType;
 
-class LotteryModelMethodIsScriptOptions {
+class IncrementalRateModelOptions {
     public ?string $metadata;
+    public ?int $baseValue;
+    public ?int $coefficientValue;
+    public ?string $calculateScriptId;
+    public ?array $acquireActions;
     
     public function __construct(
         ?string $metadata = null,
+        ?int $baseValue = null,
+        ?int $coefficientValue = null,
+        ?string $calculateScriptId = null,
+        ?array $acquireActions = null,
     ) {
         $this->metadata = $metadata;
+        $this->baseValue = $baseValue;
+        $this->coefficientValue = $coefficientValue;
+        $this->calculateScriptId = $calculateScriptId;
+        $this->acquireActions = $acquireActions;
     }}
+

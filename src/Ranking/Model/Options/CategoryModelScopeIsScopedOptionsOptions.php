@@ -26,6 +26,7 @@ class CategoryModelScopeIsScopedOptions {
     public ?int $calculateFixedTimingMinute;
     public ?string $entryPeriodEventId;
     public ?string $accessPeriodEventId;
+    public ?array $ignoreUserIds;
     public ?string $generation;
     
     public function __construct(
@@ -36,6 +37,7 @@ class CategoryModelScopeIsScopedOptions {
         ?int $calculateFixedTimingMinute = null,
         ?string $entryPeriodEventId = null,
         ?string $accessPeriodEventId = null,
+        ?array $ignoreUserIds = null,
         ?string $generation = null,
     ) {
         $this->metadata = $metadata;
@@ -45,5 +47,6 @@ class CategoryModelScopeIsScopedOptions {
         $this->calculateFixedTimingMinute = $calculateFixedTimingMinute;
         $this->entryPeriodEventId = $entryPeriodEventId;
         $this->accessPeriodEventId = $accessPeriodEventId;
+        $this->ignoreUserIds = $ignoreUserIds;
         $this->generation = $generation;
     }}

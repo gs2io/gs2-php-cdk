@@ -26,6 +26,7 @@ use Gs2Cdk\Core\Model\LogSetting;
 use Gs2Cdk\Exchange\Ref\NamespaceRef;
 use Gs2Cdk\Exchange\Model\CurrentMasterData;
 use Gs2Cdk\Exchange\Model\RateModel;
+use Gs2Cdk\Exchange\Model\IncrementalRateModel;
 
 use Gs2Cdk\Exchange\Model\Options\NamespaceOptions;
 
@@ -123,11 +124,13 @@ class Namespace_ extends CdkResource {
 
     public function masterData(
         array $rateModels,
+        array $incrementalRateModels,
     ): Namespace_ {
         (new CurrentMasterData(
             $this->stack,
             $this->name,
             $rateModels,
+            $incrementalRateModels,
         ))->addDependsOn(
             $this,
         );

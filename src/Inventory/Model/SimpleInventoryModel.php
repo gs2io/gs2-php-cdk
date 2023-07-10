@@ -14,24 +14,22 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\Matchmaking\Model;
-use Gs2Cdk\Matchmaking\Model\Options\RatingModelOptions;
+namespace Gs2Cdk\Inventory\Model;
+use Gs2Cdk\Inventory\Model\SimpleItemModel;
+use Gs2Cdk\Inventory\Model\Options\SimpleInventoryModelOptions;
 
-class RatingModel {
+class SimpleInventoryModel {
     private string $name;
-    private int $initialValue;
-    private int $volatility;
+    private array $simpleItemModels;
     private ?string $metadata = null;
 
     public function __construct(
         string $name,
-        int $initialValue,
-        int $volatility,
-        ?RatingModelOptions $options = null,
+        array $simpleItemModels,
+        ?SimpleInventoryModelOptions $options = null,
     ) {
         $this->name = $name;
-        $this->initialValue = $initialValue;
-        $this->volatility = $volatility;
+        $this->simpleItemModels = $simpleItemModels;
         $this->metadata = $options?->metadata ?? null;
     }
 
@@ -45,11 +43,14 @@ class RatingModel {
         if ($this->metadata != null) {
             $properties["metadata"] = $this->metadata;
         }
-        if ($this->initialValue != null) {
-            $properties["initialValue"] = $this->initialValue;
-        }
-        if ($this->volatility != null) {
-            $properties["volatility"] = $this->volatility;
+        if ($this->simpleItemModels != null) {
+            $properties["simpleItemModels"] = array_map(
+                function ($v) {
+                    return $v->properties(
+                    );
+                },
+                $this->simpleItemModels
+            );
         }
 
         return $properties;

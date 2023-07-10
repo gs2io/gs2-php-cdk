@@ -19,13 +19,17 @@ namespace Gs2Cdk\Inventory\Ref;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Inventory\Ref\InventoryModelRef;
+use Gs2Cdk\Inventory\Ref\SimpleInventoryModelRef;
 use Gs2Cdk\Inventory\StampSheet\AddCapacityByUserId;
 use Gs2Cdk\Inventory\StampSheet\SetCapacityByUserId;
 use Gs2Cdk\Inventory\StampSheet\AcquireItemSetByUserId;
 use Gs2Cdk\Inventory\StampSheet\AddReferenceOfByUserId;
 use Gs2Cdk\Inventory\StampSheet\DeleteReferenceOfByUserId;
+use Gs2Cdk\Inventory\StampSheet\AcquireSimpleItemsByUserId;
+use Gs2Cdk\Inventory\Model\AcquireCount;
 use Gs2Cdk\Inventory\StampSheet\ConsumeItemSetByUserId;
 use Gs2Cdk\Inventory\StampSheet\VerifyReferenceOfByUserId;
+use Gs2Cdk\Inventory\StampSheet\ConsumeSimpleItemsByUserId;
 
 class NamespaceRef {
     private string $namespaceName;
@@ -40,6 +44,15 @@ class NamespaceRef {
         string $inventoryName,
     ): InventoryModelRef {
         return (new InventoryModelRef(
+            $this->namespaceName,
+            $inventoryName,
+        ));
+    }
+
+    public function simpleInventoryModel(
+        string $inventoryName,
+    ): SimpleInventoryModelRef {
+        return (new SimpleInventoryModelRef(
             $this->namespaceName,
             $inventoryName,
         ));
@@ -126,6 +139,19 @@ class NamespaceRef {
         ));
     }
 
+    public function acquireSimpleItems(
+        string $inventoryName,
+        array $acquireCounts,
+        ?string $userId = "#{userId}",
+    ): AcquireSimpleItemsByUserId {
+        return (new AcquireSimpleItemsByUserId(
+            $this->namespaceName,
+            $inventoryName,
+            $acquireCounts,
+            $userId,
+        ));
+    }
+
     public function consumeItemSet(
         string $inventoryName,
         string $itemName,
@@ -158,6 +184,19 @@ class NamespaceRef {
             $itemSetName,
             $referenceOf,
             $verifyType,
+            $userId,
+        ));
+    }
+
+    public function consumeSimpleItems(
+        string $inventoryName,
+        array $consumeCounts,
+        ?string $userId = "#{userId}",
+    ): ConsumeSimpleItemsByUserId {
+        return (new ConsumeSimpleItemsByUserId(
+            $this->namespaceName,
+            $inventoryName,
+            $consumeCounts,
             $userId,
         ));
     }

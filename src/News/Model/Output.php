@@ -14,25 +14,23 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\Matchmaking\Model;
-use Gs2Cdk\Matchmaking\Model\Options\RatingModelOptions;
+namespace Gs2Cdk\News\Model;
+use Gs2Cdk\News\Model\Options\OutputOptions;
 
-class RatingModel {
+class Output {
     private string $name;
-    private int $initialValue;
-    private int $volatility;
-    private ?string $metadata = null;
+    private string $text;
+    private int $createdAt;
 
     public function __construct(
         string $name,
-        int $initialValue,
-        int $volatility,
-        ?RatingModelOptions $options = null,
+        string $text,
+        int $createdAt,
+        ?OutputOptions $options = null,
     ) {
         $this->name = $name;
-        $this->initialValue = $initialValue;
-        $this->volatility = $volatility;
-        $this->metadata = $options?->metadata ?? null;
+        $this->text = $text;
+        $this->createdAt = $createdAt;
     }
 
     public function properties(
@@ -42,14 +40,11 @@ class RatingModel {
         if ($this->name != null) {
             $properties["name"] = $this->name;
         }
-        if ($this->metadata != null) {
-            $properties["metadata"] = $this->metadata;
+        if ($this->text != null) {
+            $properties["text"] = $this->text;
         }
-        if ($this->initialValue != null) {
-            $properties["initialValue"] = $this->initialValue;
-        }
-        if ($this->volatility != null) {
-            $properties["volatility"] = $this->volatility;
+        if ($this->createdAt != null) {
+            $properties["createdAt"] = $this->createdAt;
         }
 
         return $properties;

@@ -14,38 +14,37 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\Formation\Model;
-use Gs2Cdk\Core\Model\Config;
-use Gs2Cdk\Formation\Model\Options\AcquireActionConfigOptions;
+namespace Gs2Cdk\News\Model;
+use Gs2Cdk\News\Model\Options\ContentOptions;
 
-class AcquireActionConfig {
-    private string $name;
-    private ?array $config = null;
+class Content {
+    private string $section;
+    private string $content;
+    private string $frontMatter;
 
     public function __construct(
-        string $name,
-        ?AcquireActionConfigOptions $options = null,
+        string $section,
+        string $content,
+        string $frontMatter,
+        ?ContentOptions $options = null,
     ) {
-        $this->name = $name;
-        $this->config = $options?->config ?? null;
+        $this->section = $section;
+        $this->content = $content;
+        $this->frontMatter = $frontMatter;
     }
 
     public function properties(
     ): array {
         $properties = [];
 
-        if ($this->name != null) {
-            $properties["name"] = $this->name?->toString(
-            );
+        if ($this->section != null) {
+            $properties["section"] = $this->section;
         }
-        if ($this->config != null) {
-            $properties["config"] = array_map(
-                function ($v) {
-                    return $v->properties(
-                    );
-                },
-                $this->config
-            );
+        if ($this->content != null) {
+            $properties["content"] = $this->content;
+        }
+        if ($this->frontMatter != null) {
+            $properties["frontMatter"] = $this->frontMatter;
         }
 
         return $properties;

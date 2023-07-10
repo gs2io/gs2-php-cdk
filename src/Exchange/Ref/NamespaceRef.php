@@ -19,8 +19,11 @@ namespace Gs2Cdk\Exchange\Ref;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Exchange\Ref\RateModelRef;
+use Gs2Cdk\Exchange\Ref\IncrementalRateModelRef;
 use Gs2Cdk\Exchange\StampSheet\ExchangeByUserId;
 use Gs2Cdk\Exchange\Model\Array;
+use Gs2Cdk\Exchange\StampSheet\IncrementalExchangeByUserId;
+use Gs2Cdk\Exchange\StampSheet\UnlockIncrementalExchangeByUserId;
 use Gs2Cdk\Exchange\StampSheet\CreateAwaitByUserId;
 use Gs2Cdk\Exchange\StampSheet\DeleteAwaitByUserId;
 
@@ -42,6 +45,15 @@ class NamespaceRef {
         ));
     }
 
+    public function incrementalRateModel(
+        string $rateName,
+    ): IncrementalRateModelRef {
+        return (new IncrementalRateModelRef(
+            $this->namespaceName,
+            $rateName,
+        ));
+    }
+
     public function exchange(
         string $rateName,
         int $count,
@@ -53,6 +65,34 @@ class NamespaceRef {
             $rateName,
             $count,
             $config,
+            $userId,
+        ));
+    }
+
+    public function incrementalExchange(
+        string $rateName,
+        int $count,
+        ?array $config = null,
+        ?string $userId = "#{userId}",
+    ): IncrementalExchangeByUserId {
+        return (new IncrementalExchangeByUserId(
+            $this->namespaceName,
+            $rateName,
+            $count,
+            $config,
+            $userId,
+        ));
+    }
+
+    public function unlockIncrementalExchange(
+        string $rateName,
+        string $lockTransactionId,
+        ?string $userId = "#{userId}",
+    ): UnlockIncrementalExchangeByUserId {
+        return (new UnlockIncrementalExchangeByUserId(
+            $this->namespaceName,
+            $rateName,
+            $lockTransactionId,
             $userId,
         ));
     }

@@ -27,6 +27,7 @@ class NamespaceCreateGatheringTriggerTypeIsNoneOptions {
     public ?NotificationSetting $joinNotification;
     public ?NotificationSetting $leaveNotification;
     public ?NotificationSetting $completeNotification;
+    public ?NotificationSetting $changeRatingNotification;
     public ?LogSetting $logSetting;
     
     public function __construct(
@@ -35,6 +36,7 @@ class NamespaceCreateGatheringTriggerTypeIsNoneOptions {
         ?NotificationSetting $joinNotification = null,
         ?NotificationSetting $leaveNotification = null,
         ?NotificationSetting $completeNotification = null,
+        ?NotificationSetting $changeRatingNotification = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
@@ -42,5 +44,6 @@ class NamespaceCreateGatheringTriggerTypeIsNoneOptions {
         $this->joinNotification = $joinNotification;
         $this->leaveNotification = $leaveNotification;
         $this->completeNotification = $completeNotification;
+        $this->changeRatingNotification = $changeRatingNotification;
         $this->logSetting = $logSetting;
     }}

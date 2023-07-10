@@ -14,64 +14,57 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\Formation\Ref;
+namespace Gs2Cdk\Inventory\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
-use Gs2Cdk\Formation\StampSheet\AddMoldCapacityByUserId;
-use Gs2Cdk\Formation\StampSheet\SetMoldCapacityByUserId;
-use Gs2Cdk\Formation\StampSheet\AcquireActionsToFormProperties;
-use Gs2Cdk\Core\Model\AcquireAction;
-use Gs2Cdk\Formation\Model\AcquireActionConfig;
+use Gs2Cdk\Inventory\Ref\SimpleItemModelRef;
+use Gs2Cdk\Inventory\StampSheet\AcquireSimpleItemsByUserId;
+use Gs2Cdk\Inventory\Model\AcquireCount;
+use Gs2Cdk\Inventory\StampSheet\ConsumeSimpleItemsByUserId;
 
-class MoldModelRef {
+class SimpleInventoryModelRef {
     private string $namespaceName;
-    private string $moldName;
+    private string $inventoryName;
 
     public function __construct(
         string $namespaceName,
-        string $moldName,
+        string $inventoryName,
     ) {
         $this->namespaceName = $namespaceName;
-        $this->moldName = $moldName;
+        $this->inventoryName = $inventoryName;
     }
 
-    public function addMoldCapacity(
-        int $capacity,
-        ?string $userId = "#{userId}",
-    ): AddMoldCapacityByUserId {
-        return (new AddMoldCapacityByUserId(
+    public function simpleItemModel(
+        string $itemName,
+    ): SimpleItemModelRef {
+        return (new SimpleItemModelRef(
             $this->namespaceName,
-            $this->moldName,
-            $capacity,
+            $this->inventoryName,
+            $itemName,
+        ));
+    }
+
+    public function acquireSimpleItems(
+        array $acquireCounts,
+        ?string $userId = "#{userId}",
+    ): AcquireSimpleItemsByUserId {
+        return (new AcquireSimpleItemsByUserId(
+            $this->namespaceName,
+            $this->inventoryName,
+            $acquireCounts,
             $userId,
         ));
     }
 
-    public function setMoldCapacity(
-        int $capacity,
+    public function consumeSimpleItems(
+        array $consumeCounts,
         ?string $userId = "#{userId}",
-    ): SetMoldCapacityByUserId {
-        return (new SetMoldCapacityByUserId(
+    ): ConsumeSimpleItemsByUserId {
+        return (new ConsumeSimpleItemsByUserId(
             $this->namespaceName,
-            $this->moldName,
-            $capacity,
-            $userId,
-        ));
-    }
-
-    public function acquireActionsToFormProperties(
-        int $index,
-        AcquireAction $acquireAction,
-        ?array $config = null,
-        ?string $userId = "#{userId}",
-    ): AcquireActionsToFormProperties {
-        return (new AcquireActionsToFormProperties(
-            $this->namespaceName,
-            $this->moldName,
-            $index,
-            $acquireAction,
-            $config,
+            $this->inventoryName,
+            $consumeCounts,
             $userId,
         ));
     }
@@ -89,11 +82,11 @@ class MoldModelRef {
                 GetAttr::ownerId(
                 )->str(
                 ),
-                "formation",
+                "inventory",
                 $this->namespaceName,
+                "simple",
                 "model",
-                "mold",
-                $this->moldName,
+                $this->inventoryName,
             ],
         ))->str(
         );

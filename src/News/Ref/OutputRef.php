@@ -18,15 +18,20 @@ namespace Gs2Cdk\News\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
-use Gs2Cdk\News\Ref\ProgressRef;
 
-class NamespaceRef {
+class OutputRef {
     private string $namespaceName;
+    private string $uploadToken;
+    private string $outputName;
 
     public function __construct(
         string $namespaceName,
+        string $uploadToken,
+        string $outputName,
     ) {
         $this->namespaceName = $namespaceName;
+        $this->uploadToken = $uploadToken;
+        $this->outputName = $outputName;
     }
 
     public function grn(
@@ -44,6 +49,10 @@ class NamespaceRef {
                 ),
                 "news",
                 $this->namespaceName,
+                "progress",
+                $this->uploadToken,
+                "output",
+                $this->outputName,
             ],
         ))->str(
         );

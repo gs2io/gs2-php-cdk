@@ -25,6 +25,7 @@ use Gs2Cdk\Core\Model\LogSetting;
 use Gs2Cdk\Inventory\Ref\NamespaceRef;
 use Gs2Cdk\Inventory\Model\CurrentMasterData;
 use Gs2Cdk\Inventory\Model\InventoryModel;
+use Gs2Cdk\Inventory\Model\SimpleInventoryModel;
 
 use Gs2Cdk\Inventory\Model\Options\NamespaceOptions;
 
@@ -117,11 +118,13 @@ class Namespace_ extends CdkResource {
 
     public function masterData(
         array $inventoryModels,
+        array $simpleInventoryModels,
     ): Namespace_ {
         (new CurrentMasterData(
             $this->stack,
             $this->name,
             $inventoryModels,
+            $simpleInventoryModels,
         ))->addDependsOn(
             $this,
         );

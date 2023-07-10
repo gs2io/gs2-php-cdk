@@ -22,7 +22,6 @@ use Gs2Cdk\Schedule\Model\Enum\EventRepeatEndDayOfWeek;
 
 class EventOptions {
     public ?string $metadata;
-    public ?EventRepeatType $repeatType;
     public ?int $absoluteBegin;
     public ?int $absoluteEnd;
     public ?int $repeatBeginDayOfMonth;
@@ -32,11 +31,9 @@ class EventOptions {
     public ?int $repeatBeginHour;
     public ?int $repeatEndHour;
     public ?string $relativeTriggerName;
-    public ?int $relativeDuration;
     
     public function __construct(
         ?string $metadata = null,
-        ?EventRepeatType $repeatType = null,
         ?int $absoluteBegin = null,
         ?int $absoluteEnd = null,
         ?int $repeatBeginDayOfMonth = null,
@@ -46,10 +43,8 @@ class EventOptions {
         ?int $repeatBeginHour = null,
         ?int $repeatEndHour = null,
         ?string $relativeTriggerName = null,
-        ?int $relativeDuration = null,
     ) {
         $this->metadata = $metadata;
-        $this->repeatType = $repeatType;
         $this->absoluteBegin = $absoluteBegin;
         $this->absoluteEnd = $absoluteEnd;
         $this->repeatBeginDayOfMonth = $repeatBeginDayOfMonth;
@@ -59,6 +54,5 @@ class EventOptions {
         $this->repeatBeginHour = $repeatBeginHour;
         $this->repeatEndHour = $repeatEndHour;
         $this->relativeTriggerName = $relativeTriggerName;
-        $this->relativeDuration = $relativeDuration;
     }}
 

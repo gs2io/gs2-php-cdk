@@ -22,32 +22,38 @@ class CategoryModelOptions {
     public ?string $metadata;
     public ?int $minimumValue;
     public ?int $maximumValue;
+    public ?bool $sum;
     public ?int $calculateFixedTimingHour;
     public ?int $calculateFixedTimingMinute;
     public ?int $calculateIntervalMinutes;
     public ?string $entryPeriodEventId;
     public ?string $accessPeriodEventId;
+    public ?array $ignoreUserIds;
     public ?string $generation;
     
     public function __construct(
         ?string $metadata = null,
         ?int $minimumValue = null,
         ?int $maximumValue = null,
+        ?bool $sum = null,
         ?int $calculateFixedTimingHour = null,
         ?int $calculateFixedTimingMinute = null,
         ?int $calculateIntervalMinutes = null,
         ?string $entryPeriodEventId = null,
         ?string $accessPeriodEventId = null,
+        ?array $ignoreUserIds = null,
         ?string $generation = null,
     ) {
         $this->metadata = $metadata;
         $this->minimumValue = $minimumValue;
         $this->maximumValue = $maximumValue;
+        $this->sum = $sum;
         $this->calculateFixedTimingHour = $calculateFixedTimingHour;
         $this->calculateFixedTimingMinute = $calculateFixedTimingMinute;
         $this->calculateIntervalMinutes = $calculateIntervalMinutes;
         $this->entryPeriodEventId = $entryPeriodEventId;
         $this->accessPeriodEventId = $accessPeriodEventId;
+        $this->ignoreUserIds = $ignoreUserIds;
         $this->generation = $generation;
     }}
 

@@ -13,38 +13,21 @@
  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
+ *
+ * deny overwrite
  */
-namespace Gs2Cdk\Showcase\Ref;
+namespace Gs2Cdk\Lottery\Model\Options;
+use Gs2Cdk\Lottery\Model\Enum\LotteryModelMode;
+use Gs2Cdk\Lottery\Model\Enum\LotteryModelMethod;
 
-use Gs2Cdk\Core\Func\GetAttr;
-use Gs2Cdk\Core\Func\Join;
-
-class NamespaceRef {
-    private string $namespaceName;
+class LotteryModelMethodIsPrizeTableOptions {
+    public ?string $metadata;
+    public ?string $prizeTableName;
 
     public function __construct(
-        string $namespaceName,
+        ?string $metadata = null,
+        ?string $prizeTableName = null,
     ) {
-        $this->namespaceName = $namespaceName;
-    }
-
-    public function grn(
-    ): string {
-        return (new Join(
-            ":",
-            [
-                "grn",
-                "gs2",
-                GetAttr::region(
-                )->str(
-                ),
-                GetAttr::ownerId(
-                )->str(
-                ),
-                "showcase",
-                $this->namespaceName,
-            ],
-        ))->str(
-        );
-    }
-}
+        $this->metadata = $metadata;
+        $this->prizeTableName = $prizeTableName;
+    }}

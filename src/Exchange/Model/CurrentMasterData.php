@@ -19,16 +19,19 @@ namespace Gs2Cdk\Exchange\Model;
 use Gs2Cdk\Core\Model\CdkResource;
 use Gs2Cdk\Core\Model\Stack;
 use Gs2Cdk\Exchange\Model\RateModel;
+use Gs2Cdk\Exchange\Model\IncrementalRateModel;
 
 class CurrentMasterData extends CdkResource {
     private string $version= "2019-08-19";
     private string $namespaceName;
     private array $rateModels;
+    private array $incrementalRateModels;
 
     public function __construct(
         Stack $stack,
         string $namespaceName,
         array $rateModels,
+        array $incrementalRateModels,
     ) {
         parent::__construct(
             "Exchange_CurrentRateMaster_" . $namespaceName
@@ -36,6 +39,7 @@ class CurrentMasterData extends CdkResource {
 
         $this->namespaceName = $namespaceName;
         $this->rateModels = $rateModels;
+        $this->incrementalRateModels = $incrementalRateModels;
         $stack->addResource(
             $this,
         );
@@ -64,6 +68,15 @@ class CurrentMasterData extends CdkResource {
                     );
                 },
                 $this->rateModels
+            );
+        }
+        if ($this->incrementalRateModels != null) {
+            $settings["incrementalRateModels"] = array_map(
+                function ($v) {
+                    return $v->properties(
+                    );
+                },
+                $this->incrementalRateModels
             );
         }
 

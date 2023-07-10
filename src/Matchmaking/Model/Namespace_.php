@@ -46,6 +46,7 @@ class Namespace_ extends CdkResource {
     private ?NotificationSetting $joinNotification = null;
     private ?NotificationSetting $leaveNotification = null;
     private ?NotificationSetting $completeNotification = null;
+    private ?NotificationSetting $changeRatingNotification = null;
     private ?LogSetting $logSetting = null;
 
     public function __construct(
@@ -73,6 +74,7 @@ class Namespace_ extends CdkResource {
         $this->joinNotification = $options?->joinNotification ?? null;
         $this->leaveNotification = $options?->leaveNotification ?? null;
         $this->completeNotification = $options?->completeNotification ?? null;
+        $this->changeRatingNotification = $options?->changeRatingNotification ?? null;
         $this->logSetting = $options?->logSetting ?? null;
         $stack->addResource(
             $this,
@@ -135,6 +137,10 @@ class Namespace_ extends CdkResource {
         }
         if ($this->completeNotification != null) {
             $properties["CompleteNotification"] = $this->completeNotification?->properties(
+            );
+        }
+        if ($this->changeRatingNotification != null) {
+            $properties["ChangeRatingNotification"] = $this->changeRatingNotification?->properties(
             );
         }
         if ($this->logSetting != null) {

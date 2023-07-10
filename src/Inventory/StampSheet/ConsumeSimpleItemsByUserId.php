@@ -14,38 +14,30 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\News\Ref;
+namespace Gs2Cdk\Inventory\StampSheet;
 
-use Gs2Cdk\Core\Func\GetAttr;
-use Gs2Cdk\Core\Func\Join;
-use Gs2Cdk\News\Ref\ProgressRef;
+use Gs2Cdk\Core\Model\AcquireAction;
+use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Inventory\Model\ConsumeCount;
 
-class NamespaceRef {
-    private string $namespaceName;
+class ConsumeSimpleItemsByUserId extends ConsumeAction {
 
     public function __construct(
         string $namespaceName,
+        string $inventoryName,
+        array $consumeCounts,
+        ?string $userId = "#{userId}",
     ) {
-        $this->namespaceName = $namespaceName;
-    }
+        $properties = [];
 
-    public function grn(
-    ): string {
-        return (new Join(
-            ":",
-            [
-                "grn",
-                "gs2",
-                GetAttr::region(
-                )->str(
-                ),
-                GetAttr::ownerId(
-                )->str(
-                ),
-                "news",
-                $this->namespaceName,
-            ],
-        ))->str(
+        $properties["namespaceName"] = $namespaceName;
+        $properties["inventoryName"] = $inventoryName;
+        $properties["consumeCounts"] = $consumeCounts;
+        $properties["userId"] = $userId;
+
+        parent::__construct(
+            "Gs2Inventory:ConsumeSimpleItemsByUserId",
+            $properties,
         );
     }
 }

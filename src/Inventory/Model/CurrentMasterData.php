@@ -19,16 +19,19 @@ namespace Gs2Cdk\Inventory\Model;
 use Gs2Cdk\Core\Model\CdkResource;
 use Gs2Cdk\Core\Model\Stack;
 use Gs2Cdk\Inventory\Model\InventoryModel;
+use Gs2Cdk\Inventory\Model\SimpleInventoryModel;
 
 class CurrentMasterData extends CdkResource {
     private string $version= "2019-02-05";
     private string $namespaceName;
     private array $inventoryModels;
+    private array $simpleInventoryModels;
 
     public function __construct(
         Stack $stack,
         string $namespaceName,
         array $inventoryModels,
+        array $simpleInventoryModels,
     ) {
         parent::__construct(
             "Inventory_CurrentItemModelMaster_" . $namespaceName
@@ -36,6 +39,7 @@ class CurrentMasterData extends CdkResource {
 
         $this->namespaceName = $namespaceName;
         $this->inventoryModels = $inventoryModels;
+        $this->simpleInventoryModels = $simpleInventoryModels;
         $stack->addResource(
             $this,
         );
@@ -64,6 +68,15 @@ class CurrentMasterData extends CdkResource {
                     );
                 },
                 $this->inventoryModels
+            );
+        }
+        if ($this->simpleInventoryModels != null) {
+            $settings["simpleInventoryModels"] = array_map(
+                function ($v) {
+                    return $v->properties(
+                    );
+                },
+                $this->simpleInventoryModels
             );
         }
 

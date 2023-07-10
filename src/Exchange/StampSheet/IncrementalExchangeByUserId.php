@@ -14,38 +14,32 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\News\Ref;
+namespace Gs2Cdk\Exchange\StampSheet;
 
-use Gs2Cdk\Core\Func\GetAttr;
-use Gs2Cdk\Core\Func\Join;
-use Gs2Cdk\News\Ref\ProgressRef;
+use Gs2Cdk\Core\Model\AcquireAction;
+use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Core\Model\Config;
 
-class NamespaceRef {
-    private string $namespaceName;
+class IncrementalExchangeByUserId extends AcquireAction {
 
     public function __construct(
         string $namespaceName,
+        string $rateName,
+        int $count,
+        ?array $config = null,
+        ?string $userId = "#{userId}",
     ) {
-        $this->namespaceName = $namespaceName;
-    }
+        $properties = [];
 
-    public function grn(
-    ): string {
-        return (new Join(
-            ":",
-            [
-                "grn",
-                "gs2",
-                GetAttr::region(
-                )->str(
-                ),
-                GetAttr::ownerId(
-                )->str(
-                ),
-                "news",
-                $this->namespaceName,
-            ],
-        ))->str(
+        $properties["namespaceName"] = $namespaceName;
+        $properties["rateName"] = $rateName;
+        $properties["count"] = $count;
+        $properties["config"] = $config;
+        $properties["userId"] = $userId;
+
+        parent::__construct(
+            "Gs2Exchange:IncrementalExchangeByUserId",
+            $properties,
         );
     }
 }

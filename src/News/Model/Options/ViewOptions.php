@@ -14,37 +14,18 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\Showcase\Ref;
+namespace Gs2Cdk\News\Model\Options;
+use Gs2Cdk\News\Model\Content;
 
-use Gs2Cdk\Core\Func\GetAttr;
-use Gs2Cdk\Core\Func\Join;
-
-class NamespaceRef {
-    private string $namespaceName;
-
+class ViewOptions {
+    public ?array $contents;
+    public ?array $removeContents;
+    
     public function __construct(
-        string $namespaceName,
+        ?array $contents = null,
+        ?array $removeContents = null,
     ) {
-        $this->namespaceName = $namespaceName;
-    }
+        $this->contents = $contents;
+        $this->removeContents = $removeContents;
+    }}
 
-    public function grn(
-    ): string {
-        return (new Join(
-            ":",
-            [
-                "grn",
-                "gs2",
-                GetAttr::region(
-                )->str(
-                ),
-                GetAttr::ownerId(
-                )->str(
-                ),
-                "showcase",
-                $this->namespaceName,
-            ],
-        ))->str(
-        );
-    }
-}

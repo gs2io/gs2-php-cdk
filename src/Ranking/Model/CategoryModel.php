@@ -29,11 +29,13 @@ class CategoryModel {
     private ?string $metadata = null;
     private ?int $minimumValue = null;
     private ?int $maximumValue = null;
+    private ?bool $sum = null;
     private ?int $calculateFixedTimingHour = null;
     private ?int $calculateFixedTimingMinute = null;
     private ?int $calculateIntervalMinutes = null;
     private ?string $entryPeriodEventId = null;
     private ?string $accessPeriodEventId = null;
+    private ?array $ignoreUserIds = null;
     private ?string $generation = null;
 
     public function __construct(
@@ -50,11 +52,13 @@ class CategoryModel {
         $this->metadata = $options?->metadata ?? null;
         $this->minimumValue = $options?->minimumValue ?? null;
         $this->maximumValue = $options?->maximumValue ?? null;
+        $this->sum = $options?->sum ?? null;
         $this->calculateFixedTimingHour = $options?->calculateFixedTimingHour ?? null;
         $this->calculateFixedTimingMinute = $options?->calculateFixedTimingMinute ?? null;
         $this->calculateIntervalMinutes = $options?->calculateIntervalMinutes ?? null;
         $this->entryPeriodEventId = $options?->entryPeriodEventId ?? null;
         $this->accessPeriodEventId = $options?->accessPeriodEventId ?? null;
+        $this->ignoreUserIds = $options?->ignoreUserIds ?? null;
         $this->generation = $options?->generation ?? null;
     }
 
@@ -79,6 +83,7 @@ class CategoryModel {
                 calculateFixedTimingMinute: $options?->calculateFixedTimingMinute,
                 entryPeriodEventId: $options?->entryPeriodEventId,
                 accessPeriodEventId: $options?->accessPeriodEventId,
+                ignoreUserIds: $options?->ignoreUserIds,
                 generation: $options?->generation,
             ),
         ));
@@ -103,6 +108,7 @@ class CategoryModel {
                 calculateFixedTimingMinute: $options?->calculateFixedTimingMinute,
                 entryPeriodEventId: $options?->entryPeriodEventId,
                 accessPeriodEventId: $options?->accessPeriodEventId,
+                ignoreUserIds: $options?->ignoreUserIds,
                 generation: $options?->generation,
             ),
         ));
@@ -135,6 +141,9 @@ class CategoryModel {
         if ($this->uniqueByUserId != null) {
             $properties["uniqueByUserId"] = $this->uniqueByUserId;
         }
+        if ($this->sum != null) {
+            $properties["sum"] = $this->sum;
+        }
         if ($this->calculateFixedTimingHour != null) {
             $properties["calculateFixedTimingHour"] = $this->calculateFixedTimingHour;
         }
@@ -149,6 +158,9 @@ class CategoryModel {
         }
         if ($this->accessPeriodEventId != null) {
             $properties["accessPeriodEventId"] = $this->accessPeriodEventId;
+        }
+        if ($this->ignoreUserIds != null) {
+            $properties["ignoreUserIds"] = $this->ignoreUserIds;
         }
         if ($this->generation != null) {
             $properties["generation"] = $this->generation;

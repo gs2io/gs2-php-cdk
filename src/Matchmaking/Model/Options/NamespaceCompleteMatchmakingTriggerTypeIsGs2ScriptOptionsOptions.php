@@ -27,6 +27,7 @@ class NamespaceCompleteMatchmakingTriggerTypeIsGs2ScriptOptions {
     public ?NotificationSetting $joinNotification;
     public ?NotificationSetting $leaveNotification;
     public ?NotificationSetting $completeNotification;
+    public ?NotificationSetting $changeRatingNotification;
     public ?LogSetting $logSetting;
     
     public function __construct(
@@ -35,6 +36,7 @@ class NamespaceCompleteMatchmakingTriggerTypeIsGs2ScriptOptions {
         ?NotificationSetting $joinNotification = null,
         ?NotificationSetting $leaveNotification = null,
         ?NotificationSetting $completeNotification = null,
+        ?NotificationSetting $changeRatingNotification = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
@@ -42,5 +44,6 @@ class NamespaceCompleteMatchmakingTriggerTypeIsGs2ScriptOptions {
         $this->joinNotification = $joinNotification;
         $this->leaveNotification = $leaveNotification;
         $this->completeNotification = $completeNotification;
+        $this->changeRatingNotification = $changeRatingNotification;
         $this->logSetting = $logSetting;
     }}

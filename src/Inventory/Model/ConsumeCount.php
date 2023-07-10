@@ -14,38 +14,31 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\Formation\Model;
-use Gs2Cdk\Core\Model\Config;
-use Gs2Cdk\Formation\Model\Options\AcquireActionConfigOptions;
+namespace Gs2Cdk\Inventory\Model;
+use Gs2Cdk\Inventory\Model\Options\ConsumeCountOptions;
 
-class AcquireActionConfig {
-    private string $name;
-    private ?array $config = null;
+class ConsumeCount {
+    private string $itemName;
+    private int $count;
 
     public function __construct(
-        string $name,
-        ?AcquireActionConfigOptions $options = null,
+        string $itemName,
+        int $count,
+        ?ConsumeCountOptions $options = null,
     ) {
-        $this->name = $name;
-        $this->config = $options?->config ?? null;
+        $this->itemName = $itemName;
+        $this->count = $count;
     }
 
     public function properties(
     ): array {
         $properties = [];
 
-        if ($this->name != null) {
-            $properties["name"] = $this->name?->toString(
-            );
+        if ($this->itemName != null) {
+            $properties["itemName"] = $this->itemName;
         }
-        if ($this->config != null) {
-            $properties["config"] = array_map(
-                function ($v) {
-                    return $v->properties(
-                    );
-                },
-                $this->config
-            );
+        if ($this->count != null) {
+            $properties["count"] = $this->count;
         }
 
         return $properties;

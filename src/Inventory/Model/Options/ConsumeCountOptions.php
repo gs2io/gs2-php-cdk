@@ -14,15 +14,11 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\Lottery\Model\Options;
-use Gs2Cdk\Lottery\Model\Enum\LotteryModelMode;
-use Gs2Cdk\Lottery\Model\Enum\LotteryModelMethod;
+namespace Gs2Cdk\Inventory\Model\Options;
 
-class LotteryModelMethodIsPrizeTableOptions {
-    public ?string $metadata;
+class ConsumeCountOptions {
     
     public function __construct(
-        ?string $metadata = null,
     ) {
-        $this->metadata = $metadata;
     }}
+

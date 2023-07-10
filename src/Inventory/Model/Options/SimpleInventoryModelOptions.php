@@ -14,37 +14,15 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\Showcase\Ref;
+namespace Gs2Cdk\Inventory\Model\Options;
+use Gs2Cdk\Inventory\Model\SimpleItemModel;
 
-use Gs2Cdk\Core\Func\GetAttr;
-use Gs2Cdk\Core\Func\Join;
-
-class NamespaceRef {
-    private string $namespaceName;
-
+class SimpleInventoryModelOptions {
+    public ?string $metadata;
+    
     public function __construct(
-        string $namespaceName,
+        ?string $metadata = null,
     ) {
-        $this->namespaceName = $namespaceName;
-    }
+        $this->metadata = $metadata;
+    }}
 
-    public function grn(
-    ): string {
-        return (new Join(
-            ":",
-            [
-                "grn",
-                "gs2",
-                GetAttr::region(
-                )->str(
-                ),
-                GetAttr::ownerId(
-                )->str(
-                ),
-                "showcase",
-                $this->namespaceName,
-            ],
-        ))->str(
-        );
-    }
-}
