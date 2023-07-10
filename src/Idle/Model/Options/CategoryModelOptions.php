@@ -14,24 +14,22 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
+namespace Gs2Cdk\Idle\Model\Options;
+use Gs2Cdk\Core\Model\AcquireAction;
+use Gs2Cdk\Idle\Model\AcquireActionList;
 
-namespace Gs2Cdk\Formation\Model\Enum;
+class CategoryModelOptions {
+    public ?string $metadata;
+    public ?string $idlePeriodScheduleId;
+    public ?string $receivePeriodScheduleId;
+    
+    public function __construct(
+        ?string $metadata = null,
+        ?string $idlePeriodScheduleId = null,
+        ?string $receivePeriodScheduleId = null,
+    ) {
+        $this->metadata = $metadata;
+        $this->idlePeriodScheduleId = $idlePeriodScheduleId;
+        $this->receivePeriodScheduleId = $receivePeriodScheduleId;
+    }}
 
-
-enum SlotWithSignaturePropertyType {
-    case GS2_INVENTORY;
-    case GS2_SIMPLE_INVENTORY;
-    case GS2_DICTIONARY;
-
-    public function toString(): String {
-        switch ($this) {
-            case self::GS2_INVENTORY:
-                return "gs2_inventory";
-            case self::GS2_SIMPLE_INVENTORY:
-                return "gs2_simple_inventory";
-            case self::GS2_DICTIONARY:
-                return "gs2_dictionary";
-        }
-        return "unknown";
-    }
-}
