@@ -1,3 +1,5 @@
+[⇒README in English](README-en.md)
+
 # gs2-php-cdk
 
 Game Server Services(https://gs2.io) の GS2-Deploy のテンプレートを PHP で生成するためのCDKです。
@@ -12,7 +14,6 @@ GS2は、ゲーム開発者の効率化を目指して生まれた汎用ゲー�
 さらに、ストーリー進行管理や所持品管理などの機能を提供し、ゲームの収益化やプレイヤーエンゲージメントの向上に貢献します。
 GS2は、オンライン機能をサポートし、ゲーム開発者がデータの分析や経済管理を容易に行えるようにすることで、ゲームの成功を支援します。
 
-
 ## Getting Started
 
 SDKを利用するには GS2 のクレデンシャルが必要です。
@@ -20,6 +21,6 @@ SDKを利用するには GS2 のクレデンシャルが必要です。
 
 ### 動作条件
 
-- PHP7.1+
+- PHP 8.1+
 
 [⇒GS2の利用を開始 - CDK](https://docs.gs2.io/ja/get_start/#cdk)
