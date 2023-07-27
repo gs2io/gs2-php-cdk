@@ -16,21 +16,27 @@
  *
  * deny overwrite
  */
-namespace Gs2Cdk\Script\Model;
+namespace Gs2Cdk\StateMachine\Model;
 
 use Gs2Cdk\Core\Model\CdkResource;
 use Gs2Cdk\Core\Model\Stack;
 use Gs2Cdk\Core\Func\GetAttr;
+use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
-use Gs2Cdk\Script\Ref\NamespaceRef;
+use Gs2Cdk\StateMachine\Integration\StateMachineDefinition;
+use Gs2Cdk\StateMachine\Ref\NamespaceRef;
 
-use Gs2Cdk\Script\Model\Options\NamespaceOptions;
+use Gs2Cdk\StateMachine\Model\Options\NamespaceOptions;
 
 class Namespace_ extends CdkResource {
     private Stack $stack;
     private string $name;
     private ?string $description = null;
+    private ?ScriptSetting $startScript = null;
+    private ?ScriptSetting $passScript = null;
+    private ?ScriptSetting $errorScript = null;
+    private ?int $lowestStateMachineVersion = null;
     private ?LogSetting $logSetting = null;
 
     public function __construct(
@@ -39,12 +45,16 @@ class Namespace_ extends CdkResource {
         ?NamespaceOptions $options = null,
     ) {
         parent::__construct(
-            "Script_Namespace_" . $name
+            "StateMachine_Namespace_" . $name
         );
 
         $this->stack = $stack;
         $this->name = $name;
         $this->description = $options?->description ?? null;
+        $this->startScript = $options?->startScript ?? null;
+        $this->passScript = $options?->passScript ?? null;
+        $this->errorScript = $options?->errorScript ?? null;
+        $this->lowestStateMachineVersion = $options?->lowestStateMachineVersion ?? null;
         $this->logSetting = $options?->logSetting ?? null;
         $stack->addResource(
             $this,
@@ -59,7 +69,7 @@ class Namespace_ extends CdkResource {
 
     public function resourceType(
     ): string {
-        return "GS2::Script::Namespace";
+        return "GS2::StateMachine::Namespace";
     }
 
     public function properties(
@@ -71,6 +81,21 @@ class Namespace_ extends CdkResource {
         }
         if ($this->description != null) {
             $properties["Description"] = $this->description;
+        }
+        if ($this->startScript != null) {
+            $properties["StartScript"] = $this->startScript?->properties(
+            );
+        }
+        if ($this->passScript != null) {
+            $properties["PassScript"] = $this->passScript?->properties(
+            );
+        }
+        if ($this->errorScript != null) {
+            $properties["ErrorScript"] = $this->errorScript?->properties(
+            );
+        }
+        if ($this->lowestStateMachineVersion != null) {
+            $properties["LowestStateMachineVersion"] = $this->lowestStateMachineVersion;
         }
         if ($this->logSetting != null) {
             $properties["LogSetting"] = $this->logSetting?->properties(
@@ -95,9 +120,21 @@ class Namespace_ extends CdkResource {
             "Item.NamespaceId",
         ));
     }
-
-    public function getName(
-    ): string {
-        return $this->name;
+    public function stateMachine(
+        \Gs2Cdk\Script\Model\Namespace_ $scriptNamespace,
+        StateMachineDefinition $definition
+    ) {
+        $definition->appendScripts(
+            $this->stack,
+            $scriptNamespace
+        );
+        $stateMachineMaster = new \Gs2Cdk\StateMachine\Model\StateMachineMaster(
+            $this->stack,
+            $this->name,
+            $definition->stateMachineName,
+            str_replace("{scriptNamespaceName}", $scriptNamespace->getName(), $definition->gsl())
+        );
+        $stateMachineMaster->addDependsOn($this);
     }
+
 }

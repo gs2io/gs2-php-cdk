@@ -16,36 +16,37 @@
  *
  * deny overwrite
  */
-namespace Gs2Cdk\Script\Model;
+namespace Gs2Cdk\StateMachine\Model;
 
 use Gs2Cdk\Core\Model\CdkResource;
 use Gs2Cdk\Core\Model\Stack;
 use Gs2Cdk\Core\Func\GetAttr;
-use Gs2Cdk\Core\Model\LogSetting;
 
-use Gs2Cdk\Script\Ref\NamespaceRef;
+use Gs2Cdk\StateMachine\Ref\StateMachineMasterRef;
 
-use Gs2Cdk\Script\Model\Options\NamespaceOptions;
+use Gs2Cdk\StateMachine\Model\Options\StateMachineMasterOptions;
 
-class Namespace_ extends CdkResource {
+class StateMachineMaster extends CdkResource {
     private Stack $stack;
-    private string $name;
-    private ?string $description = null;
-    private ?LogSetting $logSetting = null;
+    private string $namespaceName;
+    private string $mainStateMachineName;
+    private string $payload;
 
     public function __construct(
         Stack $stack,
-        string $name,
-        ?NamespaceOptions $options = null,
+        string $namespaceName,
+        string $mainStateMachineName,
+        string $payload,
+        ?StateMachineMasterOptions $options = null,
     ) {
         parent::__construct(
-            "Script_Namespace_" . $name
+            "StateMachine_StateMachineMaster_" . $namespaceName
         );
 
         $this->stack = $stack;
-        $this->name = $name;
-        $this->description = $options?->description ?? null;
-        $this->logSetting = $options?->logSetting ?? null;
+        $this->namespaceName = $namespaceName;
+        $this->mainStateMachineName = $mainStateMachineName;
+        $this->payload = $payload;
         $stack->addResource(
             $this,
         );
@@ -54,50 +55,46 @@ class Namespace_ extends CdkResource {
 
     public function alternateKeys(
     ) {
-        return "name";
+        return "version";
     }
 
     public function resourceType(
     ): string {
-        return "GS2::Script::Namespace";
+        return "GS2::StateMachine::StateMachineMaster";
     }
 
     public function properties(
     ): array {
         $properties = [];
 
-        if ($this->name != null) {
-            $properties["Name"] = $this->name;
+        if ($this->namespaceName != null) {
+            $properties["NamespaceName"] = $this->namespaceName;
         }
-        if ($this->description != null) {
-            $properties["Description"] = $this->description;
+        if ($this->mainStateMachineName != null) {
+            $properties["MainStateMachineName"] = $this->mainStateMachineName;
         }
-        if ($this->logSetting != null) {
-            $properties["LogSetting"] = $this->logSetting?->properties(
-            );
+        if ($this->payload != null) {
+            $properties["Payload"] = $this->payload;
         }
 
         return $properties;
     }
 
     public function ref(
-    ): NamespaceRef {
-        return (new NamespaceRef(
-            $this->name,
+        int $version,
+    ): StateMachineMasterRef {
+        return (new StateMachineMasterRef(
+            $this->namespaceName,
+            $version,
         ));
     }
 
-    public function getAttrNamespaceId(
+    public function getAttrStateMachineId(
     ): GetAttr {
         return (new GetAttr(
             null,
             null,
-            "Item.NamespaceId",
+            "Item.StateMachineId",
         ));
-    }
-
-    public function getName(
-    ): string {
-        return $this->name;
     }
 }
