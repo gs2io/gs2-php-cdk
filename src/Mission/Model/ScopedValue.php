@@ -21,18 +21,15 @@ use Gs2Cdk\Mission\Model\Enum\ScopedValueResetType;
 class ScopedValue {
     private ScopedValueResetType $resetType;
     private int $value;
-    private int $updatedAt;
     private ?int $nextResetAt = null;
 
     public function __construct(
         ScopedValueResetType $resetType,
         int $value,
-        int $updatedAt,
         ?ScopedValueOptions $options = null,
     ) {
         $this->resetType = $resetType;
         $this->value = $value;
-        $this->updatedAt = $updatedAt;
         $this->nextResetAt = $options?->nextResetAt ?? null;
     }
 
@@ -49,9 +46,6 @@ class ScopedValue {
         }
         if ($this->nextResetAt != null) {
             $properties["nextResetAt"] = $this->nextResetAt;
-        }
-        if ($this->updatedAt != null) {
-            $properties["updatedAt"] = $this->updatedAt;
         }
 
         return $properties;
