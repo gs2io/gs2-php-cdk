@@ -20,20 +20,14 @@ use Gs2Cdk\Lottery\Model\Options\PrizeLimitOptions;
 class PrizeLimit {
     private string $prizeId;
     private int $drawnCount;
-    private int $createdAt;
-    private int $updatedAt;
 
     public function __construct(
         string $prizeId,
         int $drawnCount,
-        int $createdAt,
-        int $updatedAt,
         ?PrizeLimitOptions $options = null,
     ) {
         $this->prizeId = $prizeId;
         $this->drawnCount = $drawnCount;
-        $this->createdAt = $createdAt;
-        $this->updatedAt = $updatedAt;
     }
 
     public function properties(
@@ -45,12 +39,6 @@ class PrizeLimit {
         }
         if ($this->drawnCount != null) {
             $properties["drawnCount"] = $this->drawnCount;
-        }
-        if ($this->createdAt != null) {
-            $properties["createdAt"] = $this->createdAt;
-        }
-        if ($this->updatedAt != null) {
-            $properties["updatedAt"] = $this->updatedAt;
         }
 
         return $properties;

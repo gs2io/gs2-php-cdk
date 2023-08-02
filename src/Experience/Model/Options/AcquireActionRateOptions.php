@@ -15,18 +15,10 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Experience\Model\Options;
-use Gs2Cdk\Experience\Model\Threshold;
-use Gs2Cdk\Experience\Model\AcquireActionRate;
 
-class ExperienceModelOptions {
-    public ?string $metadata;
-    public ?array $acquireActionRates;
+class AcquireActionRateOptions {
     
     public function __construct(
-        ?string $metadata = null,
-        ?array $acquireActionRates = null,
     ) {
-        $this->metadata = $metadata;
-        $this->acquireActionRates = $acquireActionRates;
     }}
 

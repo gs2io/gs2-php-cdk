@@ -14,19 +14,27 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\Experience\Model\Options;
-use Gs2Cdk\Experience\Model\Threshold;
-use Gs2Cdk\Experience\Model\AcquireActionRate;
+namespace Gs2Cdk\Showcase\StampSheet;
 
-class ExperienceModelOptions {
-    public ?string $metadata;
-    public ?array $acquireActionRates;
-    
+use Gs2Cdk\Core\Model\AcquireAction;
+use Gs2Cdk\Core\Model\ConsumeAction;
+
+class ForceReDrawByUserId extends AcquireAction {
+
     public function __construct(
-        ?string $metadata = null,
-        ?array $acquireActionRates = null,
+        string $namespaceName,
+        string $showcaseName,
+        ?string $userId = "#{userId}",
     ) {
-        $this->metadata = $metadata;
-        $this->acquireActionRates = $acquireActionRates;
-    }}
+        $properties = [];
 
+        $properties["namespaceName"] = $namespaceName;
+        $properties["showcaseName"] = $showcaseName;
+        $properties["userId"] = $userId;
+
+        parent::__construct(
+            "Gs2Showcase:ForceReDrawByUserId",
+            $properties,
+        );
+    }
+}

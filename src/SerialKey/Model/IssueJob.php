@@ -23,7 +23,6 @@ class IssueJob {
     private int $issuedCount;
     private int $issueRequestCount;
     private IssueJobStatus $status;
-    private int $createdAt;
     private ?string $metadata = null;
 
     public function __construct(
@@ -31,14 +30,12 @@ class IssueJob {
         int $issuedCount,
         int $issueRequestCount,
         IssueJobStatus $status,
-        int $createdAt,
         ?IssueJobOptions $options = null,
     ) {
         $this->name = $name;
         $this->issuedCount = $issuedCount;
         $this->issueRequestCount = $issueRequestCount;
         $this->status = $status;
-        $this->createdAt = $createdAt;
         $this->metadata = $options?->metadata ?? null;
     }
 
@@ -61,9 +58,6 @@ class IssueJob {
         if ($this->status != null) {
             $properties["status"] = $this->status?->toString(
             );
-        }
-        if ($this->createdAt != null) {
-            $properties["createdAt"] = $this->createdAt;
         }
 
         return $properties;

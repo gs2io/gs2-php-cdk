@@ -21,19 +21,16 @@ class JobResultBody {
     private int $tryNumber;
     private int $statusCode;
     private string $result;
-    private int $tryAt;
 
     public function __construct(
         int $tryNumber,
         int $statusCode,
         string $result,
-        int $tryAt,
         ?JobResultBodyOptions $options = null,
     ) {
         $this->tryNumber = $tryNumber;
         $this->statusCode = $statusCode;
         $this->result = $result;
-        $this->tryAt = $tryAt;
     }
 
     public function properties(
@@ -48,9 +45,6 @@ class JobResultBody {
         }
         if ($this->result != null) {
             $properties["result"] = $this->result;
-        }
-        if ($this->tryAt != null) {
-            $properties["tryAt"] = $this->tryAt;
         }
 
         return $properties;

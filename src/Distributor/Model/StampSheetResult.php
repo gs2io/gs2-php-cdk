@@ -23,8 +23,6 @@ class StampSheetResult {
     private string $userId;
     private string $transactionId;
     private AcquireAction $sheetRequest;
-    private int $createdAt;
-    private int $ttlAt;
     private ?array $taskRequests = null;
     private ?array $taskResults = null;
     private ?string $sheetResult = null;
@@ -34,15 +32,11 @@ class StampSheetResult {
         string $userId,
         string $transactionId,
         AcquireAction $sheetRequest,
-        int $createdAt,
-        int $ttlAt,
         ?StampSheetResultOptions $options = null,
     ) {
         $this->userId = $userId;
         $this->transactionId = $transactionId;
         $this->sheetRequest = $sheetRequest;
-        $this->createdAt = $createdAt;
-        $this->ttlAt = $ttlAt;
         $this->taskRequests = $options?->taskRequests ?? null;
         $this->taskResults = $options?->taskResults ?? null;
         $this->sheetResult = $options?->sheetResult ?? null;
@@ -80,12 +74,6 @@ class StampSheetResult {
         }
         if ($this->nextTransactionId != null) {
             $properties["nextTransactionId"] = $this->nextTransactionId;
-        }
-        if ($this->createdAt != null) {
-            $properties["createdAt"] = $this->createdAt;
-        }
-        if ($this->ttlAt != null) {
-            $properties["ttlAt"] = $this->ttlAt;
         }
 
         return $properties;

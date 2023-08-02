@@ -16,6 +16,7 @@
  */
 namespace Gs2Cdk\Experience\Model;
 use Gs2Cdk\Experience\Model\Threshold;
+use Gs2Cdk\Experience\Model\AcquireActionRate;
 use Gs2Cdk\Experience\Model\Options\ExperienceModelOptions;
 
 class ExperienceModel {
@@ -25,6 +26,7 @@ class ExperienceModel {
     private int $maxRankCap;
     private Threshold $rankThreshold;
     private ?string $metadata = null;
+    private ?array $acquireActionRates = null;
 
     public function __construct(
         string $name,
@@ -40,6 +42,7 @@ class ExperienceModel {
         $this->maxRankCap = $maxRankCap;
         $this->rankThreshold = $rankThreshold;
         $this->metadata = $options?->metadata ?? null;
+        $this->acquireActionRates = $options?->acquireActionRates ?? null;
     }
 
     public function properties(
@@ -63,6 +66,15 @@ class ExperienceModel {
         }
         if ($this->rankThreshold != null) {
             $properties["rankThreshold"] = $this->rankThreshold?->properties(
+            );
+        }
+        if ($this->acquireActionRates != null) {
+            $properties["acquireActionRates"] = array_map(
+                function ($v) {
+                    return $v->properties(
+                    );
+                },
+                $this->acquireActionRates
             );
         }
 

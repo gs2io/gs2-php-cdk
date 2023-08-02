@@ -18,6 +18,8 @@ namespace Gs2Cdk\Showcase\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
+use Gs2Cdk\Showcase\StampSheet\ForceReDrawByUserId;
+use Gs2Cdk\Showcase\StampSheet\IncrementPurchaseCountByUserId;
 
 class NamespaceRef {
     private string $namespaceName;
@@ -26,6 +28,32 @@ class NamespaceRef {
         string $namespaceName,
     ) {
         $this->namespaceName = $namespaceName;
+    }
+
+    public function forceReDraw(
+        string $showcaseName,
+        ?string $userId = "#{userId}",
+    ): ForceReDrawByUserId {
+        return (new ForceReDrawByUserId(
+            $this->namespaceName,
+            $showcaseName,
+            $userId,
+        ));
+    }
+
+    public function incrementPurchaseCount(
+        string $showcaseName,
+        string $displayItemName,
+        int $count,
+        ?string $userId = "#{userId}",
+    ): IncrementPurchaseCountByUserId {
+        return (new IncrementPurchaseCountByUserId(
+            $this->namespaceName,
+            $showcaseName,
+            $displayItemName,
+            $count,
+            $userId,
+        ));
     }
 
     public function grn(

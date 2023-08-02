@@ -14,19 +14,33 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\Experience\Model\Options;
-use Gs2Cdk\Experience\Model\Threshold;
-use Gs2Cdk\Experience\Model\AcquireActionRate;
+namespace Gs2Cdk\Experience\Model;
+use Gs2Cdk\Experience\Model\Options\AcquireActionRateOptions;
 
-class ExperienceModelOptions {
-    public ?string $metadata;
-    public ?array $acquireActionRates;
-    
+class AcquireActionRate {
+    private string $name;
+    private array $rates;
+
     public function __construct(
-        ?string $metadata = null,
-        ?array $acquireActionRates = null,
+        string $name,
+        array $rates,
+        ?AcquireActionRateOptions $options = null,
     ) {
-        $this->metadata = $metadata;
-        $this->acquireActionRates = $acquireActionRates;
-    }}
+        $this->name = $name;
+        $this->rates = $rates;
+    }
 
+    public function properties(
+    ): array {
+        $properties = [];
+
+        if ($this->name != null) {
+            $properties["name"] = $this->name;
+        }
+        if ($this->rates != null) {
+            $properties["rates"] = $this->rates;
+        }
+
+        return $properties;
+    }
+}

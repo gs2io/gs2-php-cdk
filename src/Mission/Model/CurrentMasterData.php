@@ -24,22 +24,22 @@ use Gs2Cdk\Mission\Model\CounterModel;
 class CurrentMasterData extends CdkResource {
     private string $version= "2019-05-28";
     private string $namespaceName;
-    private array $missionGroupModels;
-    private array $counterModels;
+    private array $groups;
+    private array $counters;
 
     public function __construct(
         Stack $stack,
         string $namespaceName,
-        array $missionGroupModels,
-        array $counterModels,
+        array $groups,
+        array $counters,
     ) {
         parent::__construct(
             "Mission_CurrentMissionMaster_" . $namespaceName
         );
 
         $this->namespaceName = $namespaceName;
-        $this->missionGroupModels = $missionGroupModels;
-        $this->counterModels = $counterModels;
+        $this->groups = $groups;
+        $this->counters = $counters;
         $stack->addResource(
             $this,
         );
@@ -61,22 +61,22 @@ class CurrentMasterData extends CdkResource {
         $settings = [];
 
         $settings["version"] = $this->version;
-        if ($this->missionGroupModels != null) {
-            $settings["missionGroupModels"] = array_map(
+        if ($this->groups != null) {
+            $settings["groups"] = array_map(
                 function ($v) {
                     return $v->properties(
                     );
                 },
-                $this->missionGroupModels
+                $this->groups
             );
         }
-        if ($this->counterModels != null) {
-            $settings["counterModels"] = array_map(
+        if ($this->counters != null) {
+            $settings["counters"] = array_map(
                 function ($v) {
                     return $v->properties(
                     );
                 },
-                $this->counterModels
+                $this->counters
             );
         }
 

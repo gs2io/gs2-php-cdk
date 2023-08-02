@@ -23,7 +23,6 @@ class Layer {
     private int $numberOfMinEntries;
     private int $numberOfMaxEntries;
     private int $height;
-    private int $createdAt;
     private ?string $root = null;
 
     public function __construct(
@@ -32,7 +31,6 @@ class Layer {
         int $numberOfMinEntries,
         int $numberOfMaxEntries,
         int $height,
-        int $createdAt,
         ?LayerOptions $options = null,
     ) {
         $this->areaModelName = $areaModelName;
@@ -40,7 +38,6 @@ class Layer {
         $this->numberOfMinEntries = $numberOfMinEntries;
         $this->numberOfMaxEntries = $numberOfMaxEntries;
         $this->height = $height;
-        $this->createdAt = $createdAt;
         $this->root = $options?->root ?? null;
     }
 
@@ -65,9 +62,6 @@ class Layer {
         }
         if ($this->height != null) {
             $properties["height"] = $this->height;
-        }
-        if ($this->createdAt != null) {
-            $properties["createdAt"] = $this->createdAt;
         }
 
         return $properties;

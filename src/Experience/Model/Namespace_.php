@@ -19,6 +19,7 @@ namespace Gs2Cdk\Experience\Model;
 use Gs2Cdk\Core\Model\CdkResource;
 use Gs2Cdk\Core\Model\Stack;
 use Gs2Cdk\Core\Func\GetAttr;
+use Gs2Cdk\Core\Model\TransactionSetting;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
@@ -32,6 +33,7 @@ class Namespace_ extends CdkResource {
     private Stack $stack;
     private string $name;
     private ?string $description = null;
+    private ?TransactionSetting $transactionSetting = null;
     private ?string $experienceCapScriptId = null;
     private ?ScriptSetting $changeExperienceScript = null;
     private ?ScriptSetting $changeRankScript = null;
@@ -51,6 +53,7 @@ class Namespace_ extends CdkResource {
         $this->stack = $stack;
         $this->name = $name;
         $this->description = $options?->description ?? null;
+        $this->transactionSetting = $options?->transactionSetting ?? null;
         $this->experienceCapScriptId = $options?->experienceCapScriptId ?? null;
         $this->changeExperienceScript = $options?->changeExperienceScript ?? null;
         $this->changeRankScript = $options?->changeRankScript ?? null;
@@ -82,6 +85,10 @@ class Namespace_ extends CdkResource {
         }
         if ($this->description != null) {
             $properties["Description"] = $this->description;
+        }
+        if ($this->transactionSetting != null) {
+            $properties["TransactionSetting"] = $this->transactionSetting?->properties(
+            );
         }
         if ($this->experienceCapScriptId != null) {
             $properties["ExperienceCapScriptId"] = $this->experienceCapScriptId;

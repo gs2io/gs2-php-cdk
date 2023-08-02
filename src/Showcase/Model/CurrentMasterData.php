@@ -19,16 +19,19 @@ namespace Gs2Cdk\Showcase\Model;
 use Gs2Cdk\Core\Model\CdkResource;
 use Gs2Cdk\Core\Model\Stack;
 use Gs2Cdk\Showcase\Model\Showcase;
+use Gs2Cdk\Showcase\Model\RandomShowcase;
 
 class CurrentMasterData extends CdkResource {
     private string $version= "2019-04-04";
     private string $namespaceName;
     private array $showcases;
+    private array $randomShowcases;
 
     public function __construct(
         Stack $stack,
         string $namespaceName,
         array $showcases,
+        array $randomShowcases,
     ) {
         parent::__construct(
             "Showcase_CurrentShowcaseMaster_" . $namespaceName
@@ -36,6 +39,7 @@ class CurrentMasterData extends CdkResource {
 
         $this->namespaceName = $namespaceName;
         $this->showcases = $showcases;
+        $this->randomShowcases = $randomShowcases;
         $stack->addResource(
             $this,
         );
@@ -64,6 +68,15 @@ class CurrentMasterData extends CdkResource {
                     );
                 },
                 $this->showcases
+            );
+        }
+        if ($this->randomShowcases != null) {
+            $settings["randomShowcases"] = array_map(
+                function ($v) {
+                    return $v->properties(
+                    );
+                },
+                $this->randomShowcases
             );
         }
 

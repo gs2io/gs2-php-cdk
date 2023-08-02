@@ -21,23 +21,17 @@ class GitHubApiKey {
     private string $name;
     private string $apiKey;
     private string $encryptionKeyName;
-    private int $createdAt;
-    private int $updatedAt;
     private ?string $description = null;
 
     public function __construct(
         string $name,
         string $apiKey,
         string $encryptionKeyName,
-        int $createdAt,
-        int $updatedAt,
         ?GitHubApiKeyOptions $options = null,
     ) {
         $this->name = $name;
         $this->apiKey = $apiKey;
         $this->encryptionKeyName = $encryptionKeyName;
-        $this->createdAt = $createdAt;
-        $this->updatedAt = $updatedAt;
         $this->description = $options?->description ?? null;
     }
 
@@ -56,12 +50,6 @@ class GitHubApiKey {
         }
         if ($this->encryptionKeyName != null) {
             $properties["encryptionKeyName"] = $this->encryptionKeyName;
-        }
-        if ($this->createdAt != null) {
-            $properties["createdAt"] = $this->createdAt;
-        }
-        if ($this->updatedAt != null) {
-            $properties["updatedAt"] = $this->updatedAt;
         }
 
         return $properties;

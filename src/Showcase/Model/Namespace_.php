@@ -26,6 +26,7 @@ use Gs2Cdk\Core\Model\LogSetting;
 use Gs2Cdk\Showcase\Ref\NamespaceRef;
 use Gs2Cdk\Showcase\Model\CurrentMasterData;
 use Gs2Cdk\Showcase\Model\Showcase;
+use Gs2Cdk\Showcase\Model\RandomShowcase;
 
 use Gs2Cdk\Showcase\Model\Options\NamespaceOptions;
 
@@ -113,11 +114,13 @@ class Namespace_ extends CdkResource {
 
     public function masterData(
         array $showcases,
+        array $randomShowcases,
     ): Namespace_ {
         (new CurrentMasterData(
             $this->stack,
             $this->name,
             $showcases,
+            $randomShowcases,
         ))->addDependsOn(
             $this,
         );

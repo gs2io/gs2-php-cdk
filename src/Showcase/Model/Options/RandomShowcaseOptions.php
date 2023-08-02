@@ -14,19 +14,20 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\Experience\Model\Options;
-use Gs2Cdk\Experience\Model\Threshold;
-use Gs2Cdk\Experience\Model\AcquireActionRate;
+namespace Gs2Cdk\Showcase\Model\Options;
+use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Core\Model\AcquireAction;
+use Gs2Cdk\Showcase\Model\RandomDisplayItemModel;
 
-class ExperienceModelOptions {
+class RandomShowcaseOptions {
     public ?string $metadata;
-    public ?array $acquireActionRates;
+    public ?string $salesPeriodEventId;
     
     public function __construct(
         ?string $metadata = null,
-        ?array $acquireActionRates = null,
+        ?string $salesPeriodEventId = null,
     ) {
         $this->metadata = $metadata;
-        $this->acquireActionRates = $acquireActionRates;
+        $this->salesPeriodEventId = $salesPeriodEventId;
     }}
 
