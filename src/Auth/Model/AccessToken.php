@@ -19,21 +19,18 @@ use Gs2Cdk\Auth\Model\Options\AccessTokenOptions;
 
 class AccessToken {
     private string $ownerId;
-    private string $token;
     private string $userId;
     private int $expire;
     private int $timeOffset;
 
     public function __construct(
         string $ownerId,
-        string $token,
         string $userId,
         int $expire,
         int $timeOffset,
         ?AccessTokenOptions $options = null,
     ) {
         $this->ownerId = $ownerId;
-        $this->token = $token;
         $this->userId = $userId;
         $this->expire = $expire;
         $this->timeOffset = $timeOffset;
@@ -45,9 +42,6 @@ class AccessToken {
 
         if ($this->ownerId != null) {
             $properties["ownerId"] = $this->ownerId;
-        }
-        if ($this->token != null) {
-            $properties["token"] = $this->token;
         }
         if ($this->userId != null) {
             $properties["userId"] = $this->userId;

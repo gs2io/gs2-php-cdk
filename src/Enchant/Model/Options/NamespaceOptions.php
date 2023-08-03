@@ -14,27 +14,19 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\News\Model;
-use Gs2Cdk\News\Model\Options\OutputOptions;
+namespace Gs2Cdk\Enchant\Model\Options;
+use Gs2Cdk\Core\Model\TransactionSetting;
+use Gs2Cdk\Core\Model\LogSetting;
 
-class Output {
-    private string $text;
-
+class NamespaceOptions {
+    public ?string $description;
+    public ?LogSetting $logSetting;
+    
     public function __construct(
-        string $text,
-        ?OutputOptions $options = null,
+        ?string $description = null,
+        ?LogSetting $logSetting = null,
     ) {
-        $this->text = $text;
-    }
+        $this->description = $description;
+        $this->logSetting = $logSetting;
+    }}
 
-    public function properties(
-    ): array {
-        $properties = [];
-
-        if ($this->text != null) {
-            $properties["text"] = $this->text;
-        }
-
-        return $properties;
-    }
-}

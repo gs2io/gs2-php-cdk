@@ -16,20 +16,24 @@
  */
 namespace Gs2Cdk\Mission\Model\Options;
 use Gs2Cdk\Core\Model\AcquireAction;
+use Gs2Cdk\Mission\Model\Enum\MissionTaskModelTargetResetType;
 
 class MissionTaskModelOptions {
     public ?string $metadata;
+    public ?MissionTaskModelTargetResetType $targetResetType;
     public ?array $completeAcquireActions;
     public ?string $challengePeriodEventId;
     public ?string $premiseMissionTaskName;
     
     public function __construct(
         ?string $metadata = null,
+        ?MissionTaskModelTargetResetType $targetResetType = null,
         ?array $completeAcquireActions = null,
         ?string $challengePeriodEventId = null,
         ?string $premiseMissionTaskName = null,
     ) {
         $this->metadata = $metadata;
+        $this->targetResetType = $targetResetType;
         $this->completeAcquireActions = $completeAcquireActions;
         $this->challengePeriodEventId = $challengePeriodEventId;
         $this->premiseMissionTaskName = $premiseMissionTaskName;

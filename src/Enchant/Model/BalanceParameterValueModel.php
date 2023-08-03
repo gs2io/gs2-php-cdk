@@ -14,37 +14,30 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\News\Model;
-use Gs2Cdk\News\Model\Options\ProgressOptions;
+namespace Gs2Cdk\Enchant\Model;
+use Gs2Cdk\Enchant\Model\Options\BalanceParameterValueModelOptions;
 
-class Progress {
-    private string $uploadToken;
-    private int $generated;
-    private int $patternCount;
+class BalanceParameterValueModel {
+    private string $name;
+    private ?string $metadata = null;
 
     public function __construct(
-        string $uploadToken,
-        int $generated,
-        int $patternCount,
-        ?ProgressOptions $options = null,
+        string $name,
+        ?BalanceParameterValueModelOptions $options = null,
     ) {
-        $this->uploadToken = $uploadToken;
-        $this->generated = $generated;
-        $this->patternCount = $patternCount;
+        $this->name = $name;
+        $this->metadata = $options?->metadata ?? null;
     }
 
     public function properties(
     ): array {
         $properties = [];
 
-        if ($this->uploadToken != null) {
-            $properties["uploadToken"] = $this->uploadToken;
+        if ($this->name != null) {
+            $properties["name"] = $this->name;
         }
-        if ($this->generated != null) {
-            $properties["generated"] = $this->generated;
-        }
-        if ($this->patternCount != null) {
-            $properties["patternCount"] = $this->patternCount;
+        if ($this->metadata != null) {
+            $properties["metadata"] = $this->metadata;
         }
 
         return $properties;

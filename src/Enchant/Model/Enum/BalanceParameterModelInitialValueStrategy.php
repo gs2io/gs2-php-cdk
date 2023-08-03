@@ -14,27 +14,21 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\News\Model;
-use Gs2Cdk\News\Model\Options\OutputOptions;
 
-class Output {
-    private string $text;
+namespace Gs2Cdk\Enchant\Model\Enum;
 
-    public function __construct(
-        string $text,
-        ?OutputOptions $options = null,
-    ) {
-        $this->text = $text;
-    }
 
-    public function properties(
-    ): array {
-        $properties = [];
+enum BalanceParameterModelInitialValueStrategy {
+    case AVERAGE;
+    case LOTTERY;
 
-        if ($this->text != null) {
-            $properties["text"] = $this->text;
+    public function toString(): String {
+        switch ($this) {
+            case self::AVERAGE:
+                return "average";
+            case self::LOTTERY:
+                return "lottery";
         }
-
-        return $properties;
+        return "unknown";
     }
 }

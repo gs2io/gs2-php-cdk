@@ -17,12 +17,14 @@
 namespace Gs2Cdk\Mission\Model;
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Mission\Model\Options\MissionTaskModelOptions;
+use Gs2Cdk\Mission\Model\Enum\MissionTaskModelTargetResetType;
 
 class MissionTaskModel {
     private string $name;
     private string $counterName;
     private int $targetValue;
     private ?string $metadata = null;
+    private ?MissionTaskModelTargetResetType $targetResetType = null;
     private ?array $completeAcquireActions = null;
     private ?string $challengePeriodEventId = null;
     private ?string $premiseMissionTaskName = null;
@@ -37,6 +39,7 @@ class MissionTaskModel {
         $this->counterName = $counterName;
         $this->targetValue = $targetValue;
         $this->metadata = $options?->metadata ?? null;
+        $this->targetResetType = $options?->targetResetType ?? null;
         $this->completeAcquireActions = $options?->completeAcquireActions ?? null;
         $this->challengePeriodEventId = $options?->challengePeriodEventId ?? null;
         $this->premiseMissionTaskName = $options?->premiseMissionTaskName ?? null;
@@ -54,6 +57,10 @@ class MissionTaskModel {
         }
         if ($this->counterName != null) {
             $properties["counterName"] = $this->counterName;
+        }
+        if ($this->targetResetType != null) {
+            $properties["targetResetType"] = $this->targetResetType?->toString(
+            );
         }
         if ($this->targetValue != null) {
             $properties["targetValue"] = $this->targetValue;

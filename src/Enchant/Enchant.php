@@ -14,27 +14,16 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\News\Model;
-use Gs2Cdk\News\Model\Options\OutputOptions;
+namespace Gs2Cdk\Enchant;
+use Gs2Cdk\Enchant\Ref\NamespaceRef;
 
-class Output {
-    private string $text;
+class Enchant {
 
-    public function __construct(
-        string $text,
-        ?OutputOptions $options = null,
-    ) {
-        $this->text = $text;
-    }
-
-    public function properties(
-    ): array {
-        $properties = [];
-
-        if ($this->text != null) {
-            $properties["text"] = $this->text;
-        }
-
-        return $properties;
+    public static function namespace(
+        string $namespaceName,
+    ): NamespaceRef {
+        return (new NamespaceRef(
+            $namespaceName,
+        ));
     }
 }

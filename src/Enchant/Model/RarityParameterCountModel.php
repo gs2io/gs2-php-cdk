@@ -14,37 +14,31 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\News\Model;
-use Gs2Cdk\News\Model\Options\ProgressOptions;
+namespace Gs2Cdk\Enchant\Model;
+use Gs2Cdk\Enchant\Model\Options\RarityParameterCountModelOptions;
 
-class Progress {
-    private string $uploadToken;
-    private int $generated;
-    private int $patternCount;
+class RarityParameterCountModel {
+    private int $count;
+    private int $weight;
 
     public function __construct(
-        string $uploadToken,
-        int $generated,
-        int $patternCount,
-        ?ProgressOptions $options = null,
+        int $count,
+        int $weight,
+        ?RarityParameterCountModelOptions $options = null,
     ) {
-        $this->uploadToken = $uploadToken;
-        $this->generated = $generated;
-        $this->patternCount = $patternCount;
+        $this->count = $count;
+        $this->weight = $weight;
     }
 
     public function properties(
     ): array {
         $properties = [];
 
-        if ($this->uploadToken != null) {
-            $properties["uploadToken"] = $this->uploadToken;
+        if ($this->count != null) {
+            $properties["count"] = $this->count;
         }
-        if ($this->generated != null) {
-            $properties["generated"] = $this->generated;
-        }
-        if ($this->patternCount != null) {
-            $properties["patternCount"] = $this->patternCount;
+        if ($this->weight != null) {
+            $properties["weight"] = $this->weight;
         }
 
         return $properties;
