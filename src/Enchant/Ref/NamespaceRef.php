@@ -21,8 +21,10 @@ use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Enchant\Ref\BalanceParameterModelRef;
 use Gs2Cdk\Enchant\Ref\RarityParameterModelRef;
 use Gs2Cdk\Enchant\StampSheet\ReDrawBalanceParameterStatusByUserId;
+use Gs2Cdk\Enchant\StampSheet\SetBalanceParameterStatusByUserId;
 use Gs2Cdk\Enchant\StampSheet\ReDrawRarityParameterStatusByUserId;
 use Gs2Cdk\Enchant\StampSheet\AddRarityParameterStatusByUserId;
+use Gs2Cdk\Enchant\StampSheet\SetRarityParameterStatusByUserId;
 use Gs2Cdk\Enchant\StampSheet\VerifyRarityParameterStatusByUserId;
 
 class NamespaceRef {
@@ -67,6 +69,21 @@ class NamespaceRef {
         ));
     }
 
+    public function setBalanceParameterStatus(
+        string $parameterName,
+        string $propertyId,
+        array $parameterValues,
+        ?string $userId = "#{userId}",
+    ): SetBalanceParameterStatusByUserId {
+        return (new SetBalanceParameterStatusByUserId(
+            $this->namespaceName,
+            $parameterName,
+            $propertyId,
+            $parameterValues,
+            $userId,
+        ));
+    }
+
     public function reDrawRarityParameterStatus(
         string $parameterName,
         string $propertyId,
@@ -93,6 +110,21 @@ class NamespaceRef {
             $parameterName,
             $propertyId,
             $count,
+            $userId,
+        ));
+    }
+
+    public function setRarityParameterStatus(
+        string $parameterName,
+        string $propertyId,
+        ?array $parameterValues = null,
+        ?string $userId = "#{userId}",
+    ): SetRarityParameterStatusByUserId {
+        return (new SetRarityParameterStatusByUserId(
+            $this->namespaceName,
+            $parameterName,
+            $propertyId,
+            $parameterValues,
             $userId,
         ));
     }

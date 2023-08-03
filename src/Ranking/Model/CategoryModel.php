@@ -15,6 +15,7 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Ranking\Model;
+use Gs2Cdk\Ranking\Model\Scope;
 use Gs2Cdk\Ranking\Model\Options\CategoryModelOptions;
 use Gs2Cdk\Ranking\Model\Options\CategoryModelScopeIsGlobalOptions;
 use Gs2Cdk\Ranking\Model\Options\CategoryModelScopeIsScopedOptions;
@@ -33,6 +34,7 @@ class CategoryModel {
     private ?int $calculateFixedTimingHour = null;
     private ?int $calculateFixedTimingMinute = null;
     private ?int $calculateIntervalMinutes = null;
+    private ?array $additionalScopes = null;
     private ?string $entryPeriodEventId = null;
     private ?string $accessPeriodEventId = null;
     private ?array $ignoreUserIds = null;
@@ -56,6 +58,7 @@ class CategoryModel {
         $this->calculateFixedTimingHour = $options?->calculateFixedTimingHour ?? null;
         $this->calculateFixedTimingMinute = $options?->calculateFixedTimingMinute ?? null;
         $this->calculateIntervalMinutes = $options?->calculateIntervalMinutes ?? null;
+        $this->additionalScopes = $options?->additionalScopes ?? null;
         $this->entryPeriodEventId = $options?->entryPeriodEventId ?? null;
         $this->accessPeriodEventId = $options?->accessPeriodEventId ?? null;
         $this->ignoreUserIds = $options?->ignoreUserIds ?? null;
@@ -81,6 +84,7 @@ class CategoryModel {
                 maximumValue: $options?->maximumValue,
                 calculateFixedTimingHour: $options?->calculateFixedTimingHour,
                 calculateFixedTimingMinute: $options?->calculateFixedTimingMinute,
+                additionalScopes: $options?->additionalScopes,
                 entryPeriodEventId: $options?->entryPeriodEventId,
                 accessPeriodEventId: $options?->accessPeriodEventId,
                 ignoreUserIds: $options?->ignoreUserIds,
@@ -106,6 +110,7 @@ class CategoryModel {
                 maximumValue: $options?->maximumValue,
                 calculateFixedTimingHour: $options?->calculateFixedTimingHour,
                 calculateFixedTimingMinute: $options?->calculateFixedTimingMinute,
+                additionalScopes: $options?->additionalScopes,
                 entryPeriodEventId: $options?->entryPeriodEventId,
                 accessPeriodEventId: $options?->accessPeriodEventId,
                 ignoreUserIds: $options?->ignoreUserIds,
@@ -152,6 +157,15 @@ class CategoryModel {
         }
         if ($this->calculateIntervalMinutes != null) {
             $properties["calculateIntervalMinutes"] = $this->calculateIntervalMinutes;
+        }
+        if ($this->additionalScopes != null) {
+            $properties["additionalScopes"] = array_map(
+                function ($v) {
+                    return $v->properties(
+                    );
+                },
+                $this->additionalScopes
+            );
         }
         if ($this->entryPeriodEventId != null) {
             $properties["entryPeriodEventId"] = $this->entryPeriodEventId;

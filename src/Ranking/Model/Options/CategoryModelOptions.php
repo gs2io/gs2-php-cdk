@@ -15,6 +15,7 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Ranking\Model\Options;
+use Gs2Cdk\Ranking\Model\Scope;
 use Gs2Cdk\Ranking\Model\Enum\CategoryModelOrderDirection;
 use Gs2Cdk\Ranking\Model\Enum\CategoryModelScope;
 
@@ -26,6 +27,7 @@ class CategoryModelOptions {
     public ?int $calculateFixedTimingHour;
     public ?int $calculateFixedTimingMinute;
     public ?int $calculateIntervalMinutes;
+    public ?array $additionalScopes;
     public ?string $entryPeriodEventId;
     public ?string $accessPeriodEventId;
     public ?array $ignoreUserIds;
@@ -39,6 +41,7 @@ class CategoryModelOptions {
         ?int $calculateFixedTimingHour = null,
         ?int $calculateFixedTimingMinute = null,
         ?int $calculateIntervalMinutes = null,
+        ?array $additionalScopes = null,
         ?string $entryPeriodEventId = null,
         ?string $accessPeriodEventId = null,
         ?array $ignoreUserIds = null,
@@ -51,6 +54,7 @@ class CategoryModelOptions {
         $this->calculateFixedTimingHour = $calculateFixedTimingHour;
         $this->calculateFixedTimingMinute = $calculateFixedTimingMinute;
         $this->calculateIntervalMinutes = $calculateIntervalMinutes;
+        $this->additionalScopes = $additionalScopes;
         $this->entryPeriodEventId = $entryPeriodEventId;
         $this->accessPeriodEventId = $accessPeriodEventId;
         $this->ignoreUserIds = $ignoreUserIds;
