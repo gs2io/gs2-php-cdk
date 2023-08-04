@@ -28,6 +28,7 @@ class IncrementalRateModel {
     private ConsumeAction $consumeAction;
     private IncrementalRateModelCalculateType $calculateType;
     private string $exchangeCountId;
+    private int $maximumExchangeCount;
     private ?string $metadata = null;
     private ?int $baseValue = null;
     private ?int $coefficientValue = null;
@@ -39,12 +40,14 @@ class IncrementalRateModel {
         ConsumeAction $consumeAction,
         IncrementalRateModelCalculateType $calculateType,
         string $exchangeCountId,
+        int $maximumExchangeCount,
         ?IncrementalRateModelOptions $options = null,
     ) {
         $this->name = $name;
         $this->consumeAction = $consumeAction;
         $this->calculateType = $calculateType;
         $this->exchangeCountId = $exchangeCountId;
+        $this->maximumExchangeCount = $maximumExchangeCount;
         $this->metadata = $options?->metadata ?? null;
         $this->baseValue = $options?->baseValue ?? null;
         $this->coefficientValue = $options?->coefficientValue ?? null;
@@ -56,6 +59,7 @@ class IncrementalRateModel {
         string $name,
         ConsumeAction $consumeAction,
         string $exchangeCountId,
+        int $maximumExchangeCount,
         int $baseValue,
         int $coefficientValue,
         ?IncrementalRateModelCalculateTypeIsLinearOptions $options = null,
@@ -65,6 +69,7 @@ class IncrementalRateModel {
             $consumeAction,
             IncrementalRateModelCalculateType::LINEAR,
             $exchangeCountId,
+            $maximumExchangeCount,
             new IncrementalRateModelOptions(
                 baseValue: $baseValue,
                 coefficientValue: $coefficientValue,
@@ -78,6 +83,7 @@ class IncrementalRateModel {
         string $name,
         ConsumeAction $consumeAction,
         string $exchangeCountId,
+        int $maximumExchangeCount,
         int $coefficientValue,
         ?IncrementalRateModelCalculateTypeIsPowerOptions $options = null,
     ): IncrementalRateModel {
@@ -86,6 +92,7 @@ class IncrementalRateModel {
             $consumeAction,
             IncrementalRateModelCalculateType::POWER,
             $exchangeCountId,
+            $maximumExchangeCount,
             new IncrementalRateModelOptions(
                 coefficientValue: $coefficientValue,
                 metadata: $options?->metadata,
@@ -98,6 +105,7 @@ class IncrementalRateModel {
         string $name,
         ConsumeAction $consumeAction,
         string $exchangeCountId,
+        int $maximumExchangeCount,
         string $calculateScriptId,
         ?IncrementalRateModelCalculateTypeIsGs2ScriptOptions $options = null,
     ): IncrementalRateModel {
@@ -106,6 +114,7 @@ class IncrementalRateModel {
             $consumeAction,
             IncrementalRateModelCalculateType::GS2_SCRIPT,
             $exchangeCountId,
+            $maximumExchangeCount,
             new IncrementalRateModelOptions(
                 calculateScriptId: $calculateScriptId,
                 metadata: $options?->metadata,
@@ -143,6 +152,9 @@ class IncrementalRateModel {
         }
         if ($this->exchangeCountId != null) {
             $properties["exchangeCountId"] = $this->exchangeCountId;
+        }
+        if ($this->maximumExchangeCount != null) {
+            $properties["maximumExchangeCount"] = $this->maximumExchangeCount;
         }
         if ($this->acquireActions != null) {
             $properties["acquireActions"] = array_map(
