@@ -20,36 +20,8 @@ use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 
 class RecoverValueTableRef {
-    private string $namespaceName;
-    private string $recoverValueTableName;
 
     public function __construct(
-        string $namespaceName,
-        string $recoverValueTableName,
     ) {
-        $this->namespaceName = $namespaceName;
-        $this->recoverValueTableName = $recoverValueTableName;
-    }
-
-    public function grn(
-    ): string {
-        return (new Join(
-            ":",
-            [
-                "grn",
-                "gs2",
-                GetAttr::region(
-                )->str(
-                ),
-                GetAttr::ownerId(
-                )->str(
-                ),
-                "stamina",
-                $this->namespaceName,
-                "recoverValueTable",
-                $this->recoverValueTableName,
-            ],
-        ))->str(
-        );
     }
 }

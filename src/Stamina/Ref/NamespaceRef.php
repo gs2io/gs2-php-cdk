@@ -18,9 +18,6 @@ namespace Gs2Cdk\Stamina\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
-use Gs2Cdk\Stamina\Ref\MaxStaminaTableRef;
-use Gs2Cdk\Stamina\Ref\RecoverIntervalTableRef;
-use Gs2Cdk\Stamina\Ref\RecoverValueTableRef;
 use Gs2Cdk\Stamina\Ref\StaminaModelRef;
 use Gs2Cdk\Stamina\StampSheet\RecoverStaminaByUserId;
 use Gs2Cdk\Stamina\StampSheet\RaiseMaxValueByUserId;
@@ -36,33 +33,6 @@ class NamespaceRef {
         string $namespaceName,
     ) {
         $this->namespaceName = $namespaceName;
-    }
-
-    public function maxStaminaTable(
-        string $maxStaminaTableName,
-    ): MaxStaminaTableRef {
-        return (new MaxStaminaTableRef(
-            $this->namespaceName,
-            $maxStaminaTableName,
-        ));
-    }
-
-    public function recoverIntervalTable(
-        string $recoverIntervalTableName,
-    ): RecoverIntervalTableRef {
-        return (new RecoverIntervalTableRef(
-            $this->namespaceName,
-            $recoverIntervalTableName,
-        ));
-    }
-
-    public function recoverValueTable(
-        string $recoverValueTableName,
-    ): RecoverValueTableRef {
-        return (new RecoverValueTableRef(
-            $this->namespaceName,
-            $recoverValueTableName,
-        ));
     }
 
     public function staminaModel(

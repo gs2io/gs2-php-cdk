@@ -20,36 +20,8 @@ use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 
 class MaxStaminaTableRef {
-    private string $namespaceName;
-    private string $maxStaminaTableName;
 
     public function __construct(
-        string $namespaceName,
-        string $maxStaminaTableName,
     ) {
-        $this->namespaceName = $namespaceName;
-        $this->maxStaminaTableName = $maxStaminaTableName;
-    }
-
-    public function grn(
-    ): string {
-        return (new Join(
-            ":",
-            [
-                "grn",
-                "gs2",
-                GetAttr::region(
-                )->str(
-                ),
-                GetAttr::ownerId(
-                )->str(
-                ),
-                "stamina",
-                $this->namespaceName,
-                "maxStaminaTable",
-                $this->maxStaminaTableName,
-            ],
-        ))->str(
-        );
     }
 }
