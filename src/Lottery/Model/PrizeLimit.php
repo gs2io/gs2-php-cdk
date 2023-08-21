@@ -20,6 +20,7 @@ use Gs2Cdk\Lottery\Model\Options\PrizeLimitOptions;
 class PrizeLimit {
     private string $prizeId;
     private int $drawnCount;
+    private ?int $revision = null;
 
     public function __construct(
         string $prizeId,
@@ -28,6 +29,7 @@ class PrizeLimit {
     ) {
         $this->prizeId = $prizeId;
         $this->drawnCount = $drawnCount;
+        $this->revision = $options?->revision ?? null;
     }
 
     public function properties(

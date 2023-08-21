@@ -21,6 +21,7 @@ class Progress {
     private string $uploadToken;
     private int $generated;
     private int $patternCount;
+    private ?int $revision = null;
 
     public function __construct(
         string $uploadToken,
@@ -31,6 +32,7 @@ class Progress {
         $this->uploadToken = $uploadToken;
         $this->generated = $generated;
         $this->patternCount = $patternCount;
+        $this->revision = $options?->revision ?? null;
     }
 
     public function properties(

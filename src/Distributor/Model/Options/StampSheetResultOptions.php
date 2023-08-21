@@ -23,16 +23,19 @@ class StampSheetResultOptions {
     public ?array $taskResults;
     public ?string $sheetResult;
     public ?string $nextTransactionId;
+    public ?int $revision;
     
     public function __construct(
         ?array $taskRequests = null,
         ?array $taskResults = null,
         ?string $sheetResult = null,
         ?string $nextTransactionId = null,
+        ?int $revision = null,
     ) {
         $this->taskRequests = $taskRequests;
         $this->taskResults = $taskResults;
         $this->sheetResult = $sheetResult;
         $this->nextTransactionId = $nextTransactionId;
+        $this->revision = $revision;
     }}
 

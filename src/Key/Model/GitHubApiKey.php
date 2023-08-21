@@ -22,6 +22,7 @@ class GitHubApiKey {
     private string $apiKey;
     private string $encryptionKeyName;
     private ?string $description = null;
+    private ?int $revision = null;
 
     public function __construct(
         string $name,
@@ -33,6 +34,7 @@ class GitHubApiKey {
         $this->apiKey = $apiKey;
         $this->encryptionKeyName = $encryptionKeyName;
         $this->description = $options?->description ?? null;
+        $this->revision = $options?->revision ?? null;
     }
 
     public function properties(

@@ -29,6 +29,7 @@ class NamespaceCreateGatheringTriggerTypeIsGs2RealtimeOptions {
     public ?NotificationSetting $completeNotification;
     public ?NotificationSetting $changeRatingNotification;
     public ?LogSetting $logSetting;
+    public ?int $revision;
     
     public function __construct(
         ?string $description = null,
@@ -38,6 +39,7 @@ class NamespaceCreateGatheringTriggerTypeIsGs2RealtimeOptions {
         ?NotificationSetting $completeNotification = null,
         ?NotificationSetting $changeRatingNotification = null,
         ?LogSetting $logSetting = null,
+        ?int $revision = null,
     ) {
         $this->description = $description;
         $this->changeRatingScript = $changeRatingScript;
@@ -46,4 +48,5 @@ class NamespaceCreateGatheringTriggerTypeIsGs2RealtimeOptions {
         $this->completeNotification = $completeNotification;
         $this->changeRatingNotification = $changeRatingNotification;
         $this->logSetting = $logSetting;
+        $this->revision = $revision;
     }}

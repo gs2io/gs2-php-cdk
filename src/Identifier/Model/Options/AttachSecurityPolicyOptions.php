@@ -18,10 +18,13 @@ namespace Gs2Cdk\Identifier\Model\Options;
 
 class AttachSecurityPolicyOptions {
     public ?array $securityPolicyIds;
+    public ?int $revision;
     
     public function __construct(
         ?array $securityPolicyIds = null,
+        ?int $revision = null,
     ) {
         $this->securityPolicyIds = $securityPolicyIds;
+        $this->revision = $revision;
     }}
 

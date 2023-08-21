@@ -20,11 +20,14 @@ use Gs2Cdk\Log\Model\Enum\NamespaceType;
 class NamespaceTypeIsGs2Options {
     public ?string $description;
     public ?string $status;
+    public ?int $revision;
     
     public function __construct(
         ?string $description = null,
         ?string $status = null,
+        ?int $revision = null,
     ) {
         $this->description = $description;
         $this->status = $status;
+        $this->revision = $revision;
     }}

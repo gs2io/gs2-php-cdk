@@ -19,12 +19,14 @@ use Gs2Cdk\News\Model\Options\OutputOptions;
 
 class Output {
     private string $text;
+    private ?int $revision = null;
 
     public function __construct(
         string $text,
         ?OutputOptions $options = null,
     ) {
         $this->text = $text;
+        $this->revision = $options?->revision ?? null;
     }
 
     public function properties(

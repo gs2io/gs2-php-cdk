@@ -20,6 +20,7 @@ use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Inventory\Ref\InventoryModelRef;
 use Gs2Cdk\Inventory\Ref\SimpleInventoryModelRef;
+use Gs2Cdk\Inventory\Ref\BigInventoryModelRef;
 use Gs2Cdk\Inventory\StampSheet\AddCapacityByUserId;
 use Gs2Cdk\Inventory\StampSheet\SetCapacityByUserId;
 use Gs2Cdk\Inventory\StampSheet\AcquireItemSetByUserId;
@@ -27,9 +28,11 @@ use Gs2Cdk\Inventory\StampSheet\AddReferenceOfByUserId;
 use Gs2Cdk\Inventory\StampSheet\DeleteReferenceOfByUserId;
 use Gs2Cdk\Inventory\StampSheet\AcquireSimpleItemsByUserId;
 use Gs2Cdk\Inventory\Model\AcquireCount;
+use Gs2Cdk\Inventory\StampSheet\AcquireBigItemByUserId;
 use Gs2Cdk\Inventory\StampSheet\ConsumeItemSetByUserId;
 use Gs2Cdk\Inventory\StampSheet\VerifyReferenceOfByUserId;
 use Gs2Cdk\Inventory\StampSheet\ConsumeSimpleItemsByUserId;
+use Gs2Cdk\Inventory\StampSheet\ConsumeBigItemByUserId;
 
 class NamespaceRef {
     private string $namespaceName;
@@ -53,6 +56,15 @@ class NamespaceRef {
         string $inventoryName,
     ): SimpleInventoryModelRef {
         return (new SimpleInventoryModelRef(
+            $this->namespaceName,
+            $inventoryName,
+        ));
+    }
+
+    public function bigInventoryModel(
+        string $inventoryName,
+    ): BigInventoryModelRef {
+        return (new BigInventoryModelRef(
             $this->namespaceName,
             $inventoryName,
         ));
@@ -152,6 +164,21 @@ class NamespaceRef {
         ));
     }
 
+    public function acquireBigItem(
+        string $inventoryName,
+        string $itemName,
+        string $acquireCount,
+        ?string $userId = "#{userId}",
+    ): AcquireBigItemByUserId {
+        return (new AcquireBigItemByUserId(
+            $this->namespaceName,
+            $inventoryName,
+            $itemName,
+            $acquireCount,
+            $userId,
+        ));
+    }
+
     public function consumeItemSet(
         string $inventoryName,
         string $itemName,
@@ -197,6 +224,21 @@ class NamespaceRef {
             $this->namespaceName,
             $inventoryName,
             $consumeCounts,
+            $userId,
+        ));
+    }
+
+    public function consumeBigItem(
+        string $inventoryName,
+        string $itemName,
+        string $consumeCount,
+        ?string $userId = "#{userId}",
+    ): ConsumeBigItemByUserId {
+        return (new ConsumeBigItemByUserId(
+            $this->namespaceName,
+            $inventoryName,
+            $itemName,
+            $consumeCount,
             $userId,
         ));
     }

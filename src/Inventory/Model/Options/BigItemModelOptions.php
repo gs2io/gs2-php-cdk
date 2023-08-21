@@ -14,18 +14,14 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\SerialKey\Model\Options;
-use Gs2Cdk\SerialKey\Model\Enum\IssueJobStatus;
+namespace Gs2Cdk\Inventory\Model\Options;
 
-class IssueJobOptions {
+class BigItemModelOptions {
     public ?string $metadata;
-    public ?int $revision;
     
     public function __construct(
         ?string $metadata = null,
-        ?int $revision = null,
     ) {
         $this->metadata = $metadata;
-        $this->revision = $revision;
     }}
 

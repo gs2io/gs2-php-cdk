@@ -18,10 +18,13 @@ namespace Gs2Cdk\Key\Model\Options;
 
 class GitHubApiKeyOptions {
     public ?string $description;
+    public ?int $revision;
     
     public function __construct(
         ?string $description = null,
+        ?int $revision = null,
     ) {
         $this->description = $description;
+        $this->revision = $revision;
     }}
 

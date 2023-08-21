@@ -17,8 +17,11 @@
 namespace Gs2Cdk\News\Model\Options;
 
 class OutputOptions {
+    public ?int $revision;
     
     public function __construct(
+        ?int $revision = null,
     ) {
+        $this->revision = $revision;
     }}
 

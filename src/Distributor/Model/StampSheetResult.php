@@ -27,6 +27,7 @@ class StampSheetResult {
     private ?array $taskResults = null;
     private ?string $sheetResult = null;
     private ?string $nextTransactionId = null;
+    private ?int $revision = null;
 
     public function __construct(
         string $userId,
@@ -41,6 +42,7 @@ class StampSheetResult {
         $this->taskResults = $options?->taskResults ?? null;
         $this->sheetResult = $options?->sheetResult ?? null;
         $this->nextTransactionId = $options?->nextTransactionId ?? null;
+        $this->revision = $options?->revision ?? null;
     }
 
     public function properties(

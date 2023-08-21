@@ -17,8 +17,11 @@
 namespace Gs2Cdk\Lottery\Model\Options;
 
 class PrizeLimitOptions {
+    public ?int $revision;
     
     public function __construct(
+        ?int $revision = null,
     ) {
+        $this->revision = $revision;
     }}
 
