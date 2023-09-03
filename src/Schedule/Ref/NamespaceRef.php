@@ -18,6 +18,7 @@ namespace Gs2Cdk\Schedule\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
+use Gs2Cdk\Schedule\StampSheet\TriggerByUserId;
 
 class NamespaceRef {
     private string $namespaceName;
@@ -26,6 +27,21 @@ class NamespaceRef {
         string $namespaceName,
     ) {
         $this->namespaceName = $namespaceName;
+    }
+
+    public function trigger(
+        string $triggerName,
+        string $triggerStrategy,
+        int $ttl,
+        ?string $userId = "#{userId}",
+    ): TriggerByUserId {
+        return (new TriggerByUserId(
+            $this->namespaceName,
+            $triggerName,
+            $triggerStrategy,
+            $ttl,
+            $userId,
+        ));
     }
 
     public function grn(
