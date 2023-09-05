@@ -20,6 +20,7 @@ use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\LoginReward\Ref\BonusModelRef;
 use Gs2Cdk\LoginReward\StampSheet\DeleteReceiveStatusByUserId;
+use Gs2Cdk\LoginReward\StampSheet\UnmarkReceivedByUserId;
 use Gs2Cdk\LoginReward\StampSheet\MarkReceivedByUserId;
 
 class NamespaceRef {
@@ -47,6 +48,19 @@ class NamespaceRef {
         return (new DeleteReceiveStatusByUserId(
             $this->namespaceName,
             $bonusModelName,
+            $userId,
+        ));
+    }
+
+    public function unmarkReceived(
+        string $bonusModelName,
+        int $stepNumber,
+        ?string $userId = "#{userId}",
+    ): UnmarkReceivedByUserId {
+        return (new UnmarkReceivedByUserId(
+            $this->namespaceName,
+            $bonusModelName,
+            $stepNumber,
             $userId,
         ));
     }

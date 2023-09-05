@@ -20,8 +20,10 @@ use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Mission\Ref\MissionGroupModelRef;
 use Gs2Cdk\Mission\Ref\CounterModelRef;
+use Gs2Cdk\Mission\StampSheet\RevertReceiveByUserId;
 use Gs2Cdk\Mission\StampSheet\IncreaseCounterByUserId;
 use Gs2Cdk\Mission\StampSheet\ReceiveByUserId;
+use Gs2Cdk\Mission\StampSheet\DecreaseCounterByUserId;
 
 class NamespaceRef {
     private string $namespaceName;
@@ -50,6 +52,19 @@ class NamespaceRef {
         ));
     }
 
+    public function revertReceive(
+        string $missionGroupName,
+        string $missionTaskName,
+        ?string $userId = "#{userId}",
+    ): RevertReceiveByUserId {
+        return (new RevertReceiveByUserId(
+            $this->namespaceName,
+            $missionGroupName,
+            $missionTaskName,
+            $userId,
+        ));
+    }
+
     public function increaseCounter(
         string $counterName,
         int $value,
@@ -72,6 +87,19 @@ class NamespaceRef {
             $this->namespaceName,
             $missionGroupName,
             $missionTaskName,
+            $userId,
+        ));
+    }
+
+    public function decreaseCounter(
+        string $counterName,
+        int $value,
+        ?string $userId = "#{userId}",
+    ): DecreaseCounterByUserId {
+        return (new DecreaseCounterByUserId(
+            $this->namespaceName,
+            $counterName,
+            $value,
             $userId,
         ));
     }

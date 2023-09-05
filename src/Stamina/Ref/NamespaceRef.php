@@ -24,6 +24,7 @@ use Gs2Cdk\Stamina\StampSheet\RaiseMaxValueByUserId;
 use Gs2Cdk\Stamina\StampSheet\SetMaxValueByUserId;
 use Gs2Cdk\Stamina\StampSheet\SetRecoverIntervalByUserId;
 use Gs2Cdk\Stamina\StampSheet\SetRecoverValueByUserId;
+use Gs2Cdk\Stamina\StampSheet\DecreaseMaxValueByUserId;
 use Gs2Cdk\Stamina\StampSheet\ConsumeStaminaByUserId;
 
 class NamespaceRef {
@@ -105,6 +106,19 @@ class NamespaceRef {
             $this->namespaceName,
             $staminaName,
             $recoverValue,
+            $userId,
+        ));
+    }
+
+    public function decreaseMaxValue(
+        string $staminaName,
+        int $decreaseValue,
+        ?string $userId = "#{userId}",
+    ): DecreaseMaxValueByUserId {
+        return (new DecreaseMaxValueByUserId(
+            $this->namespaceName,
+            $staminaName,
+            $decreaseValue,
             $userId,
         ));
     }

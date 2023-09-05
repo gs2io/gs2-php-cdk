@@ -23,6 +23,7 @@ use Gs2Cdk\Formation\StampSheet\SetMoldCapacityByUserId;
 use Gs2Cdk\Formation\StampSheet\AcquireActionsToFormProperties;
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Formation\Model\AcquireActionConfig;
+use Gs2Cdk\Formation\StampSheet\SubMoldCapacityByUserId;
 
 class MoldModelRef {
     private string $namespaceName;
@@ -72,6 +73,18 @@ class MoldModelRef {
             $index,
             $acquireAction,
             $config,
+            $userId,
+        ));
+    }
+
+    public function subMoldCapacity(
+        int $capacity,
+        ?string $userId = "#{userId}",
+    ): SubMoldCapacityByUserId {
+        return (new SubMoldCapacityByUserId(
+            $this->namespaceName,
+            $this->moldName,
+            $capacity,
             $userId,
         ));
     }

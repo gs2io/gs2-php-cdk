@@ -20,6 +20,7 @@ use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\JobQueue\StampSheet\PushByUserId;
 use Gs2Cdk\JobQueue\Model\JobEntry;
+use Gs2Cdk\JobQueue\StampSheet\DeleteJobByUserId;
 
 class NamespaceRef {
     private string $namespaceName;
@@ -37,6 +38,17 @@ class NamespaceRef {
         return (new PushByUserId(
             $this->namespaceName,
             $jobs,
+            $userId,
+        ));
+    }
+
+    public function deleteJob(
+        string $jobName,
+        ?string $userId = "#{userId}",
+    ): DeleteJobByUserId {
+        return (new DeleteJobByUserId(
+            $this->namespaceName,
+            $jobName,
             $userId,
         ));
     }

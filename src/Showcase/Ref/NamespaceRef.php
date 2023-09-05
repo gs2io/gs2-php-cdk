@@ -18,6 +18,7 @@ namespace Gs2Cdk\Showcase\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
+use Gs2Cdk\Showcase\StampSheet\DecrementPurchaseCountByUserId;
 use Gs2Cdk\Showcase\StampSheet\ForceReDrawByUserId;
 use Gs2Cdk\Showcase\StampSheet\IncrementPurchaseCountByUserId;
 
@@ -28,6 +29,21 @@ class NamespaceRef {
         string $namespaceName,
     ) {
         $this->namespaceName = $namespaceName;
+    }
+
+    public function decrementPurchaseCount(
+        string $showcaseName,
+        string $displayItemName,
+        int $count,
+        ?string $userId = "#{userId}",
+    ): DecrementPurchaseCountByUserId {
+        return (new DecrementPurchaseCountByUserId(
+            $this->namespaceName,
+            $showcaseName,
+            $displayItemName,
+            $count,
+            $userId,
+        ));
     }
 
     public function forceReDraw(

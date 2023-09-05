@@ -19,6 +19,7 @@ namespace Gs2Cdk\Schedule\Ref;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Schedule\StampSheet\TriggerByUserId;
+use Gs2Cdk\Schedule\StampSheet\DeleteTriggerByUserId;
 
 class NamespaceRef {
     private string $namespaceName;
@@ -40,6 +41,17 @@ class NamespaceRef {
             $triggerName,
             $triggerStrategy,
             $ttl,
+            $userId,
+        ));
+    }
+
+    public function deleteTrigger(
+        string $triggerName,
+        ?string $userId = "#{userId}",
+    ): DeleteTriggerByUserId {
+        return (new DeleteTriggerByUserId(
+            $this->namespaceName,
+            $triggerName,
             $userId,
         ));
     }

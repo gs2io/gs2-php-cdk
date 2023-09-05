@@ -23,6 +23,7 @@ use Gs2Cdk\Inbox\StampSheet\SendMessageByUserId;
 use Gs2Cdk\Inbox\Model\Array;
 use Gs2Cdk\Inbox\Model\TimeSpan;
 use Gs2Cdk\Inbox\StampSheet\OpenMessageByUserId;
+use Gs2Cdk\Inbox\StampSheet\DeleteMessageByUserId;
 
 class NamespaceRef {
     private string $namespaceName;
@@ -64,6 +65,17 @@ class NamespaceRef {
         ?string $userId = "#{userId}",
     ): OpenMessageByUserId {
         return (new OpenMessageByUserId(
+            $this->namespaceName,
+            $messageName,
+            $userId,
+        ));
+    }
+
+    public function deleteMessage(
+        string $messageName,
+        ?string $userId = "#{userId}",
+    ): DeleteMessageByUserId {
+        return (new DeleteMessageByUserId(
             $this->namespaceName,
             $messageName,
             $userId,

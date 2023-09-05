@@ -19,6 +19,7 @@ namespace Gs2Cdk\Dictionary\Ref;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Dictionary\StampSheet\AddEntriesByUserId;
+use Gs2Cdk\Dictionary\StampSheet\DeleteEntriesByUserId;
 
 class EntryModelRef {
     private string $namespaceName;
@@ -37,6 +38,17 @@ class EntryModelRef {
         ?string $userId = "#{userId}",
     ): AddEntriesByUserId {
         return (new AddEntriesByUserId(
+            $this->namespaceName,
+            $entryModelNames,
+            $userId,
+        ));
+    }
+
+    public function deleteEntries(
+        ?array $entryModelNames = null,
+        ?string $userId = "#{userId}",
+    ): DeleteEntriesByUserId {
+        return (new DeleteEntriesByUserId(
             $this->namespaceName,
             $entryModelNames,
             $userId,

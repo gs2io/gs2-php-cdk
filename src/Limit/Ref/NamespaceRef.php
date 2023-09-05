@@ -19,6 +19,7 @@ namespace Gs2Cdk\Limit\Ref;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Limit\Ref\LimitModelRef;
+use Gs2Cdk\Limit\StampSheet\CountDownByUserId;
 use Gs2Cdk\Limit\StampSheet\DeleteCounterByUserId;
 use Gs2Cdk\Limit\StampSheet\CountUpByUserId;
 
@@ -37,6 +38,21 @@ class NamespaceRef {
         return (new LimitModelRef(
             $this->namespaceName,
             $limitName,
+        ));
+    }
+
+    public function countDown(
+        string $limitName,
+        string $counterName,
+        int $countDownValue,
+        ?string $userId = "#{userId}",
+    ): CountDownByUserId {
+        return (new CountDownByUserId(
+            $this->namespaceName,
+            $limitName,
+            $counterName,
+            $countDownValue,
+            $userId,
         ));
     }
 

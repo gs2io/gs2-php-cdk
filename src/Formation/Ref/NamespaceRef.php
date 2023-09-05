@@ -26,6 +26,7 @@ use Gs2Cdk\Formation\StampSheet\AcquireActionsToFormProperties;
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Formation\Model\AcquireActionConfig;
 use Gs2Cdk\Formation\StampSheet\AcquireActionsToPropertyFormProperties;
+use Gs2Cdk\Formation\StampSheet\SubMoldCapacityByUserId;
 
 class NamespaceRef {
     private string $namespaceName;
@@ -110,6 +111,19 @@ class NamespaceRef {
             $propertyId,
             $acquireAction,
             $config,
+            $userId,
+        ));
+    }
+
+    public function subMoldCapacity(
+        string $moldName,
+        int $capacity,
+        ?string $userId = "#{userId}",
+    ): SubMoldCapacityByUserId {
+        return (new SubMoldCapacityByUserId(
+            $this->namespaceName,
+            $moldName,
+            $capacity,
             $userId,
         ));
     }

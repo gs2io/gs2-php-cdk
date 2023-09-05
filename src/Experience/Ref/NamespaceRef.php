@@ -24,6 +24,8 @@ use Gs2Cdk\Experience\StampSheet\AddRankCapByUserId;
 use Gs2Cdk\Experience\StampSheet\SetRankCapByUserId;
 use Gs2Cdk\Experience\StampSheet\MultiplyAcquireActionsByUserId;
 use Gs2Cdk\Experience\Model\Array;
+use Gs2Cdk\Experience\StampSheet\SubExperienceByUserId;
+use Gs2Cdk\Experience\StampSheet\SubRankCapByUserId;
 
 class NamespaceRef {
     private string $namespaceName;
@@ -101,6 +103,36 @@ class NamespaceRef {
             $propertyId,
             $rateName,
             $acquireActions,
+            $userId,
+        ));
+    }
+
+    public function subExperience(
+        string $experienceName,
+        string $propertyId,
+        int $experienceValue,
+        ?string $userId = "#{userId}",
+    ): SubExperienceByUserId {
+        return (new SubExperienceByUserId(
+            $this->namespaceName,
+            $experienceName,
+            $propertyId,
+            $experienceValue,
+            $userId,
+        ));
+    }
+
+    public function subRankCap(
+        string $experienceName,
+        string $propertyId,
+        int $rankCapValue,
+        ?string $userId = "#{userId}",
+    ): SubRankCapByUserId {
+        return (new SubRankCapByUserId(
+            $this->namespaceName,
+            $experienceName,
+            $propertyId,
+            $rankCapValue,
             $userId,
         ));
     }

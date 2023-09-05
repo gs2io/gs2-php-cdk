@@ -19,6 +19,7 @@ namespace Gs2Cdk\Money\Ref;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Money\StampSheet\DepositByUserId;
+use Gs2Cdk\Money\StampSheet\RevertRecordReceipt;
 use Gs2Cdk\Money\StampSheet\WithdrawByUserId;
 use Gs2Cdk\Money\StampSheet\RecordReceipt;
 
@@ -42,6 +43,17 @@ class NamespaceRef {
             $slot,
             $price,
             $count,
+            $userId,
+        ));
+    }
+
+    public function revertRecordReceipt(
+        string $receipt,
+        ?string $userId = "#{userId}",
+    ): RevertRecordReceipt {
+        return (new RevertRecordReceipt(
+            $this->namespaceName,
+            $receipt,
             $userId,
         ));
     }

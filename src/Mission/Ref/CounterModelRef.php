@@ -19,6 +19,7 @@ namespace Gs2Cdk\Mission\Ref;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Mission\StampSheet\IncreaseCounterByUserId;
+use Gs2Cdk\Mission\StampSheet\DecreaseCounterByUserId;
 
 class CounterModelRef {
     private string $namespaceName;
@@ -37,6 +38,18 @@ class CounterModelRef {
         ?string $userId = "#{userId}",
     ): IncreaseCounterByUserId {
         return (new IncreaseCounterByUserId(
+            $this->namespaceName,
+            $this->counterName,
+            $value,
+            $userId,
+        ));
+    }
+
+    public function decreaseCounter(
+        int $value,
+        ?string $userId = "#{userId}",
+    ): DecreaseCounterByUserId {
+        return (new DecreaseCounterByUserId(
             $this->namespaceName,
             $this->counterName,
             $value,
