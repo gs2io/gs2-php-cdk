@@ -18,36 +18,32 @@ namespace Gs2Cdk\Formation\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
-use Gs2Cdk\Formation\StampSheet\AcquireActionsToFormProperties;
+use Gs2Cdk\Formation\StampSheet\AcquireActionsToPropertyFormProperties;
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Formation\Model\AcquireActionConfig;
 
-class FormModelRef {
+class PropertyFormModelRef {
     private string $namespaceName;
-    private string $moldModelName;
-    private string $formModelName;
+    private string $propertyFormModelName;
 
     public function __construct(
         string $namespaceName,
-        string $moldModelName,
-        string $formModelName,
+        string $propertyFormModelName,
     ) {
         $this->namespaceName = $namespaceName;
-        $this->moldModelName = $moldModelName;
-        $this->formModelName = $formModelName;
+        $this->propertyFormModelName = $propertyFormModelName;
     }
 
-    public function acquireActionsToFormProperties(
-        string $moldName,
-        int $index,
+    public function acquireActionsToPropertyFormProperties(
+        string $propertyId,
         AcquireAction $acquireAction,
         ?array $config = null,
         ?string $userId = "#{userId}",
-    ): AcquireActionsToFormProperties {
-        return (new AcquireActionsToFormProperties(
+    ): AcquireActionsToPropertyFormProperties {
+        return (new AcquireActionsToPropertyFormProperties(
             $this->namespaceName,
-            $moldName,
-            $index,
+            $this->propertyFormModelName,
+            $propertyId,
             $acquireAction,
             $config,
             $userId,
@@ -70,11 +66,8 @@ class FormModelRef {
                 "formation",
                 $this->namespaceName,
                 "model",
-                "mold",
-                $this->moldModelName,
-                "model",
-                "form",
-                $this->formModelName,
+                "propertyForm",
+                $this->propertyFormModelName,
             ],
         ))->str(
         );

@@ -24,7 +24,7 @@ class AcquireActionsToPropertyFormProperties extends AcquireAction {
 
     public function __construct(
         string $namespaceName,
-        string $formModelName,
+        string $propertyFormModelName,
         string $propertyId,
         AcquireAction $acquireAction,
         ?array $config = null,
@@ -33,7 +33,7 @@ class AcquireActionsToPropertyFormProperties extends AcquireAction {
         $properties = [];
 
         $properties["namespaceName"] = $namespaceName;
-        $properties["formModelName"] = $formModelName;
+        $properties["propertyFormModelName"] = $propertyFormModelName;
         $properties["propertyId"] = $propertyId;
         $properties["acquireAction"] = $acquireAction;
         $properties["config"] = $config;

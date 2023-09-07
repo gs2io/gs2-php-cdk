@@ -18,6 +18,7 @@ namespace Gs2Cdk\Formation\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
+use Gs2Cdk\Formation\Ref\FormModelRef;
 use Gs2Cdk\Formation\StampSheet\AddMoldCapacityByUserId;
 use Gs2Cdk\Formation\StampSheet\SetMoldCapacityByUserId;
 use Gs2Cdk\Formation\StampSheet\AcquireActionsToFormProperties;
@@ -27,41 +28,54 @@ use Gs2Cdk\Formation\StampSheet\SubMoldCapacityByUserId;
 
 class MoldModelRef {
     private string $namespaceName;
-    private string $moldName;
+    private string $moldModelName;
 
     public function __construct(
         string $namespaceName,
-        string $moldName,
+        string $moldModelName,
     ) {
         $this->namespaceName = $namespaceName;
-        $this->moldName = $moldName;
+        $this->moldModelName = $moldModelName;
+    }
+
+    public function formModel(
+        string $formModelName,
+    ): FormModelRef {
+        return (new FormModelRef(
+            $this->namespaceName,
+            $this->moldModelName,
+            $formModelName,
+        ));
     }
 
     public function addMoldCapacity(
+        string $moldName,
         int $capacity,
         ?string $userId = "#{userId}",
     ): AddMoldCapacityByUserId {
         return (new AddMoldCapacityByUserId(
             $this->namespaceName,
-            $this->moldName,
+            $moldName,
             $capacity,
             $userId,
         ));
     }
 
     public function setMoldCapacity(
+        string $moldName,
         int $capacity,
         ?string $userId = "#{userId}",
     ): SetMoldCapacityByUserId {
         return (new SetMoldCapacityByUserId(
             $this->namespaceName,
-            $this->moldName,
+            $moldName,
             $capacity,
             $userId,
         ));
     }
 
     public function acquireActionsToFormProperties(
+        string $moldName,
         int $index,
         AcquireAction $acquireAction,
         ?array $config = null,
@@ -69,7 +83,7 @@ class MoldModelRef {
     ): AcquireActionsToFormProperties {
         return (new AcquireActionsToFormProperties(
             $this->namespaceName,
-            $this->moldName,
+            $moldName,
             $index,
             $acquireAction,
             $config,
@@ -78,12 +92,13 @@ class MoldModelRef {
     }
 
     public function subMoldCapacity(
+        string $moldName,
         int $capacity,
         ?string $userId = "#{userId}",
     ): SubMoldCapacityByUserId {
         return (new SubMoldCapacityByUserId(
             $this->namespaceName,
-            $this->moldName,
+            $moldName,
             $capacity,
             $userId,
         ));
@@ -106,7 +121,7 @@ class MoldModelRef {
                 $this->namespaceName,
                 "model",
                 "mold",
-                $this->moldName,
+                $this->moldModelName,
             ],
         ))->str(
         );

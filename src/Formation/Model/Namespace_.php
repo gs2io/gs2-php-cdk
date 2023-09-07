@@ -26,7 +26,7 @@ use Gs2Cdk\Core\Model\LogSetting;
 use Gs2Cdk\Formation\Ref\NamespaceRef;
 use Gs2Cdk\Formation\Model\CurrentMasterData;
 use Gs2Cdk\Formation\Model\MoldModel;
-use Gs2Cdk\Formation\Model\FormModel;
+use Gs2Cdk\Formation\Model\PropertyFormModel;
 
 use Gs2Cdk\Formation\Model\Options\NamespaceOptions;
 
@@ -119,13 +119,13 @@ class Namespace_ extends CdkResource {
 
     public function masterData(
         array $moldModels,
-        array $formModels,
+        array $propertyFormModels,
     ): Namespace_ {
         (new CurrentMasterData(
             $this->stack,
             $this->name,
             $moldModels,
-            $formModels,
+            $propertyFormModels,
         ))->addDependsOn(
             $this,
         );

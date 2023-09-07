@@ -19,7 +19,7 @@ namespace Gs2Cdk\Formation\Ref;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Formation\Ref\MoldModelRef;
-use Gs2Cdk\Formation\Ref\FormModelRef;
+use Gs2Cdk\Formation\Ref\PropertyFormModelRef;
 use Gs2Cdk\Formation\StampSheet\AddMoldCapacityByUserId;
 use Gs2Cdk\Formation\StampSheet\SetMoldCapacityByUserId;
 use Gs2Cdk\Formation\StampSheet\AcquireActionsToFormProperties;
@@ -38,20 +38,20 @@ class NamespaceRef {
     }
 
     public function moldModel(
-        string $moldName,
+        string $moldModelName,
     ): MoldModelRef {
         return (new MoldModelRef(
             $this->namespaceName,
-            $moldName,
+            $moldModelName,
         ));
     }
 
-    public function formModel(
-        string $formModelName,
-    ): FormModelRef {
-        return (new FormModelRef(
+    public function propertyFormModel(
+        string $propertyFormModelName,
+    ): PropertyFormModelRef {
+        return (new PropertyFormModelRef(
             $this->namespaceName,
-            $formModelName,
+            $propertyFormModelName,
         ));
     }
 
@@ -99,7 +99,7 @@ class NamespaceRef {
     }
 
     public function acquireActionsToPropertyFormProperties(
-        string $formModelName,
+        string $propertyFormModelName,
         string $propertyId,
         AcquireAction $acquireAction,
         ?array $config = null,
@@ -107,7 +107,7 @@ class NamespaceRef {
     ): AcquireActionsToPropertyFormProperties {
         return (new AcquireActionsToPropertyFormProperties(
             $this->namespaceName,
-            $formModelName,
+            $propertyFormModelName,
             $propertyId,
             $acquireAction,
             $config,

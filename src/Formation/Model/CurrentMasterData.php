@@ -19,19 +19,19 @@ namespace Gs2Cdk\Formation\Model;
 use Gs2Cdk\Core\Model\CdkResource;
 use Gs2Cdk\Core\Model\Stack;
 use Gs2Cdk\Formation\Model\MoldModel;
-use Gs2Cdk\Formation\Model\FormModel;
+use Gs2Cdk\Formation\Model\PropertyFormModel;
 
 class CurrentMasterData extends CdkResource {
     private string $version= "2019-09-09";
     private string $namespaceName;
     private array $moldModels;
-    private array $formModels;
+    private array $propertyFormModels;
 
     public function __construct(
         Stack $stack,
         string $namespaceName,
         array $moldModels,
-        array $formModels,
+        array $propertyFormModels,
     ) {
         parent::__construct(
             "Formation_CurrentFormMaster_" . $namespaceName
@@ -39,7 +39,7 @@ class CurrentMasterData extends CdkResource {
 
         $this->namespaceName = $namespaceName;
         $this->moldModels = $moldModels;
-        $this->formModels = $formModels;
+        $this->propertyFormModels = $propertyFormModels;
         $stack->addResource(
             $this,
         );
@@ -70,13 +70,13 @@ class CurrentMasterData extends CdkResource {
                 $this->moldModels
             );
         }
-        if ($this->formModels != null) {
-            $settings["formModels"] = array_map(
+        if ($this->propertyFormModels != null) {
+            $settings["propertyFormModels"] = array_map(
                 function ($v) {
                     return $v->properties(
                     );
                 },
-                $this->formModels
+                $this->propertyFormModels
             );
         }
 
