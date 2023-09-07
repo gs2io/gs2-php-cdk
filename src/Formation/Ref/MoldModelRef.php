@@ -49,33 +49,30 @@ class MoldModelRef {
     }
 
     public function addMoldCapacity(
-        string $moldName,
         int $capacity,
         ?string $userId = "#{userId}",
     ): AddMoldCapacityByUserId {
         return (new AddMoldCapacityByUserId(
             $this->namespaceName,
-            $moldName,
+            $this->moldModelName,
             $capacity,
             $userId,
         ));
     }
 
     public function setMoldCapacity(
-        string $moldName,
         int $capacity,
         ?string $userId = "#{userId}",
     ): SetMoldCapacityByUserId {
         return (new SetMoldCapacityByUserId(
             $this->namespaceName,
-            $moldName,
+            $this->moldModelName,
             $capacity,
             $userId,
         ));
     }
 
     public function acquireActionsToFormProperties(
-        string $moldName,
         int $index,
         AcquireAction $acquireAction,
         ?array $config = null,
@@ -83,7 +80,7 @@ class MoldModelRef {
     ): AcquireActionsToFormProperties {
         return (new AcquireActionsToFormProperties(
             $this->namespaceName,
-            $moldName,
+            $this->moldModelName,
             $index,
             $acquireAction,
             $config,
@@ -92,13 +89,12 @@ class MoldModelRef {
     }
 
     public function subMoldCapacity(
-        string $moldName,
         int $capacity,
         ?string $userId = "#{userId}",
     ): SubMoldCapacityByUserId {
         return (new SubMoldCapacityByUserId(
             $this->namespaceName,
-            $moldName,
+            $this->moldModelName,
             $capacity,
             $userId,
         ));

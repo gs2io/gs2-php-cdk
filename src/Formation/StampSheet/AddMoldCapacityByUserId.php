@@ -23,14 +23,14 @@ class AddMoldCapacityByUserId extends AcquireAction {
 
     public function __construct(
         string $namespaceName,
-        string $moldName,
+        string $moldModelName,
         int $capacity,
         ?string $userId = "#{userId}",
     ) {
         $properties = [];
 
         $properties["namespaceName"] = $namespaceName;
-        $properties["moldName"] = $moldName;
+        $properties["moldModelName"] = $moldModelName;
         $properties["capacity"] = $capacity;
         $properties["userId"] = $userId;
 

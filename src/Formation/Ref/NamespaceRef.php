@@ -56,33 +56,33 @@ class NamespaceRef {
     }
 
     public function addMoldCapacity(
-        string $moldName,
+        string $moldModelName,
         int $capacity,
         ?string $userId = "#{userId}",
     ): AddMoldCapacityByUserId {
         return (new AddMoldCapacityByUserId(
             $this->namespaceName,
-            $moldName,
+            $moldModelName,
             $capacity,
             $userId,
         ));
     }
 
     public function setMoldCapacity(
-        string $moldName,
+        string $moldModelName,
         int $capacity,
         ?string $userId = "#{userId}",
     ): SetMoldCapacityByUserId {
         return (new SetMoldCapacityByUserId(
             $this->namespaceName,
-            $moldName,
+            $moldModelName,
             $capacity,
             $userId,
         ));
     }
 
     public function acquireActionsToFormProperties(
-        string $moldName,
+        string $moldModelName,
         int $index,
         AcquireAction $acquireAction,
         ?array $config = null,
@@ -90,7 +90,7 @@ class NamespaceRef {
     ): AcquireActionsToFormProperties {
         return (new AcquireActionsToFormProperties(
             $this->namespaceName,
-            $moldName,
+            $moldModelName,
             $index,
             $acquireAction,
             $config,
@@ -116,13 +116,13 @@ class NamespaceRef {
     }
 
     public function subMoldCapacity(
-        string $moldName,
+        string $moldModelName,
         int $capacity,
         ?string $userId = "#{userId}",
     ): SubMoldCapacityByUserId {
         return (new SubMoldCapacityByUserId(
             $this->namespaceName,
-            $moldName,
+            $moldModelName,
             $capacity,
             $userId,
         ));

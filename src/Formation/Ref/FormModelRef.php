@@ -38,7 +38,6 @@ class FormModelRef {
     }
 
     public function acquireActionsToFormProperties(
-        string $moldName,
         int $index,
         AcquireAction $acquireAction,
         ?array $config = null,
@@ -46,7 +45,7 @@ class FormModelRef {
     ): AcquireActionsToFormProperties {
         return (new AcquireActionsToFormProperties(
             $this->namespaceName,
-            $moldName,
+            $this->moldModelName,
             $index,
             $acquireAction,
             $config,
