@@ -22,7 +22,7 @@ class GetAttr implements Func
     public String $key;
 
     public function __construct(
-        CdkResource $resource = null,
+        \Gs2Cdk\Core\Model\CdkResource $resource = null,
         String $path = null,
         String $key = null,
     ) {

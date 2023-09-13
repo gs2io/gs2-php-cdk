@@ -130,9 +130,9 @@ class User extends CdkResource {
     public function getAttrUserId(
     ): GetAttr {
         return (new GetAttr(
-            null,
-            null,
+            $this,
             "Item.UserId",
+            null,
         ));
     }
 }

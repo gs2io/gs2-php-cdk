@@ -82,9 +82,9 @@ class Password extends CdkResource {
     public function getAttrPasswordId(
     ): GetAttr {
         return (new GetAttr(
-            null,
-            null,
+            $this,
             "Item.PasswordId",
+            null,
         ));
     }
 }

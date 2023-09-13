@@ -90,9 +90,9 @@ class Namespace_ extends CdkResource {
     public function getAttrNamespaceId(
     ): GetAttr {
         return (new GetAttr(
-            null,
-            null,
+            $this,
             "Item.NamespaceId",
+            null,
         ));
     }
 

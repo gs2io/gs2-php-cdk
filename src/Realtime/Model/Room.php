@@ -104,9 +104,9 @@ class Room extends CdkResource {
     public function getAttrRoomId(
     ): GetAttr {
         return (new GetAttr(
-            null,
-            null,
+            $this,
             "Item.RoomId",
+            null,
         ));
     }
 }

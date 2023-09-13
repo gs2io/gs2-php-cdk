@@ -94,9 +94,9 @@ class Script extends CdkResource {
     public function getAttrScriptId(
     ): GetAttr {
         return (new GetAttr(
-            null,
-            null,
+            $this,
             "Item.ScriptId",
+            null,
         ));
     }
 }

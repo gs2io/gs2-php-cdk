@@ -78,9 +78,9 @@ class Identifier extends CdkResource {
     public function getAttrClientId(
     ): GetAttr {
         return (new GetAttr(
-            null,
-            null,
+            $this,
             "Item.ClientId",
+            null,
         ));
     }
 
@@ -88,9 +88,9 @@ class Identifier extends CdkResource {
     public function getAttrClientSecret(
     ): GetAttr {
         return (new GetAttr(
-            null,
-            null,
+            $this,
             "ClientSecret",
+            null,
         ));
     }
 }

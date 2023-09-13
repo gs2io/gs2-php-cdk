@@ -88,9 +88,9 @@ class Key extends CdkResource {
     public function getAttrKeyId(
     ): GetAttr {
         return (new GetAttr(
-            null,
-            null,
+            $this,
             "Item.KeyId",
+            null,
         ));
     }
 }
