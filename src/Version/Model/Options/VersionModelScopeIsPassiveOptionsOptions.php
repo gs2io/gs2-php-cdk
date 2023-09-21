@@ -16,13 +16,18 @@
  */
 namespace Gs2Cdk\Version\Model\Options;
 use Gs2Cdk\Version\Model\Version;
+use Gs2Cdk\Version\Model\ScheduleVersion;
 use Gs2Cdk\Version\Model\Enum\VersionModelScope;
+use Gs2Cdk\Version\Model\Enum\VersionModelType;
 
 class VersionModelScopeIsPassiveOptions {
     public ?string $metadata;
+    public ?array $scheduleVersions;
     
     public function __construct(
         ?string $metadata = null,
+        ?array $scheduleVersions = null,
     ) {
         $this->metadata = $metadata;
+        $this->scheduleVersions = $scheduleVersions;
     }}

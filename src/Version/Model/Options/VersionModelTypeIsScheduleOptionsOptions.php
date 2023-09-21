@@ -20,7 +20,7 @@ use Gs2Cdk\Version\Model\ScheduleVersion;
 use Gs2Cdk\Version\Model\Enum\VersionModelScope;
 use Gs2Cdk\Version\Model\Enum\VersionModelType;
 
-class VersionModelScopeIsActiveOptions {
+class VersionModelTypeIsScheduleOptions {
     public ?string $metadata;
     public ?array $scheduleVersions;
     

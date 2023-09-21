@@ -16,72 +16,111 @@
  */
 namespace Gs2Cdk\Version\Model;
 use Gs2Cdk\Version\Model\Version;
+use Gs2Cdk\Version\Model\ScheduleVersion;
 use Gs2Cdk\Version\Model\Options\VersionModelOptions;
+use Gs2Cdk\Version\Model\Options\VersionModelTypeIsSimpleOptions;
+use Gs2Cdk\Version\Model\Options\VersionModelTypeIsScheduleOptions;
 use Gs2Cdk\Version\Model\Options\VersionModelScopeIsPassiveOptions;
 use Gs2Cdk\Version\Model\Options\VersionModelScopeIsActiveOptions;
 use Gs2Cdk\Version\Model\Enum\VersionModelScope;
+use Gs2Cdk\Version\Model\Enum\VersionModelType;
 
 class VersionModel {
     private string $name;
-    private Version $warningVersion;
-    private Version $errorVersion;
     private VersionModelScope $scope;
+    private VersionModelType $type;
     private ?string $metadata = null;
     private ?Version $currentVersion = null;
+    private ?Version $warningVersion = null;
+    private ?Version $errorVersion = null;
+    private ?array $scheduleVersions = null;
     private ?bool $needSignature = null;
     private ?string $signatureKeyId = null;
 
     public function __construct(
         string $name,
-        Version $warningVersion,
-        Version $errorVersion,
         VersionModelScope $scope,
+        VersionModelType $type,
         ?VersionModelOptions $options = null,
     ) {
         $this->name = $name;
-        $this->warningVersion = $warningVersion;
-        $this->errorVersion = $errorVersion;
         $this->scope = $scope;
+        $this->type = $type;
         $this->metadata = $options?->metadata ?? null;
         $this->currentVersion = $options?->currentVersion ?? null;
+        $this->warningVersion = $options?->warningVersion ?? null;
+        $this->errorVersion = $options?->errorVersion ?? null;
+        $this->scheduleVersions = $options?->scheduleVersions ?? null;
         $this->needSignature = $options?->needSignature ?? null;
         $this->signatureKeyId = $options?->signatureKeyId ?? null;
     }
 
-    public static function scopeIsPassive(
+    public static function typeIsSimple(
         string $name,
+        VersionModelScope $scope,
         Version $warningVersion,
         Version $errorVersion,
+        ?VersionModelTypeIsSimpleOptions $options = null,
+    ): VersionModel {
+        return (new VersionModel(
+            $name,
+            $scope,
+            VersionModelType::SIMPLE,
+            new VersionModelOptions(
+                warningVersion: $warningVersion,
+                errorVersion: $errorVersion,
+                metadata: $options?->metadata,
+                scheduleVersions: $options?->scheduleVersions,
+            ),
+        ));
+    }
+
+    public static function typeIsSchedule(
+        string $name,
+        VersionModelScope $scope,
+        ?VersionModelTypeIsScheduleOptions $options = null,
+    ): VersionModel {
+        return (new VersionModel(
+            $name,
+            $scope,
+            VersionModelType::SCHEDULE,
+            new VersionModelOptions(
+                metadata: $options?->metadata,
+                scheduleVersions: $options?->scheduleVersions,
+            ),
+        ));
+    }
+
+    public static function scopeIsPassive(
+        string $name,
+        VersionModelType $type,
         bool $needSignature,
         ?VersionModelScopeIsPassiveOptions $options = null,
     ): VersionModel {
         return (new VersionModel(
             $name,
-            $warningVersion,
-            $errorVersion,
             VersionModelScope::PASSIVE,
+            $type,
             new VersionModelOptions(
                 needSignature: $needSignature,
                 metadata: $options?->metadata,
+                scheduleVersions: $options?->scheduleVersions,
             ),
         ));
     }
 
     public static function scopeIsActive(
         string $name,
-        Version $warningVersion,
-        Version $errorVersion,
-        Version $currentVersion,
+        VersionModelType $type,
         ?VersionModelScopeIsActiveOptions $options = null,
     ): VersionModel {
         return (new VersionModel(
             $name,
-            $warningVersion,
-            $errorVersion,
             VersionModelScope::ACTIVE,
+            $type,
             new VersionModelOptions(
-                currentVersion: $currentVersion,
                 metadata: $options?->metadata,
+                scheduleVersions: $options?->scheduleVersions,
             ),
         ));
     }
@@ -96,6 +135,18 @@ class VersionModel {
         if ($this->metadata != null) {
             $properties["metadata"] = $this->metadata;
         }
+        if ($this->scope != null) {
+            $properties["scope"] = $this->scope?->toString(
+            );
+        }
+        if ($this->type != null) {
+            $properties["type"] = $this->type?->toString(
+            );
+        }
+        if ($this->currentVersion != null) {
+            $properties["currentVersion"] = $this->currentVersion?->properties(
+            );
+        }
         if ($this->warningVersion != null) {
             $properties["warningVersion"] = $this->warningVersion?->properties(
             );
@@ -104,12 +155,13 @@ class VersionModel {
             $properties["errorVersion"] = $this->errorVersion?->properties(
             );
         }
-        if ($this->scope != null) {
-            $properties["scope"] = $this->scope?->toString(
-            );
-        }
-        if ($this->currentVersion != null) {
-            $properties["currentVersion"] = $this->currentVersion?->properties(
+        if ($this->scheduleVersions != null) {
+            $properties["scheduleVersions"] = array_map(
+                function ($v) {
+                    return $v->properties(
+                    );
+                },
+                $this->scheduleVersions
             );
         }
         if ($this->needSignature != null) {

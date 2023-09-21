@@ -20,19 +20,18 @@ use Gs2Cdk\Version\Model\Options\TargetVersionOptions;
 
 class TargetVersion {
     private string $versionName;
-    private Version $version;
     private ?string $body = null;
     private ?string $signature = null;
+    private ?Version $version = null;
 
     public function __construct(
         string $versionName,
-        Version $version,
         ?TargetVersionOptions $options = null,
     ) {
         $this->versionName = $versionName;
-        $this->version = $version;
         $this->body = $options?->body ?? null;
         $this->signature = $options?->signature ?? null;
+        $this->version = $options?->version ?? null;
     }
 
     public function properties(
@@ -42,15 +41,15 @@ class TargetVersion {
         if ($this->versionName != null) {
             $properties["versionName"] = $this->versionName;
         }
-        if ($this->version != null) {
-            $properties["version"] = $this->version?->properties(
-            );
-        }
         if ($this->body != null) {
             $properties["body"] = $this->body;
         }
         if ($this->signature != null) {
             $properties["signature"] = $this->signature;
+        }
+        if ($this->version != null) {
+            $properties["version"] = $this->version?->properties(
+            );
         }
 
         return $properties;

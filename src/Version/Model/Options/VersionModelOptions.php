@@ -16,22 +16,33 @@
  */
 namespace Gs2Cdk\Version\Model\Options;
 use Gs2Cdk\Version\Model\Version;
+use Gs2Cdk\Version\Model\ScheduleVersion;
 use Gs2Cdk\Version\Model\Enum\VersionModelScope;
+use Gs2Cdk\Version\Model\Enum\VersionModelType;
 
 class VersionModelOptions {
     public ?string $metadata;
     public ?Version $currentVersion;
+    public ?Version $warningVersion;
+    public ?Version $errorVersion;
+    public ?array $scheduleVersions;
     public ?bool $needSignature;
     public ?string $signatureKeyId;
     
     public function __construct(
         ?string $metadata = null,
         ?Version $currentVersion = null,
+        ?Version $warningVersion = null,
+        ?Version $errorVersion = null,
+        ?array $scheduleVersions = null,
         ?bool $needSignature = null,
         ?string $signatureKeyId = null,
     ) {
         $this->metadata = $metadata;
         $this->currentVersion = $currentVersion;
+        $this->warningVersion = $warningVersion;
+        $this->errorVersion = $errorVersion;
+        $this->scheduleVersions = $scheduleVersions;
         $this->needSignature = $needSignature;
         $this->signatureKeyId = $signatureKeyId;
     }}

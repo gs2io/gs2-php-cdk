@@ -20,12 +20,15 @@ use Gs2Cdk\Version\Model\Version;
 class TargetVersionOptions {
     public ?string $body;
     public ?string $signature;
+    public ?Version $version;
     
     public function __construct(
         ?string $body = null,
         ?string $signature = null,
+        ?Version $version = null,
     ) {
         $this->body = $body;
         $this->signature = $signature;
+        $this->version = $version;
     }}
 

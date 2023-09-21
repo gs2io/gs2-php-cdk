@@ -16,6 +16,7 @@
  */
 namespace Gs2Cdk\Version\Model\Options;
 use Gs2Cdk\Version\Model\Version;
+use Gs2Cdk\Version\Model\ScheduleVersion;
 use Gs2Cdk\Version\Model\VersionModel;
 
 class StatusOptions {
