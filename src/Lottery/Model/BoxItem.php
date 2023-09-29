@@ -19,15 +19,18 @@ use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Lottery\Model\Options\BoxItemOptions;
 
 class BoxItem {
+    private string $prizeId;
     private int $remaining;
     private int $initial;
     private ?array $acquireActions = null;
 
     public function __construct(
+        string $prizeId,
         int $remaining,
         int $initial,
         ?BoxItemOptions $options = null,
     ) {
+        $this->prizeId = $prizeId;
         $this->remaining = $remaining;
         $this->initial = $initial;
         $this->acquireActions = $options?->acquireActions ?? null;
@@ -37,6 +40,9 @@ class BoxItem {
     ): array {
         $properties = [];
 
+        if ($this->prizeId != null) {
+            $properties["prizeId"] = $this->prizeId;
+        }
         if ($this->acquireActions != null) {
             $properties["acquireActions"] = array_map(
                 function ($v) {

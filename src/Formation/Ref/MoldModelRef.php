@@ -39,12 +39,10 @@ class MoldModelRef {
     }
 
     public function formModel(
-        string $formModelName,
     ): FormModelRef {
         return (new FormModelRef(
             $this->namespaceName,
             $this->moldModelName,
-            $formModelName,
         ));
     }
 
