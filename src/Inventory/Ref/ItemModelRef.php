@@ -22,6 +22,7 @@ use Gs2Cdk\Inventory\StampSheet\AcquireItemSetByUserId;
 use Gs2Cdk\Inventory\StampSheet\AddReferenceOfByUserId;
 use Gs2Cdk\Inventory\StampSheet\DeleteReferenceOfByUserId;
 use Gs2Cdk\Inventory\StampSheet\ConsumeItemSetByUserId;
+use Gs2Cdk\Inventory\StampSheet\VerifyItemSetByUserId;
 use Gs2Cdk\Inventory\StampSheet\VerifyReferenceOfByUserId;
 
 class ItemModelRef {
@@ -98,6 +99,23 @@ class ItemModelRef {
             $this->inventoryName,
             $this->itemName,
             $consumeCount,
+            $itemSetName,
+            $userId,
+        ));
+    }
+
+    public function verifyItemSet(
+        string $verifyType,
+        int $count,
+        ?string $itemSetName = null,
+        ?string $userId = "#{userId}",
+    ): VerifyItemSetByUserId {
+        return (new VerifyItemSetByUserId(
+            $this->namespaceName,
+            $this->inventoryName,
+            $this->itemName,
+            $verifyType,
+            $count,
             $itemSetName,
             $userId,
         ));

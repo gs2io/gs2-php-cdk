@@ -24,7 +24,9 @@ use Gs2Cdk\Inventory\StampSheet\SetCapacityByUserId;
 use Gs2Cdk\Inventory\StampSheet\AcquireItemSetByUserId;
 use Gs2Cdk\Inventory\StampSheet\AddReferenceOfByUserId;
 use Gs2Cdk\Inventory\StampSheet\DeleteReferenceOfByUserId;
+use Gs2Cdk\Inventory\StampSheet\VerifyInventoryCurrentMaxCapacityByUserId;
 use Gs2Cdk\Inventory\StampSheet\ConsumeItemSetByUserId;
+use Gs2Cdk\Inventory\StampSheet\VerifyItemSetByUserId;
 use Gs2Cdk\Inventory\StampSheet\VerifyReferenceOfByUserId;
 
 class InventoryModelRef {
@@ -125,6 +127,20 @@ class InventoryModelRef {
         ));
     }
 
+    public function verifyInventoryCurrentMaxCapacity(
+        string $verifyType,
+        int $currentInventoryMaxCapacity,
+        ?string $userId = "#{userId}",
+    ): VerifyInventoryCurrentMaxCapacityByUserId {
+        return (new VerifyInventoryCurrentMaxCapacityByUserId(
+            $this->namespaceName,
+            $this->inventoryName,
+            $verifyType,
+            $currentInventoryMaxCapacity,
+            $userId,
+        ));
+    }
+
     public function consumeItemSet(
         string $itemName,
         int $consumeCount,
@@ -136,6 +152,24 @@ class InventoryModelRef {
             $this->inventoryName,
             $itemName,
             $consumeCount,
+            $itemSetName,
+            $userId,
+        ));
+    }
+
+    public function verifyItemSet(
+        string $itemName,
+        string $verifyType,
+        int $count,
+        ?string $itemSetName = null,
+        ?string $userId = "#{userId}",
+    ): VerifyItemSetByUserId {
+        return (new VerifyItemSetByUserId(
+            $this->namespaceName,
+            $this->inventoryName,
+            $itemName,
+            $verifyType,
+            $count,
             $itemSetName,
             $userId,
         ));

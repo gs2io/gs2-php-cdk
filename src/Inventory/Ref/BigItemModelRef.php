@@ -20,6 +20,7 @@ use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Inventory\StampSheet\AcquireBigItemByUserId;
 use Gs2Cdk\Inventory\StampSheet\ConsumeBigItemByUserId;
+use Gs2Cdk\Inventory\StampSheet\VerifyBigItemByUserId;
 
 class BigItemModelRef {
     private string $namespaceName;
@@ -58,6 +59,21 @@ class BigItemModelRef {
             $this->inventoryName,
             $this->itemName,
             $consumeCount,
+            $userId,
+        ));
+    }
+
+    public function verifyBigItem(
+        string $verifyType,
+        string $count,
+        ?string $userId = "#{userId}",
+    ): VerifyBigItemByUserId {
+        return (new VerifyBigItemByUserId(
+            $this->namespaceName,
+            $this->inventoryName,
+            $this->itemName,
+            $verifyType,
+            $count,
             $userId,
         ));
     }

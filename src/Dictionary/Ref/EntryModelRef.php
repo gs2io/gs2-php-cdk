@@ -20,6 +20,7 @@ use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Dictionary\StampSheet\AddEntriesByUserId;
 use Gs2Cdk\Dictionary\StampSheet\DeleteEntriesByUserId;
+use Gs2Cdk\Dictionary\StampSheet\VerifyEntryByUserId;
 
 class EntryModelRef {
     private string $namespaceName;
@@ -51,6 +52,19 @@ class EntryModelRef {
         return (new DeleteEntriesByUserId(
             $this->namespaceName,
             $entryModelNames,
+            $userId,
+        ));
+    }
+
+    public function verifyEntry(
+        string $entryModelName,
+        string $verifyType,
+        ?string $userId = "#{userId}",
+    ): VerifyEntryByUserId {
+        return (new VerifyEntryByUserId(
+            $this->namespaceName,
+            $entryModelName,
+            $verifyType,
             $userId,
         ));
     }

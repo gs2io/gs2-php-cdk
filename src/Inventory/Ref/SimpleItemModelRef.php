@@ -21,6 +21,7 @@ use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Inventory\StampSheet\AcquireSimpleItemsByUserId;
 use Gs2Cdk\Inventory\Model\AcquireCount;
 use Gs2Cdk\Inventory\StampSheet\ConsumeSimpleItemsByUserId;
+use Gs2Cdk\Inventory\StampSheet\VerifySimpleItemByUserId;
 
 class SimpleItemModelRef {
     private string $namespaceName;
@@ -57,6 +58,21 @@ class SimpleItemModelRef {
             $this->namespaceName,
             $this->inventoryName,
             $consumeCounts,
+            $userId,
+        ));
+    }
+
+    public function verifySimpleItem(
+        string $verifyType,
+        int $count,
+        ?string $userId = "#{userId}",
+    ): VerifySimpleItemByUserId {
+        return (new VerifySimpleItemByUserId(
+            $this->namespaceName,
+            $this->inventoryName,
+            $this->itemName,
+            $verifyType,
+            $count,
             $userId,
         ));
     }

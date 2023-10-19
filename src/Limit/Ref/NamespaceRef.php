@@ -22,6 +22,7 @@ use Gs2Cdk\Limit\Ref\LimitModelRef;
 use Gs2Cdk\Limit\StampSheet\CountDownByUserId;
 use Gs2Cdk\Limit\StampSheet\DeleteCounterByUserId;
 use Gs2Cdk\Limit\StampSheet\CountUpByUserId;
+use Gs2Cdk\Limit\StampSheet\VerifyCounterByUserId;
 
 class NamespaceRef {
     private string $namespaceName;
@@ -82,6 +83,23 @@ class NamespaceRef {
             $counterName,
             $countUpValue,
             $maxValue,
+            $userId,
+        ));
+    }
+
+    public function verifyCounter(
+        string $limitName,
+        string $counterName,
+        string $verifyType,
+        int $count,
+        ?string $userId = "#{userId}",
+    ): VerifyCounterByUserId {
+        return (new VerifyCounterByUserId(
+            $this->namespaceName,
+            $limitName,
+            $counterName,
+            $verifyType,
+            $count,
             $userId,
         ));
     }

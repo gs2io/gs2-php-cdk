@@ -29,10 +29,14 @@ use Gs2Cdk\Inventory\StampSheet\DeleteReferenceOfByUserId;
 use Gs2Cdk\Inventory\StampSheet\AcquireSimpleItemsByUserId;
 use Gs2Cdk\Inventory\Model\AcquireCount;
 use Gs2Cdk\Inventory\StampSheet\AcquireBigItemByUserId;
+use Gs2Cdk\Inventory\StampSheet\VerifyInventoryCurrentMaxCapacityByUserId;
 use Gs2Cdk\Inventory\StampSheet\ConsumeItemSetByUserId;
+use Gs2Cdk\Inventory\StampSheet\VerifyItemSetByUserId;
 use Gs2Cdk\Inventory\StampSheet\VerifyReferenceOfByUserId;
 use Gs2Cdk\Inventory\StampSheet\ConsumeSimpleItemsByUserId;
+use Gs2Cdk\Inventory\StampSheet\VerifySimpleItemByUserId;
 use Gs2Cdk\Inventory\StampSheet\ConsumeBigItemByUserId;
+use Gs2Cdk\Inventory\StampSheet\VerifyBigItemByUserId;
 
 class NamespaceRef {
     private string $namespaceName;
@@ -179,6 +183,21 @@ class NamespaceRef {
         ));
     }
 
+    public function verifyInventoryCurrentMaxCapacity(
+        string $inventoryName,
+        string $verifyType,
+        int $currentInventoryMaxCapacity,
+        ?string $userId = "#{userId}",
+    ): VerifyInventoryCurrentMaxCapacityByUserId {
+        return (new VerifyInventoryCurrentMaxCapacityByUserId(
+            $this->namespaceName,
+            $inventoryName,
+            $verifyType,
+            $currentInventoryMaxCapacity,
+            $userId,
+        ));
+    }
+
     public function consumeItemSet(
         string $inventoryName,
         string $itemName,
@@ -191,6 +210,25 @@ class NamespaceRef {
             $inventoryName,
             $itemName,
             $consumeCount,
+            $itemSetName,
+            $userId,
+        ));
+    }
+
+    public function verifyItemSet(
+        string $inventoryName,
+        string $itemName,
+        string $verifyType,
+        int $count,
+        ?string $itemSetName = null,
+        ?string $userId = "#{userId}",
+    ): VerifyItemSetByUserId {
+        return (new VerifyItemSetByUserId(
+            $this->namespaceName,
+            $inventoryName,
+            $itemName,
+            $verifyType,
+            $count,
             $itemSetName,
             $userId,
         ));
@@ -228,6 +266,23 @@ class NamespaceRef {
         ));
     }
 
+    public function verifySimpleItem(
+        string $inventoryName,
+        string $itemName,
+        string $verifyType,
+        int $count,
+        ?string $userId = "#{userId}",
+    ): VerifySimpleItemByUserId {
+        return (new VerifySimpleItemByUserId(
+            $this->namespaceName,
+            $inventoryName,
+            $itemName,
+            $verifyType,
+            $count,
+            $userId,
+        ));
+    }
+
     public function consumeBigItem(
         string $inventoryName,
         string $itemName,
@@ -239,6 +294,23 @@ class NamespaceRef {
             $inventoryName,
             $itemName,
             $consumeCount,
+            $userId,
+        ));
+    }
+
+    public function verifyBigItem(
+        string $inventoryName,
+        string $itemName,
+        string $verifyType,
+        string $count,
+        ?string $userId = "#{userId}",
+    ): VerifyBigItemByUserId {
+        return (new VerifyBigItemByUserId(
+            $this->namespaceName,
+            $inventoryName,
+            $itemName,
+            $verifyType,
+            $count,
             $userId,
         ));
     }

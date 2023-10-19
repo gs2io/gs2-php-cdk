@@ -34,7 +34,7 @@ class Namespace_ extends CdkResource {
     private string $name;
     private ?string $description = null;
     private ?TransactionSetting $transactionSetting = null;
-    private ?string $experienceCapScriptId = null;
+    private ?string $rankCapScriptId = null;
     private ?ScriptSetting $changeExperienceScript = null;
     private ?ScriptSetting $changeRankScript = null;
     private ?ScriptSetting $changeRankCapScript = null;
@@ -54,7 +54,7 @@ class Namespace_ extends CdkResource {
         $this->name = $name;
         $this->description = $options?->description ?? null;
         $this->transactionSetting = $options?->transactionSetting ?? null;
-        $this->experienceCapScriptId = $options?->experienceCapScriptId ?? null;
+        $this->rankCapScriptId = $options?->rankCapScriptId ?? null;
         $this->changeExperienceScript = $options?->changeExperienceScript ?? null;
         $this->changeRankScript = $options?->changeRankScript ?? null;
         $this->changeRankCapScript = $options?->changeRankCapScript ?? null;
@@ -90,8 +90,8 @@ class Namespace_ extends CdkResource {
             $properties["TransactionSetting"] = $this->transactionSetting?->properties(
             );
         }
-        if ($this->experienceCapScriptId != null) {
-            $properties["ExperienceCapScriptId"] = $this->experienceCapScriptId;
+        if ($this->rankCapScriptId != null) {
+            $properties["RankCapScriptId"] = $this->rankCapScriptId;
         }
         if ($this->changeExperienceScript != null) {
             $properties["ChangeExperienceScript"] = $this->changeExperienceScript?->properties(
