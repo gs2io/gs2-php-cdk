@@ -26,7 +26,7 @@ class NamespaceOptions {
     public ?ScriptSetting $changeExperienceScript;
     public ?ScriptSetting $changeRankScript;
     public ?ScriptSetting $changeRankCapScript;
-    public ?ScriptSetting $overflowExperienceScript;
+    public ?string $overflowExperienceScript;
     public ?LogSetting $logSetting;
     
     public function __construct(
@@ -36,7 +36,7 @@ class NamespaceOptions {
         ?ScriptSetting $changeExperienceScript = null,
         ?ScriptSetting $changeRankScript = null,
         ?ScriptSetting $changeRankCapScript = null,
-        ?ScriptSetting $overflowExperienceScript = null,
+        ?string $overflowExperienceScript = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;

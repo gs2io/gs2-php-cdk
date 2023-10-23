@@ -38,7 +38,7 @@ class Namespace_ extends CdkResource {
     private ?ScriptSetting $changeExperienceScript = null;
     private ?ScriptSetting $changeRankScript = null;
     private ?ScriptSetting $changeRankCapScript = null;
-    private ?ScriptSetting $overflowExperienceScript = null;
+    private ?string $overflowExperienceScript = null;
     private ?LogSetting $logSetting = null;
 
     public function __construct(
@@ -106,8 +106,7 @@ class Namespace_ extends CdkResource {
             );
         }
         if ($this->overflowExperienceScript != null) {
-            $properties["OverflowExperienceScript"] = $this->overflowExperienceScript?->properties(
-            );
+            $properties["OverflowExperienceScript"] = $this->overflowExperienceScript;
         }
         if ($this->logSetting != null) {
             $properties["LogSetting"] = $this->logSetting?->properties(
