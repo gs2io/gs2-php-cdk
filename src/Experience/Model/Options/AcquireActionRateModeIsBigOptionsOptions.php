@@ -17,15 +17,8 @@
 namespace Gs2Cdk\Experience\Model\Options;
 use Gs2Cdk\Experience\Model\Enum\AcquireActionRateMode;
 
-class AcquireActionRateOptions {
-    public ?array $rates;
-    public ?array $bigRates;
+class AcquireActionRateModeIsBigOptions {
     
     public function __construct(
-        ?array $rates = null,
-        ?array $bigRates = null,
     ) {
-        $this->rates = $rates;
-        $this->bigRates = $bigRates;
     }}
-

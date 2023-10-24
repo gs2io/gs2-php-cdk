@@ -14,18 +14,21 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\Experience\Model\Options;
-use Gs2Cdk\Experience\Model\Enum\AcquireActionRateMode;
 
-class AcquireActionRateOptions {
-    public ?array $rates;
-    public ?array $bigRates;
-    
-    public function __construct(
-        ?array $rates = null,
-        ?array $bigRates = null,
-    ) {
-        $this->rates = $rates;
-        $this->bigRates = $bigRates;
-    }}
+namespace Gs2Cdk\Experience\Model\Enum;
 
+
+enum AcquireActionRateMode {
+    case DOUBLE;
+    case BIG;
+
+    public function toString(): String {
+        switch ($this) {
+            case self::DOUBLE:
+                return "double";
+            case self::BIG:
+                return "big";
+        }
+        return "unknown";
+    }
+}

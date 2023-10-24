@@ -16,18 +16,53 @@
  */
 namespace Gs2Cdk\Experience\Model;
 use Gs2Cdk\Experience\Model\Options\AcquireActionRateOptions;
+use Gs2Cdk\Experience\Model\Options\AcquireActionRateModeIsDoubleOptions;
+use Gs2Cdk\Experience\Model\Options\AcquireActionRateModeIsBigOptions;
+use Gs2Cdk\Experience\Model\Enum\AcquireActionRateMode;
 
 class AcquireActionRate {
     private string $name;
-    private array $rates;
+    private AcquireActionRateMode $mode;
+    private ?array $rates = null;
+    private ?array $bigRates = null;
 
     public function __construct(
         string $name,
-        array $rates,
+        AcquireActionRateMode $mode,
         ?AcquireActionRateOptions $options = null,
     ) {
         $this->name = $name;
-        $this->rates = $rates;
+        $this->mode = $mode;
+        $this->rates = $options?->rates ?? null;
+        $this->bigRates = $options?->bigRates ?? null;
+    }
+
+    public static function modeIsDouble(
+        string $name,
+        array $rates,
+        ?AcquireActionRateModeIsDoubleOptions $options = null,
+    ): AcquireActionRate {
+        return (new AcquireActionRate(
+            $name,
+            AcquireActionRateMode::DOUBLE,
+            new AcquireActionRateOptions(
+                rates: $rates,
+            ),
+        ));
+    }
+
+    public static function modeIsBig(
+        string $name,
+        array $bigRates,
+        ?AcquireActionRateModeIsBigOptions $options = null,
+    ): AcquireActionRate {
+        return (new AcquireActionRate(
+            $name,
+            AcquireActionRateMode::BIG,
+            new AcquireActionRateOptions(
+                bigRates: $bigRates,
+            ),
+        ));
     }
 
     public function properties(
@@ -37,8 +72,15 @@ class AcquireActionRate {
         if ($this->name != null) {
             $properties["name"] = $this->name;
         }
+        if ($this->mode != null) {
+            $properties["mode"] = $this->mode?->toString(
+            );
+        }
         if ($this->rates != null) {
             $properties["rates"] = $this->rates;
+        }
+        if ($this->bigRates != null) {
+            $properties["bigRates"] = $this->bigRates;
         }
 
         return $properties;
