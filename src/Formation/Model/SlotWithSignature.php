@@ -21,21 +21,19 @@ use Gs2Cdk\Formation\Model\Enum\SlotWithSignaturePropertyType;
 class SlotWithSignature {
     private string $name;
     private SlotWithSignaturePropertyType $propertyType;
-    private string $body;
-    private string $signature;
+    private ?string $body = null;
+    private ?string $signature = null;
     private ?string $metadata = null;
 
     public function __construct(
         string $name,
         SlotWithSignaturePropertyType $propertyType,
-        string $body,
-        string $signature,
         ?SlotWithSignatureOptions $options = null,
     ) {
         $this->name = $name;
         $this->propertyType = $propertyType;
-        $this->body = $body;
-        $this->signature = $signature;
+        $this->body = $options?->body ?? null;
+        $this->signature = $options?->signature ?? null;
         $this->metadata = $options?->metadata ?? null;
     }
 

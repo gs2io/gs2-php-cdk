@@ -18,11 +18,17 @@ namespace Gs2Cdk\Formation\Model\Options;
 use Gs2Cdk\Formation\Model\Enum\SlotWithSignaturePropertyType;
 
 class SlotWithSignatureOptions {
+    public ?string $body;
+    public ?string $signature;
     public ?string $metadata;
     
     public function __construct(
+        ?string $body = null,
+        ?string $signature = null,
         ?string $metadata = null,
     ) {
+        $this->body = $body;
+        $this->signature = $signature;
         $this->metadata = $metadata;
     }}
 
