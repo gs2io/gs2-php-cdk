@@ -19,7 +19,6 @@ namespace Gs2Cdk\Stamina\Model;
 use Gs2Cdk\Core\Model\CdkResource;
 use Gs2Cdk\Core\Model\Stack;
 use Gs2Cdk\Core\Func\GetAttr;
-use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 use Gs2Cdk\Stamina\Ref\NamespaceRef;
@@ -32,7 +31,7 @@ class Namespace_ extends CdkResource {
     private Stack $stack;
     private string $name;
     private ?string $description = null;
-    private ?ScriptSetting $overflowTriggerScript = null;
+    private ?string $overflowTriggerScript = null;
     private ?LogSetting $logSetting = null;
 
     public function __construct(
@@ -76,8 +75,7 @@ class Namespace_ extends CdkResource {
             $properties["Description"] = $this->description;
         }
         if ($this->overflowTriggerScript != null) {
-            $properties["OverflowTriggerScript"] = $this->overflowTriggerScript?->properties(
-            );
+            $properties["OverflowTriggerScript"] = $this->overflowTriggerScript;
         }
         if ($this->logSetting != null) {
             $properties["LogSetting"] = $this->logSetting?->properties(

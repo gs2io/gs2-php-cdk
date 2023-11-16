@@ -33,7 +33,7 @@ class Namespace_ extends CdkResource {
     private string $name;
     private ?string $description = null;
     private ?ScriptSetting $entryScript = null;
-    private ?ScriptSetting $duplicateEntryScript = null;
+    private ?string $duplicateEntryScript = null;
     private ?LogSetting $logSetting = null;
 
     public function __construct(
@@ -82,8 +82,7 @@ class Namespace_ extends CdkResource {
             );
         }
         if ($this->duplicateEntryScript != null) {
-            $properties["DuplicateEntryScript"] = $this->duplicateEntryScript?->properties(
-            );
+            $properties["DuplicateEntryScript"] = $this->duplicateEntryScript;
         }
         if ($this->logSetting != null) {
             $properties["LogSetting"] = $this->logSetting?->properties(

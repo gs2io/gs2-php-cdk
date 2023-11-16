@@ -21,13 +21,13 @@ use Gs2Cdk\Core\Model\LogSetting;
 class NamespaceOptions {
     public ?string $description;
     public ?ScriptSetting $entryScript;
-    public ?ScriptSetting $duplicateEntryScript;
+    public ?string $duplicateEntryScript;
     public ?LogSetting $logSetting;
     
     public function __construct(
         ?string $description = null,
         ?ScriptSetting $entryScript = null,
-        ?ScriptSetting $duplicateEntryScript = null,
+        ?string $duplicateEntryScript = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;

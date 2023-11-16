@@ -15,17 +15,16 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Stamina\Model\Options;
-use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
-    public ?ScriptSetting $overflowTriggerScript;
+    public ?string $overflowTriggerScript;
     public ?LogSetting $logSetting;
     
     public function __construct(
         ?string $description = null,
-        ?ScriptSetting $overflowTriggerScript = null,
+        ?string $overflowTriggerScript = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
