@@ -24,17 +24,20 @@ class NamespaceOptions {
     public ?AdMob $admob;
     public ?UnityAd $unityAd;
     public ?string $description;
+    public ?NotificationSetting $changePointNotification;
     public ?LogSetting $logSetting;
     
     public function __construct(
         ?AdMob $admob = null,
         ?UnityAd $unityAd = null,
         ?string $description = null,
+        ?NotificationSetting $changePointNotification = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->admob = $admob;
         $this->unityAd = $unityAd;
         $this->description = $description;
+        $this->changePointNotification = $changePointNotification;
         $this->logSetting = $logSetting;
     }}
 

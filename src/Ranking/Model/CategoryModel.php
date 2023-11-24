@@ -26,10 +26,10 @@ class CategoryModel {
     private string $name;
     private CategoryModelOrderDirection $orderDirection;
     private CategoryModelScope $scope;
-    private bool $uniqueByUserId;
     private ?string $metadata = null;
     private ?int $minimumValue = null;
     private ?int $maximumValue = null;
+    private ?bool $uniqueByUserId = null;
     private ?bool $sum = null;
     private ?int $calculateFixedTimingHour = null;
     private ?int $calculateFixedTimingMinute = null;
@@ -44,16 +44,15 @@ class CategoryModel {
         string $name,
         CategoryModelOrderDirection $orderDirection,
         CategoryModelScope $scope,
-        bool $uniqueByUserId,
         ?CategoryModelOptions $options = null,
     ) {
         $this->name = $name;
         $this->orderDirection = $orderDirection;
         $this->scope = $scope;
-        $this->uniqueByUserId = $uniqueByUserId;
         $this->metadata = $options?->metadata ?? null;
         $this->minimumValue = $options?->minimumValue ?? null;
         $this->maximumValue = $options?->maximumValue ?? null;
+        $this->uniqueByUserId = $options?->uniqueByUserId ?? null;
         $this->sum = $options?->sum ?? null;
         $this->calculateFixedTimingHour = $options?->calculateFixedTimingHour ?? null;
         $this->calculateFixedTimingMinute = $options?->calculateFixedTimingMinute ?? null;
@@ -76,8 +75,8 @@ class CategoryModel {
             $name,
             $orderDirection,
             CategoryModelScope::GLOBAL,
-            $uniqueByUserId,
             new CategoryModelOptions(
+                uniqueByUserId: $uniqueByUserId,
                 calculateIntervalMinutes: $calculateIntervalMinutes,
                 metadata: $options?->metadata,
                 minimumValue: $options?->minimumValue,
@@ -96,14 +95,12 @@ class CategoryModel {
     public static function scopeIsScoped(
         string $name,
         CategoryModelOrderDirection $orderDirection,
-        bool $uniqueByUserId,
         ?CategoryModelScopeIsScopedOptions $options = null,
     ): CategoryModel {
         return (new CategoryModel(
             $name,
             $orderDirection,
             CategoryModelScope::SCOPED,
-            $uniqueByUserId,
             new CategoryModelOptions(
                 metadata: $options?->metadata,
                 minimumValue: $options?->minimumValue,

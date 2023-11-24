@@ -31,16 +31,15 @@ use Gs2Cdk\AdReward\Model\Options\NamespaceOptions;
 class Namespace_ extends CdkResource {
     private Stack $stack;
     private string $name;
-    private NotificationSetting $changePointNotification;
     private ?AdMob $admob = null;
     private ?UnityAd $unityAd = null;
     private ?string $description = null;
+    private ?NotificationSetting $changePointNotification = null;
     private ?LogSetting $logSetting = null;
 
     public function __construct(
         Stack $stack,
         string $name,
-        NotificationSetting $changePointNotification,
         ?NamespaceOptions $options = null,
     ) {
         parent::__construct(
@@ -49,10 +48,10 @@ class Namespace_ extends CdkResource {
 
         $this->stack = $stack;
         $this->name = $name;
-        $this->changePointNotification = $changePointNotification;
         $this->admob = $options?->admob ?? null;
         $this->unityAd = $options?->unityAd ?? null;
         $this->description = $options?->description ?? null;
+        $this->changePointNotification = $options?->changePointNotification ?? null;
         $this->logSetting = $options?->logSetting ?? null;
         $stack->addResource(
             $this,

@@ -23,6 +23,7 @@ class CategoryModelOptions {
     public ?string $metadata;
     public ?int $minimumValue;
     public ?int $maximumValue;
+    public ?bool $uniqueByUserId;
     public ?bool $sum;
     public ?int $calculateFixedTimingHour;
     public ?int $calculateFixedTimingMinute;
@@ -37,6 +38,7 @@ class CategoryModelOptions {
         ?string $metadata = null,
         ?int $minimumValue = null,
         ?int $maximumValue = null,
+        ?bool $uniqueByUserId = null,
         ?bool $sum = null,
         ?int $calculateFixedTimingHour = null,
         ?int $calculateFixedTimingMinute = null,
@@ -50,6 +52,7 @@ class CategoryModelOptions {
         $this->metadata = $metadata;
         $this->minimumValue = $minimumValue;
         $this->maximumValue = $maximumValue;
+        $this->uniqueByUserId = $uniqueByUserId;
         $this->sum = $sum;
         $this->calculateFixedTimingHour = $calculateFixedTimingHour;
         $this->calculateFixedTimingMinute = $calculateFixedTimingMinute;
