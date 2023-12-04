@@ -47,7 +47,6 @@ class Namespace_ extends CdkResource {
         $this->stack = $stack;
         $this->name = $name;
         $this->description = $options?->description ?? null;
-        $this->enableAutoRun = $options?->enableAutoRun ?? null;
         $this->pushNotification = $options?->pushNotification ?? null;
         $this->runNotification = $options?->runNotification ?? null;
         $this->logSetting = $options?->logSetting ?? null;
