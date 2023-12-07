@@ -20,6 +20,7 @@ use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Inventory\StampSheet\AcquireSimpleItemsByUserId;
 use Gs2Cdk\Inventory\Model\AcquireCount;
+use Gs2Cdk\Inventory\StampSheet\SetSimpleItemsByUserId;
 use Gs2Cdk\Inventory\StampSheet\ConsumeSimpleItemsByUserId;
 use Gs2Cdk\Inventory\StampSheet\VerifySimpleItemByUserId;
 
@@ -46,6 +47,18 @@ class SimpleItemModelRef {
             $this->namespaceName,
             $this->inventoryName,
             $acquireCounts,
+            $userId,
+        ));
+    }
+
+    public function setSimpleItems(
+        array $counts,
+        ?string $userId = "#{userId}",
+    ): SetSimpleItemsByUserId {
+        return (new SetSimpleItemsByUserId(
+            $this->namespaceName,
+            $this->inventoryName,
+            $counts,
             $userId,
         ));
     }

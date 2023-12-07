@@ -28,7 +28,9 @@ use Gs2Cdk\Inventory\StampSheet\AddReferenceOfByUserId;
 use Gs2Cdk\Inventory\StampSheet\DeleteReferenceOfByUserId;
 use Gs2Cdk\Inventory\StampSheet\AcquireSimpleItemsByUserId;
 use Gs2Cdk\Inventory\Model\AcquireCount;
+use Gs2Cdk\Inventory\StampSheet\SetSimpleItemsByUserId;
 use Gs2Cdk\Inventory\StampSheet\AcquireBigItemByUserId;
+use Gs2Cdk\Inventory\StampSheet\SetBigItemByUserId;
 use Gs2Cdk\Inventory\StampSheet\VerifyInventoryCurrentMaxCapacityByUserId;
 use Gs2Cdk\Inventory\StampSheet\ConsumeItemSetByUserId;
 use Gs2Cdk\Inventory\StampSheet\VerifyItemSetByUserId;
@@ -168,6 +170,19 @@ class NamespaceRef {
         ));
     }
 
+    public function setSimpleItems(
+        string $inventoryName,
+        array $counts,
+        ?string $userId = "#{userId}",
+    ): SetSimpleItemsByUserId {
+        return (new SetSimpleItemsByUserId(
+            $this->namespaceName,
+            $inventoryName,
+            $counts,
+            $userId,
+        ));
+    }
+
     public function acquireBigItem(
         string $inventoryName,
         string $itemName,
@@ -179,6 +194,21 @@ class NamespaceRef {
             $inventoryName,
             $itemName,
             $acquireCount,
+            $userId,
+        ));
+    }
+
+    public function setBigItem(
+        string $inventoryName,
+        string $itemName,
+        string $count,
+        ?string $userId = "#{userId}",
+    ): SetBigItemByUserId {
+        return (new SetBigItemByUserId(
+            $this->namespaceName,
+            $inventoryName,
+            $itemName,
+            $count,
             $userId,
         ));
     }

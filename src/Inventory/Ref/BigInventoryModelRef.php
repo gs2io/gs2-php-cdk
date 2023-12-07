@@ -20,6 +20,7 @@ use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Inventory\Ref\BigItemModelRef;
 use Gs2Cdk\Inventory\StampSheet\AcquireBigItemByUserId;
+use Gs2Cdk\Inventory\StampSheet\SetBigItemByUserId;
 use Gs2Cdk\Inventory\StampSheet\ConsumeBigItemByUserId;
 use Gs2Cdk\Inventory\StampSheet\VerifyBigItemByUserId;
 
@@ -55,6 +56,20 @@ class BigInventoryModelRef {
             $this->inventoryName,
             $itemName,
             $acquireCount,
+            $userId,
+        ));
+    }
+
+    public function setBigItem(
+        string $itemName,
+        string $count,
+        ?string $userId = "#{userId}",
+    ): SetBigItemByUserId {
+        return (new SetBigItemByUserId(
+            $this->namespaceName,
+            $this->inventoryName,
+            $itemName,
+            $count,
             $userId,
         ));
     }
