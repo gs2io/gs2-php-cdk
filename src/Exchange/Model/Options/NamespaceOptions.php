@@ -23,6 +23,7 @@ class NamespaceOptions {
     public ?string $description;
     public ?bool $enableAwaitExchange;
     public ?bool $enableDirectExchange;
+    public ?TransactionSetting $transactionSetting;
     public ?ScriptSetting $exchangeScript;
     public ?LogSetting $logSetting;
     public ?string $queueNamespaceId;
@@ -32,6 +33,7 @@ class NamespaceOptions {
         ?string $description = null,
         ?bool $enableAwaitExchange = null,
         ?bool $enableDirectExchange = null,
+        ?TransactionSetting $transactionSetting = null,
         ?ScriptSetting $exchangeScript = null,
         ?LogSetting $logSetting = null,
         ?string $queueNamespaceId = null,
@@ -40,6 +42,7 @@ class NamespaceOptions {
         $this->description = $description;
         $this->enableAwaitExchange = $enableAwaitExchange;
         $this->enableDirectExchange = $enableDirectExchange;
+        $this->transactionSetting = $transactionSetting;
         $this->exchangeScript = $exchangeScript;
         $this->logSetting = $logSetting;
         $this->queueNamespaceId = $queueNamespaceId;

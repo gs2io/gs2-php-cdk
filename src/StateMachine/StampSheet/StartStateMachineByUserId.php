@@ -24,6 +24,7 @@ class StartStateMachineByUserId extends AcquireAction {
     public function __construct(
         string $namespaceName,
         ?string $args = null,
+        ?string $enableSpeculativeExecution = null,
         ?int $ttl = null,
         ?string $userId = "#{userId}",
     ) {
@@ -31,6 +32,7 @@ class StartStateMachineByUserId extends AcquireAction {
 
         $properties["namespaceName"] = $namespaceName;
         $properties["args"] = $args;
+        $properties["enableSpeculativeExecution"] = $enableSpeculativeExecution;
         $properties["ttl"] = $ttl;
         $properties["userId"] = $userId;
 

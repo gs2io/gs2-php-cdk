@@ -31,12 +31,14 @@ class NamespaceRef {
 
     public function startStateMachine(
         string $args,
+        string $enableSpeculativeExecution,
         ?int $ttl = null,
         ?string $userId = "#{userId}",
     ): StartStateMachineByUserId {
         return (new StartStateMachineByUserId(
             $this->namespaceName,
             $args,
+            $enableSpeculativeExecution,
             $ttl,
             $userId,
         ));
