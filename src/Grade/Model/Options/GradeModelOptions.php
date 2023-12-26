@@ -14,29 +14,23 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\StateMachine\StampSheet;
+namespace Gs2Cdk\Grade\Model\Options;
+use Gs2Cdk\Grade\Model\DefaultGradeModel;
+use Gs2Cdk\Grade\Model\GradeEntryModel;
+use Gs2Cdk\Grade\Model\AcquireActionRate;
 
-use Gs2Cdk\Core\Model\AcquireAction;
-use Gs2Cdk\Core\Model\ConsumeAction;
-
-class StartStateMachineByUserId extends AcquireAction {
-
+class GradeModelOptions {
+    public ?string $metadata;
+    public ?array $defaultGrades;
+    public ?array $acquireActionRates;
+    
     public function __construct(
-        string $namespaceName,
-        ?string $args = null,
-        ?int $ttl = null,
-        ?string $userId = "#{userId}",
+        ?string $metadata = null,
+        ?array $defaultGrades = null,
+        ?array $acquireActionRates = null,
     ) {
-        $properties = [];
+        $this->metadata = $metadata;
+        $this->defaultGrades = $defaultGrades;
+        $this->acquireActionRates = $acquireActionRates;
+    }}
 
-        $properties["namespaceName"] = $namespaceName;
-        $properties["args"] = $args;
-        $properties["ttl"] = $ttl;
-        $properties["userId"] = $userId;
-
-        parent::__construct(
-            "Gs2StateMachine:StartStateMachineByUserId",
-            $properties,
-        );
-    }
-}

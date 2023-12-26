@@ -32,8 +32,8 @@ use Gs2Cdk\Quest\Model\Options\NamespaceOptions;
 class Namespace_ extends CdkResource {
     private Stack $stack;
     private string $name;
-    private TransactionSetting $transactionSetting;
     private ?string $description = null;
+    private ?TransactionSetting $transactionSetting = null;
     private ?ScriptSetting $startQuestScript = null;
     private ?ScriptSetting $completeQuestScript = null;
     private ?ScriptSetting $failedQuestScript = null;
@@ -42,7 +42,6 @@ class Namespace_ extends CdkResource {
     public function __construct(
         Stack $stack,
         string $name,
-        TransactionSetting $transactionSetting,
         ?NamespaceOptions $options = null,
     ) {
         parent::__construct(
@@ -51,8 +50,8 @@ class Namespace_ extends CdkResource {
 
         $this->stack = $stack;
         $this->name = $name;
-        $this->transactionSetting = $transactionSetting;
         $this->description = $options?->description ?? null;
+        $this->transactionSetting = $options?->transactionSetting ?? null;
         $this->startQuestScript = $options?->startQuestScript ?? null;
         $this->completeQuestScript = $options?->completeQuestScript ?? null;
         $this->failedQuestScript = $options?->failedQuestScript ?? null;

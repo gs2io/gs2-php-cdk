@@ -21,6 +21,7 @@ use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    public ?TransactionSetting $transactionSetting;
     public ?ScriptSetting $startQuestScript;
     public ?ScriptSetting $completeQuestScript;
     public ?ScriptSetting $failedQuestScript;
@@ -30,6 +31,7 @@ class NamespaceOptions {
     
     public function __construct(
         ?string $description = null,
+        ?TransactionSetting $transactionSetting = null,
         ?ScriptSetting $startQuestScript = null,
         ?ScriptSetting $completeQuestScript = null,
         ?ScriptSetting $failedQuestScript = null,
@@ -38,6 +40,7 @@ class NamespaceOptions {
         ?string $keyId = null,
     ) {
         $this->description = $description;
+        $this->transactionSetting = $transactionSetting;
         $this->startQuestScript = $startQuestScript;
         $this->completeQuestScript = $completeQuestScript;
         $this->failedQuestScript = $failedQuestScript;

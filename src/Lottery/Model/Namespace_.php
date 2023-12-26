@@ -32,8 +32,8 @@ use Gs2Cdk\Lottery\Model\Options\NamespaceOptions;
 class Namespace_ extends CdkResource {
     private Stack $stack;
     private string $name;
-    private TransactionSetting $transactionSetting;
     private ?string $description = null;
+    private ?TransactionSetting $transactionSetting = null;
     private ?string $lotteryTriggerScriptId = null;
     private ?string $choicePrizeTableScriptId = null;
     private ?LogSetting $logSetting = null;
@@ -41,7 +41,6 @@ class Namespace_ extends CdkResource {
     public function __construct(
         Stack $stack,
         string $name,
-        TransactionSetting $transactionSetting,
         ?NamespaceOptions $options = null,
     ) {
         parent::__construct(
@@ -50,8 +49,8 @@ class Namespace_ extends CdkResource {
 
         $this->stack = $stack;
         $this->name = $name;
-        $this->transactionSetting = $transactionSetting;
         $this->description = $options?->description ?? null;
+        $this->transactionSetting = $options?->transactionSetting ?? null;
         $this->lotteryTriggerScriptId = $options?->lotteryTriggerScriptId ?? null;
         $this->choicePrizeTableScriptId = $options?->choicePrizeTableScriptId ?? null;
         $this->logSetting = $options?->logSetting ?? null;

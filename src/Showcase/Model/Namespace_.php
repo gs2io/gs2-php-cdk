@@ -33,15 +33,14 @@ use Gs2Cdk\Showcase\Model\Options\NamespaceOptions;
 class Namespace_ extends CdkResource {
     private Stack $stack;
     private string $name;
-    private TransactionSetting $transactionSetting;
     private ?string $description = null;
+    private ?TransactionSetting $transactionSetting = null;
     private ?ScriptSetting $buyScript = null;
     private ?LogSetting $logSetting = null;
 
     public function __construct(
         Stack $stack,
         string $name,
-        TransactionSetting $transactionSetting,
         ?NamespaceOptions $options = null,
     ) {
         parent::__construct(
@@ -50,8 +49,8 @@ class Namespace_ extends CdkResource {
 
         $this->stack = $stack;
         $this->name = $name;
-        $this->transactionSetting = $transactionSetting;
         $this->description = $options?->description ?? null;
+        $this->transactionSetting = $options?->transactionSetting ?? null;
         $this->buyScript = $options?->buyScript ?? null;
         $this->logSetting = $options?->logSetting ?? null;
         $stack->addResource(

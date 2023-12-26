@@ -20,6 +20,7 @@ use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    public ?TransactionSetting $transactionSetting;
     public ?string $lotteryTriggerScriptId;
     public ?string $choicePrizeTableScriptId;
     public ?LogSetting $logSetting;
@@ -28,6 +29,7 @@ class NamespaceOptions {
     
     public function __construct(
         ?string $description = null,
+        ?TransactionSetting $transactionSetting = null,
         ?string $lotteryTriggerScriptId = null,
         ?string $choicePrizeTableScriptId = null,
         ?LogSetting $logSetting = null,
@@ -35,6 +37,7 @@ class NamespaceOptions {
         ?string $keyId = null,
     ) {
         $this->description = $description;
+        $this->transactionSetting = $transactionSetting;
         $this->lotteryTriggerScriptId = $lotteryTriggerScriptId;
         $this->choicePrizeTableScriptId = $choicePrizeTableScriptId;
         $this->logSetting = $logSetting;

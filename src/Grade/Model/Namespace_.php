@@ -14,26 +14,27 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\Enchant\Model;
+namespace Gs2Cdk\Grade\Model;
 
 use Gs2Cdk\Core\Model\CdkResource;
 use Gs2Cdk\Core\Model\Stack;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Model\TransactionSetting;
+use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
-use Gs2Cdk\Enchant\Ref\NamespaceRef;
-use Gs2Cdk\Enchant\Model\CurrentMasterData;
-use Gs2Cdk\Enchant\Model\BalanceParameterModel;
-use Gs2Cdk\Enchant\Model\RarityParameterModel;
+use Gs2Cdk\Grade\Ref\NamespaceRef;
+use Gs2Cdk\Grade\Model\CurrentMasterData;
+use Gs2Cdk\Grade\Model\GradeModel;
 
-use Gs2Cdk\Enchant\Model\Options\NamespaceOptions;
+use Gs2Cdk\Grade\Model\Options\NamespaceOptions;
 
 class Namespace_ extends CdkResource {
     private Stack $stack;
     private string $name;
     private ?string $description = null;
     private ?TransactionSetting $transactionSetting = null;
+    private ?ScriptSetting $changeGradeScript = null;
     private ?LogSetting $logSetting = null;
 
     public function __construct(
@@ -42,13 +43,14 @@ class Namespace_ extends CdkResource {
         ?NamespaceOptions $options = null,
     ) {
         parent::__construct(
-            "Enchant_Namespace_" . $name
+            "Grade_Namespace_" . $name
         );
 
         $this->stack = $stack;
         $this->name = $name;
         $this->description = $options?->description ?? null;
         $this->transactionSetting = $options?->transactionSetting ?? null;
+        $this->changeGradeScript = $options?->changeGradeScript ?? null;
         $this->logSetting = $options?->logSetting ?? null;
         $stack->addResource(
             $this,
@@ -63,7 +65,7 @@ class Namespace_ extends CdkResource {
 
     public function resourceType(
     ): string {
-        return "GS2::Enchant::Namespace";
+        return "GS2::Grade::Namespace";
     }
 
     public function properties(
@@ -78,6 +80,10 @@ class Namespace_ extends CdkResource {
         }
         if ($this->transactionSetting != null) {
             $properties["TransactionSetting"] = $this->transactionSetting?->properties(
+            );
+        }
+        if ($this->changeGradeScript != null) {
+            $properties["ChangeGradeScript"] = $this->changeGradeScript?->properties(
             );
         }
         if ($this->logSetting != null) {
@@ -105,14 +111,12 @@ class Namespace_ extends CdkResource {
     }
 
     public function masterData(
-        array $balanceParameterModels,
-        array $rarityParameterModels,
+        array $gradeModels,
     ): Namespace_ {
         (new CurrentMasterData(
             $this->stack,
             $this->name,
-            $balanceParameterModels,
-            $rarityParameterModels,
+            $gradeModels,
         ))->addDependsOn(
             $this,
         );

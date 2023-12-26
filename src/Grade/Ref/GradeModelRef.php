@@ -14,32 +14,21 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\StateMachine\Ref;
+namespace Gs2Cdk\Grade\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
-use Gs2Cdk\StateMachine\StampSheet\StartStateMachineByUserId;
 
-class NamespaceRef {
+class GradeModelRef {
     private string $namespaceName;
+    private string $gradeName;
 
     public function __construct(
         string $namespaceName,
+        string $gradeName,
     ) {
         $this->namespaceName = $namespaceName;
-    }
-
-    public function startStateMachine(
-        string $args,
-        ?int $ttl = null,
-        ?string $userId = "#{userId}",
-    ): StartStateMachineByUserId {
-        return (new StartStateMachineByUserId(
-            $this->namespaceName,
-            $args,
-            $ttl,
-            $userId,
-        ));
+        $this->gradeName = $gradeName;
     }
 
     public function grn(
@@ -55,8 +44,10 @@ class NamespaceRef {
                 GetAttr::ownerId(
                 )->str(
                 ),
-                "stateMachine",
+                "grade",
                 $this->namespaceName,
+                "model",
+                $this->gradeName,
             ],
         ))->str(
         );

@@ -14,28 +14,32 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\StateMachine\StampSheet;
+namespace Gs2Cdk\Grade\StampSheet;
 
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
 
-class StartStateMachineByUserId extends AcquireAction {
+class MultiplyAcquireActionsByUserId extends AcquireAction {
 
     public function __construct(
         string $namespaceName,
-        ?string $args = null,
-        ?int $ttl = null,
+        string $gradeName,
+        string $propertyId,
+        string $rateName,
+        ?array $acquireActions = null,
         ?string $userId = "#{userId}",
     ) {
         $properties = [];
 
         $properties["namespaceName"] = $namespaceName;
-        $properties["args"] = $args;
-        $properties["ttl"] = $ttl;
+        $properties["gradeName"] = $gradeName;
+        $properties["propertyId"] = $propertyId;
+        $properties["rateName"] = $rateName;
+        $properties["acquireActions"] = $acquireActions;
         $properties["userId"] = $userId;
 
         parent::__construct(
-            "Gs2StateMachine:StartStateMachineByUserId",
+            "Gs2Grade:MultiplyAcquireActionsByUserId",
             $properties,
         );
     }

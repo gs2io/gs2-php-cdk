@@ -14,22 +14,21 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\Enchant\Model\Options;
-use Gs2Cdk\Core\Model\TransactionSetting;
-use Gs2Cdk\Core\Model\LogSetting;
 
-class NamespaceOptions {
-    public ?string $description;
-    public ?TransactionSetting $transactionSetting;
-    public ?LogSetting $logSetting;
-    
-    public function __construct(
-        ?string $description = null,
-        ?TransactionSetting $transactionSetting = null,
-        ?LogSetting $logSetting = null,
-    ) {
-        $this->description = $description;
-        $this->transactionSetting = $transactionSetting;
-        $this->logSetting = $logSetting;
-    }}
+namespace Gs2Cdk\Grade\Model\Enum;
 
+
+enum AcquireActionRateMode {
+    case DOUBLE;
+    case BIG;
+
+    public function toString(): String {
+        switch ($this) {
+            case self::DOUBLE:
+                return "double";
+            case self::BIG:
+                return "big";
+        }
+        return "unknown";
+    }
+}

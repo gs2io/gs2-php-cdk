@@ -22,6 +22,7 @@ use Gs2Cdk\Core\Model\LogSetting;
 class NamespaceOptions {
     public ?string $description;
     public ?bool $enableDirectEnhance;
+    public ?TransactionSetting $transactionSetting;
     public ?ScriptSetting $enhanceScript;
     public ?LogSetting $logSetting;
     public ?string $queueNamespaceId;
@@ -30,6 +31,7 @@ class NamespaceOptions {
     public function __construct(
         ?string $description = null,
         ?bool $enableDirectEnhance = null,
+        ?TransactionSetting $transactionSetting = null,
         ?ScriptSetting $enhanceScript = null,
         ?LogSetting $logSetting = null,
         ?string $queueNamespaceId = null,
@@ -37,6 +39,7 @@ class NamespaceOptions {
     ) {
         $this->description = $description;
         $this->enableDirectEnhance = $enableDirectEnhance;
+        $this->transactionSetting = $transactionSetting;
         $this->enhanceScript = $enhanceScript;
         $this->logSetting = $logSetting;
         $this->queueNamespaceId = $queueNamespaceId;

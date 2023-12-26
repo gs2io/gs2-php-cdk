@@ -14,7 +14,7 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\SkillTree\Model\Options;
+namespace Gs2Cdk\Grade\Model\Options;
 use Gs2Cdk\Core\Model\TransactionSetting;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\LogSetting;
@@ -22,21 +22,18 @@ use Gs2Cdk\Core\Model\LogSetting;
 class NamespaceOptions {
     public ?string $description;
     public ?TransactionSetting $transactionSetting;
-    public ?ScriptSetting $releaseScript;
-    public ?ScriptSetting $restrainScript;
+    public ?ScriptSetting $changeGradeScript;
     public ?LogSetting $logSetting;
     
     public function __construct(
         ?string $description = null,
         ?TransactionSetting $transactionSetting = null,
-        ?ScriptSetting $releaseScript = null,
-        ?ScriptSetting $restrainScript = null,
+        ?ScriptSetting $changeGradeScript = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
         $this->transactionSetting = $transactionSetting;
-        $this->releaseScript = $releaseScript;
-        $this->restrainScript = $restrainScript;
+        $this->changeGradeScript = $changeGradeScript;
         $this->logSetting = $logSetting;
     }}
 
