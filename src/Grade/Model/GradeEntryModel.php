@@ -19,19 +19,20 @@ use Gs2Cdk\Grade\Model\Options\GradeEntryModelOptions;
 
 class GradeEntryModel {
     private int $rankCapValue;
+    private string $propertyIdRegex;
     private string $gradeUpPropertyIdRegex;
     private ?string $metadata = null;
-    private ?string $propertyIdRegex = null;
 
     public function __construct(
         int $rankCapValue,
+        string $propertyIdRegex,
         string $gradeUpPropertyIdRegex,
         ?GradeEntryModelOptions $options = null,
     ) {
         $this->rankCapValue = $rankCapValue;
+        $this->propertyIdRegex = $propertyIdRegex;
         $this->gradeUpPropertyIdRegex = $gradeUpPropertyIdRegex;
         $this->metadata = $options?->metadata ?? null;
-        $this->propertyIdRegex = $options?->propertyIdRegex ?? null;
     }
 
     public function properties(

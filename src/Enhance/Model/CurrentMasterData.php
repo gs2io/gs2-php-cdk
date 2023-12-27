@@ -19,16 +19,19 @@ namespace Gs2Cdk\Enhance\Model;
 use Gs2Cdk\Core\Model\CdkResource;
 use Gs2Cdk\Core\Model\Stack;
 use Gs2Cdk\Enhance\Model\RateModel;
+use Gs2Cdk\Enhance\Model\UnleashRateModel;
 
 class CurrentMasterData extends CdkResource {
     private string $version= "2020-08-22";
     private string $namespaceName;
     private array $rateModels;
+    private array $unleashRateModels;
 
     public function __construct(
         Stack $stack,
         string $namespaceName,
         array $rateModels,
+        array $unleashRateModels,
     ) {
         parent::__construct(
             "Enhance_CurrentRateMaster_" . $namespaceName
@@ -36,6 +39,7 @@ class CurrentMasterData extends CdkResource {
 
         $this->namespaceName = $namespaceName;
         $this->rateModels = $rateModels;
+        $this->unleashRateModels = $unleashRateModels;
         $stack->addResource(
             $this,
         );
@@ -64,6 +68,15 @@ class CurrentMasterData extends CdkResource {
                     );
                 },
                 $this->rateModels
+            );
+        }
+        if ($this->unleashRateModels != null) {
+            $settings["unleashRateModels"] = array_map(
+                function ($v) {
+                    return $v->properties(
+                    );
+                },
+                $this->unleashRateModels
             );
         }
 

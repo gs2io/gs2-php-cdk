@@ -14,14 +14,11 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\Grade\Model\Options;
+namespace Gs2Cdk\Enhance\Model\Options;
 
-class GradeEntryModelOptions {
-    public ?string $metadata;
+class UnleashRateEntryModelOptions {
     
     public function __construct(
-        ?string $metadata = null,
     ) {
-        $this->metadata = $metadata;
     }}
 

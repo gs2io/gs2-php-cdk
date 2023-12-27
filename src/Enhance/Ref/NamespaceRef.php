@@ -18,6 +18,7 @@ namespace Gs2Cdk\Enhance\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
+use Gs2Cdk\Enhance\Ref\UnleashRateModelRef;
 use Gs2Cdk\Enhance\Ref\RateModelRef;
 use Gs2Cdk\Enhance\StampSheet\CreateProgressByUserId;
 use Gs2Cdk\Enhance\Model\Material;
@@ -30,6 +31,15 @@ class NamespaceRef {
         string $namespaceName,
     ) {
         $this->namespaceName = $namespaceName;
+    }
+
+    public function unleashRateModel(
+        string $rateName,
+    ): UnleashRateModelRef {
+        return (new UnleashRateModelRef(
+            $this->namespaceName,
+            $rateName,
+        ));
     }
 
     public function rateModel(

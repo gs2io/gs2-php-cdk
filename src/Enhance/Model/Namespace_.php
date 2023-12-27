@@ -26,6 +26,7 @@ use Gs2Cdk\Core\Model\LogSetting;
 use Gs2Cdk\Enhance\Ref\NamespaceRef;
 use Gs2Cdk\Enhance\Model\CurrentMasterData;
 use Gs2Cdk\Enhance\Model\RateModel;
+use Gs2Cdk\Enhance\Model\UnleashRateModel;
 
 use Gs2Cdk\Enhance\Model\Options\NamespaceOptions;
 
@@ -117,11 +118,13 @@ class Namespace_ extends CdkResource {
 
     public function masterData(
         array $rateModels,
+        array $unleashRateModels,
     ): Namespace_ {
         (new CurrentMasterData(
             $this->stack,
             $this->name,
             $rateModels,
+            $unleashRateModels,
         ))->addDependsOn(
             $this,
         );
