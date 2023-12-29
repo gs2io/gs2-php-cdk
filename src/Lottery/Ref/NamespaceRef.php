@@ -20,6 +20,7 @@ use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Lottery\Ref\PrizeTableRef;
 use Gs2Cdk\Lottery\Ref\LotteryModelRef;
+use Gs2Cdk\Lottery\StampSheet\ResetBoxByUserId;
 
 class NamespaceRef {
     private string $namespaceName;
@@ -45,6 +46,17 @@ class NamespaceRef {
         return (new LotteryModelRef(
             $this->namespaceName,
             $lotteryName,
+        ));
+    }
+
+    public function resetBox(
+        string $prizeTableName,
+        ?string $userId = "#{userId}",
+    ): ResetBoxByUserId {
+        return (new ResetBoxByUserId(
+            $this->namespaceName,
+            $prizeTableName,
+            $userId,
         ));
     }
 

@@ -24,6 +24,7 @@ use Gs2Cdk\Inventory\Ref\BigInventoryModelRef;
 use Gs2Cdk\Inventory\StampSheet\AddCapacityByUserId;
 use Gs2Cdk\Inventory\StampSheet\SetCapacityByUserId;
 use Gs2Cdk\Inventory\StampSheet\AcquireItemSetByUserId;
+use Gs2Cdk\Inventory\StampSheet\AcquireItemSetWithGradeByUserId;
 use Gs2Cdk\Inventory\StampSheet\AddReferenceOfByUserId;
 use Gs2Cdk\Inventory\StampSheet\DeleteReferenceOfByUserId;
 use Gs2Cdk\Inventory\StampSheet\AcquireSimpleItemsByUserId;
@@ -119,6 +120,23 @@ class NamespaceRef {
             $expiresAt,
             $createNewItemSet,
             $itemSetName,
+            $userId,
+        ));
+    }
+
+    public function acquireItemSetWithGrade(
+        string $inventoryName,
+        string $itemName,
+        string $gradeModelId,
+        int $gradeValue,
+        ?string $userId = "#{userId}",
+    ): AcquireItemSetWithGradeByUserId {
+        return (new AcquireItemSetWithGradeByUserId(
+            $this->namespaceName,
+            $inventoryName,
+            $itemName,
+            $gradeModelId,
+            $gradeValue,
             $userId,
         ));
     }

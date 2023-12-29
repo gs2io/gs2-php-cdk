@@ -19,6 +19,7 @@ namespace Gs2Cdk\Inventory\Ref;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Inventory\StampSheet\AcquireItemSetByUserId;
+use Gs2Cdk\Inventory\StampSheet\AcquireItemSetWithGradeByUserId;
 use Gs2Cdk\Inventory\StampSheet\AddReferenceOfByUserId;
 use Gs2Cdk\Inventory\StampSheet\DeleteReferenceOfByUserId;
 use Gs2Cdk\Inventory\StampSheet\ConsumeItemSetByUserId;
@@ -55,6 +56,21 @@ class ItemModelRef {
             $expiresAt,
             $createNewItemSet,
             $itemSetName,
+            $userId,
+        ));
+    }
+
+    public function acquireItemSetWithGrade(
+        string $gradeModelId,
+        int $gradeValue,
+        ?string $userId = "#{userId}",
+    ): AcquireItemSetWithGradeByUserId {
+        return (new AcquireItemSetWithGradeByUserId(
+            $this->namespaceName,
+            $this->inventoryName,
+            $this->itemName,
+            $gradeModelId,
+            $gradeValue,
             $userId,
         ));
     }
