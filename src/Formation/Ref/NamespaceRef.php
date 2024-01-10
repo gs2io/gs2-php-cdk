@@ -24,7 +24,7 @@ use Gs2Cdk\Formation\StampSheet\AddMoldCapacityByUserId;
 use Gs2Cdk\Formation\StampSheet\SetMoldCapacityByUserId;
 use Gs2Cdk\Formation\StampSheet\AcquireActionsToFormProperties;
 use Gs2Cdk\Core\Model\AcquireAction;
-use Gs2Cdk\Formation\Model\AcquireActionConfig;
+use Gs2Cdk\Formation\Model\Array;
 use Gs2Cdk\Formation\StampSheet\AcquireActionsToPropertyFormProperties;
 use Gs2Cdk\Formation\StampSheet\SubMoldCapacityByUserId;
 

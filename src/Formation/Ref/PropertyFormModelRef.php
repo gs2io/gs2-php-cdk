@@ -20,7 +20,7 @@ use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Formation\StampSheet\AcquireActionsToPropertyFormProperties;
 use Gs2Cdk\Core\Model\AcquireAction;
-use Gs2Cdk\Formation\Model\AcquireActionConfig;
+use Gs2Cdk\Formation\Model\Array;
 
 class PropertyFormModelRef {
     private string $namespaceName;
