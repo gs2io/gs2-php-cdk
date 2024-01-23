@@ -19,13 +19,16 @@ use Gs2Cdk\Core\Model\ConsumeAction;
 use Gs2Cdk\Core\Model\AcquireAction;
 
 class TransactionOptions {
+    public ?string $transactionId;
     public ?array $consumeActions;
     public ?array $acquireActions;
     
     public function __construct(
+        ?string $transactionId = null,
         ?array $consumeActions = null,
         ?array $acquireActions = null,
     ) {
+        $this->transactionId = $transactionId;
         $this->consumeActions = $consumeActions;
         $this->acquireActions = $acquireActions;
     }}

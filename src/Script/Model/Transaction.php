@@ -20,12 +20,14 @@ use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Script\Model\Options\TransactionOptions;
 
 class Transaction {
+    private ?string $transactionId = null;
     private ?array $consumeActions = null;
     private ?array $acquireActions = null;
 
     public function __construct(
         ?TransactionOptions $options = null,
     ) {
+        $this->transactionId = $options?->transactionId ?? null;
         $this->consumeActions = $options?->consumeActions ?? null;
         $this->acquireActions = $options?->acquireActions ?? null;
     }
@@ -34,6 +36,9 @@ class Transaction {
     ): array {
         $properties = [];
 
+        if ($this->transactionId != null) {
+            $properties["transactionId"] = $this->transactionId;
+        }
         if ($this->consumeActions != null) {
             $properties["consumeActions"] = array_map(
                 function ($v) {

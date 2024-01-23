@@ -23,6 +23,8 @@ class NamespaceOptions {
     public ?ScriptSetting $acquireScript;
     public ?ScriptSetting $overflowScript;
     public ?ScriptSetting $consumeScript;
+    public ?ScriptSetting $simpleItemAcquireScript;
+    public ?ScriptSetting $simpleItemConsumeScript;
     public ?LogSetting $logSetting;
     
     public function __construct(
@@ -30,12 +32,16 @@ class NamespaceOptions {
         ?ScriptSetting $acquireScript = null,
         ?ScriptSetting $overflowScript = null,
         ?ScriptSetting $consumeScript = null,
+        ?ScriptSetting $simpleItemAcquireScript = null,
+        ?ScriptSetting $simpleItemConsumeScript = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
         $this->acquireScript = $acquireScript;
         $this->overflowScript = $overflowScript;
         $this->consumeScript = $consumeScript;
+        $this->simpleItemAcquireScript = $simpleItemAcquireScript;
+        $this->simpleItemConsumeScript = $simpleItemConsumeScript;
         $this->logSetting = $logSetting;
     }}
 
