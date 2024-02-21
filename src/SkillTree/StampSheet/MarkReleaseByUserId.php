@@ -23,12 +23,14 @@ class MarkReleaseByUserId extends AcquireAction {
 
     public function __construct(
         string $namespaceName,
+        string $propertyId,
         array $nodeModelNames,
         ?string $userId = "#{userId}",
     ) {
         $properties = [];
 
         $properties["namespaceName"] = $namespaceName;
+        $properties["propertyId"] = $propertyId;
         $properties["nodeModelNames"] = $nodeModelNames;
         $properties["userId"] = $userId;
 

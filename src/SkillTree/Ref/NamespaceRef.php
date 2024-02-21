@@ -41,22 +41,26 @@ class NamespaceRef {
     }
 
     public function markRelease(
+        string $propertyId,
         array $nodeModelNames,
         ?string $userId = "#{userId}",
     ): MarkReleaseByUserId {
         return (new MarkReleaseByUserId(
             $this->namespaceName,
+            $propertyId,
             $nodeModelNames,
             $userId,
         ));
     }
 
     public function markRestrain(
+        string $propertyId,
         array $nodeModelNames,
         ?string $userId = "#{userId}",
     ): MarkRestrainByUserId {
         return (new MarkRestrainByUserId(
             $this->namespaceName,
+            $propertyId,
             $nodeModelNames,
             $userId,
         ));

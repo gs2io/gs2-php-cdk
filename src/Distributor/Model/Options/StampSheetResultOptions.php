@@ -20,20 +20,26 @@ use Gs2Cdk\Core\Model\AcquireAction;
 
 class StampSheetResultOptions {
     public ?array $taskRequests;
+    public ?array $taskResultCodes;
     public ?array $taskResults;
+    public ?int $sheetResultCode;
     public ?string $sheetResult;
     public ?string $nextTransactionId;
     public ?int $revision;
     
     public function __construct(
         ?array $taskRequests = null,
+        ?array $taskResultCodes = null,
         ?array $taskResults = null,
+        ?int $sheetResultCode = null,
         ?string $sheetResult = null,
         ?string $nextTransactionId = null,
         ?int $revision = null,
     ) {
         $this->taskRequests = $taskRequests;
+        $this->taskResultCodes = $taskResultCodes;
         $this->taskResults = $taskResults;
+        $this->sheetResultCode = $sheetResultCode;
         $this->sheetResult = $sheetResult;
         $this->nextTransactionId = $nextTransactionId;
         $this->revision = $revision;

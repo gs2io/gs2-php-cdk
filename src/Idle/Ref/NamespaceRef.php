@@ -20,6 +20,7 @@ use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Idle\Ref\CategoryModelRef;
 use Gs2Cdk\Idle\StampSheet\IncreaseMaximumIdleMinutesByUserId;
+use Gs2Cdk\Idle\StampSheet\SetMaximumIdleMinutesByUserId;
 use Gs2Cdk\Idle\StampSheet\DecreaseMaximumIdleMinutesByUserId;
 
 class NamespaceRef {
@@ -49,6 +50,19 @@ class NamespaceRef {
             $this->namespaceName,
             $categoryName,
             $increaseMinutes,
+            $userId,
+        ));
+    }
+
+    public function setMaximumIdleMinutes(
+        string $categoryName,
+        ?int $maximumIdleMinutes = null,
+        ?string $userId = "#{userId}",
+    ): SetMaximumIdleMinutesByUserId {
+        return (new SetMaximumIdleMinutesByUserId(
+            $this->namespaceName,
+            $categoryName,
+            $maximumIdleMinutes,
             $userId,
         ));
     }

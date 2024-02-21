@@ -37,6 +37,7 @@ class Namespace_ extends CdkResource {
     private ?TransactionSetting $transactionSetting = null;
     private ?ScriptSetting $updateMoldScript = null;
     private ?ScriptSetting $updateFormScript = null;
+    private ?ScriptSetting $updatePropertyFormScript = null;
     private ?LogSetting $logSetting = null;
 
     public function __construct(
@@ -54,6 +55,7 @@ class Namespace_ extends CdkResource {
         $this->transactionSetting = $options?->transactionSetting ?? null;
         $this->updateMoldScript = $options?->updateMoldScript ?? null;
         $this->updateFormScript = $options?->updateFormScript ?? null;
+        $this->updatePropertyFormScript = $options?->updatePropertyFormScript ?? null;
         $this->logSetting = $options?->logSetting ?? null;
         $stack->addResource(
             $this,
@@ -91,6 +93,10 @@ class Namespace_ extends CdkResource {
         }
         if ($this->updateFormScript != null) {
             $properties["UpdateFormScript"] = $this->updateFormScript?->properties(
+            );
+        }
+        if ($this->updatePropertyFormScript != null) {
+            $properties["UpdatePropertyFormScript"] = $this->updatePropertyFormScript?->properties(
             );
         }
         if ($this->logSetting != null) {

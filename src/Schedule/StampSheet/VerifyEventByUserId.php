@@ -14,31 +14,28 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\Exchange\StampSheet;
+namespace Gs2Cdk\Schedule\StampSheet;
 
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
-use Gs2Cdk\Core\Model\Config;
 
-class CreateAwaitByUserId extends AcquireAction {
+class VerifyEventByUserId extends ConsumeAction {
 
     public function __construct(
         string $namespaceName,
-        string $rateName,
-        ?int $count = null,
-        ?array $config = null,
+        string $eventName,
+        string $verifyType,
         ?string $userId = "#{userId}",
     ) {
         $properties = [];
 
         $properties["namespaceName"] = $namespaceName;
-        $properties["rateName"] = $rateName;
-        $properties["count"] = $count;
-        $properties["config"] = $config;
+        $properties["eventName"] = $eventName;
+        $properties["verifyType"] = $verifyType;
         $properties["userId"] = $userId;
 
         parent::__construct(
-            "Gs2Exchange:CreateAwaitByUserId",
+            "Gs2Schedule:VerifyEventByUserId",
             $properties,
         );
     }

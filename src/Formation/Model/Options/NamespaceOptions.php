@@ -24,6 +24,7 @@ class NamespaceOptions {
     public ?TransactionSetting $transactionSetting;
     public ?ScriptSetting $updateMoldScript;
     public ?ScriptSetting $updateFormScript;
+    public ?ScriptSetting $updatePropertyFormScript;
     public ?LogSetting $logSetting;
     
     public function __construct(
@@ -31,12 +32,14 @@ class NamespaceOptions {
         ?TransactionSetting $transactionSetting = null,
         ?ScriptSetting $updateMoldScript = null,
         ?ScriptSetting $updateFormScript = null,
+        ?ScriptSetting $updatePropertyFormScript = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
         $this->transactionSetting = $transactionSetting;
         $this->updateMoldScript = $updateMoldScript;
         $this->updateFormScript = $updateFormScript;
+        $this->updatePropertyFormScript = $updatePropertyFormScript;
         $this->logSetting = $logSetting;
     }}
 

@@ -20,6 +20,7 @@ use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Schedule\StampSheet\TriggerByUserId;
 use Gs2Cdk\Schedule\StampSheet\DeleteTriggerByUserId;
+use Gs2Cdk\Schedule\StampSheet\VerifyEventByUserId;
 
 class NamespaceRef {
     private string $namespaceName;
@@ -52,6 +53,19 @@ class NamespaceRef {
         return (new DeleteTriggerByUserId(
             $this->namespaceName,
             $triggerName,
+            $userId,
+        ));
+    }
+
+    public function verifyEvent(
+        string $eventName,
+        string $verifyType,
+        ?string $userId = "#{userId}",
+    ): VerifyEventByUserId {
+        return (new VerifyEventByUserId(
+            $this->namespaceName,
+            $eventName,
+            $verifyType,
             $userId,
         ));
     }

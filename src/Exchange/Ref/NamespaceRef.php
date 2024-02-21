@@ -100,12 +100,14 @@ class NamespaceRef {
     public function createAwait(
         string $rateName,
         int $count,
+        ?array $config = null,
         ?string $userId = "#{userId}",
     ): CreateAwaitByUserId {
         return (new CreateAwaitByUserId(
             $this->namespaceName,
             $rateName,
             $count,
+            $config,
             $userId,
         ));
     }

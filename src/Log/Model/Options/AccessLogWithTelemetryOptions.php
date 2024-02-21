@@ -14,29 +14,15 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\SkillTree\StampSheet;
+namespace Gs2Cdk\Log\Model\Options;
+use Gs2Cdk\Log\Model\Enum\AccessLogWithTelemetryStatus;
 
-use Gs2Cdk\Core\Model\AcquireAction;
-use Gs2Cdk\Core\Model\ConsumeAction;
-
-class MarkRestrainByUserId extends ConsumeAction {
-
+class AccessLogWithTelemetryOptions {
+    public ?string $userId;
+    
     public function __construct(
-        string $namespaceName,
-        string $propertyId,
-        array $nodeModelNames,
-        ?string $userId = "#{userId}",
+        ?string $userId = null,
     ) {
-        $properties = [];
+        $this->userId = $userId;
+    }}
 
-        $properties["namespaceName"] = $namespaceName;
-        $properties["propertyId"] = $propertyId;
-        $properties["nodeModelNames"] = $nodeModelNames;
-        $properties["userId"] = $userId;
-
-        parent::__construct(
-            "Gs2SkillTree:MarkRestrainByUserId",
-            $properties,
-        );
-    }
-}

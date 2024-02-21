@@ -24,7 +24,9 @@ class StampSheetResult {
     private string $transactionId;
     private AcquireAction $sheetRequest;
     private ?array $taskRequests = null;
+    private ?array $taskResultCodes = null;
     private ?array $taskResults = null;
+    private ?int $sheetResultCode = null;
     private ?string $sheetResult = null;
     private ?string $nextTransactionId = null;
     private ?int $revision = null;
@@ -39,7 +41,9 @@ class StampSheetResult {
         $this->transactionId = $transactionId;
         $this->sheetRequest = $sheetRequest;
         $this->taskRequests = $options?->taskRequests ?? null;
+        $this->taskResultCodes = $options?->taskResultCodes ?? null;
         $this->taskResults = $options?->taskResults ?? null;
+        $this->sheetResultCode = $options?->sheetResultCode ?? null;
         $this->sheetResult = $options?->sheetResult ?? null;
         $this->nextTransactionId = $options?->nextTransactionId ?? null;
         $this->revision = $options?->revision ?? null;
@@ -68,8 +72,14 @@ class StampSheetResult {
             $properties["sheetRequest"] = $this->sheetRequest?->properties(
             );
         }
+        if ($this->taskResultCodes != null) {
+            $properties["taskResultCodes"] = $this->taskResultCodes;
+        }
         if ($this->taskResults != null) {
             $properties["taskResults"] = $this->taskResults;
+        }
+        if ($this->sheetResultCode != null) {
+            $properties["sheetResultCode"] = $this->sheetResultCode;
         }
         if ($this->sheetResult != null) {
             $properties["sheetResult"] = $this->sheetResult;
