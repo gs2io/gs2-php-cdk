@@ -27,6 +27,7 @@ class VerifyCounterByUserId extends ConsumeAction {
         string $counterName,
         string $verifyType,
         ?int $count = null,
+        ?bool $multiplyValueSpecifyingQuantity = null,
         ?string $userId = "#{userId}",
     ) {
         $properties = [];
@@ -36,6 +37,7 @@ class VerifyCounterByUserId extends ConsumeAction {
         $properties["counterName"] = $counterName;
         $properties["verifyType"] = $verifyType;
         $properties["count"] = $count;
+        $properties["multiplyValueSpecifyingQuantity"] = $multiplyValueSpecifyingQuantity;
         $properties["userId"] = $userId;
 
         parent::__construct(

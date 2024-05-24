@@ -27,6 +27,7 @@ class VerifyRankCapByUserId extends ConsumeAction {
         string $verifyType,
         string $propertyId,
         int $rankCapValue,
+        ?bool $multiplyValueSpecifyingQuantity = null,
         ?string $userId = "#{userId}",
     ) {
         $properties = [];
@@ -36,6 +37,7 @@ class VerifyRankCapByUserId extends ConsumeAction {
         $properties["verifyType"] = $verifyType;
         $properties["propertyId"] = $propertyId;
         $properties["rankCapValue"] = $rankCapValue;
+        $properties["multiplyValueSpecifyingQuantity"] = $multiplyValueSpecifyingQuantity;
         $properties["userId"] = $userId;
 
         parent::__construct(

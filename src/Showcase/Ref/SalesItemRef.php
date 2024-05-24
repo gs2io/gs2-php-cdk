@@ -20,14 +20,8 @@ use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 
 class SalesItemRef {
-    private string $namespaceName;
-    private string $displayItemId;
 
     public function __construct(
-        string $namespaceName,
-        string $displayItemId,
     ) {
-        $this->namespaceName = $namespaceName;
-        $this->displayItemId = $displayItemId;
     }
 }

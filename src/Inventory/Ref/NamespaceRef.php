@@ -235,6 +235,7 @@ class NamespaceRef {
         string $inventoryName,
         string $verifyType,
         int $currentInventoryMaxCapacity,
+        bool $multiplyValueSpecifyingQuantity,
         ?string $userId = "#{userId}",
     ): VerifyInventoryCurrentMaxCapacityByUserId {
         return (new VerifyInventoryCurrentMaxCapacityByUserId(
@@ -242,6 +243,7 @@ class NamespaceRef {
             $inventoryName,
             $verifyType,
             $currentInventoryMaxCapacity,
+            $multiplyValueSpecifyingQuantity,
             $userId,
         ));
     }
@@ -268,6 +270,7 @@ class NamespaceRef {
         string $itemName,
         string $verifyType,
         int $count,
+        bool $multiplyValueSpecifyingQuantity,
         ?string $itemSetName = null,
         ?string $userId = "#{userId}",
     ): VerifyItemSetByUserId {
@@ -277,6 +280,7 @@ class NamespaceRef {
             $itemName,
             $verifyType,
             $count,
+            $multiplyValueSpecifyingQuantity,
             $itemSetName,
             $userId,
         ));
@@ -319,6 +323,7 @@ class NamespaceRef {
         string $itemName,
         string $verifyType,
         int $count,
+        bool $multiplyValueSpecifyingQuantity,
         ?string $userId = "#{userId}",
     ): VerifySimpleItemByUserId {
         return (new VerifySimpleItemByUserId(
@@ -327,6 +332,7 @@ class NamespaceRef {
             $itemName,
             $verifyType,
             $count,
+            $multiplyValueSpecifyingQuantity,
             $userId,
         ));
     }
@@ -351,6 +357,7 @@ class NamespaceRef {
         string $itemName,
         string $verifyType,
         string $count,
+        bool $multiplyValueSpecifyingQuantity,
         ?string $userId = "#{userId}",
     ): VerifyBigItemByUserId {
         return (new VerifyBigItemByUserId(
@@ -359,6 +366,7 @@ class NamespaceRef {
             $itemName,
             $verifyType,
             $count,
+            $multiplyValueSpecifyingQuantity,
             $userId,
         ));
     }

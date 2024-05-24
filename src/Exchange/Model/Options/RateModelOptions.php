@@ -23,23 +23,17 @@ class RateModelOptions {
     public ?string $metadata;
     public ?array $consumeActions;
     public ?int $lockTime;
-    public ?bool $enableSkip;
-    public ?array $skipConsumeActions;
     public ?array $acquireActions;
     
     public function __construct(
         ?string $metadata = null,
         ?array $consumeActions = null,
         ?int $lockTime = null,
-        ?bool $enableSkip = null,
-        ?array $skipConsumeActions = null,
         ?array $acquireActions = null,
     ) {
         $this->metadata = $metadata;
         $this->consumeActions = $consumeActions;
         $this->lockTime = $lockTime;
-        $this->enableSkip = $enableSkip;
-        $this->skipConsumeActions = $skipConsumeActions;
         $this->acquireActions = $acquireActions;
     }}
 

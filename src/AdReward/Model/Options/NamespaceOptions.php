@@ -17,26 +17,37 @@
 namespace Gs2Cdk\AdReward\Model\Options;
 use Gs2Cdk\AdReward\Model\AdMob;
 use Gs2Cdk\AdReward\Model\UnityAd;
+use Gs2Cdk\AdReward\Model\AppLovinMax;
+use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\NotificationSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?AdMob $admob;
     public ?UnityAd $unityAd;
+    public ?array $appLovinMaxes;
     public ?string $description;
+    public ?ScriptSetting $acquirePointScript;
+    public ?ScriptSetting $consumePointScript;
     public ?NotificationSetting $changePointNotification;
     public ?LogSetting $logSetting;
     
     public function __construct(
         ?AdMob $admob = null,
         ?UnityAd $unityAd = null,
+        ?array $appLovinMaxes = null,
         ?string $description = null,
+        ?ScriptSetting $acquirePointScript = null,
+        ?ScriptSetting $consumePointScript = null,
         ?NotificationSetting $changePointNotification = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->admob = $admob;
         $this->unityAd = $unityAd;
+        $this->appLovinMaxes = $appLovinMaxes;
         $this->description = $description;
+        $this->acquirePointScript = $acquirePointScript;
+        $this->consumePointScript = $consumePointScript;
         $this->changePointNotification = $changePointNotification;
         $this->logSetting = $logSetting;
     }}

@@ -135,6 +135,7 @@ class NamespaceRef {
         string $verifyType,
         string $parameterValueName,
         int $parameterCount,
+        bool $multiplyValueSpecifyingQuantity,
         ?string $userId = "#{userId}",
     ): VerifyRarityParameterStatusByUserId {
         return (new VerifyRarityParameterStatusByUserId(
@@ -144,6 +145,7 @@ class NamespaceRef {
             $verifyType,
             $parameterValueName,
             $parameterCount,
+            $multiplyValueSpecifyingQuantity,
             $userId,
         ));
     }

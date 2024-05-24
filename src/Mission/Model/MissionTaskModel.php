@@ -15,34 +15,92 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Mission\Model;
+use Gs2Cdk\Mission\Model\TargetCounterModel;
+use Gs2Cdk\Core\Model\ConsumeAction;
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Mission\Model\Options\MissionTaskModelOptions;
+use Gs2Cdk\Mission\Model\Options\MissionTaskModelVerifyCompleteTypeIsCounterOptions;
+use Gs2Cdk\Mission\Model\Options\MissionTaskModelVerifyCompleteTypeIsConsumeActionsOptions;
+use Gs2Cdk\Mission\Model\Enum\MissionTaskModelVerifyCompleteType;
 use Gs2Cdk\Mission\Model\Enum\MissionTaskModelTargetResetType;
 
 class MissionTaskModel {
     private string $name;
+    private MissionTaskModelVerifyCompleteType $verifyCompleteType;
     private string $counterName;
     private int $targetValue;
     private ?string $metadata = null;
-    private ?MissionTaskModelTargetResetType $targetResetType = null;
+    private ?TargetCounterModel $targetCounter = null;
+    private ?array $verifyCompleteConsumeActions = null;
     private ?array $completeAcquireActions = null;
     private ?string $challengePeriodEventId = null;
     private ?string $premiseMissionTaskName = null;
+    private ?MissionTaskModelTargetResetType $targetResetType = null;
 
     public function __construct(
         string $name,
+        MissionTaskModelVerifyCompleteType $verifyCompleteType,
         string $counterName,
         int $targetValue,
         ?MissionTaskModelOptions $options = null,
     ) {
         $this->name = $name;
+        $this->verifyCompleteType = $verifyCompleteType;
         $this->counterName = $counterName;
         $this->targetValue = $targetValue;
         $this->metadata = $options?->metadata ?? null;
-        $this->targetResetType = $options?->targetResetType ?? null;
+        $this->targetCounter = $options?->targetCounter ?? null;
+        $this->verifyCompleteConsumeActions = $options?->verifyCompleteConsumeActions ?? null;
         $this->completeAcquireActions = $options?->completeAcquireActions ?? null;
         $this->challengePeriodEventId = $options?->challengePeriodEventId ?? null;
         $this->premiseMissionTaskName = $options?->premiseMissionTaskName ?? null;
+        $this->targetResetType = $options?->targetResetType ?? null;
+    }
+
+    public static function verifyCompleteTypeIsCounter(
+        string $name,
+        string $counterName,
+        int $targetValue,
+        TargetCounterModel $targetCounter,
+        ?MissionTaskModelVerifyCompleteTypeIsCounterOptions $options = null,
+    ): MissionTaskModel {
+        return (new MissionTaskModel(
+            $name,
+            MissionTaskModelVerifyCompleteType::COUNTER,
+            $counterName,
+            $targetValue,
+            new MissionTaskModelOptions(
+                targetCounter: $targetCounter,
+                metadata: $options?->metadata,
+                verifyCompleteConsumeActions: $options?->verifyCompleteConsumeActions,
+                completeAcquireActions: $options?->completeAcquireActions,
+                challengePeriodEventId: $options?->challengePeriodEventId,
+                premiseMissionTaskName: $options?->premiseMissionTaskName,
+                targetResetType: $options?->targetResetType,
+            ),
+        ));
+    }
+
+    public static function verifyCompleteTypeIsConsumeActions(
+        string $name,
+        string $counterName,
+        int $targetValue,
+        ?MissionTaskModelVerifyCompleteTypeIsConsumeActionsOptions $options = null,
+    ): MissionTaskModel {
+        return (new MissionTaskModel(
+            $name,
+            MissionTaskModelVerifyCompleteType::CONSUME_ACTIONS,
+            $counterName,
+            $targetValue,
+            new MissionTaskModelOptions(
+                metadata: $options?->metadata,
+                verifyCompleteConsumeActions: $options?->verifyCompleteConsumeActions,
+                completeAcquireActions: $options?->completeAcquireActions,
+                challengePeriodEventId: $options?->challengePeriodEventId,
+                premiseMissionTaskName: $options?->premiseMissionTaskName,
+                targetResetType: $options?->targetResetType,
+            ),
+        ));
     }
 
     public function properties(
@@ -55,15 +113,22 @@ class MissionTaskModel {
         if ($this->metadata != null) {
             $properties["metadata"] = $this->metadata;
         }
-        if ($this->counterName != null) {
-            $properties["counterName"] = $this->counterName;
-        }
-        if ($this->targetResetType != null) {
-            $properties["targetResetType"] = $this->targetResetType?->toString(
+        if ($this->verifyCompleteType != null) {
+            $properties["verifyCompleteType"] = $this->verifyCompleteType?->toString(
             );
         }
-        if ($this->targetValue != null) {
-            $properties["targetValue"] = $this->targetValue;
+        if ($this->targetCounter != null) {
+            $properties["targetCounter"] = $this->targetCounter?->properties(
+            );
+        }
+        if ($this->verifyCompleteConsumeActions != null) {
+            $properties["verifyCompleteConsumeActions"] = array_map(
+                function ($v) {
+                    return $v->properties(
+                    );
+                },
+                $this->verifyCompleteConsumeActions
+            );
         }
         if ($this->completeAcquireActions != null) {
             $properties["completeAcquireActions"] = array_map(
@@ -79,6 +144,16 @@ class MissionTaskModel {
         }
         if ($this->premiseMissionTaskName != null) {
             $properties["premiseMissionTaskName"] = $this->premiseMissionTaskName;
+        }
+        if ($this->counterName != null) {
+            $properties["counterName"] = $this->counterName;
+        }
+        if ($this->targetResetType != null) {
+            $properties["targetResetType"] = $this->targetResetType?->toString(
+            );
+        }
+        if ($this->targetValue != null) {
+            $properties["targetValue"] = $this->targetValue;
         }
 
         return $properties;

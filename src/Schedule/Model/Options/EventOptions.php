@@ -15,6 +15,7 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Schedule\Model\Options;
+use Gs2Cdk\Schedule\Model\RepeatSetting;
 use Gs2Cdk\Schedule\Model\Enum\EventScheduleType;
 use Gs2Cdk\Schedule\Model\Enum\EventRepeatType;
 use Gs2Cdk\Schedule\Model\Enum\EventRepeatBeginDayOfWeek;
@@ -24,35 +25,35 @@ class EventOptions {
     public ?string $metadata;
     public ?int $absoluteBegin;
     public ?int $absoluteEnd;
+    public ?string $relativeTriggerName;
     public ?int $repeatBeginDayOfMonth;
     public ?int $repeatEndDayOfMonth;
     public ?EventRepeatBeginDayOfWeek $repeatBeginDayOfWeek;
     public ?EventRepeatEndDayOfWeek $repeatEndDayOfWeek;
     public ?int $repeatBeginHour;
     public ?int $repeatEndHour;
-    public ?string $relativeTriggerName;
     
     public function __construct(
         ?string $metadata = null,
         ?int $absoluteBegin = null,
         ?int $absoluteEnd = null,
+        ?string $relativeTriggerName = null,
         ?int $repeatBeginDayOfMonth = null,
         ?int $repeatEndDayOfMonth = null,
         ?EventRepeatBeginDayOfWeek $repeatBeginDayOfWeek = null,
         ?EventRepeatEndDayOfWeek $repeatEndDayOfWeek = null,
         ?int $repeatBeginHour = null,
         ?int $repeatEndHour = null,
-        ?string $relativeTriggerName = null,
     ) {
         $this->metadata = $metadata;
         $this->absoluteBegin = $absoluteBegin;
         $this->absoluteEnd = $absoluteEnd;
+        $this->relativeTriggerName = $relativeTriggerName;
         $this->repeatBeginDayOfMonth = $repeatBeginDayOfMonth;
         $this->repeatEndDayOfMonth = $repeatEndDayOfMonth;
         $this->repeatBeginDayOfWeek = $repeatBeginDayOfWeek;
         $this->repeatEndDayOfWeek = $repeatEndDayOfWeek;
         $this->repeatBeginHour = $repeatBeginHour;
         $this->repeatEndHour = $repeatEndHour;
-        $this->relativeTriggerName = $relativeTriggerName;
     }}
 

@@ -17,8 +17,14 @@
 namespace Gs2Cdk\Auth\Model\Options;
 
 class AccessTokenOptions {
+    public ?string $federationFromUserId;
+    public ?string $federationPolicyDocument;
     
     public function __construct(
+        ?string $federationFromUserId = null,
+        ?string $federationPolicyDocument = null,
     ) {
+        $this->federationFromUserId = $federationFromUserId;
+        $this->federationPolicyDocument = $federationPolicyDocument;
     }}
 

@@ -25,6 +25,7 @@ use Gs2Cdk\Formation\StampSheet\SetMoldCapacityByUserId;
 use Gs2Cdk\Formation\StampSheet\AcquireActionsToFormProperties;
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Formation\Model\Array;
+use Gs2Cdk\Formation\StampSheet\SetFormByUserId;
 use Gs2Cdk\Formation\StampSheet\AcquireActionsToPropertyFormProperties;
 use Gs2Cdk\Formation\StampSheet\SubMoldCapacityByUserId;
 
@@ -94,6 +95,21 @@ class NamespaceRef {
             $index,
             $acquireAction,
             $config,
+            $userId,
+        ));
+    }
+
+    public function setForm(
+        string $moldModelName,
+        int $index,
+        array $slots,
+        ?string $userId = "#{userId}",
+    ): SetFormByUserId {
+        return (new SetFormByUserId(
+            $this->namespaceName,
+            $moldModelName,
+            $index,
+            $slots,
             $userId,
         ));
     }

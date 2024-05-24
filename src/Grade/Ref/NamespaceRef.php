@@ -110,6 +110,7 @@ class NamespaceRef {
         string $verifyType,
         string $propertyId,
         int $gradeValue,
+        bool $multiplyValueSpecifyingQuantity,
         ?string $userId = "#{userId}",
     ): VerifyGradeByUserId {
         return (new VerifyGradeByUserId(
@@ -118,6 +119,7 @@ class NamespaceRef {
             $verifyType,
             $propertyId,
             $gradeValue,
+            $multiplyValueSpecifyingQuantity,
             $userId,
         ));
     }

@@ -22,8 +22,11 @@ use Gs2Cdk\Mission\Ref\MissionGroupModelRef;
 use Gs2Cdk\Mission\Ref\CounterModelRef;
 use Gs2Cdk\Mission\StampSheet\RevertReceiveByUserId;
 use Gs2Cdk\Mission\StampSheet\IncreaseCounterByUserId;
+use Gs2Cdk\Mission\StampSheet\SetCounterByUserId;
+use Gs2Cdk\Mission\Model\ScopedValue;
 use Gs2Cdk\Mission\StampSheet\ReceiveByUserId;
 use Gs2Cdk\Mission\StampSheet\DecreaseCounterByUserId;
+use Gs2Cdk\Mission\StampSheet\VerifyCounterValueByUserId;
 
 class NamespaceRef {
     private string $namespaceName;
@@ -78,6 +81,19 @@ class NamespaceRef {
         ));
     }
 
+    public function setCounter(
+        string $counterName,
+        ?array $values = null,
+        ?string $userId = "#{userId}",
+    ): SetCounterByUserId {
+        return (new SetCounterByUserId(
+            $this->namespaceName,
+            $counterName,
+            $values,
+            $userId,
+        ));
+    }
+
     public function receive(
         string $missionGroupName,
         string $missionTaskName,
@@ -100,6 +116,25 @@ class NamespaceRef {
             $this->namespaceName,
             $counterName,
             $value,
+            $userId,
+        ));
+    }
+
+    public function verifyCounterValue(
+        string $counterName,
+        string $verifyType,
+        string $resetType,
+        int $value,
+        bool $multiplyValueSpecifyingQuantity,
+        ?string $userId = "#{userId}",
+    ): VerifyCounterValueByUserId {
+        return (new VerifyCounterValueByUserId(
+            $this->namespaceName,
+            $counterName,
+            $verifyType,
+            $resetType,
+            $value,
+            $multiplyValueSpecifyingQuantity,
             $userId,
         ));
     }

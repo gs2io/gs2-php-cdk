@@ -92,6 +92,7 @@ class NamespaceRef {
         string $counterName,
         string $verifyType,
         int $count,
+        bool $multiplyValueSpecifyingQuantity,
         ?string $userId = "#{userId}",
     ): VerifyCounterByUserId {
         return (new VerifyCounterByUserId(
@@ -100,6 +101,7 @@ class NamespaceRef {
             $counterName,
             $verifyType,
             $count,
+            $multiplyValueSpecifyingQuantity,
             $userId,
         ));
     }

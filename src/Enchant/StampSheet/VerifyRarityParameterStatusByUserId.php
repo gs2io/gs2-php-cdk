@@ -28,6 +28,7 @@ class VerifyRarityParameterStatusByUserId extends ConsumeAction {
         string $verifyType,
         ?string $parameterValueName = null,
         ?int $parameterCount = null,
+        ?bool $multiplyValueSpecifyingQuantity = null,
         ?string $userId = "#{userId}",
     ) {
         $properties = [];
@@ -38,6 +39,7 @@ class VerifyRarityParameterStatusByUserId extends ConsumeAction {
         $properties["verifyType"] = $verifyType;
         $properties["parameterValueName"] = $parameterValueName;
         $properties["parameterCount"] = $parameterCount;
+        $properties["multiplyValueSpecifyingQuantity"] = $multiplyValueSpecifyingQuantity;
         $properties["userId"] = $userId;
 
         parent::__construct(

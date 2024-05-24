@@ -92,6 +92,7 @@ class BigInventoryModelRef {
         string $itemName,
         string $verifyType,
         string $count,
+        bool $multiplyValueSpecifyingQuantity,
         ?string $userId = "#{userId}",
     ): VerifyBigItemByUserId {
         return (new VerifyBigItemByUserId(
@@ -100,6 +101,7 @@ class BigInventoryModelRef {
             $itemName,
             $verifyType,
             $count,
+            $multiplyValueSpecifyingQuantity,
             $userId,
         ));
     }

@@ -19,7 +19,10 @@ namespace Gs2Cdk\Mission\Ref;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Mission\StampSheet\IncreaseCounterByUserId;
+use Gs2Cdk\Mission\StampSheet\SetCounterByUserId;
+use Gs2Cdk\Mission\Model\ScopedValue;
 use Gs2Cdk\Mission\StampSheet\DecreaseCounterByUserId;
+use Gs2Cdk\Mission\StampSheet\VerifyCounterValueByUserId;
 
 class CounterModelRef {
     private string $namespaceName;
@@ -45,6 +48,18 @@ class CounterModelRef {
         ));
     }
 
+    public function setCounter(
+        ?array $values = null,
+        ?string $userId = "#{userId}",
+    ): SetCounterByUserId {
+        return (new SetCounterByUserId(
+            $this->namespaceName,
+            $this->counterName,
+            $values,
+            $userId,
+        ));
+    }
+
     public function decreaseCounter(
         int $value,
         ?string $userId = "#{userId}",
@@ -53,6 +68,24 @@ class CounterModelRef {
             $this->namespaceName,
             $this->counterName,
             $value,
+            $userId,
+        ));
+    }
+
+    public function verifyCounterValue(
+        string $verifyType,
+        string $resetType,
+        int $value,
+        bool $multiplyValueSpecifyingQuantity,
+        ?string $userId = "#{userId}",
+    ): VerifyCounterValueByUserId {
+        return (new VerifyCounterValueByUserId(
+            $this->namespaceName,
+            $this->counterName,
+            $verifyType,
+            $resetType,
+            $value,
+            $multiplyValueSpecifyingQuantity,
             $userId,
         ));
     }

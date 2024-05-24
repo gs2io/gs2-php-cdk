@@ -17,11 +17,14 @@
 namespace Gs2Cdk\Formation\Model\Options;
 
 class SlotOptions {
+    public ?string $propertyId;
     public ?string $metadata;
     
     public function __construct(
+        ?string $propertyId = null,
         ?string $metadata = null,
     ) {
+        $this->propertyId = $propertyId;
         $this->metadata = $metadata;
     }}
 

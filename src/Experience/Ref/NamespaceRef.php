@@ -20,6 +20,7 @@ use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Experience\Ref\ExperienceModelRef;
 use Gs2Cdk\Experience\StampSheet\AddExperienceByUserId;
+use Gs2Cdk\Experience\StampSheet\SetExperienceByUserId;
 use Gs2Cdk\Experience\StampSheet\AddRankCapByUserId;
 use Gs2Cdk\Experience\StampSheet\SetRankCapByUserId;
 use Gs2Cdk\Experience\StampSheet\MultiplyAcquireActionsByUserId;
@@ -51,9 +52,26 @@ class NamespaceRef {
         string $experienceName,
         string $propertyId,
         int $experienceValue,
+        ?bool $truncateExperienceWhenRankUp = null,
         ?string $userId = "#{userId}",
     ): AddExperienceByUserId {
         return (new AddExperienceByUserId(
+            $this->namespaceName,
+            $experienceName,
+            $propertyId,
+            $experienceValue,
+            $truncateExperienceWhenRankUp,
+            $userId,
+        ));
+    }
+
+    public function setExperience(
+        string $experienceName,
+        string $propertyId,
+        int $experienceValue,
+        ?string $userId = "#{userId}",
+    ): SetExperienceByUserId {
+        return (new SetExperienceByUserId(
             $this->namespaceName,
             $experienceName,
             $propertyId,
@@ -144,6 +162,7 @@ class NamespaceRef {
         string $verifyType,
         string $propertyId,
         int $rankValue,
+        bool $multiplyValueSpecifyingQuantity,
         ?string $userId = "#{userId}",
     ): VerifyRankByUserId {
         return (new VerifyRankByUserId(
@@ -152,6 +171,7 @@ class NamespaceRef {
             $verifyType,
             $propertyId,
             $rankValue,
+            $multiplyValueSpecifyingQuantity,
             $userId,
         ));
     }
@@ -161,6 +181,7 @@ class NamespaceRef {
         string $verifyType,
         string $propertyId,
         int $rankCapValue,
+        bool $multiplyValueSpecifyingQuantity,
         ?string $userId = "#{userId}",
     ): VerifyRankCapByUserId {
         return (new VerifyRankCapByUserId(
@@ -169,6 +190,7 @@ class NamespaceRef {
             $verifyType,
             $propertyId,
             $rankCapValue,
+            $multiplyValueSpecifyingQuantity,
             $userId,
         ));
     }

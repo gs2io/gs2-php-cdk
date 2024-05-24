@@ -19,16 +19,15 @@ use Gs2Cdk\Formation\Model\Options\SlotOptions;
 
 class Slot {
     private string $name;
-    private string $propertyId;
+    private ?string $propertyId = null;
     private ?string $metadata = null;
 
     public function __construct(
         string $name,
-        string $propertyId,
         ?SlotOptions $options = null,
     ) {
         $this->name = $name;
-        $this->propertyId = $propertyId;
+        $this->propertyId = $options?->propertyId ?? null;
         $this->metadata = $options?->metadata ?? null;
     }
 

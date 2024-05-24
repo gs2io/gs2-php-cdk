@@ -27,6 +27,7 @@ class VerifyRankByUserId extends ConsumeAction {
         string $verifyType,
         string $propertyId,
         ?int $rankValue = null,
+        ?bool $multiplyValueSpecifyingQuantity = null,
         ?string $userId = "#{userId}",
     ) {
         $properties = [];
@@ -36,6 +37,7 @@ class VerifyRankByUserId extends ConsumeAction {
         $properties["verifyType"] = $verifyType;
         $properties["propertyId"] = $propertyId;
         $properties["rankValue"] = $rankValue;
+        $properties["multiplyValueSpecifyingQuantity"] = $multiplyValueSpecifyingQuantity;
         $properties["userId"] = $userId;
 
         parent::__construct(

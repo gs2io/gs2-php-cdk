@@ -78,6 +78,7 @@ class SimpleItemModelRef {
     public function verifySimpleItem(
         string $verifyType,
         int $count,
+        bool $multiplyValueSpecifyingQuantity,
         ?string $userId = "#{userId}",
     ): VerifySimpleItemByUserId {
         return (new VerifySimpleItemByUserId(
@@ -86,6 +87,7 @@ class SimpleItemModelRef {
             $this->itemName,
             $verifyType,
             $count,
+            $multiplyValueSpecifyingQuantity,
             $userId,
         ));
     }

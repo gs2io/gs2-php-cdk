@@ -19,10 +19,13 @@ use Gs2Cdk\SeasonRating\Model\TierModel;
 
 class SeasonModelOptions {
     public ?string $metadata;
+    public ?string $challengePeriodEventId;
     
     public function __construct(
         ?string $metadata = null,
+        ?string $challengePeriodEventId = null,
     ) {
         $this->metadata = $metadata;
+        $this->challengePeriodEventId = $challengePeriodEventId;
     }}
 

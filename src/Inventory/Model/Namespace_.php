@@ -39,6 +39,8 @@ class Namespace_ extends CdkResource {
     private ?ScriptSetting $consumeScript = null;
     private ?ScriptSetting $simpleItemAcquireScript = null;
     private ?ScriptSetting $simpleItemConsumeScript = null;
+    private ?ScriptSetting $bigItemAcquireScript = null;
+    private ?ScriptSetting $bigItemConsumeScript = null;
     private ?LogSetting $logSetting = null;
 
     public function __construct(
@@ -58,6 +60,8 @@ class Namespace_ extends CdkResource {
         $this->consumeScript = $options?->consumeScript ?? null;
         $this->simpleItemAcquireScript = $options?->simpleItemAcquireScript ?? null;
         $this->simpleItemConsumeScript = $options?->simpleItemConsumeScript ?? null;
+        $this->bigItemAcquireScript = $options?->bigItemAcquireScript ?? null;
+        $this->bigItemConsumeScript = $options?->bigItemConsumeScript ?? null;
         $this->logSetting = $options?->logSetting ?? null;
         $stack->addResource(
             $this,
@@ -103,6 +107,14 @@ class Namespace_ extends CdkResource {
         }
         if ($this->simpleItemConsumeScript != null) {
             $properties["SimpleItemConsumeScript"] = $this->simpleItemConsumeScript?->properties(
+            );
+        }
+        if ($this->bigItemAcquireScript != null) {
+            $properties["BigItemAcquireScript"] = $this->bigItemAcquireScript?->properties(
+            );
+        }
+        if ($this->bigItemConsumeScript != null) {
+            $properties["BigItemConsumeScript"] = $this->bigItemConsumeScript?->properties(
             );
         }
         if ($this->logSetting != null) {

@@ -123,6 +123,7 @@ class ItemModelRef {
     public function verifyItemSet(
         string $verifyType,
         int $count,
+        bool $multiplyValueSpecifyingQuantity,
         ?string $itemSetName = null,
         ?string $userId = "#{userId}",
     ): VerifyItemSetByUserId {
@@ -132,6 +133,7 @@ class ItemModelRef {
             $this->itemName,
             $verifyType,
             $count,
+            $multiplyValueSpecifyingQuantity,
             $itemSetName,
             $userId,
         ));

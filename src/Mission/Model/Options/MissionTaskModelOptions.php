@@ -15,27 +15,36 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Mission\Model\Options;
+use Gs2Cdk\Mission\Model\TargetCounterModel;
+use Gs2Cdk\Core\Model\ConsumeAction;
 use Gs2Cdk\Core\Model\AcquireAction;
+use Gs2Cdk\Mission\Model\Enum\MissionTaskModelVerifyCompleteType;
 use Gs2Cdk\Mission\Model\Enum\MissionTaskModelTargetResetType;
 
 class MissionTaskModelOptions {
     public ?string $metadata;
-    public ?MissionTaskModelTargetResetType $targetResetType;
+    public ?TargetCounterModel $targetCounter;
+    public ?array $verifyCompleteConsumeActions;
     public ?array $completeAcquireActions;
     public ?string $challengePeriodEventId;
     public ?string $premiseMissionTaskName;
+    public ?MissionTaskModelTargetResetType $targetResetType;
     
     public function __construct(
         ?string $metadata = null,
-        ?MissionTaskModelTargetResetType $targetResetType = null,
+        ?TargetCounterModel $targetCounter = null,
+        ?array $verifyCompleteConsumeActions = null,
         ?array $completeAcquireActions = null,
         ?string $challengePeriodEventId = null,
         ?string $premiseMissionTaskName = null,
+        ?MissionTaskModelTargetResetType $targetResetType = null,
     ) {
         $this->metadata = $metadata;
-        $this->targetResetType = $targetResetType;
+        $this->targetCounter = $targetCounter;
+        $this->verifyCompleteConsumeActions = $verifyCompleteConsumeActions;
         $this->completeAcquireActions = $completeAcquireActions;
         $this->challengePeriodEventId = $challengePeriodEventId;
         $this->premiseMissionTaskName = $premiseMissionTaskName;
+        $this->targetResetType = $targetResetType;
     }}
 

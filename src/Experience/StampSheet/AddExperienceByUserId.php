@@ -26,6 +26,7 @@ class AddExperienceByUserId extends AcquireAction {
         string $experienceName,
         string $propertyId,
         ?int $experienceValue = null,
+        ?bool $truncateExperienceWhenRankUp = null,
         ?string $userId = "#{userId}",
     ) {
         $properties = [];
@@ -34,6 +35,7 @@ class AddExperienceByUserId extends AcquireAction {
         $properties["experienceName"] = $experienceName;
         $properties["propertyId"] = $propertyId;
         $properties["experienceValue"] = $experienceValue;
+        $properties["truncateExperienceWhenRankUp"] = $truncateExperienceWhenRankUp;
         $properties["userId"] = $userId;
 
         parent::__construct(

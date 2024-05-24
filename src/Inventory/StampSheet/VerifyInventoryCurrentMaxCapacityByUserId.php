@@ -26,6 +26,7 @@ class VerifyInventoryCurrentMaxCapacityByUserId extends ConsumeAction {
         string $inventoryName,
         string $verifyType,
         int $currentInventoryMaxCapacity,
+        ?bool $multiplyValueSpecifyingQuantity = null,
         ?string $userId = "#{userId}",
     ) {
         $properties = [];
@@ -34,6 +35,7 @@ class VerifyInventoryCurrentMaxCapacityByUserId extends ConsumeAction {
         $properties["inventoryName"] = $inventoryName;
         $properties["verifyType"] = $verifyType;
         $properties["currentInventoryMaxCapacity"] = $currentInventoryMaxCapacity;
+        $properties["multiplyValueSpecifyingQuantity"] = $multiplyValueSpecifyingQuantity;
         $properties["userId"] = $userId;
 
         parent::__construct(

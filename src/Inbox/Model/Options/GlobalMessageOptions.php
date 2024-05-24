@@ -22,14 +22,17 @@ class GlobalMessageOptions {
     public ?array $readAcquireActions;
     public ?TimeSpan $expiresTimeSpan;
     public ?int $expiresAt;
+    public ?string $messageReceptionPeriodEventId;
     
     public function __construct(
         ?array $readAcquireActions = null,
         ?TimeSpan $expiresTimeSpan = null,
         ?int $expiresAt = null,
+        ?string $messageReceptionPeriodEventId = null,
     ) {
         $this->readAcquireActions = $readAcquireActions;
         $this->expiresTimeSpan = $expiresTimeSpan;
         $this->expiresAt = $expiresAt;
+        $this->messageReceptionPeriodEventId = $messageReceptionPeriodEventId;
     }}
 

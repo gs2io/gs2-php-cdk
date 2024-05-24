@@ -15,6 +15,7 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Schedule\Model\Options;
+use Gs2Cdk\Schedule\Model\RepeatSetting;
 use Gs2Cdk\Schedule\Model\Enum\EventScheduleType;
 use Gs2Cdk\Schedule\Model\Enum\EventRepeatType;
 use Gs2Cdk\Schedule\Model\Enum\EventRepeatBeginDayOfWeek;
@@ -22,9 +23,15 @@ use Gs2Cdk\Schedule\Model\Enum\EventRepeatEndDayOfWeek;
 
 class EventRepeatTypeIsMonthlyOptions {
     public ?string $metadata;
+    public ?int $absoluteBegin;
+    public ?int $absoluteEnd;
     
     public function __construct(
         ?string $metadata = null,
+        ?int $absoluteBegin = null,
+        ?int $absoluteEnd = null,
     ) {
         $this->metadata = $metadata;
+        $this->absoluteBegin = $absoluteBegin;
+        $this->absoluteEnd = $absoluteEnd;
     }}

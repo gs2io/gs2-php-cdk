@@ -28,8 +28,6 @@ class RateModel {
     private ?string $metadata = null;
     private ?array $consumeActions = null;
     private ?int $lockTime = null;
-    private ?bool $enableSkip = null;
-    private ?array $skipConsumeActions = null;
     private ?array $acquireActions = null;
 
     public function __construct(
@@ -42,8 +40,6 @@ class RateModel {
         $this->metadata = $options?->metadata ?? null;
         $this->consumeActions = $options?->consumeActions ?? null;
         $this->lockTime = $options?->lockTime ?? null;
-        $this->enableSkip = $options?->enableSkip ?? null;
-        $this->skipConsumeActions = $options?->skipConsumeActions ?? null;
         $this->acquireActions = $options?->acquireActions ?? null;
     }
 
@@ -57,7 +53,6 @@ class RateModel {
             new RateModelOptions(
                 metadata: $options?->metadata,
                 consumeActions: $options?->consumeActions,
-                skipConsumeActions: $options?->skipConsumeActions,
                 acquireActions: $options?->acquireActions,
             ),
         ));
@@ -66,7 +61,6 @@ class RateModel {
     public static function timingTypeIsAwait(
         string $name,
         int $lockTime,
-        bool $enableSkip,
         ?RateModelTimingTypeIsAwaitOptions $options = null,
     ): RateModel {
         return (new RateModel(
@@ -74,10 +68,8 @@ class RateModel {
             RateModelTimingType::AWAIT,
             new RateModelOptions(
                 lockTime: $lockTime,
-                enableSkip: $enableSkip,
                 metadata: $options?->metadata,
                 consumeActions: $options?->consumeActions,
-                skipConsumeActions: $options?->skipConsumeActions,
                 acquireActions: $options?->acquireActions,
             ),
         ));
@@ -108,18 +100,6 @@ class RateModel {
         }
         if ($this->lockTime != null) {
             $properties["lockTime"] = $this->lockTime;
-        }
-        if ($this->enableSkip != null) {
-            $properties["enableSkip"] = $this->enableSkip;
-        }
-        if ($this->skipConsumeActions != null) {
-            $properties["skipConsumeActions"] = array_map(
-                function ($v) {
-                    return $v->properties(
-                    );
-                },
-                $this->skipConsumeActions
-            );
         }
         if ($this->acquireActions != null) {
             $properties["acquireActions"] = array_map(

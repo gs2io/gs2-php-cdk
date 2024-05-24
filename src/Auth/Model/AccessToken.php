@@ -20,20 +20,27 @@ use Gs2Cdk\Auth\Model\Options\AccessTokenOptions;
 class AccessToken {
     private string $ownerId;
     private string $userId;
+    private string $realUserId;
     private int $expire;
     private int $timeOffset;
+    private ?string $federationFromUserId = null;
+    private ?string $federationPolicyDocument = null;
 
     public function __construct(
         string $ownerId,
         string $userId,
+        string $realUserId,
         int $expire,
         int $timeOffset,
         ?AccessTokenOptions $options = null,
     ) {
         $this->ownerId = $ownerId;
         $this->userId = $userId;
+        $this->realUserId = $realUserId;
         $this->expire = $expire;
         $this->timeOffset = $timeOffset;
+        $this->federationFromUserId = $options?->federationFromUserId ?? null;
+        $this->federationPolicyDocument = $options?->federationPolicyDocument ?? null;
     }
 
     public function properties(
@@ -45,6 +52,15 @@ class AccessToken {
         }
         if ($this->userId != null) {
             $properties["userId"] = $this->userId;
+        }
+        if ($this->realUserId != null) {
+            $properties["realUserId"] = $this->realUserId;
+        }
+        if ($this->federationFromUserId != null) {
+            $properties["federationFromUserId"] = $this->federationFromUserId;
+        }
+        if ($this->federationPolicyDocument != null) {
+            $properties["federationPolicyDocument"] = $this->federationPolicyDocument;
         }
         if ($this->expire != null) {
             $properties["expire"] = $this->expire;

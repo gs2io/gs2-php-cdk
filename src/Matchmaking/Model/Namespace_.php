@@ -26,8 +26,10 @@ use Gs2Cdk\Core\Model\LogSetting;
 use Gs2Cdk\Matchmaking\Ref\NamespaceRef;
 use Gs2Cdk\Matchmaking\Model\CurrentMasterData;
 use Gs2Cdk\Matchmaking\Model\RatingModel;
+use Gs2Cdk\Matchmaking\Model\Enum\NamespaceEnableDisconnectDetection;
 use Gs2Cdk\Matchmaking\Model\Enum\NamespaceCreateGatheringTriggerType;
 use Gs2Cdk\Matchmaking\Model\Enum\NamespaceCompleteMatchmakingTriggerType;
+use Gs2Cdk\Matchmaking\Model\Enum\NamespaceEnableCollaborateSeasonRating;
 
 use Gs2Cdk\Matchmaking\Model\Options\NamespaceOptions;
 
@@ -38,10 +40,15 @@ class Namespace_ extends CdkResource {
     private NamespaceCompleteMatchmakingTriggerType $completeMatchmakingTriggerType;
     private ?string $description = null;
     private ?bool $enableRating = null;
+    private ?NamespaceEnableDisconnectDetection $enableDisconnectDetection = null;
+    private ?int $disconnectDetectionTimeoutSeconds = null;
     private ?string $createGatheringTriggerRealtimeNamespaceId = null;
     private ?string $createGatheringTriggerScriptId = null;
     private ?string $completeMatchmakingTriggerRealtimeNamespaceId = null;
     private ?string $completeMatchmakingTriggerScriptId = null;
+    private ?NamespaceEnableCollaborateSeasonRating $enableCollaborateSeasonRating = null;
+    private ?string $collaborateSeasonRatingNamespaceId = null;
+    private ?int $collaborateSeasonRatingTtl = null;
     private ?ScriptSetting $changeRatingScript = null;
     private ?NotificationSetting $joinNotification = null;
     private ?NotificationSetting $leaveNotification = null;
@@ -66,10 +73,15 @@ class Namespace_ extends CdkResource {
         $this->completeMatchmakingTriggerType = $completeMatchmakingTriggerType;
         $this->description = $options?->description ?? null;
         $this->enableRating = $options?->enableRating ?? null;
+        $this->enableDisconnectDetection = $options?->enableDisconnectDetection ?? null;
+        $this->disconnectDetectionTimeoutSeconds = $options?->disconnectDetectionTimeoutSeconds ?? null;
         $this->createGatheringTriggerRealtimeNamespaceId = $options?->createGatheringTriggerRealtimeNamespaceId ?? null;
         $this->createGatheringTriggerScriptId = $options?->createGatheringTriggerScriptId ?? null;
         $this->completeMatchmakingTriggerRealtimeNamespaceId = $options?->completeMatchmakingTriggerRealtimeNamespaceId ?? null;
         $this->completeMatchmakingTriggerScriptId = $options?->completeMatchmakingTriggerScriptId ?? null;
+        $this->enableCollaborateSeasonRating = $options?->enableCollaborateSeasonRating ?? null;
+        $this->collaborateSeasonRatingNamespaceId = $options?->collaborateSeasonRatingNamespaceId ?? null;
+        $this->collaborateSeasonRatingTtl = $options?->collaborateSeasonRatingTtl ?? null;
         $this->changeRatingScript = $options?->changeRatingScript ?? null;
         $this->joinNotification = $options?->joinNotification ?? null;
         $this->leaveNotification = $options?->leaveNotification ?? null;
@@ -105,6 +117,12 @@ class Namespace_ extends CdkResource {
         if ($this->enableRating != null) {
             $properties["EnableRating"] = $this->enableRating;
         }
+        if ($this->enableDisconnectDetection != null) {
+            $properties["EnableDisconnectDetection"] = $this->enableDisconnectDetection;
+        }
+        if ($this->disconnectDetectionTimeoutSeconds != null) {
+            $properties["DisconnectDetectionTimeoutSeconds"] = $this->disconnectDetectionTimeoutSeconds;
+        }
         if ($this->createGatheringTriggerType != null) {
             $properties["CreateGatheringTriggerType"] = $this->createGatheringTriggerType;
         }
@@ -122,6 +140,15 @@ class Namespace_ extends CdkResource {
         }
         if ($this->completeMatchmakingTriggerScriptId != null) {
             $properties["CompleteMatchmakingTriggerScriptId"] = $this->completeMatchmakingTriggerScriptId;
+        }
+        if ($this->enableCollaborateSeasonRating != null) {
+            $properties["EnableCollaborateSeasonRating"] = $this->enableCollaborateSeasonRating;
+        }
+        if ($this->collaborateSeasonRatingNamespaceId != null) {
+            $properties["CollaborateSeasonRatingNamespaceId"] = $this->collaborateSeasonRatingNamespaceId;
+        }
+        if ($this->collaborateSeasonRatingTtl != null) {
+            $properties["CollaborateSeasonRatingTtl"] = $this->collaborateSeasonRatingTtl;
         }
         if ($this->changeRatingScript != null) {
             $properties["ChangeRatingScript"] = $this->changeRatingScript?->properties(

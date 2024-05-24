@@ -25,6 +25,8 @@ class NamespaceOptions {
     public ?ScriptSetting $consumeScript;
     public ?ScriptSetting $simpleItemAcquireScript;
     public ?ScriptSetting $simpleItemConsumeScript;
+    public ?ScriptSetting $bigItemAcquireScript;
+    public ?ScriptSetting $bigItemConsumeScript;
     public ?LogSetting $logSetting;
     
     public function __construct(
@@ -34,6 +36,8 @@ class NamespaceOptions {
         ?ScriptSetting $consumeScript = null,
         ?ScriptSetting $simpleItemAcquireScript = null,
         ?ScriptSetting $simpleItemConsumeScript = null,
+        ?ScriptSetting $bigItemAcquireScript = null,
+        ?ScriptSetting $bigItemConsumeScript = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
@@ -42,6 +46,8 @@ class NamespaceOptions {
         $this->consumeScript = $consumeScript;
         $this->simpleItemAcquireScript = $simpleItemAcquireScript;
         $this->simpleItemConsumeScript = $simpleItemConsumeScript;
+        $this->bigItemAcquireScript = $bigItemAcquireScript;
+        $this->bigItemConsumeScript = $bigItemConsumeScript;
         $this->logSetting = $logSetting;
     }}
 

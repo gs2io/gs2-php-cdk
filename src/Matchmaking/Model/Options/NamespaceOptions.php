@@ -22,10 +22,15 @@ use Gs2Cdk\Core\Model\LogSetting;
 class NamespaceOptions {
     public ?string $description;
     public ?bool $enableRating;
+    public ?NamespaceEnableDisconnectDetection $enableDisconnectDetection;
+    public ?int $disconnectDetectionTimeoutSeconds;
     public ?string $createGatheringTriggerRealtimeNamespaceId;
     public ?string $createGatheringTriggerScriptId;
     public ?string $completeMatchmakingTriggerRealtimeNamespaceId;
     public ?string $completeMatchmakingTriggerScriptId;
+    public ?NamespaceEnableCollaborateSeasonRating $enableCollaborateSeasonRating;
+    public ?string $collaborateSeasonRatingNamespaceId;
+    public ?int $collaborateSeasonRatingTtl;
     public ?ScriptSetting $changeRatingScript;
     public ?NotificationSetting $joinNotification;
     public ?NotificationSetting $leaveNotification;
@@ -36,10 +41,15 @@ class NamespaceOptions {
     public function __construct(
         ?string $description = null,
         ?bool $enableRating = null,
+        ?NamespaceEnableDisconnectDetection $enableDisconnectDetection = null,
+        ?int $disconnectDetectionTimeoutSeconds = null,
         ?string $createGatheringTriggerRealtimeNamespaceId = null,
         ?string $createGatheringTriggerScriptId = null,
         ?string $completeMatchmakingTriggerRealtimeNamespaceId = null,
         ?string $completeMatchmakingTriggerScriptId = null,
+        ?NamespaceEnableCollaborateSeasonRating $enableCollaborateSeasonRating = null,
+        ?string $collaborateSeasonRatingNamespaceId = null,
+        ?int $collaborateSeasonRatingTtl = null,
         ?ScriptSetting $changeRatingScript = null,
         ?NotificationSetting $joinNotification = null,
         ?NotificationSetting $leaveNotification = null,
@@ -49,10 +59,15 @@ class NamespaceOptions {
     ) {
         $this->description = $description;
         $this->enableRating = $enableRating;
+        $this->enableDisconnectDetection = $enableDisconnectDetection;
+        $this->disconnectDetectionTimeoutSeconds = $disconnectDetectionTimeoutSeconds;
         $this->createGatheringTriggerRealtimeNamespaceId = $createGatheringTriggerRealtimeNamespaceId;
         $this->createGatheringTriggerScriptId = $createGatheringTriggerScriptId;
         $this->completeMatchmakingTriggerRealtimeNamespaceId = $completeMatchmakingTriggerRealtimeNamespaceId;
         $this->completeMatchmakingTriggerScriptId = $completeMatchmakingTriggerScriptId;
+        $this->enableCollaborateSeasonRating = $enableCollaborateSeasonRating;
+        $this->collaborateSeasonRatingNamespaceId = $collaborateSeasonRatingNamespaceId;
+        $this->collaborateSeasonRatingTtl = $collaborateSeasonRatingTtl;
         $this->changeRatingScript = $changeRatingScript;
         $this->joinNotification = $joinNotification;
         $this->leaveNotification = $leaveNotification;

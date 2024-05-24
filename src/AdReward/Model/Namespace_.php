@@ -21,6 +21,8 @@ use Gs2Cdk\Core\Model\Stack;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\AdReward\Model\AdMob;
 use Gs2Cdk\AdReward\Model\UnityAd;
+use Gs2Cdk\AdReward\Model\AppLovinMax;
+use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\NotificationSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
@@ -33,7 +35,10 @@ class Namespace_ extends CdkResource {
     private string $name;
     private ?AdMob $admob = null;
     private ?UnityAd $unityAd = null;
+    private ?array $appLovinMaxes = null;
     private ?string $description = null;
+    private ?ScriptSetting $acquirePointScript = null;
+    private ?ScriptSetting $consumePointScript = null;
     private ?NotificationSetting $changePointNotification = null;
     private ?LogSetting $logSetting = null;
 
@@ -50,7 +55,10 @@ class Namespace_ extends CdkResource {
         $this->name = $name;
         $this->admob = $options?->admob ?? null;
         $this->unityAd = $options?->unityAd ?? null;
+        $this->appLovinMaxes = $options?->appLovinMaxes ?? null;
         $this->description = $options?->description ?? null;
+        $this->acquirePointScript = $options?->acquirePointScript ?? null;
+        $this->consumePointScript = $options?->consumePointScript ?? null;
         $this->changePointNotification = $options?->changePointNotification ?? null;
         $this->logSetting = $options?->logSetting ?? null;
         $stack->addResource(
@@ -84,8 +92,25 @@ class Namespace_ extends CdkResource {
             $properties["UnityAd"] = $this->unityAd?->properties(
             );
         }
+        if ($this->appLovinMaxes != null) {
+            $properties["AppLovinMaxes"] = array_map(
+                function ($v) {
+                    return $v->properties(
+                    );
+                },
+                $this->appLovinMaxes
+            );
+        }
         if ($this->description != null) {
             $properties["Description"] = $this->description;
+        }
+        if ($this->acquirePointScript != null) {
+            $properties["AcquirePointScript"] = $this->acquirePointScript?->properties(
+            );
+        }
+        if ($this->consumePointScript != null) {
+            $properties["ConsumePointScript"] = $this->consumePointScript?->properties(
+            );
         }
         if ($this->changePointNotification != null) {
             $properties["ChangePointNotification"] = $this->changePointNotification?->properties(

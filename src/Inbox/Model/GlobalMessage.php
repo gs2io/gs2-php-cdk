@@ -25,6 +25,7 @@ class GlobalMessage {
     private ?array $readAcquireActions = null;
     private ?TimeSpan $expiresTimeSpan = null;
     private ?int $expiresAt = null;
+    private ?string $messageReceptionPeriodEventId = null;
 
     public function __construct(
         string $name,
@@ -36,6 +37,7 @@ class GlobalMessage {
         $this->readAcquireActions = $options?->readAcquireActions ?? null;
         $this->expiresTimeSpan = $options?->expiresTimeSpan ?? null;
         $this->expiresAt = $options?->expiresAt ?? null;
+        $this->messageReceptionPeriodEventId = $options?->messageReceptionPeriodEventId ?? null;
     }
 
     public function properties(
@@ -63,6 +65,9 @@ class GlobalMessage {
         }
         if ($this->expiresAt != null) {
             $properties["expiresAt"] = $this->expiresAt;
+        }
+        if ($this->messageReceptionPeriodEventId != null) {
+            $properties["messageReceptionPeriodEventId"] = $this->messageReceptionPeriodEventId;
         }
 
         return $properties;

@@ -27,6 +27,7 @@ class VerifySimpleItemByUserId extends ConsumeAction {
         string $itemName,
         string $verifyType,
         int $count,
+        ?bool $multiplyValueSpecifyingQuantity = null,
         ?string $userId = "#{userId}",
     ) {
         $properties = [];
@@ -36,6 +37,7 @@ class VerifySimpleItemByUserId extends ConsumeAction {
         $properties["itemName"] = $itemName;
         $properties["verifyType"] = $verifyType;
         $properties["count"] = $count;
+        $properties["multiplyValueSpecifyingQuantity"] = $multiplyValueSpecifyingQuantity;
         $properties["userId"] = $userId;
 
         parent::__construct(

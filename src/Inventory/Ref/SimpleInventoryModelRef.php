@@ -87,6 +87,7 @@ class SimpleInventoryModelRef {
         string $itemName,
         string $verifyType,
         int $count,
+        bool $multiplyValueSpecifyingQuantity,
         ?string $userId = "#{userId}",
     ): VerifySimpleItemByUserId {
         return (new VerifySimpleItemByUserId(
@@ -95,6 +96,7 @@ class SimpleInventoryModelRef {
             $itemName,
             $verifyType,
             $count,
+            $multiplyValueSpecifyingQuantity,
             $userId,
         ));
     }

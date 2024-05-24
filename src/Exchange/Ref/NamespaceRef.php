@@ -25,6 +25,7 @@ use Gs2Cdk\Exchange\Model\Array;
 use Gs2Cdk\Exchange\StampSheet\IncrementalExchangeByUserId;
 use Gs2Cdk\Exchange\StampSheet\UnlockIncrementalExchangeByUserId;
 use Gs2Cdk\Exchange\StampSheet\CreateAwaitByUserId;
+use Gs2Cdk\Exchange\StampSheet\SkipByUserId;
 use Gs2Cdk\Exchange\StampSheet\DeleteAwaitByUserId;
 
 class NamespaceRef {
@@ -108,6 +109,23 @@ class NamespaceRef {
             $rateName,
             $count,
             $config,
+            $userId,
+        ));
+    }
+
+    public function skip(
+        string $awaitName,
+        string $skipType,
+        ?int $minutes = null,
+        ?float $rate = null,
+        ?string $userId = "#{userId}",
+    ): SkipByUserId {
+        return (new SkipByUserId(
+            $this->namespaceName,
+            $awaitName,
+            $skipType,
+            $minutes,
+            $rate,
             $userId,
         ));
     }

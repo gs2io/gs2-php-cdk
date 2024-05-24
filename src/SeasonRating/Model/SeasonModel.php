@@ -23,6 +23,7 @@ class SeasonModel {
     private array $tiers;
     private string $experienceModelId;
     private ?string $metadata = null;
+    private ?string $challengePeriodEventId = null;
 
     public function __construct(
         string $name,
@@ -34,6 +35,7 @@ class SeasonModel {
         $this->tiers = $tiers;
         $this->experienceModelId = $experienceModelId;
         $this->metadata = $options?->metadata ?? null;
+        $this->challengePeriodEventId = $options?->challengePeriodEventId ?? null;
     }
 
     public function properties(
@@ -57,6 +59,9 @@ class SeasonModel {
         }
         if ($this->experienceModelId != null) {
             $properties["experienceModelId"] = $this->experienceModelId;
+        }
+        if ($this->challengePeriodEventId != null) {
+            $properties["challengePeriodEventId"] = $this->challengePeriodEventId;
         }
 
         return $properties;

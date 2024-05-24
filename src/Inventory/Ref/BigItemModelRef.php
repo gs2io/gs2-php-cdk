@@ -80,6 +80,7 @@ class BigItemModelRef {
     public function verifyBigItem(
         string $verifyType,
         string $count,
+        bool $multiplyValueSpecifyingQuantity,
         ?string $userId = "#{userId}",
     ): VerifyBigItemByUserId {
         return (new VerifyBigItemByUserId(
@@ -88,6 +89,7 @@ class BigItemModelRef {
             $this->itemName,
             $verifyType,
             $count,
+            $multiplyValueSpecifyingQuantity,
             $userId,
         ));
     }

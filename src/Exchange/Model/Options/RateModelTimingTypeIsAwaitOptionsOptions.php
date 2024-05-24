@@ -22,17 +22,14 @@ use Gs2Cdk\Exchange\Model\Enum\RateModelTimingType;
 class RateModelTimingTypeIsAwaitOptions {
     public ?string $metadata;
     public ?array $consumeActions;
-    public ?array $skipConsumeActions;
     public ?array $acquireActions;
     
     public function __construct(
         ?string $metadata = null,
         ?array $consumeActions = null,
-        ?array $skipConsumeActions = null,
         ?array $acquireActions = null,
     ) {
         $this->metadata = $metadata;
         $this->consumeActions = $consumeActions;
-        $this->skipConsumeActions = $skipConsumeActions;
         $this->acquireActions = $acquireActions;
     }}

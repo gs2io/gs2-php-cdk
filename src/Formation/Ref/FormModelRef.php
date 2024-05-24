@@ -21,6 +21,7 @@ use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Formation\StampSheet\AcquireActionsToFormProperties;
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Formation\Model\Array;
+use Gs2Cdk\Formation\StampSheet\SetFormByUserId;
 
 class FormModelRef {
     private string $namespaceName;
@@ -46,6 +47,20 @@ class FormModelRef {
             $index,
             $acquireAction,
             $config,
+            $userId,
+        ));
+    }
+
+    public function setForm(
+        int $index,
+        array $slots,
+        ?string $userId = "#{userId}",
+    ): SetFormByUserId {
+        return (new SetFormByUserId(
+            $this->namespaceName,
+            $this->moldModelName,
+            $index,
+            $slots,
             $userId,
         ));
     }

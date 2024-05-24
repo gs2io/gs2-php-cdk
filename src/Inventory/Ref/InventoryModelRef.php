@@ -147,6 +147,7 @@ class InventoryModelRef {
     public function verifyInventoryCurrentMaxCapacity(
         string $verifyType,
         int $currentInventoryMaxCapacity,
+        bool $multiplyValueSpecifyingQuantity,
         ?string $userId = "#{userId}",
     ): VerifyInventoryCurrentMaxCapacityByUserId {
         return (new VerifyInventoryCurrentMaxCapacityByUserId(
@@ -154,6 +155,7 @@ class InventoryModelRef {
             $this->inventoryName,
             $verifyType,
             $currentInventoryMaxCapacity,
+            $multiplyValueSpecifyingQuantity,
             $userId,
         ));
     }
@@ -178,6 +180,7 @@ class InventoryModelRef {
         string $itemName,
         string $verifyType,
         int $count,
+        bool $multiplyValueSpecifyingQuantity,
         ?string $itemSetName = null,
         ?string $userId = "#{userId}",
     ): VerifyItemSetByUserId {
@@ -187,6 +190,7 @@ class InventoryModelRef {
             $itemName,
             $verifyType,
             $count,
+            $multiplyValueSpecifyingQuantity,
             $itemSetName,
             $userId,
         ));
