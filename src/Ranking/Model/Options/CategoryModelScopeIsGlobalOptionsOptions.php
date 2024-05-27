@@ -15,7 +15,9 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Ranking\Model\Options;
+use Gs2Cdk\Ranking\Model\FixedTiming;
 use Gs2Cdk\Ranking\Model\Scope;
+use Gs2Cdk\Ranking\Model\GlobalRankingSetting;
 use Gs2Cdk\Ranking\Model\Enum\CategoryModelOrderDirection;
 use Gs2Cdk\Ranking\Model\Enum\CategoryModelScope;
 
@@ -23,11 +25,11 @@ class CategoryModelScopeIsGlobalOptions {
     public ?string $metadata;
     public ?int $minimumValue;
     public ?int $maximumValue;
+    public ?string $entryPeriodEventId;
+    public ?string $accessPeriodEventId;
     public ?int $calculateFixedTimingHour;
     public ?int $calculateFixedTimingMinute;
     public ?array $additionalScopes;
-    public ?string $entryPeriodEventId;
-    public ?string $accessPeriodEventId;
     public ?array $ignoreUserIds;
     public ?string $generation;
     
@@ -35,22 +37,22 @@ class CategoryModelScopeIsGlobalOptions {
         ?string $metadata = null,
         ?int $minimumValue = null,
         ?int $maximumValue = null,
+        ?string $entryPeriodEventId = null,
+        ?string $accessPeriodEventId = null,
         ?int $calculateFixedTimingHour = null,
         ?int $calculateFixedTimingMinute = null,
         ?array $additionalScopes = null,
-        ?string $entryPeriodEventId = null,
-        ?string $accessPeriodEventId = null,
         ?array $ignoreUserIds = null,
         ?string $generation = null,
     ) {
         $this->metadata = $metadata;
         $this->minimumValue = $minimumValue;
         $this->maximumValue = $maximumValue;
+        $this->entryPeriodEventId = $entryPeriodEventId;
+        $this->accessPeriodEventId = $accessPeriodEventId;
         $this->calculateFixedTimingHour = $calculateFixedTimingHour;
         $this->calculateFixedTimingMinute = $calculateFixedTimingMinute;
         $this->additionalScopes = $additionalScopes;
-        $this->entryPeriodEventId = $entryPeriodEventId;
-        $this->accessPeriodEventId = $accessPeriodEventId;
         $this->ignoreUserIds = $ignoreUserIds;
         $this->generation = $generation;
     }}

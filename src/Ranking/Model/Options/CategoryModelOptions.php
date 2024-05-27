@@ -15,7 +15,9 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Ranking\Model\Options;
+use Gs2Cdk\Ranking\Model\FixedTiming;
 use Gs2Cdk\Ranking\Model\Scope;
+use Gs2Cdk\Ranking\Model\GlobalRankingSetting;
 use Gs2Cdk\Ranking\Model\Enum\CategoryModelOrderDirection;
 use Gs2Cdk\Ranking\Model\Enum\CategoryModelScope;
 
@@ -23,14 +25,14 @@ class CategoryModelOptions {
     public ?string $metadata;
     public ?int $minimumValue;
     public ?int $maximumValue;
+    public ?GlobalRankingSetting $globalRankingSetting;
+    public ?string $entryPeriodEventId;
+    public ?string $accessPeriodEventId;
     public ?bool $uniqueByUserId;
-    public ?bool $sum;
     public ?int $calculateFixedTimingHour;
     public ?int $calculateFixedTimingMinute;
     public ?int $calculateIntervalMinutes;
     public ?array $additionalScopes;
-    public ?string $entryPeriodEventId;
-    public ?string $accessPeriodEventId;
     public ?array $ignoreUserIds;
     public ?string $generation;
     
@@ -38,28 +40,28 @@ class CategoryModelOptions {
         ?string $metadata = null,
         ?int $minimumValue = null,
         ?int $maximumValue = null,
+        ?GlobalRankingSetting $globalRankingSetting = null,
+        ?string $entryPeriodEventId = null,
+        ?string $accessPeriodEventId = null,
         ?bool $uniqueByUserId = null,
-        ?bool $sum = null,
         ?int $calculateFixedTimingHour = null,
         ?int $calculateFixedTimingMinute = null,
         ?int $calculateIntervalMinutes = null,
         ?array $additionalScopes = null,
-        ?string $entryPeriodEventId = null,
-        ?string $accessPeriodEventId = null,
         ?array $ignoreUserIds = null,
         ?string $generation = null,
     ) {
         $this->metadata = $metadata;
         $this->minimumValue = $minimumValue;
         $this->maximumValue = $maximumValue;
+        $this->globalRankingSetting = $globalRankingSetting;
+        $this->entryPeriodEventId = $entryPeriodEventId;
+        $this->accessPeriodEventId = $accessPeriodEventId;
         $this->uniqueByUserId = $uniqueByUserId;
-        $this->sum = $sum;
         $this->calculateFixedTimingHour = $calculateFixedTimingHour;
         $this->calculateFixedTimingMinute = $calculateFixedTimingMinute;
         $this->calculateIntervalMinutes = $calculateIntervalMinutes;
         $this->additionalScopes = $additionalScopes;
-        $this->entryPeriodEventId = $entryPeriodEventId;
-        $this->accessPeriodEventId = $accessPeriodEventId;
         $this->ignoreUserIds = $ignoreUserIds;
         $this->generation = $generation;
     }}

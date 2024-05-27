@@ -15,7 +15,9 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Ranking\Model;
+use Gs2Cdk\Ranking\Model\FixedTiming;
 use Gs2Cdk\Ranking\Model\Scope;
+use Gs2Cdk\Ranking\Model\GlobalRankingSetting;
 use Gs2Cdk\Ranking\Model\Options\CategoryModelOptions;
 use Gs2Cdk\Ranking\Model\Options\CategoryModelScopeIsGlobalOptions;
 use Gs2Cdk\Ranking\Model\Options\CategoryModelScopeIsScopedOptions;
@@ -24,68 +26,75 @@ use Gs2Cdk\Ranking\Model\Enum\CategoryModelScope;
 
 class CategoryModel {
     private string $name;
+    private bool $sum;
     private CategoryModelOrderDirection $orderDirection;
     private CategoryModelScope $scope;
     private ?string $metadata = null;
     private ?int $minimumValue = null;
     private ?int $maximumValue = null;
+    private ?GlobalRankingSetting $globalRankingSetting = null;
+    private ?string $entryPeriodEventId = null;
+    private ?string $accessPeriodEventId = null;
     private ?bool $uniqueByUserId = null;
-    private ?bool $sum = null;
     private ?int $calculateFixedTimingHour = null;
     private ?int $calculateFixedTimingMinute = null;
     private ?int $calculateIntervalMinutes = null;
     private ?array $additionalScopes = null;
-    private ?string $entryPeriodEventId = null;
-    private ?string $accessPeriodEventId = null;
     private ?array $ignoreUserIds = null;
     private ?string $generation = null;
 
     public function __construct(
         string $name,
+        bool $sum,
         CategoryModelOrderDirection $orderDirection,
         CategoryModelScope $scope,
         ?CategoryModelOptions $options = null,
     ) {
         $this->name = $name;
+        $this->sum = $sum;
         $this->orderDirection = $orderDirection;
         $this->scope = $scope;
         $this->metadata = $options?->metadata ?? null;
         $this->minimumValue = $options?->minimumValue ?? null;
         $this->maximumValue = $options?->maximumValue ?? null;
+        $this->globalRankingSetting = $options?->globalRankingSetting ?? null;
+        $this->entryPeriodEventId = $options?->entryPeriodEventId ?? null;
+        $this->accessPeriodEventId = $options?->accessPeriodEventId ?? null;
         $this->uniqueByUserId = $options?->uniqueByUserId ?? null;
-        $this->sum = $options?->sum ?? null;
         $this->calculateFixedTimingHour = $options?->calculateFixedTimingHour ?? null;
         $this->calculateFixedTimingMinute = $options?->calculateFixedTimingMinute ?? null;
         $this->calculateIntervalMinutes = $options?->calculateIntervalMinutes ?? null;
         $this->additionalScopes = $options?->additionalScopes ?? null;
-        $this->entryPeriodEventId = $options?->entryPeriodEventId ?? null;
-        $this->accessPeriodEventId = $options?->accessPeriodEventId ?? null;
         $this->ignoreUserIds = $options?->ignoreUserIds ?? null;
         $this->generation = $options?->generation ?? null;
     }
 
     public static function scopeIsGlobal(
         string $name,
+        bool $sum,
         CategoryModelOrderDirection $orderDirection,
+        GlobalRankingSetting $globalRankingSetting,
         bool $uniqueByUserId,
         int $calculateIntervalMinutes,
         ?CategoryModelScopeIsGlobalOptions $options = null,
     ): CategoryModel {
         return (new CategoryModel(
             $name,
+            $sum,
             $orderDirection,
             CategoryModelScope::GLOBAL,
             new CategoryModelOptions(
+                globalRankingSetting: $globalRankingSetting,
                 uniqueByUserId: $uniqueByUserId,
                 calculateIntervalMinutes: $calculateIntervalMinutes,
                 metadata: $options?->metadata,
                 minimumValue: $options?->minimumValue,
                 maximumValue: $options?->maximumValue,
+                entryPeriodEventId: $options?->entryPeriodEventId,
+                accessPeriodEventId: $options?->accessPeriodEventId,
                 calculateFixedTimingHour: $options?->calculateFixedTimingHour,
                 calculateFixedTimingMinute: $options?->calculateFixedTimingMinute,
                 additionalScopes: $options?->additionalScopes,
-                entryPeriodEventId: $options?->entryPeriodEventId,
-                accessPeriodEventId: $options?->accessPeriodEventId,
                 ignoreUserIds: $options?->ignoreUserIds,
                 generation: $options?->generation,
             ),
@@ -94,22 +103,24 @@ class CategoryModel {
 
     public static function scopeIsScoped(
         string $name,
+        bool $sum,
         CategoryModelOrderDirection $orderDirection,
         ?CategoryModelScopeIsScopedOptions $options = null,
     ): CategoryModel {
         return (new CategoryModel(
             $name,
+            $sum,
             $orderDirection,
             CategoryModelScope::SCOPED,
             new CategoryModelOptions(
                 metadata: $options?->metadata,
                 minimumValue: $options?->minimumValue,
                 maximumValue: $options?->maximumValue,
+                entryPeriodEventId: $options?->entryPeriodEventId,
+                accessPeriodEventId: $options?->accessPeriodEventId,
                 calculateFixedTimingHour: $options?->calculateFixedTimingHour,
                 calculateFixedTimingMinute: $options?->calculateFixedTimingMinute,
                 additionalScopes: $options?->additionalScopes,
-                entryPeriodEventId: $options?->entryPeriodEventId,
-                accessPeriodEventId: $options?->accessPeriodEventId,
                 ignoreUserIds: $options?->ignoreUserIds,
                 generation: $options?->generation,
             ),
@@ -132,6 +143,9 @@ class CategoryModel {
         if ($this->maximumValue != null) {
             $properties["maximumValue"] = $this->maximumValue;
         }
+        if ($this->sum != null) {
+            $properties["sum"] = $this->sum;
+        }
         if ($this->orderDirection != null) {
             $properties["orderDirection"] = $this->orderDirection?->toString(
             );
@@ -140,11 +154,18 @@ class CategoryModel {
             $properties["scope"] = $this->scope?->toString(
             );
         }
+        if ($this->globalRankingSetting != null) {
+            $properties["globalRankingSetting"] = $this->globalRankingSetting?->properties(
+            );
+        }
+        if ($this->entryPeriodEventId != null) {
+            $properties["entryPeriodEventId"] = $this->entryPeriodEventId;
+        }
+        if ($this->accessPeriodEventId != null) {
+            $properties["accessPeriodEventId"] = $this->accessPeriodEventId;
+        }
         if ($this->uniqueByUserId != null) {
             $properties["uniqueByUserId"] = $this->uniqueByUserId;
-        }
-        if ($this->sum != null) {
-            $properties["sum"] = $this->sum;
         }
         if ($this->calculateFixedTimingHour != null) {
             $properties["calculateFixedTimingHour"] = $this->calculateFixedTimingHour;
@@ -163,12 +184,6 @@ class CategoryModel {
                 },
                 $this->additionalScopes
             );
-        }
-        if ($this->entryPeriodEventId != null) {
-            $properties["entryPeriodEventId"] = $this->entryPeriodEventId;
-        }
-        if ($this->accessPeriodEventId != null) {
-            $properties["accessPeriodEventId"] = $this->accessPeriodEventId;
         }
         if ($this->ignoreUserIds != null) {
             $properties["ignoreUserIds"] = $this->ignoreUserIds;

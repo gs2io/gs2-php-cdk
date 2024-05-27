@@ -17,42 +17,22 @@
 namespace Gs2Cdk\Ranking\Model\Options;
 use Gs2Cdk\Ranking\Model\FixedTiming;
 use Gs2Cdk\Ranking\Model\Scope;
-use Gs2Cdk\Ranking\Model\GlobalRankingSetting;
-use Gs2Cdk\Ranking\Model\Enum\CategoryModelOrderDirection;
-use Gs2Cdk\Ranking\Model\Enum\CategoryModelScope;
 
-class CategoryModelScopeIsScopedOptions {
-    public ?string $metadata;
-    public ?int $minimumValue;
-    public ?int $maximumValue;
-    public ?string $entryPeriodEventId;
-    public ?string $accessPeriodEventId;
-    public ?int $calculateFixedTimingHour;
-    public ?int $calculateFixedTimingMinute;
+class GlobalRankingSettingOptions {
+    public ?FixedTiming $calculateFixedTiming;
     public ?array $additionalScopes;
     public ?array $ignoreUserIds;
     public ?string $generation;
     
     public function __construct(
-        ?string $metadata = null,
-        ?int $minimumValue = null,
-        ?int $maximumValue = null,
-        ?string $entryPeriodEventId = null,
-        ?string $accessPeriodEventId = null,
-        ?int $calculateFixedTimingHour = null,
-        ?int $calculateFixedTimingMinute = null,
+        ?FixedTiming $calculateFixedTiming = null,
         ?array $additionalScopes = null,
         ?array $ignoreUserIds = null,
         ?string $generation = null,
     ) {
-        $this->metadata = $metadata;
-        $this->minimumValue = $minimumValue;
-        $this->maximumValue = $maximumValue;
-        $this->entryPeriodEventId = $entryPeriodEventId;
-        $this->accessPeriodEventId = $accessPeriodEventId;
-        $this->calculateFixedTimingHour = $calculateFixedTimingHour;
-        $this->calculateFixedTimingMinute = $calculateFixedTimingMinute;
+        $this->calculateFixedTiming = $calculateFixedTiming;
         $this->additionalScopes = $additionalScopes;
         $this->ignoreUserIds = $ignoreUserIds;
         $this->generation = $generation;
     }}
+
