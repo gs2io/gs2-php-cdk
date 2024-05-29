@@ -14,22 +14,33 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\Buff\Model\Options;
-use Gs2Cdk\Core\Model\ScriptSetting;
-use Gs2Cdk\Core\Model\LogSetting;
+namespace Gs2Cdk\Buff\Model;
+use Gs2Cdk\Buff\Model\Options\OverrideBuffRateOptions;
 
-class NamespaceOptions {
-    public ?string $description;
-    public ?ScriptSetting $applyBuffScript;
-    public ?LogSetting $logSetting;
-    
+class OverrideBuffRate {
+    private string $name;
+    private float $rate;
+
     public function __construct(
-        ?string $description = null,
-        ?ScriptSetting $applyBuffScript = null,
-        ?LogSetting $logSetting = null,
+        string $name,
+        float $rate,
+        ?OverrideBuffRateOptions $options = null,
     ) {
-        $this->description = $description;
-        $this->applyBuffScript = $applyBuffScript;
-        $this->logSetting = $logSetting;
-    }}
+        $this->name = $name;
+        $this->rate = $rate;
+    }
 
+    public function properties(
+    ): array {
+        $properties = [];
+
+        if ($this->name != null) {
+            $properties["name"] = $this->name;
+        }
+        if ($this->rate != null) {
+            $properties["rate"] = $this->rate;
+        }
+
+        return $properties;
+    }
+}
