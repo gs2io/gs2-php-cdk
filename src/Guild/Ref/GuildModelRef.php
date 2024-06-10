@@ -22,6 +22,8 @@ use Gs2Cdk\Guild\Ref\RoleModelRef;
 use Gs2Cdk\Guild\StampSheet\IncreaseMaximumCurrentMaximumMemberCountByGuildName;
 use Gs2Cdk\Guild\StampSheet\SetMaximumCurrentMaximumMemberCountByGuildName;
 use Gs2Cdk\Guild\StampSheet\DecreaseMaximumCurrentMaximumMemberCountByGuildName;
+use Gs2Cdk\Guild\StampSheet\VerifyCurrentMaximumMemberCountByGuildName;
+use Gs2Cdk\Guild\StampSheet\VerifyIncludeMemberByUserId;
 
 class GuildModelRef {
     private string $namespaceName;
@@ -76,6 +78,36 @@ class GuildModelRef {
             $this->guildModelName,
             $guildName,
             $value,
+        ));
+    }
+
+    public function verifyCurrentMaximumMemberCountByGuildName(
+        string $guildName,
+        string $verifyType,
+        bool $multiplyValueSpecifyingQuantity,
+        ?int $value = null,
+    ): VerifyCurrentMaximumMemberCountByGuildName {
+        return (new VerifyCurrentMaximumMemberCountByGuildName(
+            $this->namespaceName,
+            $this->guildModelName,
+            $guildName,
+            $verifyType,
+            $multiplyValueSpecifyingQuantity,
+            $value,
+        ));
+    }
+
+    public function verifyIncludeMember(
+        string $guildName,
+        string $verifyType,
+        ?string $userId = "#{userId}",
+    ): VerifyIncludeMemberByUserId {
+        return (new VerifyIncludeMemberByUserId(
+            $this->namespaceName,
+            $this->guildModelName,
+            $guildName,
+            $verifyType,
+            $userId,
         ));
     }
 

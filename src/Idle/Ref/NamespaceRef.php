@@ -21,6 +21,8 @@ use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Idle\Ref\CategoryModelRef;
 use Gs2Cdk\Idle\StampSheet\IncreaseMaximumIdleMinutesByUserId;
 use Gs2Cdk\Idle\StampSheet\SetMaximumIdleMinutesByUserId;
+use Gs2Cdk\Idle\StampSheet\ReceiveByUserId;
+use Gs2Cdk\Idle\Model\Array;
 use Gs2Cdk\Idle\StampSheet\DecreaseMaximumIdleMinutesByUserId;
 
 class NamespaceRef {
@@ -63,6 +65,19 @@ class NamespaceRef {
             $this->namespaceName,
             $categoryName,
             $maximumIdleMinutes,
+            $userId,
+        ));
+    }
+
+    public function receive(
+        string $categoryName,
+        ?array $config = null,
+        ?string $userId = "#{userId}",
+    ): ReceiveByUserId {
+        return (new ReceiveByUserId(
+            $this->namespaceName,
+            $categoryName,
+            $config,
             $userId,
         ));
     }

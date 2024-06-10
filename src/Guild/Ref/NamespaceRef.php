@@ -23,6 +23,8 @@ use Gs2Cdk\Guild\Ref\GuildRef;
 use Gs2Cdk\Guild\StampSheet\IncreaseMaximumCurrentMaximumMemberCountByGuildName;
 use Gs2Cdk\Guild\StampSheet\SetMaximumCurrentMaximumMemberCountByGuildName;
 use Gs2Cdk\Guild\StampSheet\DecreaseMaximumCurrentMaximumMemberCountByGuildName;
+use Gs2Cdk\Guild\StampSheet\VerifyCurrentMaximumMemberCountByGuildName;
+use Gs2Cdk\Guild\StampSheet\VerifyIncludeMemberByUserId;
 
 class NamespaceRef {
     private string $namespaceName;
@@ -78,6 +80,38 @@ class NamespaceRef {
             $guildModelName,
             $guildName,
             $value,
+        ));
+    }
+
+    public function verifyCurrentMaximumMemberCountByGuildName(
+        string $guildModelName,
+        string $guildName,
+        string $verifyType,
+        bool $multiplyValueSpecifyingQuantity,
+        ?int $value = null,
+    ): VerifyCurrentMaximumMemberCountByGuildName {
+        return (new VerifyCurrentMaximumMemberCountByGuildName(
+            $this->namespaceName,
+            $guildModelName,
+            $guildName,
+            $verifyType,
+            $multiplyValueSpecifyingQuantity,
+            $value,
+        ));
+    }
+
+    public function verifyIncludeMember(
+        string $guildModelName,
+        string $guildName,
+        string $verifyType,
+        ?string $userId = "#{userId}",
+    ): VerifyIncludeMemberByUserId {
+        return (new VerifyIncludeMemberByUserId(
+            $this->namespaceName,
+            $guildModelName,
+            $guildName,
+            $verifyType,
+            $userId,
         ));
     }
 
