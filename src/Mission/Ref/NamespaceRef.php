@@ -25,6 +25,7 @@ use Gs2Cdk\Mission\StampSheet\IncreaseCounterByUserId;
 use Gs2Cdk\Mission\StampSheet\SetCounterByUserId;
 use Gs2Cdk\Mission\Model\ScopedValue;
 use Gs2Cdk\Mission\StampSheet\ReceiveByUserId;
+use Gs2Cdk\Mission\StampSheet\VerifyCompleteByUserId;
 use Gs2Cdk\Mission\StampSheet\DecreaseCounterByUserId;
 use Gs2Cdk\Mission\StampSheet\VerifyCounterValueByUserId;
 
@@ -103,6 +104,23 @@ class NamespaceRef {
             $this->namespaceName,
             $missionGroupName,
             $missionTaskName,
+            $userId,
+        ));
+    }
+
+    public function verifyComplete(
+        string $missionGroupName,
+        string $verifyType,
+        string $missionTaskName,
+        bool $multiplyValueSpecifyingQuantity,
+        ?string $userId = "#{userId}",
+    ): VerifyCompleteByUserId {
+        return (new VerifyCompleteByUserId(
+            $this->namespaceName,
+            $missionGroupName,
+            $verifyType,
+            $missionTaskName,
+            $multiplyValueSpecifyingQuantity,
             $userId,
         ));
     }
