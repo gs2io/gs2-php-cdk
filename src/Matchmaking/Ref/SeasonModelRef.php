@@ -18,34 +18,17 @@ namespace Gs2Cdk\Matchmaking\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
-use Gs2Cdk\Matchmaking\Ref\RatingModelRef;
-use Gs2Cdk\Matchmaking\Ref\SeasonModelRef;
 
-class NamespaceRef {
+class SeasonModelRef {
     private string $namespaceName;
+    private string $seasonName;
 
     public function __construct(
         string $namespaceName,
+        string $seasonName,
     ) {
         $this->namespaceName = $namespaceName;
-    }
-
-    public function ratingModel(
-        string $ratingName,
-    ): RatingModelRef {
-        return (new RatingModelRef(
-            $this->namespaceName,
-            $ratingName,
-        ));
-    }
-
-    public function seasonModel(
-        string $seasonName,
-    ): SeasonModelRef {
-        return (new SeasonModelRef(
-            $this->namespaceName,
-            $seasonName,
-        ));
+        $this->seasonName = $seasonName;
     }
 
     public function grn(
@@ -63,6 +46,8 @@ class NamespaceRef {
                 ),
                 "matchmaking",
                 $this->namespaceName,
+                "model",
+                $this->seasonName,
             ],
         ))->str(
         );

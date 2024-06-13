@@ -19,23 +19,27 @@ namespace Gs2Cdk\Matchmaking\Model;
 use Gs2Cdk\Core\Model\CdkResource;
 use Gs2Cdk\Core\Model\Stack;
 use Gs2Cdk\Matchmaking\Model\RatingModel;
+use Gs2Cdk\Matchmaking\Model\SeasonModel;
 
 class CurrentMasterData extends CdkResource {
     private string $version= "2020-06-24";
     private string $namespaceName;
     private array $ratingModels;
+    private array $seasonModels;
 
     public function __construct(
         Stack $stack,
         string $namespaceName,
         array $ratingModels,
+        array $seasonModels,
     ) {
         parent::__construct(
-            "Matchmaking_CurrentRatingModelMaster_" . $namespaceName
+            "Matchmaking_CurrentModelMaster_" . $namespaceName
         );
 
         $this->namespaceName = $namespaceName;
         $this->ratingModels = $ratingModels;
+        $this->seasonModels = $seasonModels;
         $stack->addResource(
             $this,
         );
@@ -48,7 +52,7 @@ class CurrentMasterData extends CdkResource {
 
     public function resourceType(
     ): string {
-        return "GS2::Matchmaking::CurrentRatingModelMaster";
+        return "GS2::Matchmaking::CurrentModelMaster";
     }
 
     public function properties(
@@ -64,6 +68,15 @@ class CurrentMasterData extends CdkResource {
                     );
                 },
                 $this->ratingModels
+            );
+        }
+        if ($this->seasonModels != null) {
+            $settings["seasonModels"] = array_map(
+                function ($v) {
+                    return $v->properties(
+                    );
+                },
+                $this->seasonModels
             );
         }
 

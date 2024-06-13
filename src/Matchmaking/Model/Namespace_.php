@@ -26,6 +26,7 @@ use Gs2Cdk\Core\Model\LogSetting;
 use Gs2Cdk\Matchmaking\Ref\NamespaceRef;
 use Gs2Cdk\Matchmaking\Model\CurrentMasterData;
 use Gs2Cdk\Matchmaking\Model\RatingModel;
+use Gs2Cdk\Matchmaking\Model\SeasonModel;
 use Gs2Cdk\Matchmaking\Model\Enum\NamespaceEnableDisconnectDetection;
 use Gs2Cdk\Matchmaking\Model\Enum\NamespaceCreateGatheringTriggerType;
 use Gs2Cdk\Matchmaking\Model\Enum\NamespaceCompleteMatchmakingTriggerType;
@@ -196,11 +197,13 @@ class Namespace_ extends CdkResource {
 
     public function masterData(
         array $ratingModels,
+        array $seasonModels,
     ): Namespace_ {
         (new CurrentMasterData(
             $this->stack,
             $this->name,
             $ratingModels,
+            $seasonModels,
         ))->addDependsOn(
             $this,
         );
