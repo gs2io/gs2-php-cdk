@@ -20,6 +20,7 @@ use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Matchmaking\Ref\RatingModelRef;
 use Gs2Cdk\Matchmaking\Ref\SeasonModelRef;
+use Gs2Cdk\Matchmaking\StampSheet\VerifyIncludeParticipantByUserId;
 
 class NamespaceRef {
     private string $namespaceName;
@@ -45,6 +46,25 @@ class NamespaceRef {
         return (new SeasonModelRef(
             $this->namespaceName,
             $seasonName,
+        ));
+    }
+
+    public function verifyIncludeParticipant(
+        string $seasonName,
+        int $season,
+        int $tier,
+        string $seasonGatheringName,
+        string $verifyType,
+        ?string $userId = "#{userId}",
+    ): VerifyIncludeParticipantByUserId {
+        return (new VerifyIncludeParticipantByUserId(
+            $this->namespaceName,
+            $seasonName,
+            $season,
+            $tier,
+            $seasonGatheringName,
+            $verifyType,
+            $userId,
         ));
     }
 

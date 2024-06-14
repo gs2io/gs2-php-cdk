@@ -18,6 +18,7 @@ namespace Gs2Cdk\Matchmaking\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
+use Gs2Cdk\Matchmaking\StampSheet\VerifyIncludeParticipantByUserId;
 
 class SeasonModelRef {
     private string $namespaceName;
@@ -29,6 +30,24 @@ class SeasonModelRef {
     ) {
         $this->namespaceName = $namespaceName;
         $this->seasonName = $seasonName;
+    }
+
+    public function verifyIncludeParticipant(
+        int $season,
+        int $tier,
+        string $seasonGatheringName,
+        string $verifyType,
+        ?string $userId = "#{userId}",
+    ): VerifyIncludeParticipantByUserId {
+        return (new VerifyIncludeParticipantByUserId(
+            $this->namespaceName,
+            $this->seasonName,
+            $season,
+            $tier,
+            $seasonGatheringName,
+            $verifyType,
+            $userId,
+        ));
     }
 
     public function grn(

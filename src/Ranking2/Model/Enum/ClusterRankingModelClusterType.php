@@ -21,6 +21,7 @@ namespace Gs2Cdk\Ranking2\Model\Enum;
 enum ClusterRankingModelClusterType {
     case RAW;
     case GS2_GUILD__GUILD;
+    case GS2_MATCHMAKING__SEASON_GATHERING;
 
     public function toString(): String {
         switch ($this) {
@@ -28,6 +29,8 @@ enum ClusterRankingModelClusterType {
                 return "Raw";
             case self::GS2_GUILD__GUILD:
                 return "Gs2Guild::Guild";
+            case self::GS2_MATCHMAKING__SEASON_GATHERING:
+                return "Gs2Matchmaking::SeasonGathering";
         }
         return "unknown";
     }
