@@ -19,15 +19,18 @@ namespace Gs2Cdk\Buff\Model\Enum;
 
 
 enum BuffEntryModelExpression {
-    case ADD;
+    case RATE_ADD;
     case MUL;
+    case VALUE_ADD;
 
     public function toString(): String {
         switch ($this) {
-            case self::ADD:
-                return "add";
+            case self::RATE_ADD:
+                return "rate_add";
             case self::MUL:
                 return "mul";
+            case self::VALUE_ADD:
+                return "value_add";
         }
         return "unknown";
     }
