@@ -18,8 +18,8 @@ namespace Gs2Cdk\Buff\Model\Options;
 use Gs2Cdk\Buff\Model\BuffTargetGrn;
 use Gs2Cdk\Buff\Model\BuffTargetModel;
 use Gs2Cdk\Buff\Model\BuffTargetAction;
-use Gs2Cdk\Buff\Model\Enum\BuffEntryModelTargetType;
 use Gs2Cdk\Buff\Model\Enum\BuffEntryModelExpression;
+use Gs2Cdk\Buff\Model\Enum\BuffEntryModelTargetType;
 
 class BuffEntryModelTargetTypeIsModelOptions {
     public ?string $metadata;

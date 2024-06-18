@@ -21,13 +21,13 @@ use Gs2Cdk\Buff\Model\BuffTargetAction;
 use Gs2Cdk\Buff\Model\Options\BuffEntryModelOptions;
 use Gs2Cdk\Buff\Model\Options\BuffEntryModelTargetTypeIsModelOptions;
 use Gs2Cdk\Buff\Model\Options\BuffEntryModelTargetTypeIsActionOptions;
-use Gs2Cdk\Buff\Model\Enum\BuffEntryModelTargetType;
 use Gs2Cdk\Buff\Model\Enum\BuffEntryModelExpression;
+use Gs2Cdk\Buff\Model\Enum\BuffEntryModelTargetType;
 
 class BuffEntryModel {
     private string $name;
-    private BuffEntryModelTargetType $targetType;
     private BuffEntryModelExpression $expression;
+    private BuffEntryModelTargetType $targetType;
     private int $priority;
     private ?string $metadata = null;
     private ?BuffTargetModel $targetModel = null;
@@ -36,14 +36,14 @@ class BuffEntryModel {
 
     public function __construct(
         string $name,
-        BuffEntryModelTargetType $targetType,
         BuffEntryModelExpression $expression,
+        BuffEntryModelTargetType $targetType,
         int $priority,
         ?BuffEntryModelOptions $options = null,
     ) {
         $this->name = $name;
-        $this->targetType = $targetType;
         $this->expression = $expression;
+        $this->targetType = $targetType;
         $this->priority = $priority;
         $this->metadata = $options?->metadata ?? null;
         $this->targetModel = $options?->targetModel ?? null;
@@ -60,8 +60,8 @@ class BuffEntryModel {
     ): BuffEntryModel {
         return (new BuffEntryModel(
             $name,
-            BuffEntryModelTargetType::MODEL,
             $expression,
+            BuffEntryModelTargetType::MODEL,
             $priority,
             new BuffEntryModelOptions(
                 targetModel: $targetModel,
@@ -80,8 +80,8 @@ class BuffEntryModel {
     ): BuffEntryModel {
         return (new BuffEntryModel(
             $name,
-            BuffEntryModelTargetType::ACTION,
             $expression,
+            BuffEntryModelTargetType::ACTION,
             $priority,
             new BuffEntryModelOptions(
                 targetAction: $targetAction,
@@ -101,6 +101,10 @@ class BuffEntryModel {
         if ($this->metadata != null) {
             $properties["metadata"] = $this->metadata;
         }
+        if ($this->expression != null) {
+            $properties["expression"] = $this->expression?->toString(
+            );
+        }
         if ($this->targetType != null) {
             $properties["targetType"] = $this->targetType?->toString(
             );
@@ -111,10 +115,6 @@ class BuffEntryModel {
         }
         if ($this->targetAction != null) {
             $properties["targetAction"] = $this->targetAction?->properties(
-            );
-        }
-        if ($this->expression != null) {
-            $properties["expression"] = $this->expression?->toString(
             );
         }
         if ($this->priority != null) {
