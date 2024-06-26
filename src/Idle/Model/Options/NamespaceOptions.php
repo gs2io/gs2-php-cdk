@@ -23,17 +23,20 @@ class NamespaceOptions {
     public ?string $description;
     public ?TransactionSetting $transactionSetting;
     public ?ScriptSetting $receiveScript;
+    public ?string $overrideAcquireActionsScriptId;
     public ?LogSetting $logSetting;
     
     public function __construct(
         ?string $description = null,
         ?TransactionSetting $transactionSetting = null,
         ?ScriptSetting $receiveScript = null,
+        ?string $overrideAcquireActionsScriptId = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
         $this->transactionSetting = $transactionSetting;
         $this->receiveScript = $receiveScript;
+        $this->overrideAcquireActionsScriptId = $overrideAcquireActionsScriptId;
         $this->logSetting = $logSetting;
     }}
 

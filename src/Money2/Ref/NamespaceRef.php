@@ -18,7 +18,9 @@ namespace Gs2Cdk\Money2\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
+use Gs2Cdk\Money2\Ref\DailyTransactionHistoryRef;
 use Gs2Cdk\Money2\Ref\StoreContentModelRef;
+use Gs2Cdk\Money2\Ref\UnusedBalanceRef;
 use Gs2Cdk\Money2\StampSheet\DepositByUserId;
 use Gs2Cdk\Money2\Model\DepositTransaction;
 use Gs2Cdk\Money2\StampSheet\WithdrawByUserId;

@@ -35,6 +35,7 @@ class Namespace_ extends CdkResource {
     private ?string $description = null;
     private ?TransactionSetting $transactionSetting = null;
     private ?ScriptSetting $receiveScript = null;
+    private ?string $overrideAcquireActionsScriptId = null;
     private ?LogSetting $logSetting = null;
 
     public function __construct(
@@ -51,6 +52,7 @@ class Namespace_ extends CdkResource {
         $this->description = $options?->description ?? null;
         $this->transactionSetting = $options?->transactionSetting ?? null;
         $this->receiveScript = $options?->receiveScript ?? null;
+        $this->overrideAcquireActionsScriptId = $options?->overrideAcquireActionsScriptId ?? null;
         $this->logSetting = $options?->logSetting ?? null;
         $stack->addResource(
             $this,
@@ -85,6 +87,9 @@ class Namespace_ extends CdkResource {
         if ($this->receiveScript != null) {
             $properties["ReceiveScript"] = $this->receiveScript?->properties(
             );
+        }
+        if ($this->overrideAcquireActionsScriptId != null) {
+            $properties["OverrideAcquireActionsScriptId"] = $this->overrideAcquireActionsScriptId;
         }
         if ($this->logSetting != null) {
             $properties["LogSetting"] = $this->logSetting?->properties(
