@@ -26,6 +26,9 @@ class RepeatSettingOptions {
     public ?RepeatSettingEndDayOfWeek $endDayOfWeek;
     public ?int $beginHour;
     public ?int $endHour;
+    public ?int $anchorTimestamp;
+    public ?int $activeDays;
+    public ?int $inactiveDays;
     
     public function __construct(
         ?int $beginDayOfMonth = null,
@@ -34,6 +37,9 @@ class RepeatSettingOptions {
         ?RepeatSettingEndDayOfWeek $endDayOfWeek = null,
         ?int $beginHour = null,
         ?int $endHour = null,
+        ?int $anchorTimestamp = null,
+        ?int $activeDays = null,
+        ?int $inactiveDays = null,
     ) {
         $this->beginDayOfMonth = $beginDayOfMonth;
         $this->endDayOfMonth = $endDayOfMonth;
@@ -41,5 +47,8 @@ class RepeatSettingOptions {
         $this->endDayOfWeek = $endDayOfWeek;
         $this->beginHour = $beginHour;
         $this->endHour = $endHour;
+        $this->anchorTimestamp = $anchorTimestamp;
+        $this->activeDays = $activeDays;
+        $this->inactiveDays = $inactiveDays;
     }}
 

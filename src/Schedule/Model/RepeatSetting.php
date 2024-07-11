@@ -20,6 +20,7 @@ use Gs2Cdk\Schedule\Model\Options\RepeatSettingRepeatTypeIsAlwaysOptions;
 use Gs2Cdk\Schedule\Model\Options\RepeatSettingRepeatTypeIsDailyOptions;
 use Gs2Cdk\Schedule\Model\Options\RepeatSettingRepeatTypeIsWeeklyOptions;
 use Gs2Cdk\Schedule\Model\Options\RepeatSettingRepeatTypeIsMonthlyOptions;
+use Gs2Cdk\Schedule\Model\Options\RepeatSettingRepeatTypeIsCustomOptions;
 use Gs2Cdk\Schedule\Model\Enum\RepeatSettingRepeatType;
 use Gs2Cdk\Schedule\Model\Enum\RepeatSettingBeginDayOfWeek;
 use Gs2Cdk\Schedule\Model\Enum\RepeatSettingEndDayOfWeek;
@@ -32,6 +33,9 @@ class RepeatSetting {
     private ?RepeatSettingEndDayOfWeek $endDayOfWeek = null;
     private ?int $beginHour = null;
     private ?int $endHour = null;
+    private ?int $anchorTimestamp = null;
+    private ?int $activeDays = null;
+    private ?int $inactiveDays = null;
 
     public function __construct(
         RepeatSettingRepeatType $repeatType,
@@ -44,6 +48,9 @@ class RepeatSetting {
         $this->endDayOfWeek = $options?->endDayOfWeek ?? null;
         $this->beginHour = $options?->beginHour ?? null;
         $this->endHour = $options?->endHour ?? null;
+        $this->anchorTimestamp = $options?->anchorTimestamp ?? null;
+        $this->activeDays = $options?->activeDays ?? null;
+        $this->inactiveDays = $options?->inactiveDays ?? null;
     }
 
     public static function repeatTypeIsAlways(
@@ -106,6 +113,22 @@ class RepeatSetting {
         ));
     }
 
+    public static function repeatTypeIsCustom(
+        int $anchorTimestamp,
+        int $activeDays,
+        int $inactiveDays,
+        ?RepeatSettingRepeatTypeIsCustomOptions $options = null,
+    ): RepeatSetting {
+        return (new RepeatSetting(
+            RepeatSettingRepeatType::CUSTOM,
+            new RepeatSettingOptions(
+                anchorTimestamp: $anchorTimestamp,
+                activeDays: $activeDays,
+                inactiveDays: $inactiveDays,
+            ),
+        ));
+    }
+
     public function properties(
     ): array {
         $properties = [];
@@ -133,6 +156,15 @@ class RepeatSetting {
         }
         if ($this->endHour != null) {
             $properties["endHour"] = $this->endHour;
+        }
+        if ($this->anchorTimestamp != null) {
+            $properties["anchorTimestamp"] = $this->anchorTimestamp;
+        }
+        if ($this->activeDays != null) {
+            $properties["activeDays"] = $this->activeDays;
+        }
+        if ($this->inactiveDays != null) {
+            $properties["inactiveDays"] = $this->inactiveDays;
         }
 
         return $properties;
