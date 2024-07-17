@@ -21,6 +21,7 @@ use Gs2Cdk\Core\Model\Stack;
 use Gs2Cdk\Core\Func\GetAttr;
 
 use Gs2Cdk\Identifier\Ref\PasswordRef;
+use Gs2Cdk\Identifier\Model\Enum\PasswordEnableTwoFactorAuthentication;
 
 use Gs2Cdk\Identifier\Model\Options\PasswordOptions;
 
