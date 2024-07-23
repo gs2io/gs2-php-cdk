@@ -19,6 +19,7 @@ namespace Gs2Cdk\Guild\Ref;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Guild\Ref\InboxRef;
+use Gs2Cdk\Guild\Ref\IgnoreUsersRef;
 use Gs2Cdk\Guild\StampSheet\IncreaseMaximumCurrentMaximumMemberCountByGuildName;
 use Gs2Cdk\Guild\StampSheet\SetMaximumCurrentMaximumMemberCountByGuildName;
 use Gs2Cdk\Guild\StampSheet\DecreaseMaximumCurrentMaximumMemberCountByGuildName;
