@@ -20,6 +20,7 @@ use Gs2Cdk\Core\Model\CdkResource;
 use Gs2Cdk\Core\Model\Stack;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Model\NotificationSetting;
+use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 use Gs2Cdk\Guild\Ref\NamespaceRef;
@@ -37,6 +38,10 @@ class Namespace_ extends CdkResource {
     private ?NotificationSetting $changeMemberNotification = null;
     private ?NotificationSetting $receiveRequestNotification = null;
     private ?NotificationSetting $removeRequestNotification = null;
+    private ?ScriptSetting $createGuildScript = null;
+    private ?ScriptSetting $joinGuildScript = null;
+    private ?ScriptSetting $leaveGuildScript = null;
+    private ?ScriptSetting $changeRoleScript = null;
     private ?LogSetting $logSetting = null;
 
     public function __construct(
@@ -56,6 +61,10 @@ class Namespace_ extends CdkResource {
         $this->changeMemberNotification = $options?->changeMemberNotification ?? null;
         $this->receiveRequestNotification = $options?->receiveRequestNotification ?? null;
         $this->removeRequestNotification = $options?->removeRequestNotification ?? null;
+        $this->createGuildScript = $options?->createGuildScript ?? null;
+        $this->joinGuildScript = $options?->joinGuildScript ?? null;
+        $this->leaveGuildScript = $options?->leaveGuildScript ?? null;
+        $this->changeRoleScript = $options?->changeRoleScript ?? null;
         $this->logSetting = $options?->logSetting ?? null;
         $stack->addResource(
             $this,
@@ -101,6 +110,22 @@ class Namespace_ extends CdkResource {
         }
         if ($this->removeRequestNotification != null) {
             $properties["RemoveRequestNotification"] = $this->removeRequestNotification?->properties(
+            );
+        }
+        if ($this->createGuildScript != null) {
+            $properties["CreateGuildScript"] = $this->createGuildScript?->properties(
+            );
+        }
+        if ($this->joinGuildScript != null) {
+            $properties["JoinGuildScript"] = $this->joinGuildScript?->properties(
+            );
+        }
+        if ($this->leaveGuildScript != null) {
+            $properties["LeaveGuildScript"] = $this->leaveGuildScript?->properties(
+            );
+        }
+        if ($this->changeRoleScript != null) {
+            $properties["ChangeRoleScript"] = $this->changeRoleScript?->properties(
             );
         }
         if ($this->logSetting != null) {

@@ -16,6 +16,7 @@
  */
 namespace Gs2Cdk\Guild\Model\Options;
 use Gs2Cdk\Core\Model\NotificationSetting;
+use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
@@ -25,6 +26,10 @@ class NamespaceOptions {
     public ?NotificationSetting $changeMemberNotification;
     public ?NotificationSetting $receiveRequestNotification;
     public ?NotificationSetting $removeRequestNotification;
+    public ?ScriptSetting $createGuildScript;
+    public ?ScriptSetting $joinGuildScript;
+    public ?ScriptSetting $leaveGuildScript;
+    public ?ScriptSetting $changeRoleScript;
     public ?LogSetting $logSetting;
     
     public function __construct(
@@ -34,6 +39,10 @@ class NamespaceOptions {
         ?NotificationSetting $changeMemberNotification = null,
         ?NotificationSetting $receiveRequestNotification = null,
         ?NotificationSetting $removeRequestNotification = null,
+        ?ScriptSetting $createGuildScript = null,
+        ?ScriptSetting $joinGuildScript = null,
+        ?ScriptSetting $leaveGuildScript = null,
+        ?ScriptSetting $changeRoleScript = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
@@ -42,6 +51,10 @@ class NamespaceOptions {
         $this->changeMemberNotification = $changeMemberNotification;
         $this->receiveRequestNotification = $receiveRequestNotification;
         $this->removeRequestNotification = $removeRequestNotification;
+        $this->createGuildScript = $createGuildScript;
+        $this->joinGuildScript = $joinGuildScript;
+        $this->leaveGuildScript = $leaveGuildScript;
+        $this->changeRoleScript = $changeRoleScript;
         $this->logSetting = $logSetting;
     }}
 

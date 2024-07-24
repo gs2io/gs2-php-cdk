@@ -22,6 +22,7 @@ class GuildModel {
     private string $name;
     private int $defaultMaximumMemberCount;
     private int $maximumMemberCount;
+    private int $inactivityPeriodDays;
     private array $roles;
     private string $guildMasterRole;
     private string $guildMemberDefaultRole;
@@ -32,6 +33,7 @@ class GuildModel {
         string $name,
         int $defaultMaximumMemberCount,
         int $maximumMemberCount,
+        int $inactivityPeriodDays,
         array $roles,
         string $guildMasterRole,
         string $guildMemberDefaultRole,
@@ -41,6 +43,7 @@ class GuildModel {
         $this->name = $name;
         $this->defaultMaximumMemberCount = $defaultMaximumMemberCount;
         $this->maximumMemberCount = $maximumMemberCount;
+        $this->inactivityPeriodDays = $inactivityPeriodDays;
         $this->roles = $roles;
         $this->guildMasterRole = $guildMasterRole;
         $this->guildMemberDefaultRole = $guildMemberDefaultRole;
@@ -63,6 +66,9 @@ class GuildModel {
         }
         if ($this->maximumMemberCount != null) {
             $properties["maximumMemberCount"] = $this->maximumMemberCount;
+        }
+        if ($this->inactivityPeriodDays != null) {
+            $properties["inactivityPeriodDays"] = $this->inactivityPeriodDays;
         }
         if ($this->roles != null) {
             $properties["roles"] = array_map(
