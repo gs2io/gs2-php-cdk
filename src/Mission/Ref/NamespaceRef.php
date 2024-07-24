@@ -25,8 +25,8 @@ use Gs2Cdk\Mission\StampSheet\IncreaseCounterByUserId;
 use Gs2Cdk\Mission\StampSheet\SetCounterByUserId;
 use Gs2Cdk\Mission\Model\ScopedValue;
 use Gs2Cdk\Mission\StampSheet\ReceiveByUserId;
-use Gs2Cdk\Mission\StampSheet\VerifyCompleteByUserId;
 use Gs2Cdk\Mission\StampSheet\DecreaseCounterByUserId;
+use Gs2Cdk\Mission\StampSheet\VerifyCompleteByUserId;
 use Gs2Cdk\Mission\StampSheet\VerifyCounterValueByUserId;
 
 class NamespaceRef {
@@ -108,6 +108,19 @@ class NamespaceRef {
         ));
     }
 
+    public function decreaseCounter(
+        string $counterName,
+        int $value,
+        ?string $userId = "#{userId}",
+    ): DecreaseCounterByUserId {
+        return (new DecreaseCounterByUserId(
+            $this->namespaceName,
+            $counterName,
+            $value,
+            $userId,
+        ));
+    }
+
     public function verifyComplete(
         string $missionGroupName,
         string $verifyType,
@@ -121,19 +134,6 @@ class NamespaceRef {
             $verifyType,
             $missionTaskName,
             $multiplyValueSpecifyingQuantity,
-            $userId,
-        ));
-    }
-
-    public function decreaseCounter(
-        string $counterName,
-        int $value,
-        ?string $userId = "#{userId}",
-    ): DecreaseCounterByUserId {
-        return (new DecreaseCounterByUserId(
-            $this->namespaceName,
-            $counterName,
-            $value,
             $userId,
         ));
     }

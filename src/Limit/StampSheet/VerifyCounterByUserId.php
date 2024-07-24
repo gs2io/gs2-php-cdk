@@ -18,8 +18,9 @@ namespace Gs2Cdk\Limit\StampSheet;
 
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Core\Model\VerifyAction;
 
-class VerifyCounterByUserId extends ConsumeAction {
+class VerifyCounterByUserId extends VerifyAction {
 
     public function __construct(
         string $namespaceName,

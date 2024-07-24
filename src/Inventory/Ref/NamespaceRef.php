@@ -32,13 +32,13 @@ use Gs2Cdk\Inventory\Model\AcquireCount;
 use Gs2Cdk\Inventory\StampSheet\SetSimpleItemsByUserId;
 use Gs2Cdk\Inventory\StampSheet\AcquireBigItemByUserId;
 use Gs2Cdk\Inventory\StampSheet\SetBigItemByUserId;
-use Gs2Cdk\Inventory\StampSheet\VerifyInventoryCurrentMaxCapacityByUserId;
 use Gs2Cdk\Inventory\StampSheet\ConsumeItemSetByUserId;
+use Gs2Cdk\Inventory\StampSheet\ConsumeSimpleItemsByUserId;
+use Gs2Cdk\Inventory\StampSheet\ConsumeBigItemByUserId;
+use Gs2Cdk\Inventory\StampSheet\VerifyInventoryCurrentMaxCapacityByUserId;
 use Gs2Cdk\Inventory\StampSheet\VerifyItemSetByUserId;
 use Gs2Cdk\Inventory\StampSheet\VerifyReferenceOfByUserId;
-use Gs2Cdk\Inventory\StampSheet\ConsumeSimpleItemsByUserId;
 use Gs2Cdk\Inventory\StampSheet\VerifySimpleItemByUserId;
-use Gs2Cdk\Inventory\StampSheet\ConsumeBigItemByUserId;
 use Gs2Cdk\Inventory\StampSheet\VerifyBigItemByUserId;
 
 class NamespaceRef {
@@ -231,23 +231,6 @@ class NamespaceRef {
         ));
     }
 
-    public function verifyInventoryCurrentMaxCapacity(
-        string $inventoryName,
-        string $verifyType,
-        int $currentInventoryMaxCapacity,
-        bool $multiplyValueSpecifyingQuantity,
-        ?string $userId = "#{userId}",
-    ): VerifyInventoryCurrentMaxCapacityByUserId {
-        return (new VerifyInventoryCurrentMaxCapacityByUserId(
-            $this->namespaceName,
-            $inventoryName,
-            $verifyType,
-            $currentInventoryMaxCapacity,
-            $multiplyValueSpecifyingQuantity,
-            $userId,
-        ));
-    }
-
     public function consumeItemSet(
         string $inventoryName,
         string $itemName,
@@ -261,6 +244,51 @@ class NamespaceRef {
             $itemName,
             $consumeCount,
             $itemSetName,
+            $userId,
+        ));
+    }
+
+    public function consumeSimpleItems(
+        string $inventoryName,
+        array $consumeCounts,
+        ?string $userId = "#{userId}",
+    ): ConsumeSimpleItemsByUserId {
+        return (new ConsumeSimpleItemsByUserId(
+            $this->namespaceName,
+            $inventoryName,
+            $consumeCounts,
+            $userId,
+        ));
+    }
+
+    public function consumeBigItem(
+        string $inventoryName,
+        string $itemName,
+        string $consumeCount,
+        ?string $userId = "#{userId}",
+    ): ConsumeBigItemByUserId {
+        return (new ConsumeBigItemByUserId(
+            $this->namespaceName,
+            $inventoryName,
+            $itemName,
+            $consumeCount,
+            $userId,
+        ));
+    }
+
+    public function verifyInventoryCurrentMaxCapacity(
+        string $inventoryName,
+        string $verifyType,
+        int $currentInventoryMaxCapacity,
+        bool $multiplyValueSpecifyingQuantity,
+        ?string $userId = "#{userId}",
+    ): VerifyInventoryCurrentMaxCapacityByUserId {
+        return (new VerifyInventoryCurrentMaxCapacityByUserId(
+            $this->namespaceName,
+            $inventoryName,
+            $verifyType,
+            $currentInventoryMaxCapacity,
+            $multiplyValueSpecifyingQuantity,
             $userId,
         ));
     }
@@ -305,19 +333,6 @@ class NamespaceRef {
         ));
     }
 
-    public function consumeSimpleItems(
-        string $inventoryName,
-        array $consumeCounts,
-        ?string $userId = "#{userId}",
-    ): ConsumeSimpleItemsByUserId {
-        return (new ConsumeSimpleItemsByUserId(
-            $this->namespaceName,
-            $inventoryName,
-            $consumeCounts,
-            $userId,
-        ));
-    }
-
     public function verifySimpleItem(
         string $inventoryName,
         string $itemName,
@@ -333,21 +348,6 @@ class NamespaceRef {
             $verifyType,
             $count,
             $multiplyValueSpecifyingQuantity,
-            $userId,
-        ));
-    }
-
-    public function consumeBigItem(
-        string $inventoryName,
-        string $itemName,
-        string $consumeCount,
-        ?string $userId = "#{userId}",
-    ): ConsumeBigItemByUserId {
-        return (new ConsumeBigItemByUserId(
-            $this->namespaceName,
-            $inventoryName,
-            $itemName,
-            $consumeCount,
             $userId,
         ));
     }

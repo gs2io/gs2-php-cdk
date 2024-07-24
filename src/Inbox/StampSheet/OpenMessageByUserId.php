@@ -18,6 +18,7 @@ namespace Gs2Cdk\Inbox\StampSheet;
 
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Core\Model\VerifyAction;
 
 class OpenMessageByUserId extends ConsumeAction {
 

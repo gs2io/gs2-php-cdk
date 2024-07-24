@@ -18,6 +18,7 @@ namespace Gs2Cdk\Money2\StampSheet;
 
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Core\Model\VerifyAction;
 use Gs2Cdk\Money2\Model\DepositTransaction;
 
 class DepositByUserId extends AcquireAction {

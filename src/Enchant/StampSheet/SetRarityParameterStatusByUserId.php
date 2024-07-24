@@ -18,6 +18,7 @@ namespace Gs2Cdk\Enchant\StampSheet;
 
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Core\Model\VerifyAction;
 use Gs2Cdk\Enchant\Model\RarityParameterValue;
 
 class SetRarityParameterStatusByUserId extends AcquireAction {

@@ -18,6 +18,7 @@ namespace Gs2Cdk\Stamina\StampSheet;
 
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Core\Model\VerifyAction;
 
 class RecoverStaminaByUserId extends AcquireAction {
 

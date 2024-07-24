@@ -18,8 +18,9 @@ namespace Gs2Cdk\Inventory\StampSheet;
 
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Core\Model\VerifyAction;
 
-class VerifyBigItemByUserId extends ConsumeAction {
+class VerifyBigItemByUserId extends VerifyAction {
 
     public function __construct(
         string $namespaceName,

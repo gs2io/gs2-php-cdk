@@ -18,8 +18,9 @@ namespace Gs2Cdk\Enchant\StampSheet;
 
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Core\Model\VerifyAction;
 
-class VerifyRarityParameterStatusByUserId extends ConsumeAction {
+class VerifyRarityParameterStatusByUserId extends VerifyAction {
 
     public function __construct(
         string $namespaceName,

@@ -18,8 +18,9 @@ namespace Gs2Cdk\Schedule\StampSheet;
 
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Core\Model\VerifyAction;
 
-class VerifyEventByUserId extends ConsumeAction {
+class VerifyEventByUserId extends VerifyAction {
 
     public function __construct(
         string $namespaceName,

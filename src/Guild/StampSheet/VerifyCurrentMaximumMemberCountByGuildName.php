@@ -18,8 +18,9 @@ namespace Gs2Cdk\Guild\StampSheet;
 
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Core\Model\VerifyAction;
 
-class VerifyCurrentMaximumMemberCountByGuildName extends ConsumeAction {
+class VerifyCurrentMaximumMemberCountByGuildName extends VerifyAction {
 
     public function __construct(
         string $namespaceName,

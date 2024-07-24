@@ -18,6 +18,7 @@ namespace Gs2Cdk\Inventory\StampSheet;
 
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Core\Model\VerifyAction;
 use Gs2Cdk\Inventory\Model\AcquireCount;
 
 class AcquireSimpleItemsByUserId extends AcquireAction {

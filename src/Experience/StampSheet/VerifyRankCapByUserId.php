@@ -18,8 +18,9 @@ namespace Gs2Cdk\Experience\StampSheet;
 
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Core\Model\VerifyAction;
 
-class VerifyRankCapByUserId extends ConsumeAction {
+class VerifyRankCapByUserId extends VerifyAction {
 
     public function __construct(
         string $namespaceName,
