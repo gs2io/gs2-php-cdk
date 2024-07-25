@@ -15,12 +15,14 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Script\Model;
+use Gs2Cdk\Core\Model\VerifyAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Script\Model\Options\TransactionOptions;
 
 class Transaction {
     private ?string $transactionId = null;
+    private ?array $verifyActions = null;
     private ?array $consumeActions = null;
     private ?array $acquireActions = null;
 
@@ -28,6 +30,7 @@ class Transaction {
         ?TransactionOptions $options = null,
     ) {
         $this->transactionId = $options?->transactionId ?? null;
+        $this->verifyActions = $options?->verifyActions ?? null;
         $this->consumeActions = $options?->consumeActions ?? null;
         $this->acquireActions = $options?->acquireActions ?? null;
     }
@@ -38,6 +41,15 @@ class Transaction {
 
         if ($this->transactionId != null) {
             $properties["transactionId"] = $this->transactionId;
+        }
+        if ($this->verifyActions != null) {
+            $properties["verifyActions"] = array_map(
+                function ($v) {
+                    return $v->properties(
+                    );
+                },
+                $this->verifyActions
+            );
         }
         if ($this->consumeActions != null) {
             $properties["consumeActions"] = array_map(

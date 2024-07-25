@@ -20,14 +20,14 @@ namespace Gs2Cdk\Mission\Model\Enum;
 
 enum MissionTaskModelVerifyCompleteType {
     case COUNTER;
-    case CONSUME_ACTIONS;
+    case VERIFY_ACTIONS;
 
     public function toString(): String {
         switch ($this) {
             case self::COUNTER:
                 return "counter";
-            case self::CONSUME_ACTIONS:
-                return "consumeActions";
+            case self::VERIFY_ACTIONS:
+                return "verifyActions";
         }
         return "unknown";
     }

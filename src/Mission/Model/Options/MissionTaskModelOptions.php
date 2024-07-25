@@ -16,7 +16,7 @@
  */
 namespace Gs2Cdk\Mission\Model\Options;
 use Gs2Cdk\Mission\Model\TargetCounterModel;
-use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Core\Model\VerifyAction;
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Mission\Model\Enum\MissionTaskModelVerifyCompleteType;
 use Gs2Cdk\Mission\Model\Enum\MissionTaskModelTargetResetType;

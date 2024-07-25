@@ -21,7 +21,7 @@ use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Mission\Model\Enum\MissionTaskModelVerifyCompleteType;
 use Gs2Cdk\Mission\Model\Enum\MissionTaskModelTargetResetType;
 
-class MissionTaskModelVerifyCompleteTypeIsCounterOptions {
+class MissionTaskModelVerifyCompleteTypeIsVerifyActionsOptions {
     public ?string $metadata;
     public ?array $verifyCompleteConsumeActions;
     public ?array $completeAcquireActions;

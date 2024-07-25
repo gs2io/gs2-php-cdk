@@ -41,7 +41,10 @@ class Namespace_ extends CdkResource {
     private ?ScriptSetting $updateProfileScript = null;
     private ?NotificationSetting $followNotification = null;
     private ?NotificationSetting $receiveRequestNotification = null;
+    private ?NotificationSetting $cancelRequestNotification = null;
     private ?NotificationSetting $acceptRequestNotification = null;
+    private ?NotificationSetting $rejectRequestNotification = null;
+    private ?NotificationSetting $deleteFriendNotification = null;
     private ?LogSetting $logSetting = null;
 
     public function __construct(
@@ -66,7 +69,10 @@ class Namespace_ extends CdkResource {
         $this->updateProfileScript = $options?->updateProfileScript ?? null;
         $this->followNotification = $options?->followNotification ?? null;
         $this->receiveRequestNotification = $options?->receiveRequestNotification ?? null;
+        $this->cancelRequestNotification = $options?->cancelRequestNotification ?? null;
         $this->acceptRequestNotification = $options?->acceptRequestNotification ?? null;
+        $this->rejectRequestNotification = $options?->rejectRequestNotification ?? null;
+        $this->deleteFriendNotification = $options?->deleteFriendNotification ?? null;
         $this->logSetting = $options?->logSetting ?? null;
         $stack->addResource(
             $this,
@@ -134,8 +140,20 @@ class Namespace_ extends CdkResource {
             $properties["ReceiveRequestNotification"] = $this->receiveRequestNotification?->properties(
             );
         }
+        if ($this->cancelRequestNotification != null) {
+            $properties["CancelRequestNotification"] = $this->cancelRequestNotification?->properties(
+            );
+        }
         if ($this->acceptRequestNotification != null) {
             $properties["AcceptRequestNotification"] = $this->acceptRequestNotification?->properties(
+            );
+        }
+        if ($this->rejectRequestNotification != null) {
+            $properties["RejectRequestNotification"] = $this->rejectRequestNotification?->properties(
+            );
+        }
+        if ($this->deleteFriendNotification != null) {
+            $properties["DeleteFriendNotification"] = $this->deleteFriendNotification?->properties(
             );
         }
         if ($this->logSetting != null) {

@@ -15,6 +15,7 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Exchange\Model;
+use Gs2Cdk\Core\Model\VerifyAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Exchange\Model\Options\RateModelOptions;
@@ -26,6 +27,7 @@ class RateModel {
     private string $name;
     private RateModelTimingType $timingType;
     private ?string $metadata = null;
+    private ?array $verifyActions = null;
     private ?array $consumeActions = null;
     private ?int $lockTime = null;
     private ?array $acquireActions = null;
@@ -38,6 +40,7 @@ class RateModel {
         $this->name = $name;
         $this->timingType = $timingType;
         $this->metadata = $options?->metadata ?? null;
+        $this->verifyActions = $options?->verifyActions ?? null;
         $this->consumeActions = $options?->consumeActions ?? null;
         $this->lockTime = $options?->lockTime ?? null;
         $this->acquireActions = $options?->acquireActions ?? null;
@@ -52,6 +55,7 @@ class RateModel {
             RateModelTimingType::IMMEDIATE,
             new RateModelOptions(
                 metadata: $options?->metadata,
+                verifyActions: $options?->verifyActions,
                 consumeActions: $options?->consumeActions,
                 acquireActions: $options?->acquireActions,
             ),
@@ -69,6 +73,7 @@ class RateModel {
             new RateModelOptions(
                 lockTime: $lockTime,
                 metadata: $options?->metadata,
+                verifyActions: $options?->verifyActions,
                 consumeActions: $options?->consumeActions,
                 acquireActions: $options?->acquireActions,
             ),
@@ -84,6 +89,15 @@ class RateModel {
         }
         if ($this->metadata != null) {
             $properties["metadata"] = $this->metadata;
+        }
+        if ($this->verifyActions != null) {
+            $properties["verifyActions"] = array_map(
+                function ($v) {
+                    return $v->properties(
+                    );
+                },
+                $this->verifyActions
+            );
         }
         if ($this->consumeActions != null) {
             $properties["consumeActions"] = array_map(

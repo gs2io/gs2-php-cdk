@@ -17,6 +17,7 @@
 namespace Gs2Cdk\LoginReward\Model\Options;
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\LoginReward\Model\Reward;
+use Gs2Cdk\Core\Model\VerifyAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
 use Gs2Cdk\LoginReward\Model\Enum\BonusModelMode;
 use Gs2Cdk\LoginReward\Model\Enum\BonusModelRepeat;
@@ -28,6 +29,7 @@ class BonusModelOptions {
     public ?int $resetHour;
     public ?BonusModelRepeat $repeat;
     public ?array $rewards;
+    public ?array $missedReceiveReliefVerifyActions;
     public ?array $missedReceiveReliefConsumeActions;
     
     public function __construct(
@@ -36,6 +38,7 @@ class BonusModelOptions {
         ?int $resetHour = null,
         ?BonusModelRepeat $repeat = null,
         ?array $rewards = null,
+        ?array $missedReceiveReliefVerifyActions = null,
         ?array $missedReceiveReliefConsumeActions = null,
     ) {
         $this->metadata = $metadata;
@@ -43,6 +46,7 @@ class BonusModelOptions {
         $this->resetHour = $resetHour;
         $this->repeat = $repeat;
         $this->rewards = $rewards;
+        $this->missedReceiveReliefVerifyActions = $missedReceiveReliefVerifyActions;
         $this->missedReceiveReliefConsumeActions = $missedReceiveReliefConsumeActions;
     }}
 

@@ -15,21 +15,25 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Exchange\Model\Options;
+use Gs2Cdk\Core\Model\VerifyAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Exchange\Model\Enum\RateModelTimingType;
 
 class RateModelTimingTypeIsImmediateOptions {
     public ?string $metadata;
+    public ?array $verifyActions;
     public ?array $consumeActions;
     public ?array $acquireActions;
     
     public function __construct(
         ?string $metadata = null,
+        ?array $verifyActions = null,
         ?array $consumeActions = null,
         ?array $acquireActions = null,
     ) {
         $this->metadata = $metadata;
+        $this->verifyActions = $verifyActions;
         $this->consumeActions = $consumeActions;
         $this->acquireActions = $acquireActions;
     }}

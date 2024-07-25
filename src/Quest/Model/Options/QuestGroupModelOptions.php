@@ -17,6 +17,7 @@
 namespace Gs2Cdk\Quest\Model\Options;
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Quest\Model\Contents;
+use Gs2Cdk\Core\Model\VerifyAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
 use Gs2Cdk\Quest\Model\QuestModel;
 

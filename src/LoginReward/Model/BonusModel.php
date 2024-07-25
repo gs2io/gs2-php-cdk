@@ -17,6 +17,7 @@
 namespace Gs2Cdk\LoginReward\Model;
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\LoginReward\Model\Reward;
+use Gs2Cdk\Core\Model\VerifyAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
 use Gs2Cdk\LoginReward\Model\Options\BonusModelOptions;
 use Gs2Cdk\LoginReward\Model\Options\BonusModelModeIsScheduleOptions;
@@ -36,6 +37,7 @@ class BonusModel {
     private ?int $resetHour = null;
     private ?BonusModelRepeat $repeat = null;
     private ?array $rewards = null;
+    private ?array $missedReceiveReliefVerifyActions = null;
     private ?array $missedReceiveReliefConsumeActions = null;
 
     public function __construct(
@@ -52,6 +54,7 @@ class BonusModel {
         $this->resetHour = $options?->resetHour ?? null;
         $this->repeat = $options?->repeat ?? null;
         $this->rewards = $options?->rewards ?? null;
+        $this->missedReceiveReliefVerifyActions = $options?->missedReceiveReliefVerifyActions ?? null;
         $this->missedReceiveReliefConsumeActions = $options?->missedReceiveReliefConsumeActions ?? null;
     }
 
@@ -68,6 +71,7 @@ class BonusModel {
                 metadata: $options?->metadata,
                 periodEventId: $options?->periodEventId,
                 rewards: $options?->rewards,
+                missedReceiveReliefVerifyActions: $options?->missedReceiveReliefVerifyActions,
                 missedReceiveReliefConsumeActions: $options?->missedReceiveReliefConsumeActions,
             ),
         ));
@@ -88,6 +92,7 @@ class BonusModel {
                 metadata: $options?->metadata,
                 periodEventId: $options?->periodEventId,
                 rewards: $options?->rewards,
+                missedReceiveReliefVerifyActions: $options?->missedReceiveReliefVerifyActions,
                 missedReceiveReliefConsumeActions: $options?->missedReceiveReliefConsumeActions,
             ),
         ));
@@ -106,6 +111,7 @@ class BonusModel {
                 metadata: $options?->metadata,
                 periodEventId: $options?->periodEventId,
                 rewards: $options?->rewards,
+                missedReceiveReliefVerifyActions: $options?->missedReceiveReliefVerifyActions,
                 missedReceiveReliefConsumeActions: $options?->missedReceiveReliefConsumeActions,
             ),
         ));
@@ -124,6 +130,7 @@ class BonusModel {
                 metadata: $options?->metadata,
                 periodEventId: $options?->periodEventId,
                 rewards: $options?->rewards,
+                missedReceiveReliefVerifyActions: $options?->missedReceiveReliefVerifyActions,
                 missedReceiveReliefConsumeActions: $options?->missedReceiveReliefConsumeActions,
             ),
         ));
@@ -164,6 +171,15 @@ class BonusModel {
         }
         if ($this->missedReceiveRelief != null) {
             $properties["missedReceiveRelief"] = $this->missedReceiveRelief?->toString(
+            );
+        }
+        if ($this->missedReceiveReliefVerifyActions != null) {
+            $properties["missedReceiveReliefVerifyActions"] = array_map(
+                function ($v) {
+                    return $v->properties(
+                    );
+                },
+                $this->missedReceiveReliefVerifyActions
             );
         }
         if ($this->missedReceiveReliefConsumeActions != null) {

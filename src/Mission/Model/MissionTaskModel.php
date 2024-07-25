@@ -16,11 +16,11 @@
  */
 namespace Gs2Cdk\Mission\Model;
 use Gs2Cdk\Mission\Model\TargetCounterModel;
-use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Core\Model\VerifyAction;
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Mission\Model\Options\MissionTaskModelOptions;
 use Gs2Cdk\Mission\Model\Options\MissionTaskModelVerifyCompleteTypeIsCounterOptions;
-use Gs2Cdk\Mission\Model\Options\MissionTaskModelVerifyCompleteTypeIsConsumeActionsOptions;
+use Gs2Cdk\Mission\Model\Options\MissionTaskModelVerifyCompleteTypeIsVerifyActionsOptions;
 use Gs2Cdk\Mission\Model\Enum\MissionTaskModelVerifyCompleteType;
 use Gs2Cdk\Mission\Model\Enum\MissionTaskModelTargetResetType;
 
@@ -81,15 +81,15 @@ class MissionTaskModel {
         ));
     }
 
-    public static function verifyCompleteTypeIsConsumeActions(
+    public static function verifyCompleteTypeIsVerifyActions(
         string $name,
         string $counterName,
         int $targetValue,
-        ?MissionTaskModelVerifyCompleteTypeIsConsumeActionsOptions $options = null,
+        ?MissionTaskModelVerifyCompleteTypeIsVerifyActionsOptions $options = null,
     ): MissionTaskModel {
         return (new MissionTaskModel(
             $name,
-            MissionTaskModelVerifyCompleteType::CONSUME_ACTIONS,
+            MissionTaskModelVerifyCompleteType::VERIFY_ACTIONS,
             $counterName,
             $targetValue,
             new MissionTaskModelOptions(

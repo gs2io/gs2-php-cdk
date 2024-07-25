@@ -15,20 +15,24 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Script\Model\Options;
+use Gs2Cdk\Core\Model\VerifyAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
 use Gs2Cdk\Core\Model\AcquireAction;
 
 class TransactionOptions {
     public ?string $transactionId;
+    public ?array $verifyActions;
     public ?array $consumeActions;
     public ?array $acquireActions;
     
     public function __construct(
         ?string $transactionId = null,
+        ?array $verifyActions = null,
         ?array $consumeActions = null,
         ?array $acquireActions = null,
     ) {
         $this->transactionId = $transactionId;
+        $this->verifyActions = $verifyActions;
         $this->consumeActions = $consumeActions;
         $this->acquireActions = $acquireActions;
     }}

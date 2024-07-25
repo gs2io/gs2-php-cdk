@@ -17,6 +17,7 @@
 namespace Gs2Cdk\Quest\Model;
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Quest\Model\Contents;
+use Gs2Cdk\Core\Model\VerifyAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
 use Gs2Cdk\Quest\Model\Options\QuestModelOptions;
 
@@ -26,6 +27,7 @@ class QuestModel {
     private ?string $metadata = null;
     private ?string $challengePeriodEventId = null;
     private ?array $firstCompleteAcquireActions = null;
+    private ?array $verifyActions = null;
     private ?array $consumeActions = null;
     private ?array $failedAcquireActions = null;
     private ?array $premiseQuestNames = null;
@@ -40,6 +42,7 @@ class QuestModel {
         $this->metadata = $options?->metadata ?? null;
         $this->challengePeriodEventId = $options?->challengePeriodEventId ?? null;
         $this->firstCompleteAcquireActions = $options?->firstCompleteAcquireActions ?? null;
+        $this->verifyActions = $options?->verifyActions ?? null;
         $this->consumeActions = $options?->consumeActions ?? null;
         $this->failedAcquireActions = $options?->failedAcquireActions ?? null;
         $this->premiseQuestNames = $options?->premiseQuestNames ?? null;
@@ -74,6 +77,15 @@ class QuestModel {
                     );
                 },
                 $this->firstCompleteAcquireActions
+            );
+        }
+        if ($this->verifyActions != null) {
+            $properties["verifyActions"] = array_map(
+                function ($v) {
+                    return $v->properties(
+                    );
+                },
+                $this->verifyActions
             );
         }
         if ($this->consumeActions != null) {

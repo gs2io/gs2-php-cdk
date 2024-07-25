@@ -15,18 +15,22 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Showcase\Model\Options;
+use Gs2Cdk\Core\Model\VerifyAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
 use Gs2Cdk\Core\Model\AcquireAction;
 
 class RandomDisplayItemModelOptions {
     public ?string $metadata;
+    public ?array $verifyActions;
     public ?array $consumeActions;
     
     public function __construct(
         ?string $metadata = null,
+        ?array $verifyActions = null,
         ?array $consumeActions = null,
     ) {
         $this->metadata = $metadata;
+        $this->verifyActions = $verifyActions;
         $this->consumeActions = $consumeActions;
     }}
 

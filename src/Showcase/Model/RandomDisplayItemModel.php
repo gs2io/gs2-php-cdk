@@ -15,6 +15,7 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Showcase\Model;
+use Gs2Cdk\Core\Model\VerifyAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Showcase\Model\Options\RandomDisplayItemModelOptions;
@@ -25,6 +26,7 @@ class RandomDisplayItemModel {
     private int $stock;
     private int $weight;
     private ?string $metadata = null;
+    private ?array $verifyActions = null;
     private ?array $consumeActions = null;
 
     public function __construct(
@@ -39,6 +41,7 @@ class RandomDisplayItemModel {
         $this->stock = $stock;
         $this->weight = $weight;
         $this->metadata = $options?->metadata ?? null;
+        $this->verifyActions = $options?->verifyActions ?? null;
         $this->consumeActions = $options?->consumeActions ?? null;
     }
 
@@ -51,6 +54,15 @@ class RandomDisplayItemModel {
         }
         if ($this->metadata != null) {
             $properties["metadata"] = $this->metadata;
+        }
+        if ($this->verifyActions != null) {
+            $properties["verifyActions"] = array_map(
+                function ($v) {
+                    return $v->properties(
+                    );
+                },
+                $this->verifyActions
+            );
         }
         if ($this->consumeActions != null) {
             $properties["consumeActions"] = array_map(

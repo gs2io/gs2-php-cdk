@@ -15,20 +15,24 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\SkillTree\Model\Options;
+use Gs2Cdk\Core\Model\VerifyAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
 use Gs2Cdk\Core\Model\AcquireAction;
 
 class NodeModelOptions {
     public ?string $metadata;
+    public ?array $releaseVerifyActions;
     public ?array $returnAcquireActions;
     public ?array $premiseNodeNames;
     
     public function __construct(
         ?string $metadata = null,
+        ?array $releaseVerifyActions = null,
         ?array $returnAcquireActions = null,
         ?array $premiseNodeNames = null,
     ) {
         $this->metadata = $metadata;
+        $this->releaseVerifyActions = $releaseVerifyActions;
         $this->returnAcquireActions = $returnAcquireActions;
         $this->premiseNodeNames = $premiseNodeNames;
     }}

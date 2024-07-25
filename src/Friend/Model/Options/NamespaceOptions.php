@@ -31,7 +31,10 @@ class NamespaceOptions {
     public ?ScriptSetting $updateProfileScript;
     public ?NotificationSetting $followNotification;
     public ?NotificationSetting $receiveRequestNotification;
+    public ?NotificationSetting $cancelRequestNotification;
     public ?NotificationSetting $acceptRequestNotification;
+    public ?NotificationSetting $rejectRequestNotification;
+    public ?NotificationSetting $deleteFriendNotification;
     public ?LogSetting $logSetting;
     
     public function __construct(
@@ -46,7 +49,10 @@ class NamespaceOptions {
         ?ScriptSetting $updateProfileScript = null,
         ?NotificationSetting $followNotification = null,
         ?NotificationSetting $receiveRequestNotification = null,
+        ?NotificationSetting $cancelRequestNotification = null,
         ?NotificationSetting $acceptRequestNotification = null,
+        ?NotificationSetting $rejectRequestNotification = null,
+        ?NotificationSetting $deleteFriendNotification = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
@@ -60,7 +66,10 @@ class NamespaceOptions {
         $this->updateProfileScript = $updateProfileScript;
         $this->followNotification = $followNotification;
         $this->receiveRequestNotification = $receiveRequestNotification;
+        $this->cancelRequestNotification = $cancelRequestNotification;
         $this->acceptRequestNotification = $acceptRequestNotification;
+        $this->rejectRequestNotification = $rejectRequestNotification;
+        $this->deleteFriendNotification = $deleteFriendNotification;
         $this->logSetting = $logSetting;
     }}
 

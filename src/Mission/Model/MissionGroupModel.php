@@ -16,7 +16,7 @@
  */
 namespace Gs2Cdk\Mission\Model;
 use Gs2Cdk\Mission\Model\TargetCounterModel;
-use Gs2Cdk\Core\Model\ConsumeAction;
+use Gs2Cdk\Core\Model\VerifyAction;
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Mission\Model\MissionTaskModel;
 use Gs2Cdk\Mission\Model\Options\MissionGroupModelOptions;

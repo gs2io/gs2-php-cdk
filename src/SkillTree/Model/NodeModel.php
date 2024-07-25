@@ -15,6 +15,7 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\SkillTree\Model;
+use Gs2Cdk\Core\Model\VerifyAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\SkillTree\Model\Options\NodeModelOptions;
@@ -24,6 +25,7 @@ class NodeModel {
     private array $releaseConsumeActions;
     private float $restrainReturnRate;
     private ?string $metadata = null;
+    private ?array $releaseVerifyActions = null;
     private ?array $returnAcquireActions = null;
     private ?array $premiseNodeNames = null;
 
@@ -37,6 +39,7 @@ class NodeModel {
         $this->releaseConsumeActions = $releaseConsumeActions;
         $this->restrainReturnRate = $restrainReturnRate;
         $this->metadata = $options?->metadata ?? null;
+        $this->releaseVerifyActions = $options?->releaseVerifyActions ?? null;
         $this->returnAcquireActions = $options?->returnAcquireActions ?? null;
         $this->premiseNodeNames = $options?->premiseNodeNames ?? null;
     }
@@ -50,6 +53,15 @@ class NodeModel {
         }
         if ($this->metadata != null) {
             $properties["metadata"] = $this->metadata;
+        }
+        if ($this->releaseVerifyActions != null) {
+            $properties["releaseVerifyActions"] = array_map(
+                function ($v) {
+                    return $v->properties(
+                    );
+                },
+                $this->releaseVerifyActions
+            );
         }
         if ($this->releaseConsumeActions != null) {
             $properties["releaseConsumeActions"] = array_map(

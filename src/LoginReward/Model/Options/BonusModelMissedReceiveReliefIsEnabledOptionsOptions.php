@@ -17,6 +17,7 @@
 namespace Gs2Cdk\LoginReward\Model\Options;
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\LoginReward\Model\Reward;
+use Gs2Cdk\Core\Model\VerifyAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
 use Gs2Cdk\LoginReward\Model\Enum\BonusModelMode;
 use Gs2Cdk\LoginReward\Model\Enum\BonusModelRepeat;
@@ -26,16 +27,19 @@ class BonusModelMissedReceiveReliefIsEnabledOptions {
     public ?string $metadata;
     public ?string $periodEventId;
     public ?array $rewards;
+    public ?array $missedReceiveReliefVerifyActions;
     public ?array $missedReceiveReliefConsumeActions;
     
     public function __construct(
         ?string $metadata = null,
         ?string $periodEventId = null,
         ?array $rewards = null,
+        ?array $missedReceiveReliefVerifyActions = null,
         ?array $missedReceiveReliefConsumeActions = null,
     ) {
         $this->metadata = $metadata;
         $this->periodEventId = $periodEventId;
         $this->rewards = $rewards;
+        $this->missedReceiveReliefVerifyActions = $missedReceiveReliefVerifyActions;
         $this->missedReceiveReliefConsumeActions = $missedReceiveReliefConsumeActions;
     }}

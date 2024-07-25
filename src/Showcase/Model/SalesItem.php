@@ -15,6 +15,7 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Showcase\Model;
+use Gs2Cdk\Core\Model\VerifyAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Showcase\Model\Options\SalesItemOptions;
@@ -23,6 +24,7 @@ class SalesItem {
     private string $name;
     private array $acquireActions;
     private ?string $metadata = null;
+    private ?array $verifyActions = null;
     private ?array $consumeActions = null;
 
     public function __construct(
@@ -33,6 +35,7 @@ class SalesItem {
         $this->name = $name;
         $this->acquireActions = $acquireActions;
         $this->metadata = $options?->metadata ?? null;
+        $this->verifyActions = $options?->verifyActions ?? null;
         $this->consumeActions = $options?->consumeActions ?? null;
     }
 
@@ -45,6 +48,15 @@ class SalesItem {
         }
         if ($this->metadata != null) {
             $properties["metadata"] = $this->metadata;
+        }
+        if ($this->verifyActions != null) {
+            $properties["verifyActions"] = array_map(
+                function ($v) {
+                    return $v->properties(
+                    );
+                },
+                $this->verifyActions
+            );
         }
         if ($this->consumeActions != null) {
             $properties["consumeActions"] = array_map(
