@@ -23,7 +23,6 @@ use Gs2Cdk\Exchange\Ref\IncrementalRateModelRef;
 use Gs2Cdk\Exchange\StampSheet\ExchangeByUserId;
 use Gs2Cdk\Exchange\Model\Array;
 use Gs2Cdk\Exchange\StampSheet\IncrementalExchangeByUserId;
-use Gs2Cdk\Exchange\StampSheet\UnlockIncrementalExchangeByUserId;
 use Gs2Cdk\Exchange\StampSheet\CreateAwaitByUserId;
 use Gs2Cdk\Exchange\StampSheet\SkipByUserId;
 use Gs2Cdk\Exchange\StampSheet\DeleteAwaitByUserId;
@@ -81,19 +80,6 @@ class NamespaceRef {
             $rateName,
             $count,
             $config,
-            $userId,
-        ));
-    }
-
-    public function unlockIncrementalExchange(
-        string $rateName,
-        string $lockTransactionId,
-        ?string $userId = "#{userId}",
-    ): UnlockIncrementalExchangeByUserId {
-        return (new UnlockIncrementalExchangeByUserId(
-            $this->namespaceName,
-            $rateName,
-            $lockTransactionId,
             $userId,
         ));
     }

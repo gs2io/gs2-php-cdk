@@ -34,7 +34,6 @@ class Namespace_ extends CdkResource {
     private Stack $stack;
     private string $name;
     private ?string $description = null;
-    private ?bool $enableDirectEnhance = null;
     private ?TransactionSetting $transactionSetting = null;
     private ?ScriptSetting $enhanceScript = null;
     private ?LogSetting $logSetting = null;
@@ -51,7 +50,6 @@ class Namespace_ extends CdkResource {
         $this->stack = $stack;
         $this->name = $name;
         $this->description = $options?->description ?? null;
-        $this->enableDirectEnhance = $options?->enableDirectEnhance ?? null;
         $this->transactionSetting = $options?->transactionSetting ?? null;
         $this->enhanceScript = $options?->enhanceScript ?? null;
         $this->logSetting = $options?->logSetting ?? null;
@@ -80,9 +78,6 @@ class Namespace_ extends CdkResource {
         }
         if ($this->description != null) {
             $properties["Description"] = $this->description;
-        }
-        if ($this->enableDirectEnhance != null) {
-            $properties["EnableDirectEnhance"] = $this->enableDirectEnhance;
         }
         if ($this->transactionSetting != null) {
             $properties["TransactionSetting"] = $this->transactionSetting?->properties(
