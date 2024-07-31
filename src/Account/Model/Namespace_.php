@@ -23,6 +23,8 @@ use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 use Gs2Cdk\Account\Ref\NamespaceRef;
+use Gs2Cdk\Account\Model\CurrentMasterData;
+use Gs2Cdk\Account\Model\TakeOverTypeModel;
 
 use Gs2Cdk\Account\Model\Options\NamespaceOptions;
 
@@ -127,5 +129,18 @@ class Namespace_ extends CdkResource {
             "Item.NamespaceId",
             null,
         ));
+    }
+
+    public function masterData(
+        array $takeOverTypeModels,
+    ): Namespace_ {
+        (new CurrentMasterData(
+            $this->stack,
+            $this->name,
+            $takeOverTypeModels,
+        ))->addDependsOn(
+            $this,
+        );
+        return $this;
     }
 }

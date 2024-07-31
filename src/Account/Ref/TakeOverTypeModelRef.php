@@ -18,24 +18,17 @@ namespace Gs2Cdk\Account\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
-use Gs2Cdk\Account\Ref\TakeOverTypeModelRef;
 
-class NamespaceRef {
+class TakeOverTypeModelRef {
     private string $namespaceName;
+    private int $type;
 
     public function __construct(
         string $namespaceName,
+        int $type,
     ) {
         $this->namespaceName = $namespaceName;
-    }
-
-    public function takeOverTypeModel(
-        int $type,
-    ): TakeOverTypeModelRef {
-        return (new TakeOverTypeModelRef(
-            $this->namespaceName,
-            $type,
-        ));
+        $this->type = $type;
     }
 
     public function grn(
@@ -53,6 +46,9 @@ class NamespaceRef {
                 ),
                 "account",
                 $this->namespaceName,
+                "model",
+                "takeOver",
+                $this->type,
             ],
         ))->str(
         );
