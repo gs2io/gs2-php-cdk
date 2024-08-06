@@ -18,6 +18,7 @@ namespace Gs2Cdk\Friend\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
+use Gs2Cdk\Friend\StampSheet\UpdateProfileByUserId;
 
 class NamespaceRef {
     private string $namespaceName;
@@ -26,6 +27,21 @@ class NamespaceRef {
         string $namespaceName,
     ) {
         $this->namespaceName = $namespaceName;
+    }
+
+    public function updateProfile(
+        ?string $publicProfile = null,
+        ?string $followerProfile = null,
+        ?string $friendProfile = null,
+        ?string $userId = "#{userId}",
+    ): UpdateProfileByUserId {
+        return (new UpdateProfileByUserId(
+            $this->namespaceName,
+            $publicProfile,
+            $followerProfile,
+            $friendProfile,
+            $userId,
+        ));
     }
 
     public function grn(
