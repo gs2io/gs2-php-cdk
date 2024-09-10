@@ -37,7 +37,8 @@ class Namespace_ extends CdkResource {
     private bool $sharedFreeCurrency;
     private PlatformSetting $platformSetting;
     private ?string $description = null;
-    private ?ScriptSetting $changeBalanceScript = null;
+    private ?ScriptSetting $depositBalanceScript = null;
+    private ?ScriptSetting $withdrawBalanceScript = null;
     private ?LogSetting $logSetting = null;
 
     public function __construct(
@@ -58,7 +59,8 @@ class Namespace_ extends CdkResource {
         $this->sharedFreeCurrency = $sharedFreeCurrency;
         $this->platformSetting = $platformSetting;
         $this->description = $options?->description ?? null;
-        $this->changeBalanceScript = $options?->changeBalanceScript ?? null;
+        $this->depositBalanceScript = $options?->depositBalanceScript ?? null;
+        $this->withdrawBalanceScript = $options?->withdrawBalanceScript ?? null;
         $this->logSetting = $options?->logSetting ?? null;
         $stack->addResource(
             $this,
@@ -96,8 +98,12 @@ class Namespace_ extends CdkResource {
             $properties["PlatformSetting"] = $this->platformSetting?->properties(
             );
         }
-        if ($this->changeBalanceScript != null) {
-            $properties["ChangeBalanceScript"] = $this->changeBalanceScript?->properties(
+        if ($this->depositBalanceScript != null) {
+            $properties["DepositBalanceScript"] = $this->depositBalanceScript?->properties(
+            );
+        }
+        if ($this->withdrawBalanceScript != null) {
+            $properties["WithdrawBalanceScript"] = $this->withdrawBalanceScript?->properties(
             );
         }
         if ($this->logSetting != null) {

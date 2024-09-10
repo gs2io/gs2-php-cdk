@@ -21,16 +21,19 @@ use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
-    public ?ScriptSetting $changeBalanceScript;
+    public ?ScriptSetting $depositBalanceScript;
+    public ?ScriptSetting $withdrawBalanceScript;
     public ?LogSetting $logSetting;
     
     public function __construct(
         ?string $description = null,
-        ?ScriptSetting $changeBalanceScript = null,
+        ?ScriptSetting $depositBalanceScript = null,
+        ?ScriptSetting $withdrawBalanceScript = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
-        $this->changeBalanceScript = $changeBalanceScript;
+        $this->depositBalanceScript = $depositBalanceScript;
+        $this->withdrawBalanceScript = $withdrawBalanceScript;
         $this->logSetting = $logSetting;
     }}
 

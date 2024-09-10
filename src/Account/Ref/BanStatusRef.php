@@ -14,25 +14,17 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\Account;
-use Gs2Cdk\Account\Ref\NamespaceRef;
-use Gs2Cdk\Account\Ref\BanStatusRef;
+namespace Gs2Cdk\Account\Ref;
 
-class Account {
+use Gs2Cdk\Core\Func\GetAttr;
+use Gs2Cdk\Core\Func\Join;
 
-    public static function namespace(
-        string $namespaceName,
-    ): NamespaceRef {
-        return (new NamespaceRef(
-            $namespaceName,
-        ));
-    }
+class BanStatusRef {
+    private string $name;
 
-    public static function banStatus(
+    public function __construct(
         string $name,
-    ): BanStatusRef {
-        return (new BanStatusRef(
-            $name,
-        ));
+    ) {
+        $this->name = $name;
     }
 }

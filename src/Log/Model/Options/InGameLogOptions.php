@@ -14,25 +14,18 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\Account;
-use Gs2Cdk\Account\Ref\NamespaceRef;
-use Gs2Cdk\Account\Ref\BanStatusRef;
+namespace Gs2Cdk\Log\Model\Options;
+use Gs2Cdk\Log\Model\InGameLogTag;
 
-class Account {
+class InGameLogOptions {
+    public ?string $userId;
+    public ?array $tags;
+    
+    public function __construct(
+        ?string $userId = null,
+        ?array $tags = null,
+    ) {
+        $this->userId = $userId;
+        $this->tags = $tags;
+    }}
 
-    public static function namespace(
-        string $namespaceName,
-    ): NamespaceRef {
-        return (new NamespaceRef(
-            $namespaceName,
-        ));
-    }
-
-    public static function banStatus(
-        string $name,
-    ): BanStatusRef {
-        return (new BanStatusRef(
-            $name,
-        ));
-    }
-}
