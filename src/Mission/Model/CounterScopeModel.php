@@ -15,46 +15,84 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Mission\Model;
+use Gs2Cdk\Core\Model\VerifyAction;
 use Gs2Cdk\Mission\Model\Options\CounterScopeModelOptions;
+use Gs2Cdk\Mission\Model\Options\CounterScopeModelScopeTypeIsResetTimingOptions;
+use Gs2Cdk\Mission\Model\Options\CounterScopeModelScopeTypeIsVerifyActionOptions;
 use Gs2Cdk\Mission\Model\Options\CounterScopeModelResetTypeIsNotResetOptions;
 use Gs2Cdk\Mission\Model\Options\CounterScopeModelResetTypeIsDailyOptions;
 use Gs2Cdk\Mission\Model\Options\CounterScopeModelResetTypeIsWeeklyOptions;
 use Gs2Cdk\Mission\Model\Options\CounterScopeModelResetTypeIsMonthlyOptions;
+use Gs2Cdk\Mission\Model\Enum\CounterScopeModelScopeType;
 use Gs2Cdk\Mission\Model\Enum\CounterScopeModelResetType;
 use Gs2Cdk\Mission\Model\Enum\CounterScopeModelResetDayOfWeek;
 
 class CounterScopeModel {
-    private CounterScopeModelResetType $resetType;
+    private CounterScopeModelScopeType $scopeType;
+    private ?CounterScopeModelResetType $resetType = null;
     private ?int $resetDayOfMonth = null;
     private ?CounterScopeModelResetDayOfWeek $resetDayOfWeek = null;
     private ?int $resetHour = null;
+    private ?string $conditionName = null;
+    private ?VerifyAction $condition = null;
 
     public function __construct(
-        CounterScopeModelResetType $resetType,
+        CounterScopeModelScopeType $scopeType,
         ?CounterScopeModelOptions $options = null,
     ) {
-        $this->resetType = $resetType;
+        $this->scopeType = $scopeType;
+        $this->resetType = $options?->resetType ?? null;
         $this->resetDayOfMonth = $options?->resetDayOfMonth ?? null;
         $this->resetDayOfWeek = $options?->resetDayOfWeek ?? null;
         $this->resetHour = $options?->resetHour ?? null;
+        $this->conditionName = $options?->conditionName ?? null;
+        $this->condition = $options?->condition ?? null;
+    }
+
+    public static function scopeTypeIsResetTiming(
+        CounterScopeModelResetType $resetType,
+        ?CounterScopeModelScopeTypeIsResetTimingOptions $options = null,
+    ): CounterScopeModel {
+        return (new CounterScopeModel(
+            CounterScopeModelScopeType::RESET_TIMING,
+            new CounterScopeModelOptions(
+                resetType: $resetType,
+            ),
+        ));
+    }
+
+    public static function scopeTypeIsVerifyAction(
+        string $conditionName,
+        VerifyAction $condition,
+        ?CounterScopeModelScopeTypeIsVerifyActionOptions $options = null,
+    ): CounterScopeModel {
+        return (new CounterScopeModel(
+            CounterScopeModelScopeType::VERIFY_ACTION,
+            new CounterScopeModelOptions(
+                conditionName: $conditionName,
+                condition: $condition,
+            ),
+        ));
     }
 
     public static function resetTypeIsNotReset(
+        CounterScopeModelScopeType $scopeType,
         ?CounterScopeModelResetTypeIsNotResetOptions $options = null,
     ): CounterScopeModel {
         return (new CounterScopeModel(
-            CounterScopeModelResetType::NOT_RESET,
+            $scopeType,
             new CounterScopeModelOptions(
             ),
         ));
     }
 
     public static function resetTypeIsDaily(
+        CounterScopeModelScopeType $scopeType,
         int $resetHour,
         ?CounterScopeModelResetTypeIsDailyOptions $options = null,
     ): CounterScopeModel {
         return (new CounterScopeModel(
-            CounterScopeModelResetType::DAILY,
+            $scopeType,
             new CounterScopeModelOptions(
                 resetHour: $resetHour,
             ),
@@ -62,12 +100,13 @@ class CounterScopeModel {
     }
 
     public static function resetTypeIsWeekly(
+        CounterScopeModelScopeType $scopeType,
         CounterScopeModelResetDayOfWeek $resetDayOfWeek,
         int $resetHour,
         ?CounterScopeModelResetTypeIsWeeklyOptions $options = null,
     ): CounterScopeModel {
         return (new CounterScopeModel(
-            CounterScopeModelResetType::WEEKLY,
+            $scopeType,
             new CounterScopeModelOptions(
                 resetDayOfWeek: $resetDayOfWeek,
                 resetHour: $resetHour,
@@ -76,12 +115,13 @@ class CounterScopeModel {
     }
 
     public static function resetTypeIsMonthly(
+        CounterScopeModelScopeType $scopeType,
         int $resetDayOfMonth,
         int $resetHour,
         ?CounterScopeModelResetTypeIsMonthlyOptions $options = null,
     ): CounterScopeModel {
         return (new CounterScopeModel(
-            CounterScopeModelResetType::MONTHLY,
+            $scopeType,
             new CounterScopeModelOptions(
                 resetDayOfMonth: $resetDayOfMonth,
                 resetHour: $resetHour,
@@ -93,6 +133,10 @@ class CounterScopeModel {
     ): array {
         $properties = [];
 
+        if ($this->scopeType != null) {
+            $properties["scopeType"] = $this->scopeType?->toString(
+            );
+        }
         if ($this->resetType != null) {
             $properties["resetType"] = $this->resetType?->toString(
             );
@@ -106,6 +150,13 @@ class CounterScopeModel {
         }
         if ($this->resetHour != null) {
             $properties["resetHour"] = $this->resetHour;
+        }
+        if ($this->conditionName != null) {
+            $properties["conditionName"] = $this->conditionName;
+        }
+        if ($this->condition != null) {
+            $properties["condition"] = $this->condition?->properties(
+            );
         }
 
         return $properties;

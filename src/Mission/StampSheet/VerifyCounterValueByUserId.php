@@ -26,7 +26,9 @@ class VerifyCounterValueByUserId extends VerifyAction {
         string $namespaceName,
         string $counterName,
         string $verifyType,
-        string $resetType,
+        ?string $scopeType = null,
+        ?string $resetType = null,
+        ?string $conditionName = null,
         ?int $value = null,
         ?bool $multiplyValueSpecifyingQuantity = null,
         ?string $userId = "#{userId}",
@@ -36,7 +38,9 @@ class VerifyCounterValueByUserId extends VerifyAction {
         $properties["namespaceName"] = $namespaceName;
         $properties["counterName"] = $counterName;
         $properties["verifyType"] = $verifyType;
+        $properties["scopeType"] = $scopeType;
         $properties["resetType"] = $resetType;
+        $properties["conditionName"] = $conditionName;
         $properties["value"] = $value;
         $properties["multiplyValueSpecifyingQuantity"] = $multiplyValueSpecifyingQuantity;
         $properties["userId"] = $userId;

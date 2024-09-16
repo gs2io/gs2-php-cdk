@@ -15,21 +15,14 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Mission\Model\Options;
-use Gs2Cdk\Mission\Model\Enum\ScopedValueScopeType;
-use Gs2Cdk\Mission\Model\Enum\ScopedValueResetType;
+use Gs2Cdk\Mission\Model\Enum\TargetCounterModelScopeType;
+use Gs2Cdk\Mission\Model\Enum\TargetCounterModelResetType;
 
-class ScopedValueOptions {
-    public ?ScopedValueResetType $resetType;
-    public ?string $conditionName;
-    public ?int $nextResetAt;
+class TargetCounterModelScopeTypeIsResetTimingOptions {
+    public ?TargetCounterModelResetType $resetType;
     
     public function __construct(
-        ?ScopedValueResetType $resetType = null,
-        ?string $conditionName = null,
-        ?int $nextResetAt = null,
+        ?TargetCounterModelResetType $resetType = null,
     ) {
         $this->resetType = $resetType;
-        $this->conditionName = $conditionName;
-        $this->nextResetAt = $nextResetAt;
     }}
-

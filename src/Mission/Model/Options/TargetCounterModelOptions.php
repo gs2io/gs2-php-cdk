@@ -15,14 +15,18 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Mission\Model\Options;
+use Gs2Cdk\Mission\Model\Enum\TargetCounterModelScopeType;
 use Gs2Cdk\Mission\Model\Enum\TargetCounterModelResetType;
 
 class TargetCounterModelOptions {
     public ?TargetCounterModelResetType $resetType;
+    public ?string $conditionName;
     
     public function __construct(
         ?TargetCounterModelResetType $resetType = null,
+        ?string $conditionName = null,
     ) {
         $this->resetType = $resetType;
+        $this->conditionName = $conditionName;
     }}
 

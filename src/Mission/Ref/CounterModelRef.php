@@ -74,7 +74,9 @@ class CounterModelRef {
 
     public function verifyCounterValue(
         string $verifyType,
+        string $scopeType,
         string $resetType,
+        string $conditionName,
         int $value,
         bool $multiplyValueSpecifyingQuantity,
         ?string $userId = "#{userId}",
@@ -83,7 +85,9 @@ class CounterModelRef {
             $this->namespaceName,
             $this->counterName,
             $verifyType,
+            $scopeType,
             $resetType,
+            $conditionName,
             $value,
             $multiplyValueSpecifyingQuantity,
             $userId,

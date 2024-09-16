@@ -15,6 +15,7 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Mission\Model;
+use Gs2Cdk\Core\Model\VerifyAction;
 use Gs2Cdk\Mission\Model\CounterScopeModel;
 use Gs2Cdk\Mission\Model\Options\CounterModelOptions;
 

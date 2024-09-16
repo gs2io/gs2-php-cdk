@@ -16,21 +16,61 @@
  */
 namespace Gs2Cdk\Mission\Model;
 use Gs2Cdk\Mission\Model\Options\TargetCounterModelOptions;
+use Gs2Cdk\Mission\Model\Options\TargetCounterModelScopeTypeIsResetTimingOptions;
+use Gs2Cdk\Mission\Model\Options\TargetCounterModelScopeTypeIsVerifyActionOptions;
+use Gs2Cdk\Mission\Model\Enum\TargetCounterModelScopeType;
 use Gs2Cdk\Mission\Model\Enum\TargetCounterModelResetType;
 
 class TargetCounterModel {
     private string $counterName;
+    private TargetCounterModelScopeType $scopeType;
     private int $value;
     private ?TargetCounterModelResetType $resetType = null;
+    private ?string $conditionName = null;
 
     public function __construct(
         string $counterName,
+        TargetCounterModelScopeType $scopeType,
         int $value,
         ?TargetCounterModelOptions $options = null,
     ) {
         $this->counterName = $counterName;
+        $this->scopeType = $scopeType;
         $this->value = $value;
         $this->resetType = $options?->resetType ?? null;
+        $this->conditionName = $options?->conditionName ?? null;
+    }
+
+    public static function scopeTypeIsResetTiming(
+        string $counterName,
+        int $value,
+        ?TargetCounterModelScopeTypeIsResetTimingOptions $options = null,
+    ): TargetCounterModel {
+        return (new TargetCounterModel(
+            $counterName,
+            TargetCounterModelScopeType::RESET_TIMING,
+            $value,
+            new TargetCounterModelOptions(
+                resetType: $options?->resetType,
+            ),
+        ));
+    }
+
+    public static function scopeTypeIsVerifyAction(
+        string $counterName,
+        int $value,
+        string $conditionName,
+        ?TargetCounterModelScopeTypeIsVerifyActionOptions $options = null,
+    ): TargetCounterModel {
+        return (new TargetCounterModel(
+            $counterName,
+            TargetCounterModelScopeType::VERIFY_ACTION,
+            $value,
+            new TargetCounterModelOptions(
+                conditionName: $conditionName,
+                resetType: $options?->resetType,
+            ),
+        ));
     }
 
     public function properties(
@@ -40,9 +80,16 @@ class TargetCounterModel {
         if ($this->counterName != null) {
             $properties["counterName"] = $this->counterName;
         }
+        if ($this->scopeType != null) {
+            $properties["scopeType"] = $this->scopeType?->toString(
+            );
+        }
         if ($this->resetType != null) {
             $properties["resetType"] = $this->resetType?->toString(
             );
+        }
+        if ($this->conditionName != null) {
+            $properties["conditionName"] = $this->conditionName;
         }
         if ($this->value != null) {
             $properties["value"] = $this->value;

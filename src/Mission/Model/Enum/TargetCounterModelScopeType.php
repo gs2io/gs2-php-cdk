@@ -14,22 +14,21 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\Mission\Model\Options;
-use Gs2Cdk\Mission\Model\Enum\ScopedValueScopeType;
-use Gs2Cdk\Mission\Model\Enum\ScopedValueResetType;
 
-class ScopedValueOptions {
-    public ?ScopedValueResetType $resetType;
-    public ?string $conditionName;
-    public ?int $nextResetAt;
-    
-    public function __construct(
-        ?ScopedValueResetType $resetType = null,
-        ?string $conditionName = null,
-        ?int $nextResetAt = null,
-    ) {
-        $this->resetType = $resetType;
-        $this->conditionName = $conditionName;
-        $this->nextResetAt = $nextResetAt;
-    }}
+namespace Gs2Cdk\Mission\Model\Enum;
 
+
+enum TargetCounterModelScopeType {
+    case RESET_TIMING;
+    case VERIFY_ACTION;
+
+    public function toString(): String {
+        switch ($this) {
+            case self::RESET_TIMING:
+                return "resetTiming";
+            case self::VERIFY_ACTION:
+                return "verifyAction";
+        }
+        return "unknown";
+    }
+}

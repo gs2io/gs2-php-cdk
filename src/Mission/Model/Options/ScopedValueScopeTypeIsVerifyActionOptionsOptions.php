@@ -18,18 +18,11 @@ namespace Gs2Cdk\Mission\Model\Options;
 use Gs2Cdk\Mission\Model\Enum\ScopedValueScopeType;
 use Gs2Cdk\Mission\Model\Enum\ScopedValueResetType;
 
-class ScopedValueOptions {
-    public ?ScopedValueResetType $resetType;
-    public ?string $conditionName;
+class ScopedValueScopeTypeIsVerifyActionOptions {
     public ?int $nextResetAt;
     
     public function __construct(
-        ?ScopedValueResetType $resetType = null,
-        ?string $conditionName = null,
         ?int $nextResetAt = null,
     ) {
-        $this->resetType = $resetType;
-        $this->conditionName = $conditionName;
         $this->nextResetAt = $nextResetAt;
     }}
-

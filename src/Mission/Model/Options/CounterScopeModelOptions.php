@@ -15,21 +15,32 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Mission\Model\Options;
+use Gs2Cdk\Core\Model\VerifyAction;
+use Gs2Cdk\Mission\Model\Enum\CounterScopeModelScopeType;
 use Gs2Cdk\Mission\Model\Enum\CounterScopeModelResetType;
 use Gs2Cdk\Mission\Model\Enum\CounterScopeModelResetDayOfWeek;
 
 class CounterScopeModelOptions {
+    public ?CounterScopeModelResetType $resetType;
     public ?int $resetDayOfMonth;
     public ?CounterScopeModelResetDayOfWeek $resetDayOfWeek;
     public ?int $resetHour;
+    public ?string $conditionName;
+    public ?VerifyAction $condition;
     
     public function __construct(
+        ?CounterScopeModelResetType $resetType = null,
         ?int $resetDayOfMonth = null,
         ?CounterScopeModelResetDayOfWeek $resetDayOfWeek = null,
         ?int $resetHour = null,
+        ?string $conditionName = null,
+        ?VerifyAction $condition = null,
     ) {
+        $this->resetType = $resetType;
         $this->resetDayOfMonth = $resetDayOfMonth;
         $this->resetDayOfWeek = $resetDayOfWeek;
         $this->resetHour = $resetHour;
+        $this->conditionName = $conditionName;
+        $this->condition = $condition;
     }}
 
