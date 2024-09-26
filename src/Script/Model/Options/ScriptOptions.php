@@ -18,10 +18,13 @@ namespace Gs2Cdk\Script\Model\Options;
 
 class ScriptOptions {
     public ?string $description;
+    public ?bool $disableStringNumberToNumber;
     
     public function __construct(
         ?string $description = null,
+        ?bool $disableStringNumberToNumber = null,
     ) {
         $this->description = $description;
+        $this->disableStringNumberToNumber = $disableStringNumberToNumber;
     }}
 

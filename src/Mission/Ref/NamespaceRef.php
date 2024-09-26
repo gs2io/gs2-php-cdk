@@ -25,6 +25,7 @@ use Gs2Cdk\Mission\StampSheet\IncreaseCounterByUserId;
 use Gs2Cdk\Mission\StampSheet\SetCounterByUserId;
 use Gs2Cdk\Mission\Model\ScopedValue;
 use Gs2Cdk\Mission\StampSheet\ReceiveByUserId;
+use Gs2Cdk\Mission\StampSheet\BatchReceiveByUserId;
 use Gs2Cdk\Mission\StampSheet\DecreaseCounterByUserId;
 use Gs2Cdk\Mission\StampSheet\VerifyCompleteByUserId;
 use Gs2Cdk\Mission\StampSheet\VerifyCounterValueByUserId;
@@ -104,6 +105,19 @@ class NamespaceRef {
             $this->namespaceName,
             $missionGroupName,
             $missionTaskName,
+            $userId,
+        ));
+    }
+
+    public function batchReceive(
+        string $missionGroupName,
+        array $missionTaskNames,
+        ?string $userId = "#{userId}",
+    ): BatchReceiveByUserId {
+        return (new BatchReceiveByUserId(
+            $this->namespaceName,
+            $missionGroupName,
+            $missionTaskNames,
             $userId,
         ));
     }

@@ -32,6 +32,7 @@ class Namespace_ extends CdkResource {
     private string $name;
     private ?string $description = null;
     private ?bool $allowCreateRoom = null;
+    private ?int $messageLifeTimeDays = null;
     private ?ScriptSetting $postMessageScript = null;
     private ?ScriptSetting $createRoomScript = null;
     private ?ScriptSetting $deleteRoomScript = null;
@@ -53,6 +54,7 @@ class Namespace_ extends CdkResource {
         $this->name = $name;
         $this->description = $options?->description ?? null;
         $this->allowCreateRoom = $options?->allowCreateRoom ?? null;
+        $this->messageLifeTimeDays = $options?->messageLifeTimeDays ?? null;
         $this->postMessageScript = $options?->postMessageScript ?? null;
         $this->createRoomScript = $options?->createRoomScript ?? null;
         $this->deleteRoomScript = $options?->deleteRoomScript ?? null;
@@ -88,6 +90,9 @@ class Namespace_ extends CdkResource {
         }
         if ($this->allowCreateRoom != null) {
             $properties["AllowCreateRoom"] = $this->allowCreateRoom;
+        }
+        if ($this->messageLifeTimeDays != null) {
+            $properties["MessageLifeTimeDays"] = $this->messageLifeTimeDays;
         }
         if ($this->postMessageScript != null) {
             $properties["PostMessageScript"] = $this->postMessageScript?->properties(

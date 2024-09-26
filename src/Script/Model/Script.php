@@ -30,6 +30,7 @@ class Script extends CdkResource {
     private string $name;
     private string $script;
     private ?string $description = null;
+    private ?bool $disableStringNumberToNumber = null;
 
     public function __construct(
         Stack $stack,
@@ -47,6 +48,7 @@ class Script extends CdkResource {
         $this->name = $name;
         $this->script = $script;
         $this->description = $options?->description ?? null;
+        $this->disableStringNumberToNumber = $options?->disableStringNumberToNumber ?? null;
         $stack->addResource(
             $this,
         );
@@ -78,6 +80,9 @@ class Script extends CdkResource {
         }
         if ($this->script != null) {
             $properties["Script"] = $this->script;
+        }
+        if ($this->disableStringNumberToNumber != null) {
+            $properties["DisableStringNumberToNumber"] = $this->disableStringNumberToNumber;
         }
 
         return $properties;
