@@ -123,12 +123,12 @@ class Namespace_ extends CdkResource {
     }
 
     public function masterData(
-        array $questGroupModels,
+        array $groups,
     ): Namespace_ {
         (new CurrentMasterData(
             $this->stack,
             $this->name,
-            $questGroupModels,
+            $groups,
         ))->addDependsOn(
             $this,
         );

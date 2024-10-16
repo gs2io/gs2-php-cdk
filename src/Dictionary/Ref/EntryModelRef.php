@@ -24,14 +24,14 @@ use Gs2Cdk\Dictionary\StampSheet\VerifyEntryByUserId;
 
 class EntryModelRef {
     private string $namespaceName;
-    private string $entryName;
+    private string $entryModelName;
 
     public function __construct(
         string $namespaceName,
-        string $entryName,
+        string $entryModelName,
     ) {
         $this->namespaceName = $namespaceName;
-        $this->entryName = $entryName;
+        $this->entryModelName = $entryModelName;
     }
 
     public function addEntries(
@@ -57,13 +57,12 @@ class EntryModelRef {
     }
 
     public function verifyEntry(
-        string $entryModelName,
         string $verifyType,
         ?string $userId = "#{userId}",
     ): VerifyEntryByUserId {
         return (new VerifyEntryByUserId(
             $this->namespaceName,
-            $entryModelName,
+            $this->entryModelName,
             $verifyType,
             $userId,
         ));
@@ -85,7 +84,7 @@ class EntryModelRef {
                 "dictionary",
                 $this->namespaceName,
                 "model",
-                $this->entryName,
+                $this->entryModelName,
             ],
         ))->str(
         );

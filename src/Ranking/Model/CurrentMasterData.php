@@ -23,19 +23,19 @@ use Gs2Cdk\Ranking\Model\CategoryModel;
 class CurrentMasterData extends CdkResource {
     private string $version= "2019-09-17";
     private string $namespaceName;
-    private array $categoryModels;
+    private array $categories;
 
     public function __construct(
         Stack $stack,
         string $namespaceName,
-        array $categoryModels,
+        array $categories,
     ) {
         parent::__construct(
             "Ranking_CurrentRankingMaster_" . $namespaceName
         );
 
         $this->namespaceName = $namespaceName;
-        $this->categoryModels = $categoryModels;
+        $this->categories = $categories;
         $stack->addResource(
             $this,
         );
@@ -57,13 +57,13 @@ class CurrentMasterData extends CdkResource {
         $settings = [];
 
         $settings["version"] = $this->version;
-        if ($this->categoryModels != null) {
-            $settings["categoryModels"] = array_map(
+        if ($this->categories != null) {
+            $settings["categories"] = array_map(
                 function ($v) {
                     return $v->properties(
                     );
                 },
-                $this->categoryModels
+                $this->categories
             );
         }
 

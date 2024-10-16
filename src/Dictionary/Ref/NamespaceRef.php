@@ -33,11 +33,11 @@ class NamespaceRef {
     }
 
     public function entryModel(
-        string $entryName,
+        string $entryModelName,
     ): EntryModelRef {
         return (new EntryModelRef(
             $this->namespaceName,
-            $entryName,
+            $entryModelName,
         ));
     }
 

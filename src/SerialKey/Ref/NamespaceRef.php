@@ -21,6 +21,7 @@ use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\SerialKey\Ref\CampaignModelRef;
 use Gs2Cdk\SerialKey\StampSheet\RevertUseByUserId;
 use Gs2Cdk\SerialKey\StampSheet\UseByUserId;
+use Gs2Cdk\SerialKey\StampSheet\VerifyCodeByUserId;
 
 class NamespaceRef {
     private string $namespaceName;
@@ -58,6 +59,19 @@ class NamespaceRef {
         return (new UseByUserId(
             $this->namespaceName,
             $code,
+            $userId,
+        ));
+    }
+
+    public function verifyCode(
+        string $code,
+        string $verifyType,
+        ?string $userId = "#{userId}",
+    ): VerifyCodeByUserId {
+        return (new VerifyCodeByUserId(
+            $this->namespaceName,
+            $code,
+            $verifyType,
             $userId,
         ));
     }

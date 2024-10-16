@@ -23,6 +23,9 @@ use Gs2Cdk\Ranking2\Ref\SubscribeRankingModelRef;
 use Gs2Cdk\Ranking2\Ref\ClusterRankingModelRef;
 use Gs2Cdk\Ranking2\StampSheet\CreateGlobalRankingReceivedRewardByUserId;
 use Gs2Cdk\Ranking2\StampSheet\CreateClusterRankingReceivedRewardByUserId;
+use Gs2Cdk\Ranking2\StampSheet\VerifyGlobalRankingScoreByUserId;
+use Gs2Cdk\Ranking2\StampSheet\VerifyClusterRankingScoreByUserId;
+use Gs2Cdk\Ranking2\StampSheet\VerifySubscribeRankingScoreByUserId;
 
 class NamespaceRef {
     private string $namespaceName;
@@ -83,6 +86,65 @@ class NamespaceRef {
             $this->namespaceName,
             $rankingName,
             $clusterName,
+            $season,
+            $userId,
+        ));
+    }
+
+    public function verifyGlobalRankingScore(
+        string $rankingName,
+        string $verifyType,
+        int $score,
+        bool $multiplyValueSpecifyingQuantity,
+        ?int $season = null,
+        ?string $userId = "#{userId}",
+    ): VerifyGlobalRankingScoreByUserId {
+        return (new VerifyGlobalRankingScoreByUserId(
+            $this->namespaceName,
+            $rankingName,
+            $verifyType,
+            $score,
+            $multiplyValueSpecifyingQuantity,
+            $season,
+            $userId,
+        ));
+    }
+
+    public function verifyClusterRankingScore(
+        string $rankingName,
+        string $clusterName,
+        string $verifyType,
+        int $score,
+        bool $multiplyValueSpecifyingQuantity,
+        ?int $season = null,
+        ?string $userId = "#{userId}",
+    ): VerifyClusterRankingScoreByUserId {
+        return (new VerifyClusterRankingScoreByUserId(
+            $this->namespaceName,
+            $rankingName,
+            $clusterName,
+            $verifyType,
+            $score,
+            $multiplyValueSpecifyingQuantity,
+            $season,
+            $userId,
+        ));
+    }
+
+    public function verifySubscribeRankingScore(
+        string $rankingName,
+        string $verifyType,
+        int $score,
+        bool $multiplyValueSpecifyingQuantity,
+        ?int $season = null,
+        ?string $userId = "#{userId}",
+    ): VerifySubscribeRankingScoreByUserId {
+        return (new VerifySubscribeRankingScoreByUserId(
+            $this->namespaceName,
+            $rankingName,
+            $verifyType,
+            $score,
+            $multiplyValueSpecifyingQuantity,
             $season,
             $userId,
         ));

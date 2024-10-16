@@ -18,44 +18,16 @@ namespace Gs2Cdk\Account\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
-use Gs2Cdk\Account\Ref\TakeOverTypeModelRef;
-use Gs2Cdk\Account\Ref\MasterDataVersionRef;
 
-class NamespaceRef {
+class MasterDataVersionRef {
     private string $namespaceName;
+    private string $objectKey;
 
     public function __construct(
         string $namespaceName,
+        string $objectKey,
     ) {
         $this->namespaceName = $namespaceName;
-    }
-
-    public function takeOverTypeModel(
-        int $type,
-    ): TakeOverTypeModelRef {
-        return (new TakeOverTypeModelRef(
-            $this->namespaceName,
-            $type,
-        ));
-    }
-
-    public function grn(
-    ): string {
-        return (new Join(
-            ":",
-            [
-                "grn",
-                "gs2",
-                GetAttr::region(
-                )->str(
-                ),
-                GetAttr::ownerId(
-                )->str(
-                ),
-                "account",
-                $this->namespaceName,
-            ],
-        ))->str(
-        );
+        $this->objectKey = $objectKey;
     }
 }

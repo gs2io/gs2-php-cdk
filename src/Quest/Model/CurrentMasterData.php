@@ -23,19 +23,19 @@ use Gs2Cdk\Quest\Model\QuestGroupModel;
 class CurrentMasterData extends CdkResource {
     private string $version= "2019-05-14";
     private string $namespaceName;
-    private array $questGroupModels;
+    private array $groups;
 
     public function __construct(
         Stack $stack,
         string $namespaceName,
-        array $questGroupModels,
+        array $groups,
     ) {
         parent::__construct(
             "Quest_CurrentQuestMaster_" . $namespaceName
         );
 
         $this->namespaceName = $namespaceName;
-        $this->questGroupModels = $questGroupModels;
+        $this->groups = $groups;
         $stack->addResource(
             $this,
         );
@@ -57,13 +57,13 @@ class CurrentMasterData extends CdkResource {
         $settings = [];
 
         $settings["version"] = $this->version;
-        if ($this->questGroupModels != null) {
-            $settings["questGroupModels"] = array_map(
+        if ($this->groups != null) {
+            $settings["groups"] = array_map(
                 function ($v) {
                     return $v->properties(
                     );
                 },
-                $this->questGroupModels
+                $this->groups
             );
         }
 

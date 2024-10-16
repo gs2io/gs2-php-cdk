@@ -19,6 +19,8 @@ namespace Gs2Cdk\Script\Ref;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Script\Ref\ScriptRef;
+use Gs2Cdk\Script\StampSheet\InvokeScript;
+use Gs2Cdk\Script\Model\RandomStatus;
 
 class NamespaceRef {
     private string $namespaceName;
@@ -27,6 +29,20 @@ class NamespaceRef {
         string $namespaceName,
     ) {
         $this->namespaceName = $namespaceName;
+    }
+
+    public function invokeScript(
+        string $scriptId,
+        string $args,
+        ?RandomStatus $randomStatus = null,
+        ?string $userId = "#{userId}",
+    ): InvokeScript {
+        return (new InvokeScript(
+            $scriptId,
+            $args,
+            $randomStatus,
+            $userId,
+        ));
     }
 
     public function grn(
