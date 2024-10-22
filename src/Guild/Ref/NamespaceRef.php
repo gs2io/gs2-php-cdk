@@ -20,6 +20,7 @@ use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Guild\Ref\GuildModelRef;
 use Gs2Cdk\Guild\Ref\GuildRef;
+use Gs2Cdk\Guild\Ref\MasterDataObjectRef;
 use Gs2Cdk\Guild\StampSheet\IncreaseMaximumCurrentMaximumMemberCountByGuildName;
 use Gs2Cdk\Guild\StampSheet\SetMaximumCurrentMaximumMemberCountByGuildName;
 use Gs2Cdk\Guild\StampSheet\DecreaseMaximumCurrentMaximumMemberCountByGuildName;

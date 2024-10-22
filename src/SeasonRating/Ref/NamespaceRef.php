@@ -19,6 +19,7 @@ namespace Gs2Cdk\SeasonRating\Ref;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\SeasonRating\Ref\SeasonModelRef;
+use Gs2Cdk\SeasonRating\Ref\MasterDataObjectRef;
 use Gs2Cdk\SeasonRating\Ref\MatchSessionRef;
 use Gs2Cdk\SeasonRating\Ref\VoteRef;
 

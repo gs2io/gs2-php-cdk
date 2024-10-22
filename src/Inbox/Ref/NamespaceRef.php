@@ -19,6 +19,7 @@ namespace Gs2Cdk\Inbox\Ref;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Inbox\Ref\GlobalMessageRef;
+use Gs2Cdk\Inbox\Ref\MasterDataObjectRef;
 use Gs2Cdk\Inbox\StampSheet\SendMessageByUserId;
 use Gs2Cdk\Inbox\Model\Array;
 use Gs2Cdk\Inbox\Model\TimeSpan;

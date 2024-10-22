@@ -18,6 +18,7 @@ namespace Gs2Cdk\Showcase\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
+use Gs2Cdk\Showcase\Ref\MasterDataObjectRef;
 use Gs2Cdk\Showcase\StampSheet\DecrementPurchaseCountByUserId;
 use Gs2Cdk\Showcase\StampSheet\ForceReDrawByUserId;
 use Gs2Cdk\Showcase\StampSheet\IncrementPurchaseCountByUserId;

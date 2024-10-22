@@ -22,12 +22,15 @@ use Gs2Cdk\Core\Func\Join;
 class MasterDataVersionRef {
     private string $namespaceName;
     private string $objectKey;
+    private string $versionId;
 
     public function __construct(
         string $namespaceName,
         string $objectKey,
+        string $versionId,
     ) {
         $this->namespaceName = $namespaceName;
         $this->objectKey = $objectKey;
+        $this->versionId = $versionId;
     }
 }

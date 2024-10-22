@@ -19,6 +19,7 @@ namespace Gs2Cdk\Grade\Ref;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Grade\Ref\GradeModelRef;
+use Gs2Cdk\Grade\Ref\MasterDataObjectRef;
 use Gs2Cdk\Grade\StampSheet\AddGradeByUserId;
 use Gs2Cdk\Grade\StampSheet\ApplyRankCapByUserId;
 use Gs2Cdk\Grade\StampSheet\MultiplyAcquireActionsByUserId;

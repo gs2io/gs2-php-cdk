@@ -19,7 +19,7 @@ namespace Gs2Cdk\Account\Ref;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Account\Ref\TakeOverTypeModelRef;
-use Gs2Cdk\Account\Ref\MasterDataVersionRef;
+use Gs2Cdk\Account\Ref\MasterDataObjectRef;
 
 class NamespaceRef {
     private string $namespaceName;

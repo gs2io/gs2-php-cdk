@@ -21,6 +21,7 @@ use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Inventory\Ref\InventoryModelRef;
 use Gs2Cdk\Inventory\Ref\SimpleInventoryModelRef;
 use Gs2Cdk\Inventory\Ref\BigInventoryModelRef;
+use Gs2Cdk\Inventory\Ref\MasterDataObjectRef;
 use Gs2Cdk\Inventory\StampSheet\AddCapacityByUserId;
 use Gs2Cdk\Inventory\StampSheet\SetCapacityByUserId;
 use Gs2Cdk\Inventory\StampSheet\AcquireItemSetByUserId;

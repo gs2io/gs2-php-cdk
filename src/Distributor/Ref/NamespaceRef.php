@@ -19,6 +19,7 @@ namespace Gs2Cdk\Distributor\Ref;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Distributor\Ref\DistributorModelRef;
+use Gs2Cdk\Distributor\Ref\MasterDataObjectRef;
 
 class NamespaceRef {
     private string $namespaceName;

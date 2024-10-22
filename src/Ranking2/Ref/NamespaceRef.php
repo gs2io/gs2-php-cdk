@@ -21,6 +21,7 @@ use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Ranking2\Ref\GlobalRankingModelRef;
 use Gs2Cdk\Ranking2\Ref\SubscribeRankingModelRef;
 use Gs2Cdk\Ranking2\Ref\ClusterRankingModelRef;
+use Gs2Cdk\Ranking2\Ref\MasterDataObjectRef;
 use Gs2Cdk\Ranking2\StampSheet\CreateGlobalRankingReceivedRewardByUserId;
 use Gs2Cdk\Ranking2\StampSheet\CreateClusterRankingReceivedRewardByUserId;
 use Gs2Cdk\Ranking2\StampSheet\VerifyGlobalRankingScoreByUserId;

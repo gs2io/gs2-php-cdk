@@ -18,6 +18,7 @@ namespace Gs2Cdk\Schedule\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
+use Gs2Cdk\Schedule\Ref\MasterDataObjectRef;
 use Gs2Cdk\Schedule\StampSheet\TriggerByUserId;
 use Gs2Cdk\Schedule\StampSheet\DeleteTriggerByUserId;
 use Gs2Cdk\Schedule\StampSheet\VerifyTriggerByUserId;

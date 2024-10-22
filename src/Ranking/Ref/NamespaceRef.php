@@ -19,6 +19,7 @@ namespace Gs2Cdk\Ranking\Ref;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Ranking\Ref\CategoryModelRef;
+use Gs2Cdk\Ranking\Ref\MasterDataObjectRef;
 
 class NamespaceRef {
     private string $namespaceName;

@@ -19,6 +19,7 @@ namespace Gs2Cdk\Limit\Ref;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Limit\Ref\LimitModelRef;
+use Gs2Cdk\Limit\Ref\MasterDataObjectRef;
 use Gs2Cdk\Limit\StampSheet\CountDownByUserId;
 use Gs2Cdk\Limit\StampSheet\DeleteCounterByUserId;
 use Gs2Cdk\Limit\StampSheet\CountUpByUserId;

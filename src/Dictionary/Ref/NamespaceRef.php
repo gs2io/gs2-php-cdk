@@ -19,6 +19,7 @@ namespace Gs2Cdk\Dictionary\Ref;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Dictionary\Ref\EntryModelRef;
+use Gs2Cdk\Dictionary\Ref\MasterDataObjectRef;
 use Gs2Cdk\Dictionary\StampSheet\AddEntriesByUserId;
 use Gs2Cdk\Dictionary\StampSheet\DeleteEntriesByUserId;
 use Gs2Cdk\Dictionary\StampSheet\VerifyEntryByUserId;

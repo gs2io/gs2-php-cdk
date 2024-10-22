@@ -20,6 +20,7 @@ use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Enhance\Ref\UnleashRateModelRef;
 use Gs2Cdk\Enhance\Ref\RateModelRef;
+use Gs2Cdk\Enhance\Ref\MasterDataObjectRef;
 use Gs2Cdk\Enhance\StampSheet\CreateProgressByUserId;
 use Gs2Cdk\Enhance\Model\Material;
 use Gs2Cdk\Enhance\StampSheet\DeleteProgressByUserId;

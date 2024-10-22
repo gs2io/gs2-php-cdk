@@ -20,6 +20,7 @@ use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Enchant\Ref\BalanceParameterModelRef;
 use Gs2Cdk\Enchant\Ref\RarityParameterModelRef;
+use Gs2Cdk\Enchant\Ref\MasterDataObjectRef;
 use Gs2Cdk\Enchant\StampSheet\ReDrawBalanceParameterStatusByUserId;
 use Gs2Cdk\Enchant\StampSheet\SetBalanceParameterStatusByUserId;
 use Gs2Cdk\Enchant\StampSheet\ReDrawRarityParameterStatusByUserId;

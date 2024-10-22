@@ -20,6 +20,7 @@ use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Exchange\Ref\RateModelRef;
 use Gs2Cdk\Exchange\Ref\IncrementalRateModelRef;
+use Gs2Cdk\Exchange\Ref\MasterDataObjectRef;
 use Gs2Cdk\Exchange\StampSheet\ExchangeByUserId;
 use Gs2Cdk\Exchange\Model\Array;
 use Gs2Cdk\Exchange\StampSheet\IncrementalExchangeByUserId;

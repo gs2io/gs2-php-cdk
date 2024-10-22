@@ -19,6 +19,7 @@ namespace Gs2Cdk\SkillTree\Ref;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\SkillTree\Ref\NodeModelRef;
+use Gs2Cdk\SkillTree\Ref\MasterDataObjectRef;
 use Gs2Cdk\SkillTree\StampSheet\MarkReleaseByUserId;
 use Gs2Cdk\SkillTree\StampSheet\MarkRestrainByUserId;
 

@@ -19,6 +19,7 @@ namespace Gs2Cdk\Quest\Ref;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Quest\Ref\QuestGroupModelRef;
+use Gs2Cdk\Quest\Ref\MasterDataObjectRef;
 use Gs2Cdk\Quest\StampSheet\CreateProgressByUserId;
 use Gs2Cdk\Quest\Model\Array;
 use Gs2Cdk\Quest\StampSheet\DeleteProgressByUserId;

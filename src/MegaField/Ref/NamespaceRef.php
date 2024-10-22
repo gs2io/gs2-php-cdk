@@ -21,6 +21,7 @@ use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\MegaField\Ref\AreaModelRef;
 use Gs2Cdk\MegaField\Ref\NodeRef;
 use Gs2Cdk\MegaField\Ref\LayerRef;
+use Gs2Cdk\MegaField\Ref\MasterDataObjectRef;
 
 class NamespaceRef {
     private string $namespaceName;

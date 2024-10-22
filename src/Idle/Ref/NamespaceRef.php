@@ -19,6 +19,7 @@ namespace Gs2Cdk\Idle\Ref;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Idle\Ref\CategoryModelRef;
+use Gs2Cdk\Idle\Ref\MasterDataObjectRef;
 use Gs2Cdk\Idle\StampSheet\IncreaseMaximumIdleMinutesByUserId;
 use Gs2Cdk\Idle\StampSheet\SetMaximumIdleMinutesByUserId;
 use Gs2Cdk\Idle\StampSheet\ReceiveByUserId;

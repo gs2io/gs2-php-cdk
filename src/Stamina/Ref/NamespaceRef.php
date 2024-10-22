@@ -19,6 +19,7 @@ namespace Gs2Cdk\Stamina\Ref;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Stamina\Ref\StaminaModelRef;
+use Gs2Cdk\Stamina\Ref\MasterDataObjectRef;
 use Gs2Cdk\Stamina\StampSheet\RecoverStaminaByUserId;
 use Gs2Cdk\Stamina\StampSheet\RaiseMaxValueByUserId;
 use Gs2Cdk\Stamina\StampSheet\SetMaxValueByUserId;

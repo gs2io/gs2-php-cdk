@@ -20,6 +20,7 @@ use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Mission\Ref\MissionGroupModelRef;
 use Gs2Cdk\Mission\Ref\CounterModelRef;
+use Gs2Cdk\Mission\Ref\MasterDataObjectRef;
 use Gs2Cdk\Mission\StampSheet\RevertReceiveByUserId;
 use Gs2Cdk\Mission\StampSheet\IncreaseCounterByUserId;
 use Gs2Cdk\Mission\StampSheet\SetCounterByUserId;

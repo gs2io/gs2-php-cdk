@@ -20,6 +20,7 @@ use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Lottery\Ref\PrizeTableRef;
 use Gs2Cdk\Lottery\Ref\LotteryModelRef;
+use Gs2Cdk\Lottery\Ref\MasterDataObjectRef;
 use Gs2Cdk\Lottery\StampSheet\ResetBoxByUserId;
 
 class NamespaceRef {

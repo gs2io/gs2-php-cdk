@@ -19,6 +19,7 @@ namespace Gs2Cdk\LoginReward\Ref;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\LoginReward\Ref\BonusModelRef;
+use Gs2Cdk\LoginReward\Ref\MasterDataObjectRef;
 use Gs2Cdk\LoginReward\StampSheet\DeleteReceiveStatusByUserId;
 use Gs2Cdk\LoginReward\StampSheet\UnmarkReceivedByUserId;
 use Gs2Cdk\LoginReward\StampSheet\MarkReceivedByUserId;

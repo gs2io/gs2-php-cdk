@@ -20,6 +20,7 @@ use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Matchmaking\Ref\RatingModelRef;
 use Gs2Cdk\Matchmaking\Ref\SeasonModelRef;
+use Gs2Cdk\Matchmaking\Ref\MasterDataObjectRef;
 use Gs2Cdk\Matchmaking\StampSheet\VerifyIncludeParticipantByUserId;
 
 class NamespaceRef {

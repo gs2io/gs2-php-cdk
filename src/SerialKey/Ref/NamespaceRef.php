@@ -19,6 +19,7 @@ namespace Gs2Cdk\SerialKey\Ref;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\SerialKey\Ref\CampaignModelRef;
+use Gs2Cdk\SerialKey\Ref\MasterDataObjectRef;
 use Gs2Cdk\SerialKey\StampSheet\RevertUseByUserId;
 use Gs2Cdk\SerialKey\StampSheet\UseByUserId;
 use Gs2Cdk\SerialKey\StampSheet\VerifyCodeByUserId;

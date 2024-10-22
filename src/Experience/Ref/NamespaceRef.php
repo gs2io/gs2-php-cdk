@@ -19,6 +19,7 @@ namespace Gs2Cdk\Experience\Ref;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Experience\Ref\ExperienceModelRef;
+use Gs2Cdk\Experience\Ref\MasterDataObjectRef;
 use Gs2Cdk\Experience\StampSheet\AddExperienceByUserId;
 use Gs2Cdk\Experience\StampSheet\SetExperienceByUserId;
 use Gs2Cdk\Experience\StampSheet\AddRankCapByUserId;
