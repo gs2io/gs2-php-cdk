@@ -33,12 +33,14 @@ class Namespace_ extends CdkResource {
     private Stack $stack;
     private string $name;
     private ?string $description = null;
+    private ?NotificationSetting $changeNotification = null;
     private ?NotificationSetting $joinNotification = null;
     private ?NotificationSetting $leaveNotification = null;
     private ?NotificationSetting $changeMemberNotification = null;
     private ?NotificationSetting $receiveRequestNotification = null;
     private ?NotificationSetting $removeRequestNotification = null;
     private ?ScriptSetting $createGuildScript = null;
+    private ?ScriptSetting $updateGuildScript = null;
     private ?ScriptSetting $joinGuildScript = null;
     private ?ScriptSetting $leaveGuildScript = null;
     private ?ScriptSetting $changeRoleScript = null;
@@ -56,12 +58,14 @@ class Namespace_ extends CdkResource {
         $this->stack = $stack;
         $this->name = $name;
         $this->description = $options?->description ?? null;
+        $this->changeNotification = $options?->changeNotification ?? null;
         $this->joinNotification = $options?->joinNotification ?? null;
         $this->leaveNotification = $options?->leaveNotification ?? null;
         $this->changeMemberNotification = $options?->changeMemberNotification ?? null;
         $this->receiveRequestNotification = $options?->receiveRequestNotification ?? null;
         $this->removeRequestNotification = $options?->removeRequestNotification ?? null;
         $this->createGuildScript = $options?->createGuildScript ?? null;
+        $this->updateGuildScript = $options?->updateGuildScript ?? null;
         $this->joinGuildScript = $options?->joinGuildScript ?? null;
         $this->leaveGuildScript = $options?->leaveGuildScript ?? null;
         $this->changeRoleScript = $options?->changeRoleScript ?? null;
@@ -92,6 +96,10 @@ class Namespace_ extends CdkResource {
         if ($this->description != null) {
             $properties["Description"] = $this->description;
         }
+        if ($this->changeNotification != null) {
+            $properties["ChangeNotification"] = $this->changeNotification?->properties(
+            );
+        }
         if ($this->joinNotification != null) {
             $properties["JoinNotification"] = $this->joinNotification?->properties(
             );
@@ -114,6 +122,10 @@ class Namespace_ extends CdkResource {
         }
         if ($this->createGuildScript != null) {
             $properties["CreateGuildScript"] = $this->createGuildScript?->properties(
+            );
+        }
+        if ($this->updateGuildScript != null) {
+            $properties["UpdateGuildScript"] = $this->updateGuildScript?->properties(
             );
         }
         if ($this->joinGuildScript != null) {

@@ -21,12 +21,14 @@ use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    public ?NotificationSetting $changeNotification;
     public ?NotificationSetting $joinNotification;
     public ?NotificationSetting $leaveNotification;
     public ?NotificationSetting $changeMemberNotification;
     public ?NotificationSetting $receiveRequestNotification;
     public ?NotificationSetting $removeRequestNotification;
     public ?ScriptSetting $createGuildScript;
+    public ?ScriptSetting $updateGuildScript;
     public ?ScriptSetting $joinGuildScript;
     public ?ScriptSetting $leaveGuildScript;
     public ?ScriptSetting $changeRoleScript;
@@ -34,24 +36,28 @@ class NamespaceOptions {
     
     public function __construct(
         ?string $description = null,
+        ?NotificationSetting $changeNotification = null,
         ?NotificationSetting $joinNotification = null,
         ?NotificationSetting $leaveNotification = null,
         ?NotificationSetting $changeMemberNotification = null,
         ?NotificationSetting $receiveRequestNotification = null,
         ?NotificationSetting $removeRequestNotification = null,
         ?ScriptSetting $createGuildScript = null,
+        ?ScriptSetting $updateGuildScript = null,
         ?ScriptSetting $joinGuildScript = null,
         ?ScriptSetting $leaveGuildScript = null,
         ?ScriptSetting $changeRoleScript = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
+        $this->changeNotification = $changeNotification;
         $this->joinNotification = $joinNotification;
         $this->leaveNotification = $leaveNotification;
         $this->changeMemberNotification = $changeMemberNotification;
         $this->receiveRequestNotification = $receiveRequestNotification;
         $this->removeRequestNotification = $removeRequestNotification;
         $this->createGuildScript = $createGuildScript;
+        $this->updateGuildScript = $updateGuildScript;
         $this->joinGuildScript = $joinGuildScript;
         $this->leaveGuildScript = $leaveGuildScript;
         $this->changeRoleScript = $changeRoleScript;
