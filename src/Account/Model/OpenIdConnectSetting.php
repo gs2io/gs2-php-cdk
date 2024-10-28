@@ -24,6 +24,7 @@ class OpenIdConnectSetting {
     private ?string $appleTeamId = null;
     private ?string $appleKeyId = null;
     private ?string $applePrivateKeyPem = null;
+    private ?string $doneEndpointUrl = null;
 
     public function __construct(
         string $configurationPath,
@@ -36,6 +37,7 @@ class OpenIdConnectSetting {
         $this->appleTeamId = $options?->appleTeamId ?? null;
         $this->appleKeyId = $options?->appleKeyId ?? null;
         $this->applePrivateKeyPem = $options?->applePrivateKeyPem ?? null;
+        $this->doneEndpointUrl = $options?->doneEndpointUrl ?? null;
     }
 
     public function properties(
@@ -59,6 +61,9 @@ class OpenIdConnectSetting {
         }
         if ($this->applePrivateKeyPem != null) {
             $properties["applePrivateKeyPem"] = $this->applePrivateKeyPem;
+        }
+        if ($this->doneEndpointUrl != null) {
+            $properties["doneEndpointUrl"] = $this->doneEndpointUrl;
         }
 
         return $properties;

@@ -21,16 +21,19 @@ class OpenIdConnectSettingOptions {
     public ?string $appleTeamId;
     public ?string $appleKeyId;
     public ?string $applePrivateKeyPem;
+    public ?string $doneEndpointUrl;
     
     public function __construct(
         ?string $clientSecret = null,
         ?string $appleTeamId = null,
         ?string $appleKeyId = null,
         ?string $applePrivateKeyPem = null,
+        ?string $doneEndpointUrl = null,
     ) {
         $this->clientSecret = $clientSecret;
         $this->appleTeamId = $appleTeamId;
         $this->appleKeyId = $appleKeyId;
         $this->applePrivateKeyPem = $applePrivateKeyPem;
+        $this->doneEndpointUrl = $doneEndpointUrl;
     }}
 
