@@ -25,6 +25,7 @@ use Gs2Cdk\Exchange\StampSheet\ExchangeByUserId;
 use Gs2Cdk\Exchange\Model\Array;
 use Gs2Cdk\Exchange\StampSheet\IncrementalExchangeByUserId;
 use Gs2Cdk\Exchange\StampSheet\CreateAwaitByUserId;
+use Gs2Cdk\Exchange\StampSheet\AcquireForceByUserId;
 use Gs2Cdk\Exchange\StampSheet\SkipByUserId;
 use Gs2Cdk\Exchange\StampSheet\DeleteAwaitByUserId;
 
@@ -95,6 +96,19 @@ class NamespaceRef {
             $this->namespaceName,
             $rateName,
             $count,
+            $config,
+            $userId,
+        ));
+    }
+
+    public function acquireForce(
+        string $awaitName,
+        ?array $config = null,
+        ?string $userId = "#{userId}",
+    ): AcquireForceByUserId {
+        return (new AcquireForceByUserId(
+            $this->namespaceName,
+            $awaitName,
             $config,
             $userId,
         ));
