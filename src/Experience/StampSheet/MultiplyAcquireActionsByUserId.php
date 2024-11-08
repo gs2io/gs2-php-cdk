@@ -28,6 +28,7 @@ class MultiplyAcquireActionsByUserId extends AcquireAction {
         string $propertyId,
         string $rateName,
         ?array $acquireActions = null,
+        ?float $baseRate = null,
         ?string $userId = "#{userId}",
     ) {
         $properties = [];
@@ -37,6 +38,7 @@ class MultiplyAcquireActionsByUserId extends AcquireAction {
         $properties["propertyId"] = $propertyId;
         $properties["rateName"] = $rateName;
         $properties["acquireActions"] = $acquireActions;
+        $properties["baseRate"] = $baseRate;
         $properties["userId"] = $userId;
 
         parent::__construct(

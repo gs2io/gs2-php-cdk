@@ -115,6 +115,7 @@ class NamespaceRef {
         string $experienceName,
         string $propertyId,
         string $rateName,
+        float $baseRate,
         ?array $acquireActions = null,
         ?string $userId = "#{userId}",
     ): MultiplyAcquireActionsByUserId {
@@ -123,6 +124,7 @@ class NamespaceRef {
             $experienceName,
             $propertyId,
             $rateName,
+            $baseRate,
             $acquireActions,
             $userId,
         ));
