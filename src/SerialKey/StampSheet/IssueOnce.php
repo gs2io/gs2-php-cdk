@@ -20,25 +20,21 @@ use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
 use Gs2Cdk\Core\Model\VerifyAction;
 
-class VerifyCodeByUserId extends VerifyAction {
+class IssueOnce extends AcquireAction {
 
     public function __construct(
         string $namespaceName,
-        string $code,
-        string $verifyType,
-        ?string $campaignModelName = null,
-        ?string $userId = "#{userId}",
+        string $campaignModelName,
+        ?string $metadata = null,
     ) {
         $properties = [];
 
         $properties["namespaceName"] = $namespaceName;
-        $properties["code"] = $code;
-        $properties["verifyType"] = $verifyType;
         $properties["campaignModelName"] = $campaignModelName;
-        $properties["userId"] = $userId;
+        $properties["metadata"] = $metadata;
 
         parent::__construct(
-            "Gs2SerialKey:VerifyCodeByUserId",
+            "Gs2SerialKey:IssueOnce",
             $properties,
         );
     }

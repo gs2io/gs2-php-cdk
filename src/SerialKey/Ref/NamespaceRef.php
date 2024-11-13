@@ -21,6 +21,7 @@ use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\SerialKey\Ref\CampaignModelRef;
 use Gs2Cdk\SerialKey\Ref\MasterDataObjectRef;
 use Gs2Cdk\SerialKey\StampSheet\RevertUseByUserId;
+use Gs2Cdk\SerialKey\StampSheet\IssueOnce;
 use Gs2Cdk\SerialKey\StampSheet\UseByUserId;
 use Gs2Cdk\SerialKey\StampSheet\VerifyCodeByUserId;
 
@@ -53,6 +54,17 @@ class NamespaceRef {
         ));
     }
 
+    public function issueOnce(
+        string $campaignModelName,
+        ?string $metadata = null,
+    ): IssueOnce {
+        return (new IssueOnce(
+            $this->namespaceName,
+            $campaignModelName,
+            $metadata,
+        ));
+    }
+
     public function use(
         string $code,
         ?string $userId = "#{userId}",
@@ -67,12 +79,14 @@ class NamespaceRef {
     public function verifyCode(
         string $code,
         string $verifyType,
+        ?string $campaignModelName = null,
         ?string $userId = "#{userId}",
     ): VerifyCodeByUserId {
         return (new VerifyCodeByUserId(
             $this->namespaceName,
             $code,
             $verifyType,
+            $campaignModelName,
             $userId,
         ));
     }
