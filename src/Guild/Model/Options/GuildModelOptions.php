@@ -19,10 +19,16 @@ use Gs2Cdk\Guild\Model\RoleModel;
 
 class GuildModelOptions {
     public ?string $metadata;
+    public ?int $maxConcurrentJoinGuilds;
+    public ?int $maxConcurrentGuildMasterCount;
     
     public function __construct(
         ?string $metadata = null,
+        ?int $maxConcurrentJoinGuilds = null,
+        ?int $maxConcurrentGuildMasterCount = null,
     ) {
         $this->metadata = $metadata;
+        $this->maxConcurrentJoinGuilds = $maxConcurrentJoinGuilds;
+        $this->maxConcurrentGuildMasterCount = $maxConcurrentGuildMasterCount;
     }}
 
