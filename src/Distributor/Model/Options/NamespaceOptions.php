@@ -22,17 +22,20 @@ class NamespaceOptions {
     public ?string $description;
     public ?string $assumeUserId;
     public ?NotificationSetting $autoRunStampSheetNotification;
+    public ?NotificationSetting $autoRunTransactionNotification;
     public ?LogSetting $logSetting;
     
     public function __construct(
         ?string $description = null,
         ?string $assumeUserId = null,
         ?NotificationSetting $autoRunStampSheetNotification = null,
+        ?NotificationSetting $autoRunTransactionNotification = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
         $this->assumeUserId = $assumeUserId;
         $this->autoRunStampSheetNotification = $autoRunStampSheetNotification;
+        $this->autoRunTransactionNotification = $autoRunTransactionNotification;
         $this->logSetting = $logSetting;
     }}
 

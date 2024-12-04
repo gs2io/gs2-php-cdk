@@ -34,6 +34,7 @@ class Namespace_ extends CdkResource {
     private ?string $description = null;
     private ?string $assumeUserId = null;
     private ?NotificationSetting $autoRunStampSheetNotification = null;
+    private ?NotificationSetting $autoRunTransactionNotification = null;
     private ?LogSetting $logSetting = null;
 
     public function __construct(
@@ -50,6 +51,7 @@ class Namespace_ extends CdkResource {
         $this->description = $options?->description ?? null;
         $this->assumeUserId = $options?->assumeUserId ?? null;
         $this->autoRunStampSheetNotification = $options?->autoRunStampSheetNotification ?? null;
+        $this->autoRunTransactionNotification = $options?->autoRunTransactionNotification ?? null;
         $this->logSetting = $options?->logSetting ?? null;
         $stack->addResource(
             $this,
@@ -82,6 +84,10 @@ class Namespace_ extends CdkResource {
         }
         if ($this->autoRunStampSheetNotification != null) {
             $properties["AutoRunStampSheetNotification"] = $this->autoRunStampSheetNotification?->properties(
+            );
+        }
+        if ($this->autoRunTransactionNotification != null) {
+            $properties["AutoRunTransactionNotification"] = $this->autoRunTransactionNotification?->properties(
             );
         }
         if ($this->logSetting != null) {

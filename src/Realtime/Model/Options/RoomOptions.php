@@ -13,21 +13,6 @@
  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
+ *
+ * deny overwrite
  */
-namespace Gs2Cdk\Realtime\Model\Options;
-
-class RoomOptions {
-    public ?string $ipAddress;
-    public ?int $port;
-    public ?string $encryptionKey;
-    
-    public function __construct(
-        ?string $ipAddress = null,
-        ?int $port = null,
-        ?string $encryptionKey = null,
-    ) {
-        $this->ipAddress = $ipAddress;
-        $this->port = $port;
-        $this->encryptionKey = $encryptionKey;
-    }}
-
