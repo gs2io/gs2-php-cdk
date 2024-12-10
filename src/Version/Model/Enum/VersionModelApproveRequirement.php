@@ -14,21 +14,21 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\Version\Model\Options;
-use Gs2Cdk\Version\Model\Version;
-use Gs2Cdk\Version\Model\ScheduleVersion;
-use Gs2Cdk\Version\Model\Enum\VersionModelScope;
-use Gs2Cdk\Version\Model\Enum\VersionModelType;
-use Gs2Cdk\Version\Model\Enum\VersionModelApproveRequirement;
 
-class VersionModelTypeIsScheduleOptions {
-    public ?string $metadata;
-    public ?array $scheduleVersions;
-    
-    public function __construct(
-        ?string $metadata = null,
-        ?array $scheduleVersions = null,
-    ) {
-        $this->metadata = $metadata;
-        $this->scheduleVersions = $scheduleVersions;
-    }}
+namespace Gs2Cdk\Version\Model\Enum;
+
+
+enum VersionModelApproveRequirement {
+    case REQUIRED;
+    case OPTIONAL;
+
+    public function toString(): String {
+        switch ($this) {
+            case self::REQUIRED:
+                return "required";
+            case self::OPTIONAL:
+                return "optional";
+        }
+        return "unknown";
+    }
+}

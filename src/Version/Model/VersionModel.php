@@ -24,6 +24,7 @@ use Gs2Cdk\Version\Model\Options\VersionModelScopeIsPassiveOptions;
 use Gs2Cdk\Version\Model\Options\VersionModelScopeIsActiveOptions;
 use Gs2Cdk\Version\Model\Enum\VersionModelScope;
 use Gs2Cdk\Version\Model\Enum\VersionModelType;
+use Gs2Cdk\Version\Model\Enum\VersionModelApproveRequirement;
 
 class VersionModel {
     private string $name;
@@ -36,6 +37,7 @@ class VersionModel {
     private ?array $scheduleVersions = null;
     private ?bool $needSignature = null;
     private ?string $signatureKeyId = null;
+    private ?VersionModelApproveRequirement $approveRequirement = null;
 
     public function __construct(
         string $name,
@@ -53,6 +55,7 @@ class VersionModel {
         $this->scheduleVersions = $options?->scheduleVersions ?? null;
         $this->needSignature = $options?->needSignature ?? null;
         $this->signatureKeyId = $options?->signatureKeyId ?? null;
+        $this->approveRequirement = $options?->approveRequirement ?? null;
     }
 
     public static function typeIsSimple(
@@ -112,6 +115,7 @@ class VersionModel {
     public static function scopeIsActive(
         string $name,
         VersionModelType $type,
+        VersionModelApproveRequirement $approveRequirement,
         ?VersionModelScopeIsActiveOptions $options = null,
     ): VersionModel {
         return (new VersionModel(
@@ -119,6 +123,7 @@ class VersionModel {
             VersionModelScope::ACTIVE,
             $type,
             new VersionModelOptions(
+                approveRequirement: $approveRequirement,
                 metadata: $options?->metadata,
                 scheduleVersions: $options?->scheduleVersions,
             ),
@@ -169,6 +174,10 @@ class VersionModel {
         }
         if ($this->signatureKeyId != null) {
             $properties["signatureKeyId"] = $this->signatureKeyId;
+        }
+        if ($this->approveRequirement != null) {
+            $properties["approveRequirement"] = $this->approveRequirement?->toString(
+            );
         }
 
         return $properties;

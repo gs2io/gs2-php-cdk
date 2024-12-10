@@ -19,6 +19,7 @@ use Gs2Cdk\Version\Model\Version;
 use Gs2Cdk\Version\Model\ScheduleVersion;
 use Gs2Cdk\Version\Model\Enum\VersionModelScope;
 use Gs2Cdk\Version\Model\Enum\VersionModelType;
+use Gs2Cdk\Version\Model\Enum\VersionModelApproveRequirement;
 
 class VersionModelOptions {
     public ?string $metadata;
@@ -28,6 +29,7 @@ class VersionModelOptions {
     public ?array $scheduleVersions;
     public ?bool $needSignature;
     public ?string $signatureKeyId;
+    public ?VersionModelApproveRequirement $approveRequirement;
     
     public function __construct(
         ?string $metadata = null,
@@ -37,6 +39,7 @@ class VersionModelOptions {
         ?array $scheduleVersions = null,
         ?bool $needSignature = null,
         ?string $signatureKeyId = null,
+        ?VersionModelApproveRequirement $approveRequirement = null,
     ) {
         $this->metadata = $metadata;
         $this->currentVersion = $currentVersion;
@@ -45,5 +48,6 @@ class VersionModelOptions {
         $this->scheduleVersions = $scheduleVersions;
         $this->needSignature = $needSignature;
         $this->signatureKeyId = $signatureKeyId;
+        $this->approveRequirement = $approveRequirement;
     }}
 

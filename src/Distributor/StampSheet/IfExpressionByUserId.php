@@ -20,7 +20,7 @@ use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
 use Gs2Cdk\Core\Model\VerifyAction;
 
-class IfExpressionByUserId extends ConsumeAction {
+class IfExpressionByUserId extends VerifyAction {
 
     public function __construct(
         string $namespaceName,

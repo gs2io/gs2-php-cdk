@@ -19,6 +19,7 @@ use Gs2Cdk\Version\Model\Version;
 use Gs2Cdk\Version\Model\ScheduleVersion;
 use Gs2Cdk\Version\Model\Enum\VersionModelScope;
 use Gs2Cdk\Version\Model\Enum\VersionModelType;
+use Gs2Cdk\Version\Model\Enum\VersionModelApproveRequirement;
 
 class VersionModelScopeIsPassiveOptions {
     public ?string $metadata;
