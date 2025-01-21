@@ -19,11 +19,13 @@ use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Ranking2\Model\RankingReward;
 use Gs2Cdk\Ranking2\Model\Options\GlobalRankingModelOptions;
 use Gs2Cdk\Ranking2\Model\Enum\GlobalRankingModelOrderDirection;
+use Gs2Cdk\Ranking2\Model\Enum\GlobalRankingModelRewardCalculationIndex;
 
 class GlobalRankingModel {
     private string $name;
     private bool $sum;
     private GlobalRankingModelOrderDirection $orderDirection;
+    private GlobalRankingModelRewardCalculationIndex $rewardCalculationIndex;
     private ?string $metadata = null;
     private ?int $minimumValue = null;
     private ?int $maximumValue = null;
@@ -35,11 +37,13 @@ class GlobalRankingModel {
         string $name,
         bool $sum,
         GlobalRankingModelOrderDirection $orderDirection,
+        GlobalRankingModelRewardCalculationIndex $rewardCalculationIndex,
         ?GlobalRankingModelOptions $options = null,
     ) {
         $this->name = $name;
         $this->sum = $sum;
         $this->orderDirection = $orderDirection;
+        $this->rewardCalculationIndex = $rewardCalculationIndex;
         $this->metadata = $options?->metadata ?? null;
         $this->minimumValue = $options?->minimumValue ?? null;
         $this->maximumValue = $options?->maximumValue ?? null;
@@ -85,6 +89,10 @@ class GlobalRankingModel {
         }
         if ($this->accessPeriodEventId != null) {
             $properties["accessPeriodEventId"] = $this->accessPeriodEventId;
+        }
+        if ($this->rewardCalculationIndex != null) {
+            $properties["rewardCalculationIndex"] = $this->rewardCalculationIndex?->toString(
+            );
         }
 
         return $properties;

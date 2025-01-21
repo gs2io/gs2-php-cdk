@@ -38,6 +38,8 @@ class Guild extends CdkResource {
     private ?int $attribute3 = null;
     private ?int $attribute4 = null;
     private ?int $attribute5 = null;
+    private ?string $metadata = null;
+    private ?string $memberMetadata = null;
     private ?array $customRoles = null;
     private ?string $guildMemberDefaultRole = null;
     private ?string $timeOffsetToken = null;
@@ -66,6 +68,8 @@ class Guild extends CdkResource {
         $this->attribute3 = $options?->attribute3 ?? null;
         $this->attribute4 = $options?->attribute4 ?? null;
         $this->attribute5 = $options?->attribute5 ?? null;
+        $this->metadata = $options?->metadata ?? null;
+        $this->memberMetadata = $options?->memberMetadata ?? null;
         $this->customRoles = $options?->customRoles ?? null;
         $this->guildMemberDefaultRole = $options?->guildMemberDefaultRole ?? null;
         $this->timeOffsetToken = $options?->timeOffsetToken ?? null;
@@ -115,6 +119,12 @@ class Guild extends CdkResource {
         }
         if ($this->attribute5 != null) {
             $properties["Attribute5"] = $this->attribute5;
+        }
+        if ($this->metadata != null) {
+            $properties["Metadata"] = $this->metadata;
+        }
+        if ($this->memberMetadata != null) {
+            $properties["MemberMetadata"] = $this->memberMetadata;
         }
         if ($this->joinPolicy != null) {
             $properties["JoinPolicy"] = $this->joinPolicy;

@@ -19,6 +19,7 @@ use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Ranking2\Model\RankingReward;
 use Gs2Cdk\Ranking2\Model\Enum\ClusterRankingModelClusterType;
 use Gs2Cdk\Ranking2\Model\Enum\ClusterRankingModelOrderDirection;
+use Gs2Cdk\Ranking2\Model\Enum\ClusterRankingModelRewardCalculationIndex;
 
 class ClusterRankingModelOptions {
     public ?string $metadata;

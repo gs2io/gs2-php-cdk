@@ -20,12 +20,14 @@ use Gs2Cdk\Ranking2\Model\RankingReward;
 use Gs2Cdk\Ranking2\Model\Options\ClusterRankingModelOptions;
 use Gs2Cdk\Ranking2\Model\Enum\ClusterRankingModelClusterType;
 use Gs2Cdk\Ranking2\Model\Enum\ClusterRankingModelOrderDirection;
+use Gs2Cdk\Ranking2\Model\Enum\ClusterRankingModelRewardCalculationIndex;
 
 class ClusterRankingModel {
     private string $name;
     private ClusterRankingModelClusterType $clusterType;
     private bool $sum;
     private ClusterRankingModelOrderDirection $orderDirection;
+    private ClusterRankingModelRewardCalculationIndex $rewardCalculationIndex;
     private ?string $metadata = null;
     private ?int $minimumValue = null;
     private ?int $maximumValue = null;
@@ -38,12 +40,14 @@ class ClusterRankingModel {
         ClusterRankingModelClusterType $clusterType,
         bool $sum,
         ClusterRankingModelOrderDirection $orderDirection,
+        ClusterRankingModelRewardCalculationIndex $rewardCalculationIndex,
         ?ClusterRankingModelOptions $options = null,
     ) {
         $this->name = $name;
         $this->clusterType = $clusterType;
         $this->sum = $sum;
         $this->orderDirection = $orderDirection;
+        $this->rewardCalculationIndex = $rewardCalculationIndex;
         $this->metadata = $options?->metadata ?? null;
         $this->minimumValue = $options?->minimumValue ?? null;
         $this->maximumValue = $options?->maximumValue ?? null;
@@ -93,6 +97,10 @@ class ClusterRankingModel {
         }
         if ($this->accessPeriodEventId != null) {
             $properties["accessPeriodEventId"] = $this->accessPeriodEventId;
+        }
+        if ($this->rewardCalculationIndex != null) {
+            $properties["rewardCalculationIndex"] = $this->rewardCalculationIndex?->toString(
+            );
         }
 
         return $properties;

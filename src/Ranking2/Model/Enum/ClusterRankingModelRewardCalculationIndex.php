@@ -14,14 +14,21 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\Guild\Model\Options;
 
-class MemberOptions {
-    public ?string $metadata;
-    
-    public function __construct(
-        ?string $metadata = null,
-    ) {
-        $this->metadata = $metadata;
-    }}
+namespace Gs2Cdk\Ranking2\Model\Enum;
 
+
+enum ClusterRankingModelRewardCalculationIndex {
+    case RANK;
+    case INDEX;
+
+    public function toString(): String {
+        switch ($this) {
+            case self::RANK:
+                return "rank";
+            case self::INDEX:
+                return "index";
+        }
+        return "unknown";
+    }
+}

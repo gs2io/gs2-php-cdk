@@ -23,6 +23,8 @@ class GuildOptions {
     public ?int $attribute3;
     public ?int $attribute4;
     public ?int $attribute5;
+    public ?string $metadata;
+    public ?string $memberMetadata;
     public ?array $customRoles;
     public ?string $guildMemberDefaultRole;
     public ?string $timeOffsetToken;
@@ -33,6 +35,8 @@ class GuildOptions {
         ?int $attribute3 = null,
         ?int $attribute4 = null,
         ?int $attribute5 = null,
+        ?string $metadata = null,
+        ?string $memberMetadata = null,
         ?array $customRoles = null,
         ?string $guildMemberDefaultRole = null,
         ?string $timeOffsetToken = null,
@@ -42,6 +46,8 @@ class GuildOptions {
         $this->attribute3 = $attribute3;
         $this->attribute4 = $attribute4;
         $this->attribute5 = $attribute5;
+        $this->metadata = $metadata;
+        $this->memberMetadata = $memberMetadata;
         $this->customRoles = $customRoles;
         $this->guildMemberDefaultRole = $guildMemberDefaultRole;
         $this->timeOffsetToken = $timeOffsetToken;

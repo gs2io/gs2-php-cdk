@@ -15,11 +15,13 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Guild\Model;
+use Gs2Cdk\Guild\Model\ReceiveMemberRequest;
 use Gs2Cdk\Guild\Model\Options\InboxOptions;
 
 class Inbox {
     private string $guildName;
     private ?array $fromUserIds = null;
+    private ?array $receiveMemberRequests = null;
     private ?int $revision = null;
 
     public function __construct(
@@ -28,6 +30,7 @@ class Inbox {
     ) {
         $this->guildName = $guildName;
         $this->fromUserIds = $options?->fromUserIds ?? null;
+        $this->receiveMemberRequests = $options?->receiveMemberRequests ?? null;
         $this->revision = $options?->revision ?? null;
     }
 
@@ -40,6 +43,15 @@ class Inbox {
         }
         if ($this->fromUserIds != null) {
             $properties["fromUserIds"] = $this->fromUserIds;
+        }
+        if ($this->receiveMemberRequests != null) {
+            $properties["receiveMemberRequests"] = array_map(
+                function ($v) {
+                    return $v->properties(
+                    );
+                },
+                $this->receiveMemberRequests
+            );
         }
 
         return $properties;

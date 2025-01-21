@@ -20,6 +20,7 @@ use Gs2Cdk\Guild\Model\Options\MemberOptions;
 class Member {
     private string $userId;
     private string $roleName;
+    private ?string $metadata = null;
 
     public function __construct(
         string $userId,
@@ -28,6 +29,7 @@ class Member {
     ) {
         $this->userId = $userId;
         $this->roleName = $roleName;
+        $this->metadata = $options?->metadata ?? null;
     }
 
     public function properties(
@@ -39,6 +41,9 @@ class Member {
         }
         if ($this->roleName != null) {
             $properties["roleName"] = $this->roleName;
+        }
+        if ($this->metadata != null) {
+            $properties["metadata"] = $this->metadata;
         }
 
         return $properties;

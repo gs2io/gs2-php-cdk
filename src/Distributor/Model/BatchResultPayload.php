@@ -14,36 +14,37 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\Guild\Model;
-use Gs2Cdk\Guild\Model\Options\ReceiveMemberRequestOptions;
+namespace Gs2Cdk\Distributor\Model;
+use Gs2Cdk\Distributor\Model\Options\BatchResultPayloadOptions;
 
-class ReceiveMemberRequest {
-    private string $userId;
-    private string $targetGuildName;
-    private ?string $metadata = null;
+class BatchResultPayload {
+    private string $requestId;
+    private int $statusCode;
+    private string $resultPayload;
 
     public function __construct(
-        string $userId,
-        string $targetGuildName,
-        ?ReceiveMemberRequestOptions $options = null,
+        string $requestId,
+        int $statusCode,
+        string $resultPayload,
+        ?BatchResultPayloadOptions $options = null,
     ) {
-        $this->userId = $userId;
-        $this->targetGuildName = $targetGuildName;
-        $this->metadata = $options?->metadata ?? null;
+        $this->requestId = $requestId;
+        $this->statusCode = $statusCode;
+        $this->resultPayload = $resultPayload;
     }
 
     public function properties(
     ): array {
         $properties = [];
 
-        if ($this->userId != null) {
-            $properties["userId"] = $this->userId;
+        if ($this->requestId != null) {
+            $properties["requestId"] = $this->requestId;
         }
-        if ($this->targetGuildName != null) {
-            $properties["targetGuildName"] = $this->targetGuildName;
+        if ($this->statusCode != null) {
+            $properties["statusCode"] = $this->statusCode;
         }
-        if ($this->metadata != null) {
-            $properties["metadata"] = $this->metadata;
+        if ($this->resultPayload != null) {
+            $properties["resultPayload"] = $this->resultPayload;
         }
 
         return $properties;

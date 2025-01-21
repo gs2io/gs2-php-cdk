@@ -18,6 +18,7 @@ namespace Gs2Cdk\Ranking2\Model\Options;
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Ranking2\Model\RankingReward;
 use Gs2Cdk\Ranking2\Model\Enum\GlobalRankingModelOrderDirection;
+use Gs2Cdk\Ranking2\Model\Enum\GlobalRankingModelRewardCalculationIndex;
 
 class GlobalRankingModelOptions {
     public ?string $metadata;

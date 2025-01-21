@@ -14,14 +14,12 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\Guild\Model\Options;
+namespace Gs2Cdk\Distributor\Model\Options;
+use Gs2Cdk\Distributor\Model\Enum\BatchRequestPayloadService;
 
-class MemberOptions {
-    public ?string $metadata;
+class BatchRequestPayloadOptions {
     
     public function __construct(
-        ?string $metadata = null,
     ) {
-        $this->metadata = $metadata;
     }}
 

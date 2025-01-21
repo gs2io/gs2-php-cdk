@@ -17,8 +17,11 @@
 namespace Gs2Cdk\Guild\Model\Options;
 
 class ReceiveMemberRequestOptions {
+    public ?string $metadata;
     
     public function __construct(
+        ?string $metadata = null,
     ) {
+        $this->metadata = $metadata;
     }}
 
