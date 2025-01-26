@@ -14,16 +14,32 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\Account\Model\Options;
-use Gs2Cdk\Account\Model\ScopeValue;
-use Gs2Cdk\Account\Model\OpenIdConnectSetting;
+namespace Gs2Cdk\Account\Model;
+use Gs2Cdk\Account\Model\Options\ScopeValueOptions;
 
-class TakeOverTypeModelOptions {
-    public ?string $metadata;
-    
+class ScopeValue {
+    private string $key;
+    private ?string $value = null;
+
     public function __construct(
-        ?string $metadata = null,
+        string $key,
+        ?ScopeValueOptions $options = null,
     ) {
-        $this->metadata = $metadata;
-    }}
+        $this->key = $key;
+        $this->value = $options?->value ?? null;
+    }
 
+    public function properties(
+    ): array {
+        $properties = [];
+
+        if ($this->key != null) {
+            $properties["key"] = $this->key;
+        }
+        if ($this->value != null) {
+            $properties["value"] = $this->value;
+        }
+
+        return $properties;
+    }
+}

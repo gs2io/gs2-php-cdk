@@ -23,6 +23,7 @@ enum MissionGroupModelResetType {
     case DAILY;
     case WEEKLY;
     case MONTHLY;
+    case DAYS;
 
     public function toString(): String {
         switch ($this) {
@@ -34,6 +35,8 @@ enum MissionGroupModelResetType {
                 return "weekly";
             case self::MONTHLY:
                 return "monthly";
+            case self::DAYS:
+                return "days";
         }
         return "unknown";
     }

@@ -15,6 +15,7 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Account\Model\Options;
+use Gs2Cdk\Account\Model\ScopeValue;
 
 class OpenIdConnectSettingOptions {
     public ?string $clientSecret;
@@ -22,6 +23,8 @@ class OpenIdConnectSettingOptions {
     public ?string $appleKeyId;
     public ?string $applePrivateKeyPem;
     public ?string $doneEndpointUrl;
+    public ?array $additionalScopeValues;
+    public ?array $additionalReturnValues;
     
     public function __construct(
         ?string $clientSecret = null,
@@ -29,11 +32,15 @@ class OpenIdConnectSettingOptions {
         ?string $appleKeyId = null,
         ?string $applePrivateKeyPem = null,
         ?string $doneEndpointUrl = null,
+        ?array $additionalScopeValues = null,
+        ?array $additionalReturnValues = null,
     ) {
         $this->clientSecret = $clientSecret;
         $this->appleTeamId = $appleTeamId;
         $this->appleKeyId = $appleKeyId;
         $this->applePrivateKeyPem = $applePrivateKeyPem;
         $this->doneEndpointUrl = $doneEndpointUrl;
+        $this->additionalScopeValues = $additionalScopeValues;
+        $this->additionalReturnValues = $additionalReturnValues;
     }}
 

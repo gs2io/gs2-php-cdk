@@ -23,6 +23,7 @@ use Gs2Cdk\Mission\Model\Options\CounterScopeModelResetTypeIsNotResetOptions;
 use Gs2Cdk\Mission\Model\Options\CounterScopeModelResetTypeIsDailyOptions;
 use Gs2Cdk\Mission\Model\Options\CounterScopeModelResetTypeIsWeeklyOptions;
 use Gs2Cdk\Mission\Model\Options\CounterScopeModelResetTypeIsMonthlyOptions;
+use Gs2Cdk\Mission\Model\Options\CounterScopeModelResetTypeIsDaysOptions;
 use Gs2Cdk\Mission\Model\Enum\CounterScopeModelScopeType;
 use Gs2Cdk\Mission\Model\Enum\CounterScopeModelResetType;
 use Gs2Cdk\Mission\Model\Enum\CounterScopeModelResetDayOfWeek;
@@ -35,6 +36,8 @@ class CounterScopeModel {
     private ?int $resetHour = null;
     private ?string $conditionName = null;
     private ?VerifyAction $condition = null;
+    private ?int $anchorTimestamp = null;
+    private ?int $days = null;
 
     public function __construct(
         CounterScopeModelScopeType $scopeType,
@@ -47,6 +50,8 @@ class CounterScopeModel {
         $this->resetHour = $options?->resetHour ?? null;
         $this->conditionName = $options?->conditionName ?? null;
         $this->condition = $options?->condition ?? null;
+        $this->anchorTimestamp = $options?->anchorTimestamp ?? null;
+        $this->days = $options?->days ?? null;
     }
 
     public static function scopeTypeIsResetTiming(
@@ -129,6 +134,21 @@ class CounterScopeModel {
         ));
     }
 
+    public static function resetTypeIsDays(
+        CounterScopeModelScopeType $scopeType,
+        int $anchorTimestamp,
+        int $days,
+        ?CounterScopeModelResetTypeIsDaysOptions $options = null,
+    ): CounterScopeModel {
+        return (new CounterScopeModel(
+            $scopeType,
+            new CounterScopeModelOptions(
+                anchorTimestamp: $anchorTimestamp,
+                days: $days,
+            ),
+        ));
+    }
+
     public function properties(
     ): array {
         $properties = [];
@@ -157,6 +177,12 @@ class CounterScopeModel {
         if ($this->condition != null) {
             $properties["condition"] = $this->condition?->properties(
             );
+        }
+        if ($this->anchorTimestamp != null) {
+            $properties["anchorTimestamp"] = $this->anchorTimestamp;
+        }
+        if ($this->days != null) {
+            $properties["days"] = $this->days;
         }
 
         return $properties;

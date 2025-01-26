@@ -15,6 +15,7 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Account\Model;
+use Gs2Cdk\Account\Model\ScopeValue;
 use Gs2Cdk\Account\Model\OpenIdConnectSetting;
 use Gs2Cdk\Account\Model\Options\TakeOverTypeModelOptions;
 

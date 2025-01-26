@@ -15,6 +15,7 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Account\Model;
+use Gs2Cdk\Account\Model\ScopeValue;
 use Gs2Cdk\Account\Model\Options\OpenIdConnectSettingOptions;
 
 class OpenIdConnectSetting {
@@ -25,6 +26,8 @@ class OpenIdConnectSetting {
     private ?string $appleKeyId = null;
     private ?string $applePrivateKeyPem = null;
     private ?string $doneEndpointUrl = null;
+    private ?array $additionalScopeValues = null;
+    private ?array $additionalReturnValues = null;
 
     public function __construct(
         string $configurationPath,
@@ -38,6 +41,8 @@ class OpenIdConnectSetting {
         $this->appleKeyId = $options?->appleKeyId ?? null;
         $this->applePrivateKeyPem = $options?->applePrivateKeyPem ?? null;
         $this->doneEndpointUrl = $options?->doneEndpointUrl ?? null;
+        $this->additionalScopeValues = $options?->additionalScopeValues ?? null;
+        $this->additionalReturnValues = $options?->additionalReturnValues ?? null;
     }
 
     public function properties(
@@ -64,6 +69,18 @@ class OpenIdConnectSetting {
         }
         if ($this->doneEndpointUrl != null) {
             $properties["doneEndpointUrl"] = $this->doneEndpointUrl;
+        }
+        if ($this->additionalScopeValues != null) {
+            $properties["additionalScopeValues"] = array_map(
+                function ($v) {
+                    return $v->properties(
+                    );
+                },
+                $this->additionalScopeValues
+            );
+        }
+        if ($this->additionalReturnValues != null) {
+            $properties["additionalReturnValues"] = $this->additionalReturnValues;
         }
 
         return $properties;

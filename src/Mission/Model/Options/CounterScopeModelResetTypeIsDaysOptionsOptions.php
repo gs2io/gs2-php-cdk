@@ -14,30 +14,14 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
+namespace Gs2Cdk\Mission\Model\Options;
+use Gs2Cdk\Core\Model\VerifyAction;
+use Gs2Cdk\Mission\Model\Enum\CounterScopeModelScopeType;
+use Gs2Cdk\Mission\Model\Enum\CounterScopeModelResetType;
+use Gs2Cdk\Mission\Model\Enum\CounterScopeModelResetDayOfWeek;
 
-namespace Gs2Cdk\Mission\Model\Enum;
-
-
-enum ScopedValueResetType {
-    case NOT_RESET;
-    case DAILY;
-    case WEEKLY;
-    case MONTHLY;
-    case DAYS;
-
-    public function toString(): String {
-        switch ($this) {
-            case self::NOT_RESET:
-                return "notReset";
-            case self::DAILY:
-                return "daily";
-            case self::WEEKLY:
-                return "weekly";
-            case self::MONTHLY:
-                return "monthly";
-            case self::DAYS:
-                return "days";
-        }
-        return "unknown";
-    }
-}
+class CounterScopeModelResetTypeIsDaysOptions {
+    
+    public function __construct(
+    ) {
+    }}

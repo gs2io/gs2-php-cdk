@@ -23,6 +23,7 @@ enum CounterScopeModelResetType {
     case DAILY;
     case WEEKLY;
     case MONTHLY;
+    case DAYS;
 
     public function toString(): String {
         switch ($this) {
@@ -34,6 +35,8 @@ enum CounterScopeModelResetType {
                 return "weekly";
             case self::MONTHLY:
                 return "monthly";
+            case self::DAYS:
+                return "days";
         }
         return "unknown";
     }

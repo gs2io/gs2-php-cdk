@@ -24,6 +24,7 @@ use Gs2Cdk\Mission\Model\Options\MissionGroupModelResetTypeIsNotResetOptions;
 use Gs2Cdk\Mission\Model\Options\MissionGroupModelResetTypeIsDailyOptions;
 use Gs2Cdk\Mission\Model\Options\MissionGroupModelResetTypeIsWeeklyOptions;
 use Gs2Cdk\Mission\Model\Options\MissionGroupModelResetTypeIsMonthlyOptions;
+use Gs2Cdk\Mission\Model\Options\MissionGroupModelResetTypeIsDaysOptions;
 use Gs2Cdk\Mission\Model\Enum\MissionGroupModelResetType;
 use Gs2Cdk\Mission\Model\Enum\MissionGroupModelResetDayOfWeek;
 
@@ -36,6 +37,8 @@ class MissionGroupModel {
     private ?MissionGroupModelResetDayOfWeek $resetDayOfWeek = null;
     private ?int $resetHour = null;
     private ?string $completeNotificationNamespaceId = null;
+    private ?int $anchorTimestamp = null;
+    private ?int $days = null;
 
     public function __construct(
         string $name,
@@ -50,6 +53,8 @@ class MissionGroupModel {
         $this->resetDayOfWeek = $options?->resetDayOfWeek ?? null;
         $this->resetHour = $options?->resetHour ?? null;
         $this->completeNotificationNamespaceId = $options?->completeNotificationNamespaceId ?? null;
+        $this->anchorTimestamp = $options?->anchorTimestamp ?? null;
+        $this->days = $options?->days ?? null;
     }
 
     public static function resetTypeIsNotReset(
@@ -122,6 +127,25 @@ class MissionGroupModel {
         ));
     }
 
+    public static function resetTypeIsDays(
+        string $name,
+        int $anchorTimestamp,
+        int $days,
+        ?MissionGroupModelResetTypeIsDaysOptions $options = null,
+    ): MissionGroupModel {
+        return (new MissionGroupModel(
+            $name,
+            MissionGroupModelResetType::DAYS,
+            new MissionGroupModelOptions(
+                anchorTimestamp: $anchorTimestamp,
+                days: $days,
+                metadata: $options?->metadata,
+                tasks: $options?->tasks,
+                completeNotificationNamespaceId: $options?->completeNotificationNamespaceId,
+            ),
+        ));
+    }
+
     public function properties(
     ): array {
         $properties = [];
@@ -157,6 +181,12 @@ class MissionGroupModel {
         }
         if ($this->completeNotificationNamespaceId != null) {
             $properties["completeNotificationNamespaceId"] = $this->completeNotificationNamespaceId;
+        }
+        if ($this->anchorTimestamp != null) {
+            $properties["anchorTimestamp"] = $this->anchorTimestamp;
+        }
+        if ($this->days != null) {
+            $properties["days"] = $this->days;
         }
 
         return $properties;

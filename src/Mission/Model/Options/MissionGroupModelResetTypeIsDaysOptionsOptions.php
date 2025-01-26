@@ -22,33 +22,17 @@ use Gs2Cdk\Mission\Model\MissionTaskModel;
 use Gs2Cdk\Mission\Model\Enum\MissionGroupModelResetType;
 use Gs2Cdk\Mission\Model\Enum\MissionGroupModelResetDayOfWeek;
 
-class MissionGroupModelOptions {
+class MissionGroupModelResetTypeIsDaysOptions {
     public ?string $metadata;
     public ?array $tasks;
-    public ?int $resetDayOfMonth;
-    public ?MissionGroupModelResetDayOfWeek $resetDayOfWeek;
-    public ?int $resetHour;
     public ?string $completeNotificationNamespaceId;
-    public ?int $anchorTimestamp;
-    public ?int $days;
     
     public function __construct(
         ?string $metadata = null,
         ?array $tasks = null,
-        ?int $resetDayOfMonth = null,
-        ?MissionGroupModelResetDayOfWeek $resetDayOfWeek = null,
-        ?int $resetHour = null,
         ?string $completeNotificationNamespaceId = null,
-        ?int $anchorTimestamp = null,
-        ?int $days = null,
     ) {
         $this->metadata = $metadata;
         $this->tasks = $tasks;
-        $this->resetDayOfMonth = $resetDayOfMonth;
-        $this->resetDayOfWeek = $resetDayOfWeek;
-        $this->resetHour = $resetHour;
         $this->completeNotificationNamespaceId = $completeNotificationNamespaceId;
-        $this->anchorTimestamp = $anchorTimestamp;
-        $this->days = $days;
     }}
-

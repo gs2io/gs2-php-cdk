@@ -27,6 +27,8 @@ class CounterScopeModelOptions {
     public ?int $resetHour;
     public ?string $conditionName;
     public ?VerifyAction $condition;
+    public ?int $anchorTimestamp;
+    public ?int $days;
     
     public function __construct(
         ?CounterScopeModelResetType $resetType = null,
@@ -35,6 +37,8 @@ class CounterScopeModelOptions {
         ?int $resetHour = null,
         ?string $conditionName = null,
         ?VerifyAction $condition = null,
+        ?int $anchorTimestamp = null,
+        ?int $days = null,
     ) {
         $this->resetType = $resetType;
         $this->resetDayOfMonth = $resetDayOfMonth;
@@ -42,5 +46,7 @@ class CounterScopeModelOptions {
         $this->resetHour = $resetHour;
         $this->conditionName = $conditionName;
         $this->condition = $condition;
+        $this->anchorTimestamp = $anchorTimestamp;
+        $this->days = $days;
     }}
 
