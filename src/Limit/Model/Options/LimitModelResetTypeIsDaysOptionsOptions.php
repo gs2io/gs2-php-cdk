@@ -18,27 +18,11 @@ namespace Gs2Cdk\Limit\Model\Options;
 use Gs2Cdk\Limit\Model\Enum\LimitModelResetType;
 use Gs2Cdk\Limit\Model\Enum\LimitModelResetDayOfWeek;
 
-class LimitModelOptions {
+class LimitModelResetTypeIsDaysOptions {
     public ?string $metadata;
-    public ?int $resetDayOfMonth;
-    public ?LimitModelResetDayOfWeek $resetDayOfWeek;
-    public ?int $resetHour;
-    public ?int $anchorTimestamp;
-    public ?int $days;
     
     public function __construct(
         ?string $metadata = null,
-        ?int $resetDayOfMonth = null,
-        ?LimitModelResetDayOfWeek $resetDayOfWeek = null,
-        ?int $resetHour = null,
-        ?int $anchorTimestamp = null,
-        ?int $days = null,
     ) {
         $this->metadata = $metadata;
-        $this->resetDayOfMonth = $resetDayOfMonth;
-        $this->resetDayOfWeek = $resetDayOfWeek;
-        $this->resetHour = $resetHour;
-        $this->anchorTimestamp = $anchorTimestamp;
-        $this->days = $days;
     }}
-

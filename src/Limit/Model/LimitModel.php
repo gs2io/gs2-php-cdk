@@ -20,6 +20,7 @@ use Gs2Cdk\Limit\Model\Options\LimitModelResetTypeIsNotResetOptions;
 use Gs2Cdk\Limit\Model\Options\LimitModelResetTypeIsDailyOptions;
 use Gs2Cdk\Limit\Model\Options\LimitModelResetTypeIsWeeklyOptions;
 use Gs2Cdk\Limit\Model\Options\LimitModelResetTypeIsMonthlyOptions;
+use Gs2Cdk\Limit\Model\Options\LimitModelResetTypeIsDaysOptions;
 use Gs2Cdk\Limit\Model\Enum\LimitModelResetType;
 use Gs2Cdk\Limit\Model\Enum\LimitModelResetDayOfWeek;
 
@@ -30,6 +31,8 @@ class LimitModel {
     private ?int $resetDayOfMonth = null;
     private ?LimitModelResetDayOfWeek $resetDayOfWeek = null;
     private ?int $resetHour = null;
+    private ?int $anchorTimestamp = null;
+    private ?int $days = null;
 
     public function __construct(
         string $name,
@@ -42,6 +45,8 @@ class LimitModel {
         $this->resetDayOfMonth = $options?->resetDayOfMonth ?? null;
         $this->resetDayOfWeek = $options?->resetDayOfWeek ?? null;
         $this->resetHour = $options?->resetHour ?? null;
+        $this->anchorTimestamp = $options?->anchorTimestamp ?? null;
+        $this->days = $options?->days ?? null;
     }
 
     public static function resetTypeIsNotReset(
@@ -106,6 +111,23 @@ class LimitModel {
         ));
     }
 
+    public static function resetTypeIsDays(
+        string $name,
+        int $anchorTimestamp,
+        int $days,
+        ?LimitModelResetTypeIsDaysOptions $options = null,
+    ): LimitModel {
+        return (new LimitModel(
+            $name,
+            LimitModelResetType::DAYS,
+            new LimitModelOptions(
+                anchorTimestamp: $anchorTimestamp,
+                days: $days,
+                metadata: $options?->metadata,
+            ),
+        ));
+    }
+
     public function properties(
     ): array {
         $properties = [];
@@ -129,6 +151,12 @@ class LimitModel {
         }
         if ($this->resetHour != null) {
             $properties["resetHour"] = $this->resetHour;
+        }
+        if ($this->anchorTimestamp != null) {
+            $properties["anchorTimestamp"] = $this->anchorTimestamp;
+        }
+        if ($this->days != null) {
+            $properties["days"] = $this->days;
         }
 
         return $properties;

@@ -28,6 +28,7 @@ use Gs2Cdk\Mission\Model\ScopedValue;
 use Gs2Cdk\Mission\StampSheet\ReceiveByUserId;
 use Gs2Cdk\Mission\StampSheet\BatchReceiveByUserId;
 use Gs2Cdk\Mission\StampSheet\DecreaseCounterByUserId;
+use Gs2Cdk\Mission\StampSheet\ResetCounterByUserId;
 use Gs2Cdk\Mission\StampSheet\VerifyCompleteByUserId;
 use Gs2Cdk\Mission\StampSheet\VerifyCounterValueByUserId;
 
@@ -132,6 +133,19 @@ class NamespaceRef {
             $this->namespaceName,
             $counterName,
             $value,
+            $userId,
+        ));
+    }
+
+    public function resetCounter(
+        string $counterName,
+        array $scopes,
+        ?string $userId = "#{userId}",
+    ): ResetCounterByUserId {
+        return (new ResetCounterByUserId(
+            $this->namespaceName,
+            $counterName,
+            $scopes,
             $userId,
         ));
     }
