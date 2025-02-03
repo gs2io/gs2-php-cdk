@@ -26,7 +26,8 @@ class TriggerByUserId extends AcquireAction {
         string $namespaceName,
         string $triggerName,
         string $triggerStrategy,
-        int $ttl,
+        ?int $ttl = null,
+        ?string $eventId = null,
         ?string $userId = "#{userId}",
     ) {
         $properties = [];
@@ -35,6 +36,7 @@ class TriggerByUserId extends AcquireAction {
         $properties["triggerName"] = $triggerName;
         $properties["triggerStrategy"] = $triggerStrategy;
         $properties["ttl"] = $ttl;
+        $properties["eventId"] = $eventId;
         $properties["userId"] = $userId;
 
         parent::__construct(

@@ -37,6 +37,7 @@ class NamespaceRef {
         string $triggerName,
         string $triggerStrategy,
         int $ttl,
+        string $eventId,
         ?string $userId = "#{userId}",
     ): TriggerByUserId {
         return (new TriggerByUserId(
@@ -44,6 +45,7 @@ class NamespaceRef {
             $triggerName,
             $triggerStrategy,
             $ttl,
+            $eventId,
             $userId,
         ));
     }
