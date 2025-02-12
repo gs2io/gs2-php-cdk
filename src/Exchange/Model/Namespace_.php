@@ -39,6 +39,7 @@ class Namespace_ extends CdkResource {
     private ?TransactionSetting $transactionSetting = null;
     private ?ScriptSetting $exchangeScript = null;
     private ?ScriptSetting $incrementalExchangeScript = null;
+    private ?ScriptSetting $acquireAwaitScript = null;
     private ?LogSetting $logSetting = null;
 
     public function __construct(
@@ -58,6 +59,7 @@ class Namespace_ extends CdkResource {
         $this->transactionSetting = $options?->transactionSetting ?? null;
         $this->exchangeScript = $options?->exchangeScript ?? null;
         $this->incrementalExchangeScript = $options?->incrementalExchangeScript ?? null;
+        $this->acquireAwaitScript = $options?->acquireAwaitScript ?? null;
         $this->logSetting = $options?->logSetting ?? null;
         $stack->addResource(
             $this,
@@ -101,6 +103,10 @@ class Namespace_ extends CdkResource {
         }
         if ($this->incrementalExchangeScript != null) {
             $properties["IncrementalExchangeScript"] = $this->incrementalExchangeScript?->properties(
+            );
+        }
+        if ($this->acquireAwaitScript != null) {
+            $properties["AcquireAwaitScript"] = $this->acquireAwaitScript?->properties(
             );
         }
         if ($this->logSetting != null) {

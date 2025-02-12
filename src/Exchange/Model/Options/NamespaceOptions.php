@@ -26,6 +26,7 @@ class NamespaceOptions {
     public ?TransactionSetting $transactionSetting;
     public ?ScriptSetting $exchangeScript;
     public ?ScriptSetting $incrementalExchangeScript;
+    public ?ScriptSetting $acquireAwaitScript;
     public ?LogSetting $logSetting;
     public ?string $queueNamespaceId;
     public ?string $keyId;
@@ -37,6 +38,7 @@ class NamespaceOptions {
         ?TransactionSetting $transactionSetting = null,
         ?ScriptSetting $exchangeScript = null,
         ?ScriptSetting $incrementalExchangeScript = null,
+        ?ScriptSetting $acquireAwaitScript = null,
         ?LogSetting $logSetting = null,
         ?string $queueNamespaceId = null,
         ?string $keyId = null,
@@ -47,6 +49,7 @@ class NamespaceOptions {
         $this->transactionSetting = $transactionSetting;
         $this->exchangeScript = $exchangeScript;
         $this->incrementalExchangeScript = $incrementalExchangeScript;
+        $this->acquireAwaitScript = $acquireAwaitScript;
         $this->logSetting = $logSetting;
         $this->queueNamespaceId = $queueNamespaceId;
         $this->keyId = $keyId;
