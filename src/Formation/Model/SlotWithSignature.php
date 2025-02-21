@@ -16,7 +16,7 @@
  */
 namespace Gs2Cdk\Formation\Model;
 use Gs2Cdk\Formation\Model\Options\SlotWithSignatureOptions;
-use Gs2Cdk\Formation\Model\Enum\SlotWithSignaturePropertyType;
+use Gs2Cdk\Formation\Model\Enums\SlotWithSignaturePropertyType;
 
 class SlotWithSignature {
     private string $name;

@@ -15,8 +15,8 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Mission\Model\Options;
-use Gs2Cdk\Mission\Model\Enum\TargetCounterModelScopeType;
-use Gs2Cdk\Mission\Model\Enum\TargetCounterModelResetType;
+use Gs2Cdk\Mission\Model\Enums\TargetCounterModelScopeType;
+use Gs2Cdk\Mission\Model\Enums\TargetCounterModelResetType;
 
 class TargetCounterModelScopeTypeIsVerifyActionOptions {
     public ?TargetCounterModelResetType $resetType;

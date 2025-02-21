@@ -13,6 +13,8 @@
  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
+ *
+ * deny overwrite
  */
 namespace Gs2Cdk\Schedule\Model;
 use Gs2Cdk\Schedule\Model\RepeatSetting;
@@ -23,16 +25,16 @@ use Gs2Cdk\Schedule\Model\Options\EventRepeatTypeIsAlwaysOptions;
 use Gs2Cdk\Schedule\Model\Options\EventRepeatTypeIsDailyOptions;
 use Gs2Cdk\Schedule\Model\Options\EventRepeatTypeIsWeeklyOptions;
 use Gs2Cdk\Schedule\Model\Options\EventRepeatTypeIsMonthlyOptions;
-use Gs2Cdk\Schedule\Model\Enum\EventScheduleType;
-use Gs2Cdk\Schedule\Model\Enum\EventRepeatType;
-use Gs2Cdk\Schedule\Model\Enum\EventRepeatBeginDayOfWeek;
-use Gs2Cdk\Schedule\Model\Enum\EventRepeatEndDayOfWeek;
+use Gs2Cdk\Schedule\Model\Enums\EventScheduleType;
+use Gs2Cdk\Schedule\Model\Enums\EventRepeatType;
+use Gs2Cdk\Schedule\Model\Enums\EventRepeatBeginDayOfWeek;
+use Gs2Cdk\Schedule\Model\Enums\EventRepeatEndDayOfWeek;
 
 class Event {
     private string $name;
     private EventScheduleType $scheduleType;
     private RepeatSetting $repeatSetting;
-    private EventRepeatType $repeatType;
+    private ?EventRepeatType $repeatType;
     private ?string $metadata = null;
     private ?int $absoluteBegin = null;
     private ?int $absoluteEnd = null;
@@ -48,13 +50,12 @@ class Event {
         string $name,
         EventScheduleType $scheduleType,
         RepeatSetting $repeatSetting,
-        EventRepeatType $repeatType,
         ?EventOptions $options = null,
     ) {
         $this->name = $name;
         $this->scheduleType = $scheduleType;
         $this->repeatSetting = $repeatSetting;
-        $this->repeatType = $repeatType;
+        $this->repeatType = $options?->repeatType ?? null;
         $this->metadata = $options?->metadata ?? null;
         $this->absoluteBegin = $options?->absoluteBegin ?? null;
         $this->absoluteEnd = $options?->absoluteEnd ?? null;
@@ -70,14 +71,12 @@ class Event {
     public static function scheduleTypeIsAbsolute(
         string $name,
         RepeatSetting $repeatSetting,
-        EventRepeatType $repeatType,
         ?EventScheduleTypeIsAbsoluteOptions $options = null,
     ): Event {
         return (new Event(
             $name,
             EventScheduleType::ABSOLUTE,
             $repeatSetting,
-            $repeatType,
             new EventOptions(
                 metadata: $options?->metadata,
                 absoluteBegin: $options?->absoluteBegin,
@@ -89,7 +88,6 @@ class Event {
     public static function scheduleTypeIsRelative(
         string $name,
         RepeatSetting $repeatSetting,
-        EventRepeatType $repeatType,
         string $relativeTriggerName,
         ?EventScheduleTypeIsRelativeOptions $options = null,
     ): Event {
@@ -97,7 +95,6 @@ class Event {
             $name,
             EventScheduleType::RELATIVE,
             $repeatSetting,
-            $repeatType,
             new EventOptions(
                 relativeTriggerName: $relativeTriggerName,
                 metadata: $options?->metadata,
@@ -117,8 +114,8 @@ class Event {
             $name,
             $scheduleType,
             $repeatSetting,
-            EventRepeatType::ALWAYS,
             new EventOptions(
+                EventRepeatType::ALWAYS,            	
                 metadata: $options?->metadata,
                 absoluteBegin: $options?->absoluteBegin,
                 absoluteEnd: $options?->absoluteEnd,
@@ -138,8 +135,8 @@ class Event {
             $name,
             $scheduleType,
             $repeatSetting,
-            EventRepeatType::DAILY,
             new EventOptions(
+            	EventRepeatType::DAILY,
                 repeatBeginHour: $repeatBeginHour,
                 repeatEndHour: $repeatEndHour,
                 metadata: $options?->metadata,
@@ -163,8 +160,8 @@ class Event {
             $name,
             $scheduleType,
             $repeatSetting,
-            EventRepeatType::WEEKLY,
             new EventOptions(
+   	            EventRepeatType::WEEKLY,
                 repeatBeginDayOfWeek: $repeatBeginDayOfWeek,
                 repeatEndDayOfWeek: $repeatEndDayOfWeek,
                 repeatBeginHour: $repeatBeginHour,
@@ -190,8 +187,8 @@ class Event {
             $name,
             $scheduleType,
             $repeatSetting,
-            EventRepeatType::MONTHLY,
             new EventOptions(
+                EventRepeatType::MONTHLY,
                 repeatBeginDayOfMonth: $repeatBeginDayOfMonth,
                 repeatEndDayOfMonth: $repeatEndDayOfMonth,
                 repeatBeginHour: $repeatBeginHour,

@@ -21,7 +21,7 @@ use Gs2Cdk\Core\Model\Stack;
 use Gs2Cdk\Core\Func\GetAttr;
 
 use Gs2Cdk\Log\Ref\NamespaceRef;
-use Gs2Cdk\Log\Model\Enum\NamespaceType;
+use Gs2Cdk\Log\Model\Enums\NamespaceType;
 
 use Gs2Cdk\Log\Model\Options\NamespaceOptions;
 

@@ -15,7 +15,7 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Identifier\Model\Options;
-use Gs2Cdk\Identifier\Model\Enum\TwoFactorAuthenticationSettingStatus;
+use Gs2Cdk\Identifier\Model\Enums\TwoFactorAuthenticationSettingStatus;
 
 class TwoFactorAuthenticationSettingOptions {
     

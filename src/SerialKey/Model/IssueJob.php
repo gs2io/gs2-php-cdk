@@ -16,7 +16,7 @@
  */
 namespace Gs2Cdk\SerialKey\Model;
 use Gs2Cdk\SerialKey\Model\Options\IssueJobOptions;
-use Gs2Cdk\SerialKey\Model\Enum\IssueJobStatus;
+use Gs2Cdk\SerialKey\Model\Enums\IssueJobStatus;
 
 class IssueJob {
     private string $name;

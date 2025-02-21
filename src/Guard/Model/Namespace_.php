@@ -22,7 +22,7 @@ use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Guard\Model\BlockingPolicyModel;
 
 use Gs2Cdk\Guard\Ref\NamespaceRef;
-use Gs2Cdk\Guard\Model\Enum\NamespaceStatus;
+use Gs2Cdk\Guard\Model\Enums\NamespaceStatus;
 
 use Gs2Cdk\Guard\Model\Options\NamespaceOptions;
 

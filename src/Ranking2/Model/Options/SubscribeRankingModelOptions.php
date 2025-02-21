@@ -15,7 +15,7 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Ranking2\Model\Options;
-use Gs2Cdk\Ranking2\Model\Enum\SubscribeRankingModelOrderDirection;
+use Gs2Cdk\Ranking2\Model\Enums\SubscribeRankingModelOrderDirection;
 
 class SubscribeRankingModelOptions {
     public ?string $metadata;

@@ -15,7 +15,7 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Distributor\Model\Options;
-use Gs2Cdk\Distributor\Model\Enum\BatchRequestPayloadService;
+use Gs2Cdk\Distributor\Model\Enums\BatchRequestPayloadService;
 
 class BatchRequestPayloadOptions {
     

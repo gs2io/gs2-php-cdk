@@ -18,7 +18,7 @@ namespace Gs2Cdk\Money2\Model;
 use Gs2Cdk\Money2\Model\AppleAppStoreVerifyReceiptEvent;
 use Gs2Cdk\Money2\Model\GooglePlayVerifyReceiptEvent;
 use Gs2Cdk\Money2\Model\Options\VerifyReceiptEventOptions;
-use Gs2Cdk\Money2\Model\Enum\VerifyReceiptEventPlatform;
+use Gs2Cdk\Money2\Model\Enums\VerifyReceiptEventPlatform;
 
 class VerifyReceiptEvent {
     private string $contentName;

@@ -16,7 +16,7 @@
  */
 namespace Gs2Cdk\Money2\Model;
 use Gs2Cdk\Money2\Model\Options\ReceiptOptions;
-use Gs2Cdk\Money2\Model\Enum\ReceiptStore;
+use Gs2Cdk\Money2\Model\Enums\ReceiptStore;
 
 class Receipt {
     private ReceiptStore $store;

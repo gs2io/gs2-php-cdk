@@ -23,8 +23,8 @@ use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 use Gs2Cdk\Money\Ref\NamespaceRef;
-use Gs2Cdk\Money\Model\Enum\NamespacePriority;
-use Gs2Cdk\Money\Model\Enum\NamespaceCurrency;
+use Gs2Cdk\Money\Model\Enums\NamespacePriority;
+use Gs2Cdk\Money\Model\Enums\NamespaceCurrency;
 
 use Gs2Cdk\Money\Model\Options\NamespaceOptions;
 

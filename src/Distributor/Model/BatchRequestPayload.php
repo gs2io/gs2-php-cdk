@@ -16,7 +16,7 @@
  */
 namespace Gs2Cdk\Distributor\Model;
 use Gs2Cdk\Distributor\Model\Options\BatchRequestPayloadOptions;
-use Gs2Cdk\Distributor\Model\Enum\BatchRequestPayloadService;
+use Gs2Cdk\Distributor\Model\Enums\BatchRequestPayloadService;
 
 class BatchRequestPayload {
     private string $requestId;

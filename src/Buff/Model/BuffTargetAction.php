@@ -13,20 +13,22 @@
  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
+ *
+ * deny overwrite
  */
 namespace Gs2Cdk\Buff\Model;
 use Gs2Cdk\Buff\Model\BuffTargetGrn;
 use Gs2Cdk\Buff\Model\Options\BuffTargetActionOptions;
-use Gs2Cdk\Buff\Model\Enum\BuffTargetActionTargetActionName;
+use Gs2Cdk\Buff\Model\Enums\BuffTargetActionTargetActionName;
 
 class BuffTargetAction {
-    private string $targetActionName;
+    private BuffTargetActionTargetActionName $targetActionName;
     private string $targetFieldName;
     private array $conditionGrns;
     private float $rate;
 
     public function __construct(
-        string $targetActionName,
+        BuffTargetActionTargetActionName $targetActionName,
         string $targetFieldName,
         array $conditionGrns,
         float $rate,

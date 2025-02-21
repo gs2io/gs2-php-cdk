@@ -15,7 +15,7 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Log\Model\Options;
-use Gs2Cdk\Log\Model\Enum\AccessLogWithTelemetryStatus;
+use Gs2Cdk\Log\Model\Enums\AccessLogWithTelemetryStatus;
 
 class AccessLogWithTelemetryOptions {
     public ?string $userId;

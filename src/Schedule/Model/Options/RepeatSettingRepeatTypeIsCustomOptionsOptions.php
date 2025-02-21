@@ -15,9 +15,9 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Schedule\Model\Options;
-use Gs2Cdk\Schedule\Model\Enum\RepeatSettingRepeatType;
-use Gs2Cdk\Schedule\Model\Enum\RepeatSettingBeginDayOfWeek;
-use Gs2Cdk\Schedule\Model\Enum\RepeatSettingEndDayOfWeek;
+use Gs2Cdk\Schedule\Model\Enums\RepeatSettingRepeatType;
+use Gs2Cdk\Schedule\Model\Enums\RepeatSettingBeginDayOfWeek;
+use Gs2Cdk\Schedule\Model\Enums\RepeatSettingEndDayOfWeek;
 
 class RepeatSettingRepeatTypeIsCustomOptions {
     

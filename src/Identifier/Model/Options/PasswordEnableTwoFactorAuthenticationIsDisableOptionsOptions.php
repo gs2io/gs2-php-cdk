@@ -16,7 +16,7 @@
  */
 namespace Gs2Cdk\Identifier\Model\Options;
 use Gs2Cdk\Identifier\Model\TwoFactorAuthenticationSetting;
-use Gs2Cdk\Identifier\Model\Enum\PasswordEnableTwoFactorAuthentication;
+use Gs2Cdk\Identifier\Model\Enums\PasswordEnableTwoFactorAuthentication;
 
 class PasswordEnableTwoFactorAuthenticationIsDisableOptions {
     public ?TwoFactorAuthenticationSetting $twoFactorAuthenticationSetting;

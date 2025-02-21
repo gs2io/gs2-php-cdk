@@ -16,7 +16,7 @@
  */
 namespace Gs2Cdk\Identifier\Model;
 use Gs2Cdk\Identifier\Model\Options\TwoFactorAuthenticationSettingOptions;
-use Gs2Cdk\Identifier\Model\Enum\TwoFactorAuthenticationSettingStatus;
+use Gs2Cdk\Identifier\Model\Enums\TwoFactorAuthenticationSettingStatus;
 
 class TwoFactorAuthenticationSetting {
     private string $authenticationKey;

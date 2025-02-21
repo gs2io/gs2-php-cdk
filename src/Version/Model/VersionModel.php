@@ -22,9 +22,9 @@ use Gs2Cdk\Version\Model\Options\VersionModelTypeIsSimpleOptions;
 use Gs2Cdk\Version\Model\Options\VersionModelTypeIsScheduleOptions;
 use Gs2Cdk\Version\Model\Options\VersionModelScopeIsPassiveOptions;
 use Gs2Cdk\Version\Model\Options\VersionModelScopeIsActiveOptions;
-use Gs2Cdk\Version\Model\Enum\VersionModelScope;
-use Gs2Cdk\Version\Model\Enum\VersionModelType;
-use Gs2Cdk\Version\Model\Enum\VersionModelApproveRequirement;
+use Gs2Cdk\Version\Model\Enums\VersionModelScope;
+use Gs2Cdk\Version\Model\Enums\VersionModelType;
+use Gs2Cdk\Version\Model\Enums\VersionModelApproveRequirement;
 
 class VersionModel {
     private string $name;

@@ -15,8 +15,8 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Mission\Model\Options;
-use Gs2Cdk\Mission\Model\Enum\ScopedValueScopeType;
-use Gs2Cdk\Mission\Model\Enum\ScopedValueResetType;
+use Gs2Cdk\Mission\Model\Enums\ScopedValueScopeType;
+use Gs2Cdk\Mission\Model\Enums\ScopedValueResetType;
 
 class ScopedValueScopeTypeIsVerifyActionOptions {
     public ?int $nextResetAt;

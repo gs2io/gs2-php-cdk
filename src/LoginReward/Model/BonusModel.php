@@ -24,9 +24,9 @@ use Gs2Cdk\LoginReward\Model\Options\BonusModelModeIsScheduleOptions;
 use Gs2Cdk\LoginReward\Model\Options\BonusModelModeIsStreamingOptions;
 use Gs2Cdk\LoginReward\Model\Options\BonusModelMissedReceiveReliefIsEnabledOptions;
 use Gs2Cdk\LoginReward\Model\Options\BonusModelMissedReceiveReliefIsDisabledOptions;
-use Gs2Cdk\LoginReward\Model\Enum\BonusModelMode;
-use Gs2Cdk\LoginReward\Model\Enum\BonusModelRepeat;
-use Gs2Cdk\LoginReward\Model\Enum\BonusModelMissedReceiveRelief;
+use Gs2Cdk\LoginReward\Model\Enums\BonusModelMode;
+use Gs2Cdk\LoginReward\Model\Enums\BonusModelRepeat;
+use Gs2Cdk\LoginReward\Model\Enums\BonusModelMissedReceiveRelief;
 
 class BonusModel {
     private string $name;

@@ -18,7 +18,7 @@ namespace Gs2Cdk\Grade\Model;
 use Gs2Cdk\Grade\Model\Options\AcquireActionRateOptions;
 use Gs2Cdk\Grade\Model\Options\AcquireActionRateModeIsDoubleOptions;
 use Gs2Cdk\Grade\Model\Options\AcquireActionRateModeIsBigOptions;
-use Gs2Cdk\Grade\Model\Enum\AcquireActionRateMode;
+use Gs2Cdk\Grade\Model\Enums\AcquireActionRateMode;
 
 class AcquireActionRate {
     private string $name;

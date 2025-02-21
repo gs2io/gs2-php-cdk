@@ -25,8 +25,8 @@ use Gs2Cdk\Mission\Model\Options\MissionGroupModelResetTypeIsDailyOptions;
 use Gs2Cdk\Mission\Model\Options\MissionGroupModelResetTypeIsWeeklyOptions;
 use Gs2Cdk\Mission\Model\Options\MissionGroupModelResetTypeIsMonthlyOptions;
 use Gs2Cdk\Mission\Model\Options\MissionGroupModelResetTypeIsDaysOptions;
-use Gs2Cdk\Mission\Model\Enum\MissionGroupModelResetType;
-use Gs2Cdk\Mission\Model\Enum\MissionGroupModelResetDayOfWeek;
+use Gs2Cdk\Mission\Model\Enums\MissionGroupModelResetType;
+use Gs2Cdk\Mission\Model\Enums\MissionGroupModelResetDayOfWeek;
 
 class MissionGroupModel {
     private string $name;

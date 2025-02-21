@@ -21,7 +21,7 @@ use Gs2Cdk\Exchange\Model\Options\IncrementalRateModelOptions;
 use Gs2Cdk\Exchange\Model\Options\IncrementalRateModelCalculateTypeIsLinearOptions;
 use Gs2Cdk\Exchange\Model\Options\IncrementalRateModelCalculateTypeIsPowerOptions;
 use Gs2Cdk\Exchange\Model\Options\IncrementalRateModelCalculateTypeIsGs2ScriptOptions;
-use Gs2Cdk\Exchange\Model\Enum\IncrementalRateModelCalculateType;
+use Gs2Cdk\Exchange\Model\Enums\IncrementalRateModelCalculateType;
 
 class IncrementalRateModel {
     private string $name;

@@ -21,8 +21,8 @@ use Gs2Cdk\Buff\Model\BuffTargetAction;
 use Gs2Cdk\Buff\Model\Options\BuffEntryModelOptions;
 use Gs2Cdk\Buff\Model\Options\BuffEntryModelTargetTypeIsModelOptions;
 use Gs2Cdk\Buff\Model\Options\BuffEntryModelTargetTypeIsActionOptions;
-use Gs2Cdk\Buff\Model\Enum\BuffEntryModelExpression;
-use Gs2Cdk\Buff\Model\Enum\BuffEntryModelTargetType;
+use Gs2Cdk\Buff\Model\Enums\BuffEntryModelExpression;
+use Gs2Cdk\Buff\Model\Enums\BuffEntryModelTargetType;
 
 class BuffEntryModel {
     private string $name;

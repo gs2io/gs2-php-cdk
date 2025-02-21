@@ -18,10 +18,10 @@ namespace Gs2Cdk\Matchmaking\Model\Options;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\NotificationSetting;
 use Gs2Cdk\Core\Model\LogSetting;
-use Gs2Cdk\Matchmaking\Model\Enum\NamespaceEnableDisconnectDetection;
-use Gs2Cdk\Matchmaking\Model\Enum\NamespaceCreateGatheringTriggerType;
-use Gs2Cdk\Matchmaking\Model\Enum\NamespaceCompleteMatchmakingTriggerType;
-use Gs2Cdk\Matchmaking\Model\Enum\NamespaceEnableCollaborateSeasonRating;
+use Gs2Cdk\Matchmaking\Model\Enums\NamespaceEnableDisconnectDetection;
+use Gs2Cdk\Matchmaking\Model\Enums\NamespaceCreateGatheringTriggerType;
+use Gs2Cdk\Matchmaking\Model\Enums\NamespaceCompleteMatchmakingTriggerType;
+use Gs2Cdk\Matchmaking\Model\Enums\NamespaceEnableCollaborateSeasonRating;
 
 class NamespaceCreateGatheringTriggerTypeIsGs2RealtimeOptions {
     public ?string $description;

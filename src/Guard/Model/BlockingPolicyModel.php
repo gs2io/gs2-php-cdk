@@ -26,17 +26,17 @@ use Gs2Cdk\Guard\Model\Options\BlockingPolicyModelReputationIpDetectionIsEnableO
 use Gs2Cdk\Guard\Model\Options\BlockingPolicyModelReputationIpDetectionIsDisableOptions;
 use Gs2Cdk\Guard\Model\Options\BlockingPolicyModelIpAddressesDetectionIsEnableOptions;
 use Gs2Cdk\Guard\Model\Options\BlockingPolicyModelIpAddressesDetectionIsDisableOptions;
-use Gs2Cdk\Guard\Model\Enum\BlockingPolicyModelDefaultRestriction;
-use Gs2Cdk\Guard\Model\Enum\BlockingPolicyModelLocationDetection;
-use Gs2Cdk\Guard\Model\Enum\BlockingPolicyModelLocationRestriction;
-use Gs2Cdk\Guard\Model\Enum\BlockingPolicyModelAnonymousIpDetection;
-use Gs2Cdk\Guard\Model\Enum\BlockingPolicyModelAnonymousIpRestriction;
-use Gs2Cdk\Guard\Model\Enum\BlockingPolicyModelHostingProviderIpDetection;
-use Gs2Cdk\Guard\Model\Enum\BlockingPolicyModelHostingProviderIpRestriction;
-use Gs2Cdk\Guard\Model\Enum\BlockingPolicyModelReputationIpDetection;
-use Gs2Cdk\Guard\Model\Enum\BlockingPolicyModelReputationIpRestriction;
-use Gs2Cdk\Guard\Model\Enum\BlockingPolicyModelIpAddressesDetection;
-use Gs2Cdk\Guard\Model\Enum\BlockingPolicyModelIpAddressRestriction;
+use Gs2Cdk\Guard\Model\Enums\BlockingPolicyModelDefaultRestriction;
+use Gs2Cdk\Guard\Model\Enums\BlockingPolicyModelLocationDetection;
+use Gs2Cdk\Guard\Model\Enums\BlockingPolicyModelLocationRestriction;
+use Gs2Cdk\Guard\Model\Enums\BlockingPolicyModelAnonymousIpDetection;
+use Gs2Cdk\Guard\Model\Enums\BlockingPolicyModelAnonymousIpRestriction;
+use Gs2Cdk\Guard\Model\Enums\BlockingPolicyModelHostingProviderIpDetection;
+use Gs2Cdk\Guard\Model\Enums\BlockingPolicyModelHostingProviderIpRestriction;
+use Gs2Cdk\Guard\Model\Enums\BlockingPolicyModelReputationIpDetection;
+use Gs2Cdk\Guard\Model\Enums\BlockingPolicyModelReputationIpRestriction;
+use Gs2Cdk\Guard\Model\Enums\BlockingPolicyModelIpAddressesDetection;
+use Gs2Cdk\Guard\Model\Enums\BlockingPolicyModelIpAddressRestriction;
 
 class BlockingPolicyModel {
     private array $passServices;

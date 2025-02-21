@@ -16,7 +16,7 @@
  */
 namespace Gs2Cdk\Log\Model;
 use Gs2Cdk\Log\Model\Options\AccessLogWithTelemetryOptions;
-use Gs2Cdk\Log\Model\Enum\AccessLogWithTelemetryStatus;
+use Gs2Cdk\Log\Model\Enums\AccessLogWithTelemetryStatus;
 
 class AccessLogWithTelemetry {
     private int $timestamp;

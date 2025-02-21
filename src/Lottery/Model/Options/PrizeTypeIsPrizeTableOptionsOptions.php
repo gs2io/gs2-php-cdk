@@ -16,7 +16,7 @@
  */
 namespace Gs2Cdk\Lottery\Model\Options;
 use Gs2Cdk\Core\Model\AcquireAction;
-use Gs2Cdk\Lottery\Model\Enum\PrizeType;
+use Gs2Cdk\Lottery\Model\Enums\PrizeType;
 
 class PrizeTypeIsPrizeTableOptions {
     public ?int $drawnLimit;

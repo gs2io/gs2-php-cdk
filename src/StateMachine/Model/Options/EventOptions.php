@@ -17,7 +17,7 @@
 namespace Gs2Cdk\StateMachine\Model\Options;
 use Gs2Cdk\StateMachine\Model\ChangeStateEvent;
 use Gs2Cdk\StateMachine\Model\EmitEvent;
-use Gs2Cdk\StateMachine\Model\Enum\EventEventType;
+use Gs2Cdk\StateMachine\Model\Enums\EventEventType;
 
 class EventOptions {
     public ?ChangeStateEvent $changeStateEvent;

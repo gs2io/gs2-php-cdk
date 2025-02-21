@@ -23,7 +23,7 @@ use Gs2Cdk\Showcase\Model\SalesItemGroup;
 use Gs2Cdk\Showcase\Model\Options\DisplayItemOptions;
 use Gs2Cdk\Showcase\Model\Options\DisplayItemTypeIsSalesItemOptions;
 use Gs2Cdk\Showcase\Model\Options\DisplayItemTypeIsSalesItemGroupOptions;
-use Gs2Cdk\Showcase\Model\Enum\DisplayItemType;
+use Gs2Cdk\Showcase\Model\Enums\DisplayItemType;
 
 class DisplayItem {
     private string $displayItemId;

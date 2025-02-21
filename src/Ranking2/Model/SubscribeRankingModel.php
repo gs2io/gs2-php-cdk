@@ -16,7 +16,7 @@
  */
 namespace Gs2Cdk\Ranking2\Model;
 use Gs2Cdk\Ranking2\Model\Options\SubscribeRankingModelOptions;
-use Gs2Cdk\Ranking2\Model\Enum\SubscribeRankingModelOrderDirection;
+use Gs2Cdk\Ranking2\Model\Enums\SubscribeRankingModelOrderDirection;
 
 class SubscribeRankingModel {
     private string $name;

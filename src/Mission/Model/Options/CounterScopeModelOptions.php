@@ -16,9 +16,9 @@
  */
 namespace Gs2Cdk\Mission\Model\Options;
 use Gs2Cdk\Core\Model\VerifyAction;
-use Gs2Cdk\Mission\Model\Enum\CounterScopeModelScopeType;
-use Gs2Cdk\Mission\Model\Enum\CounterScopeModelResetType;
-use Gs2Cdk\Mission\Model\Enum\CounterScopeModelResetDayOfWeek;
+use Gs2Cdk\Mission\Model\Enums\CounterScopeModelScopeType;
+use Gs2Cdk\Mission\Model\Enums\CounterScopeModelResetType;
+use Gs2Cdk\Mission\Model\Enums\CounterScopeModelResetDayOfWeek;
 
 class CounterScopeModelOptions {
     public ?CounterScopeModelResetType $resetType;

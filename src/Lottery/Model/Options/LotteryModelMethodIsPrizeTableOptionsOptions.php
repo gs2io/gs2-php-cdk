@@ -15,8 +15,8 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Lottery\Model\Options;
-use Gs2Cdk\Lottery\Model\Enum\LotteryModelMode;
-use Gs2Cdk\Lottery\Model\Enum\LotteryModelMethod;
+use Gs2Cdk\Lottery\Model\Enums\LotteryModelMode;
+use Gs2Cdk\Lottery\Model\Enums\LotteryModelMethod;
 
 class LotteryModelMethodIsPrizeTableOptions {
     public ?string $metadata;

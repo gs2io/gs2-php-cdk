@@ -21,7 +21,7 @@ use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Exchange\Model\Options\RateModelOptions;
 use Gs2Cdk\Exchange\Model\Options\RateModelTimingTypeIsImmediateOptions;
 use Gs2Cdk\Exchange\Model\Options\RateModelTimingTypeIsAwaitOptions;
-use Gs2Cdk\Exchange\Model\Enum\RateModelTimingType;
+use Gs2Cdk\Exchange\Model\Enums\RateModelTimingType;
 
 class RateModel {
     private string $name;

@@ -13,6 +13,8 @@
  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
+ *
+ * deny overwrite
  */
 namespace Gs2Cdk\Mission\Model;
 use Gs2Cdk\Mission\Model\TargetCounterModel;
@@ -21,14 +23,12 @@ use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Mission\Model\Options\MissionTaskModelOptions;
 use Gs2Cdk\Mission\Model\Options\MissionTaskModelVerifyCompleteTypeIsCounterOptions;
 use Gs2Cdk\Mission\Model\Options\MissionTaskModelVerifyCompleteTypeIsVerifyActionsOptions;
-use Gs2Cdk\Mission\Model\Enum\MissionTaskModelVerifyCompleteType;
-use Gs2Cdk\Mission\Model\Enum\MissionTaskModelTargetResetType;
+use Gs2Cdk\Mission\Model\Enums\MissionTaskModelVerifyCompleteType;
+use Gs2Cdk\Mission\Model\Enums\MissionTaskModelTargetResetType;
 
 class MissionTaskModel {
     private string $name;
     private MissionTaskModelVerifyCompleteType $verifyCompleteType;
-    private string $counterName;
-    private int $targetValue;
     private ?string $metadata = null;
     private ?TargetCounterModel $targetCounter = null;
     private ?array $verifyCompleteConsumeActions = null;
@@ -40,14 +40,10 @@ class MissionTaskModel {
     public function __construct(
         string $name,
         MissionTaskModelVerifyCompleteType $verifyCompleteType,
-        string $counterName,
-        int $targetValue,
         ?MissionTaskModelOptions $options = null,
     ) {
         $this->name = $name;
         $this->verifyCompleteType = $verifyCompleteType;
-        $this->counterName = $counterName;
-        $this->targetValue = $targetValue;
         $this->metadata = $options?->metadata ?? null;
         $this->targetCounter = $options?->targetCounter ?? null;
         $this->verifyCompleteConsumeActions = $options?->verifyCompleteConsumeActions ?? null;
@@ -59,16 +55,12 @@ class MissionTaskModel {
 
     public static function verifyCompleteTypeIsCounter(
         string $name,
-        string $counterName,
-        int $targetValue,
         TargetCounterModel $targetCounter,
         ?MissionTaskModelVerifyCompleteTypeIsCounterOptions $options = null,
     ): MissionTaskModel {
         return (new MissionTaskModel(
             $name,
             MissionTaskModelVerifyCompleteType::COUNTER,
-            $counterName,
-            $targetValue,
             new MissionTaskModelOptions(
                 targetCounter: $targetCounter,
                 metadata: $options?->metadata,
@@ -83,15 +75,11 @@ class MissionTaskModel {
 
     public static function verifyCompleteTypeIsVerifyActions(
         string $name,
-        string $counterName,
-        int $targetValue,
         ?MissionTaskModelVerifyCompleteTypeIsVerifyActionsOptions $options = null,
     ): MissionTaskModel {
         return (new MissionTaskModel(
             $name,
             MissionTaskModelVerifyCompleteType::VERIFY_ACTIONS,
-            $counterName,
-            $targetValue,
             new MissionTaskModelOptions(
                 metadata: $options?->metadata,
                 verifyCompleteConsumeActions: $options?->verifyCompleteConsumeActions,
@@ -145,15 +133,9 @@ class MissionTaskModel {
         if ($this->premiseMissionTaskName != null) {
             $properties["premiseMissionTaskName"] = $this->premiseMissionTaskName;
         }
-        if ($this->counterName != null) {
-            $properties["counterName"] = $this->counterName;
-        }
         if ($this->targetResetType != null) {
             $properties["targetResetType"] = $this->targetResetType?->toString(
             );
-        }
-        if ($this->targetValue != null) {
-            $properties["targetValue"] = $this->targetValue;
         }
 
         return $properties;

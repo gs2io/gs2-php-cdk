@@ -21,8 +21,8 @@ use Gs2Cdk\Ranking\Model\GlobalRankingSetting;
 use Gs2Cdk\Ranking\Model\Options\CategoryModelOptions;
 use Gs2Cdk\Ranking\Model\Options\CategoryModelScopeIsGlobalOptions;
 use Gs2Cdk\Ranking\Model\Options\CategoryModelScopeIsScopedOptions;
-use Gs2Cdk\Ranking\Model\Enum\CategoryModelOrderDirection;
-use Gs2Cdk\Ranking\Model\Enum\CategoryModelScope;
+use Gs2Cdk\Ranking\Model\Enums\CategoryModelOrderDirection;
+use Gs2Cdk\Ranking\Model\Enums\CategoryModelScope;
 
 class CategoryModel {
     private string $name;

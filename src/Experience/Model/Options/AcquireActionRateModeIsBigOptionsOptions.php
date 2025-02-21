@@ -15,7 +15,7 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Experience\Model\Options;
-use Gs2Cdk\Experience\Model\Enum\AcquireActionRateMode;
+use Gs2Cdk\Experience\Model\Enums\AcquireActionRateMode;
 
 class AcquireActionRateModeIsBigOptions {
     

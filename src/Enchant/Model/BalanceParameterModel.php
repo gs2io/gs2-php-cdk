@@ -17,7 +17,7 @@
 namespace Gs2Cdk\Enchant\Model;
 use Gs2Cdk\Enchant\Model\BalanceParameterValueModel;
 use Gs2Cdk\Enchant\Model\Options\BalanceParameterModelOptions;
-use Gs2Cdk\Enchant\Model\Enum\BalanceParameterModelInitialValueStrategy;
+use Gs2Cdk\Enchant\Model\Enums\BalanceParameterModelInitialValueStrategy;
 
 class BalanceParameterModel {
     private string $name;

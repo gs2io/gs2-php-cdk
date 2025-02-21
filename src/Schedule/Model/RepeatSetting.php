@@ -21,9 +21,9 @@ use Gs2Cdk\Schedule\Model\Options\RepeatSettingRepeatTypeIsDailyOptions;
 use Gs2Cdk\Schedule\Model\Options\RepeatSettingRepeatTypeIsWeeklyOptions;
 use Gs2Cdk\Schedule\Model\Options\RepeatSettingRepeatTypeIsMonthlyOptions;
 use Gs2Cdk\Schedule\Model\Options\RepeatSettingRepeatTypeIsCustomOptions;
-use Gs2Cdk\Schedule\Model\Enum\RepeatSettingRepeatType;
-use Gs2Cdk\Schedule\Model\Enum\RepeatSettingBeginDayOfWeek;
-use Gs2Cdk\Schedule\Model\Enum\RepeatSettingEndDayOfWeek;
+use Gs2Cdk\Schedule\Model\Enums\RepeatSettingRepeatType;
+use Gs2Cdk\Schedule\Model\Enums\RepeatSettingBeginDayOfWeek;
+use Gs2Cdk\Schedule\Model\Enums\RepeatSettingEndDayOfWeek;
 
 class RepeatSetting {
     private RepeatSettingRepeatType $repeatType;

@@ -17,9 +17,9 @@
 namespace Gs2Cdk\Version\Model\Options;
 use Gs2Cdk\Version\Model\Version;
 use Gs2Cdk\Version\Model\ScheduleVersion;
-use Gs2Cdk\Version\Model\Enum\VersionModelScope;
-use Gs2Cdk\Version\Model\Enum\VersionModelType;
-use Gs2Cdk\Version\Model\Enum\VersionModelApproveRequirement;
+use Gs2Cdk\Version\Model\Enums\VersionModelScope;
+use Gs2Cdk\Version\Model\Enums\VersionModelType;
+use Gs2Cdk\Version\Model\Enums\VersionModelApproveRequirement;
 
 class VersionModelOptions {
     public ?string $metadata;

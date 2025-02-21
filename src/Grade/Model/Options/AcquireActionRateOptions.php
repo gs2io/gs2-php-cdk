@@ -15,7 +15,7 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Grade\Model\Options;
-use Gs2Cdk\Grade\Model\Enum\AcquireActionRateMode;
+use Gs2Cdk\Grade\Model\Enums\AcquireActionRateMode;
 
 class AcquireActionRateOptions {
     public ?array $rates;

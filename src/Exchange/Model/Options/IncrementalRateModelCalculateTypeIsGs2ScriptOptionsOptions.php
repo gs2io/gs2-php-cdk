@@ -17,7 +17,7 @@
 namespace Gs2Cdk\Exchange\Model\Options;
 use Gs2Cdk\Core\Model\ConsumeAction;
 use Gs2Cdk\Core\Model\AcquireAction;
-use Gs2Cdk\Exchange\Model\Enum\IncrementalRateModelCalculateType;
+use Gs2Cdk\Exchange\Model\Enums\IncrementalRateModelCalculateType;
 
 class IncrementalRateModelCalculateTypeIsGs2ScriptOptions {
     public ?string $metadata;

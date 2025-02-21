@@ -18,8 +18,8 @@ namespace Gs2Cdk\Ranking\Model\Options;
 use Gs2Cdk\Ranking\Model\FixedTiming;
 use Gs2Cdk\Ranking\Model\Scope;
 use Gs2Cdk\Ranking\Model\GlobalRankingSetting;
-use Gs2Cdk\Ranking\Model\Enum\CategoryModelOrderDirection;
-use Gs2Cdk\Ranking\Model\Enum\CategoryModelScope;
+use Gs2Cdk\Ranking\Model\Enums\CategoryModelOrderDirection;
+use Gs2Cdk\Ranking\Model\Enums\CategoryModelScope;
 
 class CategoryModelOptions {
     public ?string $metadata;

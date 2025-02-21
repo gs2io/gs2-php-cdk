@@ -15,7 +15,7 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Formation\Model\Options;
-use Gs2Cdk\Formation\Model\Enum\SlotWithSignaturePropertyType;
+use Gs2Cdk\Formation\Model\Enums\SlotWithSignaturePropertyType;
 
 class SlotWithSignatureOptions {
     public ?string $body;

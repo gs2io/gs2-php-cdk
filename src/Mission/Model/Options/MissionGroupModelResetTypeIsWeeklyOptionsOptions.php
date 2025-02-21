@@ -19,8 +19,8 @@ use Gs2Cdk\Mission\Model\TargetCounterModel;
 use Gs2Cdk\Core\Model\VerifyAction;
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Mission\Model\MissionTaskModel;
-use Gs2Cdk\Mission\Model\Enum\MissionGroupModelResetType;
-use Gs2Cdk\Mission\Model\Enum\MissionGroupModelResetDayOfWeek;
+use Gs2Cdk\Mission\Model\Enums\MissionGroupModelResetType;
+use Gs2Cdk\Mission\Model\Enums\MissionGroupModelResetDayOfWeek;
 
 class MissionGroupModelResetTypeIsWeeklyOptions {
     public ?string $metadata;

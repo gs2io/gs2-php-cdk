@@ -26,7 +26,7 @@ use Gs2Cdk\Core\Model\LogSetting;
 use Gs2Cdk\Money2\Ref\NamespaceRef;
 use Gs2Cdk\Money2\Model\CurrentMasterData;
 use Gs2Cdk\Money2\Model\StoreContentModel;
-use Gs2Cdk\Money2\Model\Enum\NamespaceCurrencyUsagePriority;
+use Gs2Cdk\Money2\Model\Enums\NamespaceCurrencyUsagePriority;
 
 use Gs2Cdk\Money2\Model\Options\NamespaceOptions;
 

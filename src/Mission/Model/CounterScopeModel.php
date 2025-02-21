@@ -24,9 +24,9 @@ use Gs2Cdk\Mission\Model\Options\CounterScopeModelResetTypeIsDailyOptions;
 use Gs2Cdk\Mission\Model\Options\CounterScopeModelResetTypeIsWeeklyOptions;
 use Gs2Cdk\Mission\Model\Options\CounterScopeModelResetTypeIsMonthlyOptions;
 use Gs2Cdk\Mission\Model\Options\CounterScopeModelResetTypeIsDaysOptions;
-use Gs2Cdk\Mission\Model\Enum\CounterScopeModelScopeType;
-use Gs2Cdk\Mission\Model\Enum\CounterScopeModelResetType;
-use Gs2Cdk\Mission\Model\Enum\CounterScopeModelResetDayOfWeek;
+use Gs2Cdk\Mission\Model\Enums\CounterScopeModelScopeType;
+use Gs2Cdk\Mission\Model\Enums\CounterScopeModelResetType;
+use Gs2Cdk\Mission\Model\Enums\CounterScopeModelResetDayOfWeek;
 
 class CounterScopeModel {
     private CounterScopeModelScopeType $scopeType;

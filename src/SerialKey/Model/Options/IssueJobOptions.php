@@ -15,7 +15,7 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\SerialKey\Model\Options;
-use Gs2Cdk\SerialKey\Model\Enum\IssueJobStatus;
+use Gs2Cdk\SerialKey\Model\Enums\IssueJobStatus;
 
 class IssueJobOptions {
     public ?string $metadata;

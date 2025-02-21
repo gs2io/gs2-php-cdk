@@ -22,7 +22,7 @@ use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Guild\Model\RoleModel;
 
 use Gs2Cdk\Guild\Ref\GuildRef;
-use Gs2Cdk\Guild\Model\Enum\GuildJoinPolicy;
+use Gs2Cdk\Guild\Model\Enums\GuildJoinPolicy;
 
 use Gs2Cdk\Guild\Model\Options\GuildOptions;
 

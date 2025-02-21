@@ -21,8 +21,8 @@ class NotificationSetting
 {
 
     public String $gatewayNamespaceId;
-    public String $enableTransferMobileNotification;
-    public String $sound;
+    public ?String $enableTransferMobileNotification;
+    public ?String $sound;
 
     public function __construct(
         String $gatewayNamespaceId,

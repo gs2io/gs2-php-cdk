@@ -13,11 +13,15 @@
  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
+ *
+ * deny overwrite
  */
 namespace Gs2Cdk\Matchmaking\Model\Options;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\NotificationSetting;
 use Gs2Cdk\Core\Model\LogSetting;
+use Gs2Cdk\Matchmaking\Model\Enums\NamespaceEnableCollaborateSeasonRating;
+use Gs2Cdk\Matchmaking\Model\Enums\NamespaceEnableDisconnectDetection;
 
 class NamespaceOptions {
     public ?string $description;

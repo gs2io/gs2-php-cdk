@@ -15,7 +15,7 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Money2\Model\Options;
-use Gs2Cdk\Money2\Model\Enum\AppleAppStoreVerifyReceiptEventEnvironment;
+use Gs2Cdk\Money2\Model\Enums\AppleAppStoreVerifyReceiptEventEnvironment;
 
 class AppleAppStoreVerifyReceiptEventOptions {
     

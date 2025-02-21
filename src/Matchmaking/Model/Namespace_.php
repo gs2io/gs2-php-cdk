@@ -27,10 +27,10 @@ use Gs2Cdk\Matchmaking\Ref\NamespaceRef;
 use Gs2Cdk\Matchmaking\Model\CurrentMasterData;
 use Gs2Cdk\Matchmaking\Model\RatingModel;
 use Gs2Cdk\Matchmaking\Model\SeasonModel;
-use Gs2Cdk\Matchmaking\Model\Enum\NamespaceEnableDisconnectDetection;
-use Gs2Cdk\Matchmaking\Model\Enum\NamespaceCreateGatheringTriggerType;
-use Gs2Cdk\Matchmaking\Model\Enum\NamespaceCompleteMatchmakingTriggerType;
-use Gs2Cdk\Matchmaking\Model\Enum\NamespaceEnableCollaborateSeasonRating;
+use Gs2Cdk\Matchmaking\Model\Enums\NamespaceEnableDisconnectDetection;
+use Gs2Cdk\Matchmaking\Model\Enums\NamespaceCreateGatheringTriggerType;
+use Gs2Cdk\Matchmaking\Model\Enums\NamespaceCompleteMatchmakingTriggerType;
+use Gs2Cdk\Matchmaking\Model\Enums\NamespaceEnableCollaborateSeasonRating;
 
 use Gs2Cdk\Matchmaking\Model\Options\NamespaceOptions;
 

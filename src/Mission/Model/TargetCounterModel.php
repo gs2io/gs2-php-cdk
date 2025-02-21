@@ -18,8 +18,8 @@ namespace Gs2Cdk\Mission\Model;
 use Gs2Cdk\Mission\Model\Options\TargetCounterModelOptions;
 use Gs2Cdk\Mission\Model\Options\TargetCounterModelScopeTypeIsResetTimingOptions;
 use Gs2Cdk\Mission\Model\Options\TargetCounterModelScopeTypeIsVerifyActionOptions;
-use Gs2Cdk\Mission\Model\Enum\TargetCounterModelScopeType;
-use Gs2Cdk\Mission\Model\Enum\TargetCounterModelResetType;
+use Gs2Cdk\Mission\Model\Enums\TargetCounterModelScopeType;
+use Gs2Cdk\Mission\Model\Enums\TargetCounterModelResetType;
 
 class TargetCounterModel {
     private string $counterName;

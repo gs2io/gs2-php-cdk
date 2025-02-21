@@ -18,7 +18,7 @@ namespace Gs2Cdk\Experience\Model;
 use Gs2Cdk\Experience\Model\Options\AcquireActionRateOptions;
 use Gs2Cdk\Experience\Model\Options\AcquireActionRateModeIsDoubleOptions;
 use Gs2Cdk\Experience\Model\Options\AcquireActionRateModeIsBigOptions;
-use Gs2Cdk\Experience\Model\Enum\AcquireActionRateMode;
+use Gs2Cdk\Experience\Model\Enums\AcquireActionRateMode;
 
 class AcquireActionRate {
     private string $name;

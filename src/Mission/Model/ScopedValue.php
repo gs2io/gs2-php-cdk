@@ -18,8 +18,8 @@ namespace Gs2Cdk\Mission\Model;
 use Gs2Cdk\Mission\Model\Options\ScopedValueOptions;
 use Gs2Cdk\Mission\Model\Options\ScopedValueScopeTypeIsResetTimingOptions;
 use Gs2Cdk\Mission\Model\Options\ScopedValueScopeTypeIsVerifyActionOptions;
-use Gs2Cdk\Mission\Model\Enum\ScopedValueScopeType;
-use Gs2Cdk\Mission\Model\Enum\ScopedValueResetType;
+use Gs2Cdk\Mission\Model\Enums\ScopedValueScopeType;
+use Gs2Cdk\Mission\Model\Enums\ScopedValueResetType;
 
 class ScopedValue {
     private ScopedValueScopeType $scopeType;

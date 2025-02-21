@@ -15,8 +15,8 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Limit\Model\Options;
-use Gs2Cdk\Limit\Model\Enum\LimitModelResetType;
-use Gs2Cdk\Limit\Model\Enum\LimitModelResetDayOfWeek;
+use Gs2Cdk\Limit\Model\Enums\LimitModelResetType;
+use Gs2Cdk\Limit\Model\Enums\LimitModelResetDayOfWeek;
 
 class LimitModelResetTypeIsNotResetOptions {
     public ?string $metadata;

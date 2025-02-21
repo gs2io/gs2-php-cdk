@@ -20,8 +20,8 @@ namespace Gs2Cdk\Lottery\Model;
 use Gs2Cdk\Lottery\Model\Options\LotteryModelOptions;
 use Gs2Cdk\Lottery\Model\Options\LotteryModelMethodIsPrizeTableOptions;
 use Gs2Cdk\Lottery\Model\Options\LotteryModelMethodIsScriptOptions;
-use Gs2Cdk\Lottery\Model\Enum\LotteryModelMode;
-use Gs2Cdk\Lottery\Model\Enum\LotteryModelMethod;
+use Gs2Cdk\Lottery\Model\Enums\LotteryModelMode;
+use Gs2Cdk\Lottery\Model\Enums\LotteryModelMethod;
 
 class LotteryModel {
     private string $name;

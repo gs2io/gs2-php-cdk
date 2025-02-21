@@ -20,7 +20,7 @@ use Gs2Cdk\StateMachine\Model\EmitEvent;
 use Gs2Cdk\StateMachine\Model\Options\EventOptions;
 use Gs2Cdk\StateMachine\Model\Options\EventEventTypeIsChangeStateOptions;
 use Gs2Cdk\StateMachine\Model\Options\EventEventTypeIsEmitOptions;
-use Gs2Cdk\StateMachine\Model\Enum\EventEventType;
+use Gs2Cdk\StateMachine\Model\Enums\EventEventType;
 
 class Event {
     private EventEventType $eventType;

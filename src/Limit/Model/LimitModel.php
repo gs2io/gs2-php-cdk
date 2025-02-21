@@ -21,8 +21,8 @@ use Gs2Cdk\Limit\Model\Options\LimitModelResetTypeIsDailyOptions;
 use Gs2Cdk\Limit\Model\Options\LimitModelResetTypeIsWeeklyOptions;
 use Gs2Cdk\Limit\Model\Options\LimitModelResetTypeIsMonthlyOptions;
 use Gs2Cdk\Limit\Model\Options\LimitModelResetTypeIsDaysOptions;
-use Gs2Cdk\Limit\Model\Enum\LimitModelResetType;
-use Gs2Cdk\Limit\Model\Enum\LimitModelResetDayOfWeek;
+use Gs2Cdk\Limit\Model\Enums\LimitModelResetType;
+use Gs2Cdk\Limit\Model\Enums\LimitModelResetDayOfWeek;
 
 class LimitModel {
     private string $name;

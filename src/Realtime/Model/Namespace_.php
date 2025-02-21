@@ -23,8 +23,8 @@ use Gs2Cdk\Core\Model\NotificationSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 use Gs2Cdk\Realtime\Ref\NamespaceRef;
-use Gs2Cdk\Realtime\Model\Enum\NamespaceServerType;
-use Gs2Cdk\Realtime\Model\Enum\NamespaceServerSpec;
+use Gs2Cdk\Realtime\Model\Enums\NamespaceServerType;
+use Gs2Cdk\Realtime\Model\Enums\NamespaceServerSpec;
 
 use Gs2Cdk\Realtime\Model\Options\NamespaceOptions;
 

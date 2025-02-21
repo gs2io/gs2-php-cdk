@@ -16,7 +16,7 @@
  */
 namespace Gs2Cdk\Buff\Model\Options;
 use Gs2Cdk\Buff\Model\BuffTargetGrn;
-use Gs2Cdk\Buff\Model\Enum\BuffTargetModelTargetModelName;
+use Gs2Cdk\Buff\Model\Enums\BuffTargetModelTargetModelName;
 
 class BuffTargetModelOptions {
     

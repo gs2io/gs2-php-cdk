@@ -16,10 +16,10 @@
  */
 namespace Gs2Cdk\Schedule\Model\Options;
 use Gs2Cdk\Schedule\Model\RepeatSetting;
-use Gs2Cdk\Schedule\Model\Enum\EventScheduleType;
-use Gs2Cdk\Schedule\Model\Enum\EventRepeatType;
-use Gs2Cdk\Schedule\Model\Enum\EventRepeatBeginDayOfWeek;
-use Gs2Cdk\Schedule\Model\Enum\EventRepeatEndDayOfWeek;
+use Gs2Cdk\Schedule\Model\Enums\EventScheduleType;
+use Gs2Cdk\Schedule\Model\Enums\EventRepeatType;
+use Gs2Cdk\Schedule\Model\Enums\EventRepeatBeginDayOfWeek;
+use Gs2Cdk\Schedule\Model\Enums\EventRepeatEndDayOfWeek;
 
 class EventRepeatTypeIsAlwaysOptions {
     public ?string $metadata;

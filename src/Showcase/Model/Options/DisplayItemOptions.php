@@ -20,7 +20,7 @@ use Gs2Cdk\Core\Model\ConsumeAction;
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Showcase\Model\SalesItem;
 use Gs2Cdk\Showcase\Model\SalesItemGroup;
-use Gs2Cdk\Showcase\Model\Enum\DisplayItemType;
+use Gs2Cdk\Showcase\Model\Enums\DisplayItemType;
 
 class DisplayItemOptions {
     public ?SalesItem $salesItem;

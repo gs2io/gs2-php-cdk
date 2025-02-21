@@ -13,15 +13,18 @@
  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
+ *
+ * deny overwrite
  */
 namespace Gs2Cdk\Schedule\Model\Options;
 use Gs2Cdk\Schedule\Model\RepeatSetting;
-use Gs2Cdk\Schedule\Model\Enum\EventScheduleType;
-use Gs2Cdk\Schedule\Model\Enum\EventRepeatType;
-use Gs2Cdk\Schedule\Model\Enum\EventRepeatBeginDayOfWeek;
-use Gs2Cdk\Schedule\Model\Enum\EventRepeatEndDayOfWeek;
+use Gs2Cdk\Schedule\Model\Enums\EventScheduleType;
+use Gs2Cdk\Schedule\Model\Enums\EventRepeatType;
+use Gs2Cdk\Schedule\Model\Enums\EventRepeatBeginDayOfWeek;
+use Gs2Cdk\Schedule\Model\Enums\EventRepeatEndDayOfWeek;
 
 class EventOptions {
+    public EventRepeatType $repeatType;
     public ?string $metadata;
     public ?int $absoluteBegin;
     public ?int $absoluteEnd;

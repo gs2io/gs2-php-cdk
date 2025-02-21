@@ -19,9 +19,9 @@ use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\LoginReward\Model\Reward;
 use Gs2Cdk\Core\Model\VerifyAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
-use Gs2Cdk\LoginReward\Model\Enum\BonusModelMode;
-use Gs2Cdk\LoginReward\Model\Enum\BonusModelRepeat;
-use Gs2Cdk\LoginReward\Model\Enum\BonusModelMissedReceiveRelief;
+use Gs2Cdk\LoginReward\Model\Enums\BonusModelMode;
+use Gs2Cdk\LoginReward\Model\Enums\BonusModelRepeat;
+use Gs2Cdk\LoginReward\Model\Enums\BonusModelMissedReceiveRelief;
 
 class BonusModelMissedReceiveReliefIsDisabledOptions {
     public ?string $metadata;

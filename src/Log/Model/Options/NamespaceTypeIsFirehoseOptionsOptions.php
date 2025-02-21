@@ -15,7 +15,7 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Log\Model\Options;
-use Gs2Cdk\Log\Model\Enum\NamespaceType;
+use Gs2Cdk\Log\Model\Enums\NamespaceType;
 
 class NamespaceTypeIsFirehoseOptions {
     public ?string $description;

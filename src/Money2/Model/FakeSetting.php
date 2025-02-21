@@ -16,7 +16,7 @@
  */
 namespace Gs2Cdk\Money2\Model;
 use Gs2Cdk\Money2\Model\Options\FakeSettingOptions;
-use Gs2Cdk\Money2\Model\Enum\FakeSettingAcceptFakeReceipt;
+use Gs2Cdk\Money2\Model\Enums\FakeSettingAcceptFakeReceipt;
 
 class FakeSetting {
     private FakeSettingAcceptFakeReceipt $acceptFakeReceipt;
