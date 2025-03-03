@@ -14,23 +14,24 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\Money2\Model\Options;
 
-class AppleAppStoreSettingOptions {
-    public ?string $bundleId;
-    public ?string $issuerId;
-    public ?string $keyId;
-    public ?string $privateKeyPem;
-    
-    public function __construct(
-        ?string $bundleId = null,
-        ?string $issuerId = null,
-        ?string $keyId = null,
-        ?string $privateKeyPem = null,
-    ) {
-        $this->bundleId = $bundleId;
-        $this->issuerId = $issuerId;
-        $this->keyId = $keyId;
-        $this->privateKeyPem = $privateKeyPem;
-    }}
+namespace Gs2Cdk\Money2\Model\Enums;
 
+
+enum SubscribeTransactionStore {
+    case APPLE_APP_STORE;
+    case GOOGLE_PLAY;
+    case FAKE;
+
+    public function toString(): String {
+        switch ($this) {
+            case self::APPLE_APP_STORE:
+                return "AppleAppStore";
+            case self::GOOGLE_PLAY:
+                return "GooglePlay";
+            case self::FAKE:
+                return "fake";
+        }
+        return "unknown";
+    }
+}

@@ -17,23 +17,39 @@
 namespace Gs2Cdk\Money2\Model\Options;
 use Gs2Cdk\Money2\Model\PlatformSetting;
 use Gs2Cdk\Core\Model\ScriptSetting;
+use Gs2Cdk\Core\Model\NotificationSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
     public ?ScriptSetting $depositBalanceScript;
     public ?ScriptSetting $withdrawBalanceScript;
+    public ?string $subscribeScript;
+    public ?string $renewScript;
+    public ?string $unsubscribeScript;
+    public ?ScriptSetting $takeOverScript;
+    public ?NotificationSetting $changeSubscriptionStatusNotification;
     public ?LogSetting $logSetting;
     
     public function __construct(
         ?string $description = null,
         ?ScriptSetting $depositBalanceScript = null,
         ?ScriptSetting $withdrawBalanceScript = null,
+        ?string $subscribeScript = null,
+        ?string $renewScript = null,
+        ?string $unsubscribeScript = null,
+        ?ScriptSetting $takeOverScript = null,
+        ?NotificationSetting $changeSubscriptionStatusNotification = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
         $this->depositBalanceScript = $depositBalanceScript;
         $this->withdrawBalanceScript = $withdrawBalanceScript;
+        $this->subscribeScript = $subscribeScript;
+        $this->renewScript = $renewScript;
+        $this->unsubscribeScript = $unsubscribeScript;
+        $this->takeOverScript = $takeOverScript;
+        $this->changeSubscriptionStatusNotification = $changeSubscriptionStatusNotification;
         $this->logSetting = $logSetting;
     }}
 

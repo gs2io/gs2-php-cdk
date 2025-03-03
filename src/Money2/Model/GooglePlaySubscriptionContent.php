@@ -14,23 +14,26 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\Money2\Model\Options;
+namespace Gs2Cdk\Money2\Model;
+use Gs2Cdk\Money2\Model\Options\GooglePlaySubscriptionContentOptions;
 
-class AppleAppStoreSettingOptions {
-    public ?string $bundleId;
-    public ?string $issuerId;
-    public ?string $keyId;
-    public ?string $privateKeyPem;
-    
+class GooglePlaySubscriptionContent {
+    private ?string $productId = null;
+
     public function __construct(
-        ?string $bundleId = null,
-        ?string $issuerId = null,
-        ?string $keyId = null,
-        ?string $privateKeyPem = null,
+        ?GooglePlaySubscriptionContentOptions $options = null,
     ) {
-        $this->bundleId = $bundleId;
-        $this->issuerId = $issuerId;
-        $this->keyId = $keyId;
-        $this->privateKeyPem = $privateKeyPem;
-    }}
+        $this->productId = $options?->productId ?? null;
+    }
 
+    public function properties(
+    ): array {
+        $properties = [];
+
+        if ($this->productId != null) {
+            $properties["productId"] = $this->productId;
+        }
+
+        return $properties;
+    }
+}

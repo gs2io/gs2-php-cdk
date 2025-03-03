@@ -38,6 +38,7 @@ class Namespace_ extends CdkResource {
     private ?ScriptSetting $authenticationScript = null;
     private ?ScriptSetting $createTakeOverScript = null;
     private ?ScriptSetting $doTakeOverScript = null;
+    private ?ScriptSetting $banScript = null;
     private ?LogSetting $logSetting = null;
 
     public function __construct(
@@ -58,6 +59,7 @@ class Namespace_ extends CdkResource {
         $this->authenticationScript = $options?->authenticationScript ?? null;
         $this->createTakeOverScript = $options?->createTakeOverScript ?? null;
         $this->doTakeOverScript = $options?->doTakeOverScript ?? null;
+        $this->banScript = $options?->banScript ?? null;
         $this->logSetting = $options?->logSetting ?? null;
         $stack->addResource(
             $this,
@@ -105,6 +107,10 @@ class Namespace_ extends CdkResource {
         }
         if ($this->doTakeOverScript != null) {
             $properties["DoTakeOverScript"] = $this->doTakeOverScript?->properties(
+            );
+        }
+        if ($this->banScript != null) {
+            $properties["BanScript"] = $this->banScript?->properties(
             );
         }
         if ($this->logSetting != null) {

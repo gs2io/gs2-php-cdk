@@ -16,21 +16,12 @@
  */
 namespace Gs2Cdk\Money2\Model\Options;
 
-class AppleAppStoreSettingOptions {
-    public ?string $bundleId;
-    public ?string $issuerId;
-    public ?string $keyId;
-    public ?string $privateKeyPem;
+class GooglePlaySubscriptionContentOptions {
+    public ?string $productId;
     
     public function __construct(
-        ?string $bundleId = null,
-        ?string $issuerId = null,
-        ?string $keyId = null,
-        ?string $privateKeyPem = null,
+        ?string $productId = null,
     ) {
-        $this->bundleId = $bundleId;
-        $this->issuerId = $issuerId;
-        $this->keyId = $keyId;
-        $this->privateKeyPem = $privateKeyPem;
+        $this->productId = $productId;
     }}
 

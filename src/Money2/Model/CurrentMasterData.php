@@ -19,16 +19,19 @@ namespace Gs2Cdk\Money2\Model;
 use Gs2Cdk\Core\Model\CdkResource;
 use Gs2Cdk\Core\Model\Stack;
 use Gs2Cdk\Money2\Model\StoreContentModel;
+use Gs2Cdk\Money2\Model\StoreSubscriptionContentModel;
 
 class CurrentMasterData extends CdkResource {
     private string $version= "2024-06-20";
     private string $namespaceName;
     private array $storeContentModels;
+    private array $storeSubscriptionContentModels;
 
     public function __construct(
         Stack $stack,
         string $namespaceName,
         array $storeContentModels,
+        array $storeSubscriptionContentModels,
     ) {
         parent::__construct(
             "Money2_CurrentModelMaster_" . $namespaceName
@@ -36,6 +39,7 @@ class CurrentMasterData extends CdkResource {
 
         $this->namespaceName = $namespaceName;
         $this->storeContentModels = $storeContentModels;
+        $this->storeSubscriptionContentModels = $storeSubscriptionContentModels;
         $stack->addResource(
             $this,
         );
@@ -64,6 +68,15 @@ class CurrentMasterData extends CdkResource {
                     );
                 },
                 $this->storeContentModels
+            );
+        }
+        if ($this->storeSubscriptionContentModels != null) {
+            $settings["storeSubscriptionContentModels"] = array_map(
+                function ($v) {
+                    return $v->properties(
+                    );
+                },
+                $this->storeSubscriptionContentModels
             );
         }
 

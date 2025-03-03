@@ -19,11 +19,17 @@ use Gs2Cdk\Money2\Model\Options\AppleAppStoreSettingOptions;
 
 class AppleAppStoreSetting {
     private ?string $bundleId = null;
+    private ?string $issuerId = null;
+    private ?string $keyId = null;
+    private ?string $privateKeyPem = null;
 
     public function __construct(
         ?AppleAppStoreSettingOptions $options = null,
     ) {
         $this->bundleId = $options?->bundleId ?? null;
+        $this->issuerId = $options?->issuerId ?? null;
+        $this->keyId = $options?->keyId ?? null;
+        $this->privateKeyPem = $options?->privateKeyPem ?? null;
     }
 
     public function properties(
@@ -32,6 +38,15 @@ class AppleAppStoreSetting {
 
         if ($this->bundleId != null) {
             $properties["bundleId"] = $this->bundleId;
+        }
+        if ($this->issuerId != null) {
+            $properties["issuerId"] = $this->issuerId;
+        }
+        if ($this->keyId != null) {
+            $properties["keyId"] = $this->keyId;
+        }
+        if ($this->privateKeyPem != null) {
+            $properties["privateKeyPem"] = $this->privateKeyPem;
         }
 
         return $properties;

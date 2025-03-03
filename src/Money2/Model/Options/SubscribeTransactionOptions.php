@@ -15,22 +15,24 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Money2\Model\Options;
+use Gs2Cdk\Money2\Model\Enums\SubscribeTransactionStore;
+use Gs2Cdk\Money2\Model\Enums\SubscribeTransactionStatusDetail;
 
-class AppleAppStoreSettingOptions {
-    public ?string $bundleId;
-    public ?string $issuerId;
-    public ?string $keyId;
-    public ?string $privateKeyPem;
+class SubscribeTransactionOptions {
+    public ?string $userId;
+    public ?int $lastAllocatedAt;
+    public ?int $lastTakeOverAt;
+    public ?int $revision;
     
     public function __construct(
-        ?string $bundleId = null,
-        ?string $issuerId = null,
-        ?string $keyId = null,
-        ?string $privateKeyPem = null,
+        ?string $userId = null,
+        ?int $lastAllocatedAt = null,
+        ?int $lastTakeOverAt = null,
+        ?int $revision = null,
     ) {
-        $this->bundleId = $bundleId;
-        $this->issuerId = $issuerId;
-        $this->keyId = $keyId;
-        $this->privateKeyPem = $privateKeyPem;
+        $this->userId = $userId;
+        $this->lastAllocatedAt = $lastAllocatedAt;
+        $this->lastTakeOverAt = $lastTakeOverAt;
+        $this->revision = $revision;
     }}
 

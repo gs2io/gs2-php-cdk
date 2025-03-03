@@ -19,12 +19,15 @@ namespace Gs2Cdk\Money2\Model\Options;
 class GooglePlaySettingOptions {
     public ?string $packageName;
     public ?string $publicKey;
+    public ?string $credentialsJSON;
     
     public function __construct(
         ?string $packageName = null,
         ?string $publicKey = null,
+        ?string $credentialsJSON = null,
     ) {
         $this->packageName = $packageName;
         $this->publicKey = $publicKey;
+        $this->credentialsJSON = $credentialsJSON;
     }}
 

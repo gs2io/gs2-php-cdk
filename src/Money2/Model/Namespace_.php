@@ -21,11 +21,13 @@ use Gs2Cdk\Core\Model\Stack;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Money2\Model\PlatformSetting;
 use Gs2Cdk\Core\Model\ScriptSetting;
+use Gs2Cdk\Core\Model\NotificationSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 use Gs2Cdk\Money2\Ref\NamespaceRef;
 use Gs2Cdk\Money2\Model\CurrentMasterData;
 use Gs2Cdk\Money2\Model\StoreContentModel;
+use Gs2Cdk\Money2\Model\StoreSubscriptionContentModel;
 use Gs2Cdk\Money2\Model\Enums\NamespaceCurrencyUsagePriority;
 
 use Gs2Cdk\Money2\Model\Options\NamespaceOptions;
@@ -39,6 +41,11 @@ class Namespace_ extends CdkResource {
     private ?string $description = null;
     private ?ScriptSetting $depositBalanceScript = null;
     private ?ScriptSetting $withdrawBalanceScript = null;
+    private ?string $subscribeScript = null;
+    private ?string $renewScript = null;
+    private ?string $unsubscribeScript = null;
+    private ?ScriptSetting $takeOverScript = null;
+    private ?NotificationSetting $changeSubscriptionStatusNotification = null;
     private ?LogSetting $logSetting = null;
 
     public function __construct(
@@ -61,6 +68,11 @@ class Namespace_ extends CdkResource {
         $this->description = $options?->description ?? null;
         $this->depositBalanceScript = $options?->depositBalanceScript ?? null;
         $this->withdrawBalanceScript = $options?->withdrawBalanceScript ?? null;
+        $this->subscribeScript = $options?->subscribeScript ?? null;
+        $this->renewScript = $options?->renewScript ?? null;
+        $this->unsubscribeScript = $options?->unsubscribeScript ?? null;
+        $this->takeOverScript = $options?->takeOverScript ?? null;
+        $this->changeSubscriptionStatusNotification = $options?->changeSubscriptionStatusNotification ?? null;
         $this->logSetting = $options?->logSetting ?? null;
         $stack->addResource(
             $this,
@@ -106,6 +118,23 @@ class Namespace_ extends CdkResource {
             $properties["WithdrawBalanceScript"] = $this->withdrawBalanceScript?->properties(
             );
         }
+        if ($this->subscribeScript != null) {
+            $properties["SubscribeScript"] = $this->subscribeScript;
+        }
+        if ($this->renewScript != null) {
+            $properties["RenewScript"] = $this->renewScript;
+        }
+        if ($this->unsubscribeScript != null) {
+            $properties["UnsubscribeScript"] = $this->unsubscribeScript;
+        }
+        if ($this->takeOverScript != null) {
+            $properties["TakeOverScript"] = $this->takeOverScript?->properties(
+            );
+        }
+        if ($this->changeSubscriptionStatusNotification != null) {
+            $properties["ChangeSubscriptionStatusNotification"] = $this->changeSubscriptionStatusNotification?->properties(
+            );
+        }
         if ($this->logSetting != null) {
             $properties["LogSetting"] = $this->logSetting?->properties(
             );
@@ -132,11 +161,13 @@ class Namespace_ extends CdkResource {
 
     public function masterData(
         array $storeContentModels,
+        array $storeSubscriptionContentModels,
     ): Namespace_ {
         (new CurrentMasterData(
             $this->stack,
             $this->name,
             $storeContentModels,
+            $storeSubscriptionContentModels,
         ))->addDependsOn(
             $this,
         );

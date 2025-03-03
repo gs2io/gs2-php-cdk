@@ -15,22 +15,19 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Money2\Model\Options;
+use Gs2Cdk\Money2\Model\AppleAppStoreVerifyReceiptEvent;
+use Gs2Cdk\Money2\Model\GooglePlayVerifyReceiptEvent;
+use Gs2Cdk\Money2\Model\Enums\RefundEventPlatform;
 
-class AppleAppStoreSettingOptions {
-    public ?string $bundleId;
-    public ?string $issuerId;
-    public ?string $keyId;
-    public ?string $privateKeyPem;
+class RefundEventOptions {
+    public ?AppleAppStoreVerifyReceiptEvent $appleAppStoreRefundEvent;
+    public ?GooglePlayVerifyReceiptEvent $googlePlayRefundEvent;
     
     public function __construct(
-        ?string $bundleId = null,
-        ?string $issuerId = null,
-        ?string $keyId = null,
-        ?string $privateKeyPem = null,
+        ?AppleAppStoreVerifyReceiptEvent $appleAppStoreRefundEvent = null,
+        ?GooglePlayVerifyReceiptEvent $googlePlayRefundEvent = null,
     ) {
-        $this->bundleId = $bundleId;
-        $this->issuerId = $issuerId;
-        $this->keyId = $keyId;
-        $this->privateKeyPem = $privateKeyPem;
+        $this->appleAppStoreRefundEvent = $appleAppStoreRefundEvent;
+        $this->googlePlayRefundEvent = $googlePlayRefundEvent;
     }}
 

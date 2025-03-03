@@ -15,33 +15,36 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Money2\Model;
-use Gs2Cdk\Money2\Model\Options\GooglePlaySettingOptions;
+use Gs2Cdk\Money2\Model\Options\GooglePlayRealtimeNotificationMessageOptions;
 
-class GooglePlaySetting {
-    private ?string $packageName = null;
-    private ?string $publicKey = null;
-    private ?string $credentialsJSON = null;
+class GooglePlayRealtimeNotificationMessage {
+    private string $data;
+    private string $messageId;
+    private string $publishTime;
 
     public function __construct(
-        ?GooglePlaySettingOptions $options = null,
+        string $data,
+        string $messageId,
+        string $publishTime,
+        ?GooglePlayRealtimeNotificationMessageOptions $options = null,
     ) {
-        $this->packageName = $options?->packageName ?? null;
-        $this->publicKey = $options?->publicKey ?? null;
-        $this->credentialsJSON = $options?->credentialsJSON ?? null;
+        $this->data = $data;
+        $this->messageId = $messageId;
+        $this->publishTime = $publishTime;
     }
 
     public function properties(
     ): array {
         $properties = [];
 
-        if ($this->packageName != null) {
-            $properties["packageName"] = $this->packageName;
+        if ($this->data != null) {
+            $properties["data"] = $this->data;
         }
-        if ($this->publicKey != null) {
-            $properties["publicKey"] = $this->publicKey;
+        if ($this->messageId != null) {
+            $properties["messageId"] = $this->messageId;
         }
-        if ($this->credentialsJSON != null) {
-            $properties["credentialsJSON"] = $this->credentialsJSON;
+        if ($this->publishTime != null) {
+            $properties["publishTime"] = $this->publishTime;
         }
 
         return $properties;
