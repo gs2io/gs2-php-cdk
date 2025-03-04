@@ -25,20 +25,26 @@ class NotificationSetting
     public ?String $sound;
 
     public function __construct(
-        String $gatewayNamespaceId,
-        String $enableTransferMobileNotification = null,
-        String $sound = null,
+        NotificationSettingOptions $options = null,
     ) {
-        $this->gatewayNamespaceId = $gatewayNamespaceId;
-        $this->enableTransferMobileNotification = $enableTransferMobileNotification;
-        $this->sound = $sound;
+        $this->gatewayNamespaceId = $options?->gatewayNamespaceId ?? null;
+        $this->enableTransferMobileNotification = $options?->enableTransferMobileNotification ?? null;
+        $this->sound = $options?->sound ?? null;
     }
 
     public function properties(): array {
-        return [
-            "GatewayNamespaceId" => $this->gatewayNamespaceId,
-            "EnableTransferMobileNotification" => $this->enableTransferMobileNotification,
-            "Sound" => $this->sound,
-        ];
+        $properties = [];
+
+        if ($this->gatewayNamespaceId != null) {
+            $properties["GatewayNamespaceId"] = $this->gatewayNamespaceId;
+        }
+        if ($this->enableTransferMobileNotification != null) {
+            $properties["EnableTransferMobileNotification"] = $this->enableTransferMobileNotification;
+        }
+        if ($this->sound != null) {
+            $properties["Sound"] = $this->sound;
+        }
+
+        return $properties;
     }
 }

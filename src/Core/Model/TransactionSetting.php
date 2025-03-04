@@ -20,29 +20,44 @@ namespace Gs2Cdk\Core\Model;
 class TransactionSetting
 {
 
-    public bool $enableAutoRun;
-    public ?String $distributorNamespaceId;
-    public ?String $keyId;
-    public ?String $queueNamespaceId;
+    public ?bool $enableAtomicCommit = null;
+    public ?bool $transactionUseDistributor = null;
+    public ?bool $acquireActionUseJobQueue = null;
+    public ?String $distributorNamespaceId = null;
+
+    public ?String $queueNamespaceId = null;
 
     public function __construct(
-        bool $enableAutoRun,
-        String $distributorNamespaceId = null,
-        String $keyId = null,
-        String $queueNamespaceId = null,
+        TransactionSettingOptions $options = null,
     ) {
-        $this->enableAutoRun = $enableAutoRun;
-        $this->distributorNamespaceId = $distributorNamespaceId;
-        $this->keyId = $keyId;
-        $this->queueNamespaceId = $queueNamespaceId;
+        $this->enableAtomicCommit = $options?->enableAtomicCommit ?? false;
+        $this->transactionUseDistributor = $options?->transactionUseDistributor ?? false;
+        $this->acquireActionUseJobQueue = $options?->acquireActionUseJobQueue ?? false;
+        $this->distributorNamespaceId = $options?->distributorNamespaceId ?? null;
+        $this->queueNamespaceId = $options?->queueNamespaceId ?? null;
     }
 
-    public function properties(): array {
-        return [
-            "EnableAutoRun" => $this->enableAutoRun,
-            "DistributorNamespaceId" => $this->distributorNamespaceId,
-            "KeyId" => $this->keyId,
-            "QueueNamespaceId" => $this->queueNamespaceId,
-        ];
+    public function properties(
+    ): array {
+        $properties = [];
+
+        $properties["EnableAutoRun"] = true;
+        if ($this->enableAtomicCommit != null) {
+            $properties["EnableAtomicCommit"] = $this->enableAtomicCommit;
+        }
+        if ($this->transactionUseDistributor != null) {
+            $properties["TransactionUseDistributor"] = $this->transactionUseDistributor;
+        }
+        if ($this->acquireActionUseJobQueue != null) {
+            $properties["AcquireActionUseJobQueue"] = $this->acquireActionUseJobQueue;
+        }
+        if ($this->distributorNamespaceId != null) {
+            $properties["DistributorNamespaceId"] = $this->distributorNamespaceId;
+        }
+        if ($this->queueNamespaceId != null) {
+            $properties["QueueNamespaceId"] = $this->queueNamespaceId;
+        }
+
+        return $properties;
     }
 }
