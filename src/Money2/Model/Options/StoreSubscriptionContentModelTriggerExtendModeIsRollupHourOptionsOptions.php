@@ -15,16 +15,21 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Money2\Model\Options;
+use Gs2Cdk\Money2\Model\AppleAppStoreSubscriptionContent;
+use Gs2Cdk\Money2\Model\GooglePlaySubscriptionContent;
+use Gs2Cdk\Money2\Model\Enums\StoreSubscriptionContentModelTriggerExtendMode;
 
-class GooglePlaySettingOptions {
-    public ?string $packageName;
-    public ?string $publicKey;
+class StoreSubscriptionContentModelTriggerExtendModeIsRollupHourOptions {
+    public ?string $metadata;
+    public ?AppleAppStoreSubscriptionContent $appleAppStore;
+    public ?GooglePlaySubscriptionContent $googlePlay;
     
     public function __construct(
-        ?string $packageName = null,
-        ?string $publicKey = null,
+        ?string $metadata = null,
+        ?AppleAppStoreSubscriptionContent $appleAppStore = null,
+        ?GooglePlaySubscriptionContent $googlePlay = null,
     ) {
-        $this->packageName = $packageName;
-        $this->publicKey = $publicKey;
+        $this->metadata = $metadata;
+        $this->appleAppStore = $appleAppStore;
+        $this->googlePlay = $googlePlay;
     }}
-

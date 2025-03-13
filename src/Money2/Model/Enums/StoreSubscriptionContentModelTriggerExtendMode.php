@@ -14,17 +14,21 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\Money2\Model\Options;
 
-class GooglePlaySettingOptions {
-    public ?string $packageName;
-    public ?string $publicKey;
-    
-    public function __construct(
-        ?string $packageName = null,
-        ?string $publicKey = null,
-    ) {
-        $this->packageName = $packageName;
-        $this->publicKey = $publicKey;
-    }}
+namespace Gs2Cdk\Money2\Model\Enums;
 
+
+enum StoreSubscriptionContentModelTriggerExtendMode {
+    case JUST;
+    case ROLLUP_HOUR;
+
+    public function toString(): String {
+        switch ($this) {
+            case self::JUST:
+                return "just";
+            case self::ROLLUP_HOUR:
+                return "rollupHour";
+        }
+        return "unknown";
+    }
+}

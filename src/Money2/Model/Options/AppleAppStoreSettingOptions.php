@@ -18,17 +18,20 @@ namespace Gs2Cdk\Money2\Model\Options;
 
 class AppleAppStoreSettingOptions {
     public ?string $bundleId;
+    public ?string $sharedSecretKey;
     public ?string $issuerId;
     public ?string $keyId;
     public ?string $privateKeyPem;
     
     public function __construct(
         ?string $bundleId = null,
+        ?string $sharedSecretKey = null,
         ?string $issuerId = null,
         ?string $keyId = null,
         ?string $privateKeyPem = null,
     ) {
         $this->bundleId = $bundleId;
+        $this->sharedSecretKey = $sharedSecretKey;
         $this->issuerId = $issuerId;
         $this->keyId = $keyId;
         $this->privateKeyPem = $privateKeyPem;

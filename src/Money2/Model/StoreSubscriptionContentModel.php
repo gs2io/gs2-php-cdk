@@ -18,13 +18,18 @@ namespace Gs2Cdk\Money2\Model;
 use Gs2Cdk\Money2\Model\AppleAppStoreSubscriptionContent;
 use Gs2Cdk\Money2\Model\GooglePlaySubscriptionContent;
 use Gs2Cdk\Money2\Model\Options\StoreSubscriptionContentModelOptions;
+use Gs2Cdk\Money2\Model\Options\StoreSubscriptionContentModelTriggerExtendModeIsJustOptions;
+use Gs2Cdk\Money2\Model\Options\StoreSubscriptionContentModelTriggerExtendModeIsRollupHourOptions;
+use Gs2Cdk\Money2\Model\Enums\StoreSubscriptionContentModelTriggerExtendMode;
 
 class StoreSubscriptionContentModel {
     private string $name;
     private string $scheduleNamespaceId;
     private string $triggerName;
+    private StoreSubscriptionContentModelTriggerExtendMode $triggerExtendMode;
     private int $reallocateSpanDays;
     private ?string $metadata = null;
+    private ?int $rollupHour = null;
     private ?AppleAppStoreSubscriptionContent $appleAppStore = null;
     private ?GooglePlaySubscriptionContent $googlePlay = null;
 
@@ -32,16 +37,63 @@ class StoreSubscriptionContentModel {
         string $name,
         string $scheduleNamespaceId,
         string $triggerName,
+        StoreSubscriptionContentModelTriggerExtendMode $triggerExtendMode,
         int $reallocateSpanDays,
         ?StoreSubscriptionContentModelOptions $options = null,
     ) {
         $this->name = $name;
         $this->scheduleNamespaceId = $scheduleNamespaceId;
         $this->triggerName = $triggerName;
+        $this->triggerExtendMode = $triggerExtendMode;
         $this->reallocateSpanDays = $reallocateSpanDays;
         $this->metadata = $options?->metadata ?? null;
+        $this->rollupHour = $options?->rollupHour ?? null;
         $this->appleAppStore = $options?->appleAppStore ?? null;
         $this->googlePlay = $options?->googlePlay ?? null;
+    }
+
+    public static function triggerExtendModeIsJust(
+        string $name,
+        string $scheduleNamespaceId,
+        string $triggerName,
+        int $reallocateSpanDays,
+        ?StoreSubscriptionContentModelTriggerExtendModeIsJustOptions $options = null,
+    ): StoreSubscriptionContentModel {
+        return (new StoreSubscriptionContentModel(
+            $name,
+            $scheduleNamespaceId,
+            $triggerName,
+            StoreSubscriptionContentModelTriggerExtendMode::JUST,
+            $reallocateSpanDays,
+            new StoreSubscriptionContentModelOptions(
+                metadata: $options?->metadata,
+                appleAppStore: $options?->appleAppStore,
+                googlePlay: $options?->googlePlay,
+            ),
+        ));
+    }
+
+    public static function triggerExtendModeIsRollupHour(
+        string $name,
+        string $scheduleNamespaceId,
+        string $triggerName,
+        int $reallocateSpanDays,
+        int $rollupHour,
+        ?StoreSubscriptionContentModelTriggerExtendModeIsRollupHourOptions $options = null,
+    ): StoreSubscriptionContentModel {
+        return (new StoreSubscriptionContentModel(
+            $name,
+            $scheduleNamespaceId,
+            $triggerName,
+            StoreSubscriptionContentModelTriggerExtendMode::ROLLUP_HOUR,
+            $reallocateSpanDays,
+            new StoreSubscriptionContentModelOptions(
+                rollupHour: $rollupHour,
+                metadata: $options?->metadata,
+                appleAppStore: $options?->appleAppStore,
+                googlePlay: $options?->googlePlay,
+            ),
+        ));
     }
 
     public function properties(
@@ -59,6 +111,13 @@ class StoreSubscriptionContentModel {
         }
         if ($this->triggerName != null) {
             $properties["triggerName"] = $this->triggerName;
+        }
+        if ($this->triggerExtendMode != null) {
+            $properties["triggerExtendMode"] = $this->triggerExtendMode?->toString(
+            );
+        }
+        if ($this->rollupHour != null) {
+            $properties["rollupHour"] = $this->rollupHour;
         }
         if ($this->reallocateSpanDays != null) {
             $properties["reallocateSpanDays"] = $this->reallocateSpanDays;

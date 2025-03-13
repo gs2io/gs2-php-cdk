@@ -27,6 +27,7 @@ class InvokeScript extends AcquireAction {
         string $scriptId,
         ?string $args = null,
         ?RandomStatus $randomStatus = null,
+        ?bool $forceUseDistributor = null,
         ?string $userId = "#{userId}",
     ) {
         $properties = [];
@@ -34,6 +35,7 @@ class InvokeScript extends AcquireAction {
         $properties["scriptId"] = $scriptId;
         $properties["args"] = $args;
         $properties["randomStatus"] = $randomStatus;
+        $properties["forceUseDistributor"] = $forceUseDistributor;
         $properties["userId"] = $userId;
 
         parent::__construct(

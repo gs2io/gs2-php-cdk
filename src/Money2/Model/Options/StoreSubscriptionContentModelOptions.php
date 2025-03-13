@@ -17,18 +17,22 @@
 namespace Gs2Cdk\Money2\Model\Options;
 use Gs2Cdk\Money2\Model\AppleAppStoreSubscriptionContent;
 use Gs2Cdk\Money2\Model\GooglePlaySubscriptionContent;
+use Gs2Cdk\Money2\Model\Enums\StoreSubscriptionContentModelTriggerExtendMode;
 
 class StoreSubscriptionContentModelOptions {
     public ?string $metadata;
+    public ?int $rollupHour;
     public ?AppleAppStoreSubscriptionContent $appleAppStore;
     public ?GooglePlaySubscriptionContent $googlePlay;
     
     public function __construct(
         ?string $metadata = null,
+        ?int $rollupHour = null,
         ?AppleAppStoreSubscriptionContent $appleAppStore = null,
         ?GooglePlaySubscriptionContent $googlePlay = null,
     ) {
         $this->metadata = $metadata;
+        $this->rollupHour = $rollupHour;
         $this->appleAppStore = $appleAppStore;
         $this->googlePlay = $googlePlay;
     }}

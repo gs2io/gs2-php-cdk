@@ -20,14 +20,12 @@ use Gs2Cdk\Money2\Model\Options\GooglePlaySettingOptions;
 class GooglePlaySetting {
     private ?string $packageName = null;
     private ?string $publicKey = null;
-    private ?string $credentialsJSON = null;
 
     public function __construct(
         ?GooglePlaySettingOptions $options = null,
     ) {
         $this->packageName = $options?->packageName ?? null;
         $this->publicKey = $options?->publicKey ?? null;
-        $this->credentialsJSON = $options?->credentialsJSON ?? null;
     }
 
     public function properties(
@@ -39,9 +37,6 @@ class GooglePlaySetting {
         }
         if ($this->publicKey != null) {
             $properties["publicKey"] = $this->publicKey;
-        }
-        if ($this->credentialsJSON != null) {
-            $properties["credentialsJSON"] = $this->credentialsJSON;
         }
 
         return $properties;

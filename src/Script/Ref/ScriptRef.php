@@ -36,12 +36,14 @@ class ScriptRef {
     public function invokeScript(
         string $scriptId,
         string $args,
+        bool $forceUseDistributor,
         ?RandomStatus $randomStatus = null,
         ?string $userId = "#{userId}",
     ): InvokeScript {
         return (new InvokeScript(
             $scriptId,
             $args,
+            $forceUseDistributor,
             $randomStatus,
             $userId,
         ));

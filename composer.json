@@ -1,6 +1,6 @@
 {
   "name": "gs2/gs2-php-cdk",
-  "version": "1.0.97",
+  "version": "1.0.98",
   "license": "Apache-2.0",
   "require": {
     "php": ">= 8.0",
