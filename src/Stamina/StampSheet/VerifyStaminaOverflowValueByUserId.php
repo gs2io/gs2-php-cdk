@@ -14,30 +14,33 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\Script\StampSheet;
+namespace Gs2Cdk\Stamina\StampSheet;
 
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
 use Gs2Cdk\Core\Model\VerifyAction;
-use Gs2Cdk\Script\Model\RandomStatus;
 
-class InvokeScript extends AcquireAction {
+class VerifyStaminaOverflowValueByUserId extends VerifyAction {
 
     public function __construct(
-        string $scriptId,
-        ?string $args = null,
-        ?RandomStatus $randomStatus = null,
+        string $namespaceName,
+        string $staminaName,
+        string $verifyType,
+        int $value,
+        ?bool $multiplyValueSpecifyingQuantity = null,
         ?string $userId = "#{userId}",
     ) {
         $properties = [];
 
-        $properties["scriptId"] = $scriptId;
-        $properties["args"] = $args;
-        $properties["randomStatus"] = $randomStatus;
+        $properties["namespaceName"] = $namespaceName;
+        $properties["staminaName"] = $staminaName;
+        $properties["verifyType"] = $verifyType;
+        $properties["value"] = $value;
+        $properties["multiplyValueSpecifyingQuantity"] = $multiplyValueSpecifyingQuantity;
         $properties["userId"] = $userId;
 
         parent::__construct(
-            "Gs2Script:InvokeScript",
+            "Gs2Stamina:VerifyStaminaOverflowValueByUserId",
             $properties,
         );
     }

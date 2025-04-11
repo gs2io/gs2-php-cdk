@@ -24,6 +24,8 @@ class DailyTransactionHistory {
     private string $currency;
     private float $depositAmount;
     private float $withdrawAmount;
+    private int $issueCount;
+    private int $consumeCount;
     private ?int $revision = null;
 
     public function __construct(
@@ -33,6 +35,8 @@ class DailyTransactionHistory {
         string $currency,
         float $depositAmount,
         float $withdrawAmount,
+        int $issueCount,
+        int $consumeCount,
         ?DailyTransactionHistoryOptions $options = null,
     ) {
         $this->year = $year;
@@ -41,6 +45,8 @@ class DailyTransactionHistory {
         $this->currency = $currency;
         $this->depositAmount = $depositAmount;
         $this->withdrawAmount = $withdrawAmount;
+        $this->issueCount = $issueCount;
+        $this->consumeCount = $consumeCount;
         $this->revision = $options?->revision ?? null;
     }
 
@@ -65,6 +71,12 @@ class DailyTransactionHistory {
         }
         if ($this->withdrawAmount != null) {
             $properties["withdrawAmount"] = $this->withdrawAmount;
+        }
+        if ($this->issueCount != null) {
+            $properties["issueCount"] = $this->issueCount;
+        }
+        if ($this->consumeCount != null) {
+            $properties["consumeCount"] = $this->consumeCount;
         }
 
         return $properties;

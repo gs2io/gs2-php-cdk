@@ -18,11 +18,13 @@ namespace Gs2Cdk\Idle\Model;
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Idle\Model\AcquireActionList;
 use Gs2Cdk\Idle\Model\Options\CategoryModelOptions;
+use Gs2Cdk\Idle\Model\Enums\CategoryModelRewardResetMode;
 
 class CategoryModel {
     private string $name;
     private int $rewardIntervalMinutes;
     private int $defaultMaximumIdleMinutes;
+    private CategoryModelRewardResetMode $rewardResetMode;
     private array $acquireActions;
     private ?string $metadata = null;
     private ?string $idlePeriodScheduleId = null;
@@ -32,12 +34,14 @@ class CategoryModel {
         string $name,
         int $rewardIntervalMinutes,
         int $defaultMaximumIdleMinutes,
+        CategoryModelRewardResetMode $rewardResetMode,
         array $acquireActions,
         ?CategoryModelOptions $options = null,
     ) {
         $this->name = $name;
         $this->rewardIntervalMinutes = $rewardIntervalMinutes;
         $this->defaultMaximumIdleMinutes = $defaultMaximumIdleMinutes;
+        $this->rewardResetMode = $rewardResetMode;
         $this->acquireActions = $acquireActions;
         $this->metadata = $options?->metadata ?? null;
         $this->idlePeriodScheduleId = $options?->idlePeriodScheduleId ?? null;
@@ -59,6 +63,10 @@ class CategoryModel {
         }
         if ($this->defaultMaximumIdleMinutes != null) {
             $properties["defaultMaximumIdleMinutes"] = $this->defaultMaximumIdleMinutes;
+        }
+        if ($this->rewardResetMode != null) {
+            $properties["rewardResetMode"] = $this->rewardResetMode?->toString(
+            );
         }
         if ($this->acquireActions != null) {
             $properties["acquireActions"] = array_map(

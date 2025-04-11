@@ -25,6 +25,11 @@ use Gs2Cdk\Stamina\StampSheet\SetRecoverIntervalByUserId;
 use Gs2Cdk\Stamina\StampSheet\SetRecoverValueByUserId;
 use Gs2Cdk\Stamina\StampSheet\DecreaseMaxValueByUserId;
 use Gs2Cdk\Stamina\StampSheet\ConsumeStaminaByUserId;
+use Gs2Cdk\Stamina\StampSheet\VerifyStaminaValueByUserId;
+use Gs2Cdk\Stamina\StampSheet\VerifyStaminaMaxValueByUserId;
+use Gs2Cdk\Stamina\StampSheet\VerifyStaminaRecoverIntervalMinutesByUserId;
+use Gs2Cdk\Stamina\StampSheet\VerifyStaminaRecoverValueByUserId;
+use Gs2Cdk\Stamina\StampSheet\VerifyStaminaOverflowValueByUserId;
 
 class StaminaModelRef {
     private string $namespaceName;
@@ -118,6 +123,86 @@ class StaminaModelRef {
             $this->namespaceName,
             $this->staminaName,
             $consumeValue,
+            $userId,
+        ));
+    }
+
+    public function verifyStaminaValue(
+        string $verifyType,
+        int $value,
+        bool $multiplyValueSpecifyingQuantity,
+        ?string $userId = "#{userId}",
+    ): VerifyStaminaValueByUserId {
+        return (new VerifyStaminaValueByUserId(
+            $this->namespaceName,
+            $this->staminaName,
+            $verifyType,
+            $value,
+            $multiplyValueSpecifyingQuantity,
+            $userId,
+        ));
+    }
+
+    public function verifyStaminaMaxValue(
+        string $verifyType,
+        int $value,
+        bool $multiplyValueSpecifyingQuantity,
+        ?string $userId = "#{userId}",
+    ): VerifyStaminaMaxValueByUserId {
+        return (new VerifyStaminaMaxValueByUserId(
+            $this->namespaceName,
+            $this->staminaName,
+            $verifyType,
+            $value,
+            $multiplyValueSpecifyingQuantity,
+            $userId,
+        ));
+    }
+
+    public function verifyStaminaRecoverIntervalMinutes(
+        string $verifyType,
+        int $value,
+        bool $multiplyValueSpecifyingQuantity,
+        ?string $userId = "#{userId}",
+    ): VerifyStaminaRecoverIntervalMinutesByUserId {
+        return (new VerifyStaminaRecoverIntervalMinutesByUserId(
+            $this->namespaceName,
+            $this->staminaName,
+            $verifyType,
+            $value,
+            $multiplyValueSpecifyingQuantity,
+            $userId,
+        ));
+    }
+
+    public function verifyStaminaRecoverValue(
+        string $verifyType,
+        int $value,
+        bool $multiplyValueSpecifyingQuantity,
+        ?string $userId = "#{userId}",
+    ): VerifyStaminaRecoverValueByUserId {
+        return (new VerifyStaminaRecoverValueByUserId(
+            $this->namespaceName,
+            $this->staminaName,
+            $verifyType,
+            $value,
+            $multiplyValueSpecifyingQuantity,
+            $userId,
+        ));
+    }
+
+    public function verifyStaminaOverflowValue(
+        string $verifyType,
+        int $value,
+        bool $multiplyValueSpecifyingQuantity,
+        ?string $userId = "#{userId}",
+    ): VerifyStaminaOverflowValueByUserId {
+        return (new VerifyStaminaOverflowValueByUserId(
+            $this->namespaceName,
+            $this->staminaName,
+            $verifyType,
+            $value,
+            $multiplyValueSpecifyingQuantity,
             $userId,
         ));
     }

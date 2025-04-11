@@ -17,6 +17,7 @@
 namespace Gs2Cdk\Idle\Model\Options;
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Idle\Model\AcquireActionList;
+use Gs2Cdk\Idle\Model\Enums\CategoryModelRewardResetMode;
 
 class CategoryModelOptions {
     public ?string $metadata;
