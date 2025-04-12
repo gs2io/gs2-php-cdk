@@ -18,6 +18,7 @@ namespace Gs2Cdk\Ranking2\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
+use Gs2Cdk\Ranking2\Ref\SubscribeRankingSeasonRef;
 
 class SubscribeRankingModelRef {
     private string $namespaceName;
