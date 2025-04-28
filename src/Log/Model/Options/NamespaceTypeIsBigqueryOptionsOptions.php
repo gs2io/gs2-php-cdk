@@ -16,6 +16,7 @@
  */
 namespace Gs2Cdk\Log\Model\Options;
 use Gs2Cdk\Log\Model\Enums\NamespaceType;
+use Gs2Cdk\Log\Model\Enums\NamespaceFirehoseCompressData;
 
 class NamespaceTypeIsBigqueryOptions {
     public ?string $description;

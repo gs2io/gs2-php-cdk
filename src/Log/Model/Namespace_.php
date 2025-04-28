@@ -22,6 +22,7 @@ use Gs2Cdk\Core\Func\GetAttr;
 
 use Gs2Cdk\Log\Ref\NamespaceRef;
 use Gs2Cdk\Log\Model\Enums\NamespaceType;
+use Gs2Cdk\Log\Model\Enums\NamespaceFirehoseCompressData;
 
 use Gs2Cdk\Log\Model\Options\NamespaceOptions;
 
@@ -37,6 +38,7 @@ class Namespace_ extends CdkResource {
     private ?string $awsAccessKeyId = null;
     private ?string $awsSecretAccessKey = null;
     private ?string $firehoseStreamName = null;
+    private ?NamespaceFirehoseCompressData $firehoseCompressData = null;
 
     public function __construct(
         Stack $stack,
@@ -58,6 +60,7 @@ class Namespace_ extends CdkResource {
         $this->awsAccessKeyId = $options?->awsAccessKeyId ?? null;
         $this->awsSecretAccessKey = $options?->awsSecretAccessKey ?? null;
         $this->firehoseStreamName = $options?->firehoseStreamName ?? null;
+        $this->firehoseCompressData = $options?->firehoseCompressData ?? null;
         $stack->addResource(
             $this,
         );
@@ -107,6 +110,9 @@ class Namespace_ extends CdkResource {
         }
         if ($this->firehoseStreamName != null) {
             $properties["FirehoseStreamName"] = $this->firehoseStreamName;
+        }
+        if ($this->firehoseCompressData != null) {
+            $properties["FirehoseCompressData"] = $this->firehoseCompressData;
         }
 
         return $properties;

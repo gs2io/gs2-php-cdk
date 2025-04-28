@@ -14,21 +14,21 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\Log\Model\Options;
-use Gs2Cdk\Log\Model\Enums\NamespaceType;
-use Gs2Cdk\Log\Model\Enums\NamespaceFirehoseCompressData;
 
-class NamespaceTypeIsGs2Options {
-    public ?string $description;
-    public ?string $status;
-    public ?int $revision;
-    
-    public function __construct(
-        ?string $description = null,
-        ?string $status = null,
-        ?int $revision = null,
-    ) {
-        $this->description = $description;
-        $this->status = $status;
-        $this->revision = $revision;
-    }}
+namespace Gs2Cdk\Log\Model\Enums;
+
+
+enum NamespaceFirehoseCompressData {
+    case NONE;
+    case GZIP;
+
+    public function toString(): String {
+        switch ($this) {
+            case self::NONE:
+                return "none";
+            case self::GZIP:
+                return "gzip";
+        }
+        return "unknown";
+    }
+}
