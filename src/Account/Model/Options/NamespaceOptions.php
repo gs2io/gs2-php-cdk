@@ -27,6 +27,7 @@ class NamespaceOptions {
     public ?ScriptSetting $createTakeOverScript;
     public ?ScriptSetting $doTakeOverScript;
     public ?ScriptSetting $banScript;
+    public ?ScriptSetting $unBanScript;
     public ?LogSetting $logSetting;
     
     public function __construct(
@@ -38,6 +39,7 @@ class NamespaceOptions {
         ?ScriptSetting $createTakeOverScript = null,
         ?ScriptSetting $doTakeOverScript = null,
         ?ScriptSetting $banScript = null,
+        ?ScriptSetting $unBanScript = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
@@ -48,6 +50,7 @@ class NamespaceOptions {
         $this->createTakeOverScript = $createTakeOverScript;
         $this->doTakeOverScript = $doTakeOverScript;
         $this->banScript = $banScript;
+        $this->unBanScript = $unBanScript;
         $this->logSetting = $logSetting;
     }}
 
