@@ -92,9 +92,6 @@ class ScopedValue {
         if ($this->value != null) {
             $properties["value"] = $this->value;
         }
-        if ($this->nextResetAt != null) {
-            $properties["nextResetAt"] = $this->nextResetAt;
-        }
 
         return $properties;
     }
