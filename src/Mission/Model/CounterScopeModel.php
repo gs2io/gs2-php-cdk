@@ -17,20 +17,20 @@
 namespace Gs2Cdk\Mission\Model;
 use Gs2Cdk\Core\Model\VerifyAction;
 use Gs2Cdk\Mission\Model\Options\CounterScopeModelOptions;
-use Gs2Cdk\Mission\Model\Options\CounterScopeModelScopeTypeIsResetTimingOptions;
-use Gs2Cdk\Mission\Model\Options\CounterScopeModelScopeTypeIsVerifyActionOptions;
 use Gs2Cdk\Mission\Model\Options\CounterScopeModelResetTypeIsNotResetOptions;
 use Gs2Cdk\Mission\Model\Options\CounterScopeModelResetTypeIsDailyOptions;
 use Gs2Cdk\Mission\Model\Options\CounterScopeModelResetTypeIsWeeklyOptions;
 use Gs2Cdk\Mission\Model\Options\CounterScopeModelResetTypeIsMonthlyOptions;
 use Gs2Cdk\Mission\Model\Options\CounterScopeModelResetTypeIsDaysOptions;
+use Gs2Cdk\Mission\Model\Options\CounterScopeModelScopeTypeIsResetTimingOptions;
+use Gs2Cdk\Mission\Model\Options\CounterScopeModelScopeTypeIsVerifyActionOptions;
 use Gs2Cdk\Mission\Model\Enums\CounterScopeModelScopeType;
 use Gs2Cdk\Mission\Model\Enums\CounterScopeModelResetType;
 use Gs2Cdk\Mission\Model\Enums\CounterScopeModelResetDayOfWeek;
 
 class CounterScopeModel {
     private CounterScopeModelScopeType $scopeType;
-    private ?CounterScopeModelResetType $resetType = null;
+    private CounterScopeModelResetType $resetType;
     private ?int $resetDayOfMonth = null;
     private ?CounterScopeModelResetDayOfWeek $resetDayOfWeek = null;
     private ?int $resetHour = null;
@@ -41,10 +41,11 @@ class CounterScopeModel {
 
     public function __construct(
         CounterScopeModelScopeType $scopeType,
+        CounterScopeModelResetType $resetType,
         ?CounterScopeModelOptions $options = null,
     ) {
         $this->scopeType = $scopeType;
-        $this->resetType = $options?->resetType ?? null;
+        $this->resetType = $resetType;
         $this->resetDayOfMonth = $options?->resetDayOfMonth ?? null;
         $this->resetDayOfWeek = $options?->resetDayOfWeek ?? null;
         $this->resetHour = $options?->resetHour ?? null;
@@ -54,38 +55,13 @@ class CounterScopeModel {
         $this->days = $options?->days ?? null;
     }
 
-    public static function scopeTypeIsResetTiming(
-        CounterScopeModelResetType $resetType,
-        ?CounterScopeModelScopeTypeIsResetTimingOptions $options = null,
-    ): CounterScopeModel {
-        return (new CounterScopeModel(
-            CounterScopeModelScopeType::RESET_TIMING,
-            new CounterScopeModelOptions(
-                resetType: $resetType,
-            ),
-        ));
-    }
-
-    public static function scopeTypeIsVerifyAction(
-        string $conditionName,
-        VerifyAction $condition,
-        ?CounterScopeModelScopeTypeIsVerifyActionOptions $options = null,
-    ): CounterScopeModel {
-        return (new CounterScopeModel(
-            CounterScopeModelScopeType::VERIFY_ACTION,
-            new CounterScopeModelOptions(
-                conditionName: $conditionName,
-                condition: $condition,
-            ),
-        ));
-    }
-
     public static function resetTypeIsNotReset(
         CounterScopeModelScopeType $scopeType,
         ?CounterScopeModelResetTypeIsNotResetOptions $options = null,
     ): CounterScopeModel {
         return (new CounterScopeModel(
             $scopeType,
+            CounterScopeModelResetType::NOT_RESET,
             new CounterScopeModelOptions(
             ),
         ));
@@ -98,6 +74,7 @@ class CounterScopeModel {
     ): CounterScopeModel {
         return (new CounterScopeModel(
             $scopeType,
+            CounterScopeModelResetType::DAILY,
             new CounterScopeModelOptions(
                 resetHour: $resetHour,
             ),
@@ -112,6 +89,7 @@ class CounterScopeModel {
     ): CounterScopeModel {
         return (new CounterScopeModel(
             $scopeType,
+            CounterScopeModelResetType::WEEKLY,
             new CounterScopeModelOptions(
                 resetDayOfWeek: $resetDayOfWeek,
                 resetHour: $resetHour,
@@ -127,6 +105,7 @@ class CounterScopeModel {
     ): CounterScopeModel {
         return (new CounterScopeModel(
             $scopeType,
+            CounterScopeModelResetType::MONTHLY,
             new CounterScopeModelOptions(
                 resetDayOfMonth: $resetDayOfMonth,
                 resetHour: $resetHour,
@@ -142,9 +121,38 @@ class CounterScopeModel {
     ): CounterScopeModel {
         return (new CounterScopeModel(
             $scopeType,
+            CounterScopeModelResetType::DAYS,
             new CounterScopeModelOptions(
                 anchorTimestamp: $anchorTimestamp,
                 days: $days,
+            ),
+        ));
+    }
+
+    public static function scopeTypeIsResetTiming(
+        CounterScopeModelResetType $resetType,
+        ?CounterScopeModelScopeTypeIsResetTimingOptions $options = null,
+    ): CounterScopeModel {
+        return (new CounterScopeModel(
+            CounterScopeModelScopeType::RESET_TIMING,
+            $resetType,
+            new CounterScopeModelOptions(
+            ),
+        ));
+    }
+
+    public static function scopeTypeIsVerifyAction(
+        CounterScopeModelResetType $resetType,
+        string $conditionName,
+        VerifyAction $condition,
+        ?CounterScopeModelScopeTypeIsVerifyActionOptions $options = null,
+    ): CounterScopeModel {
+        return (new CounterScopeModel(
+            CounterScopeModelScopeType::VERIFY_ACTION,
+            $resetType,
+            new CounterScopeModelOptions(
+                conditionName: $conditionName,
+                condition: $condition,
             ),
         ));
     }

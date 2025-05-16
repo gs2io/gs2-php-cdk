@@ -21,7 +21,6 @@ use Gs2Cdk\Mission\Model\Enums\CounterScopeModelResetType;
 use Gs2Cdk\Mission\Model\Enums\CounterScopeModelResetDayOfWeek;
 
 class CounterScopeModelOptions {
-    public ?CounterScopeModelResetType $resetType;
     public ?int $resetDayOfMonth;
     public ?CounterScopeModelResetDayOfWeek $resetDayOfWeek;
     public ?int $resetHour;
@@ -31,7 +30,6 @@ class CounterScopeModelOptions {
     public ?int $days;
     
     public function __construct(
-        ?CounterScopeModelResetType $resetType = null,
         ?int $resetDayOfMonth = null,
         ?CounterScopeModelResetDayOfWeek $resetDayOfWeek = null,
         ?int $resetHour = null,
@@ -40,7 +38,6 @@ class CounterScopeModelOptions {
         ?int $anchorTimestamp = null,
         ?int $days = null,
     ) {
-        $this->resetType = $resetType;
         $this->resetDayOfMonth = $resetDayOfMonth;
         $this->resetDayOfWeek = $resetDayOfWeek;
         $this->resetHour = $resetHour;
