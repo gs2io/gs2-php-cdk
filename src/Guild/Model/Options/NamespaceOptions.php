@@ -32,6 +32,7 @@ class NamespaceOptions {
     public ?ScriptSetting $joinGuildScript;
     public ?ScriptSetting $leaveGuildScript;
     public ?ScriptSetting $changeRoleScript;
+    public ?ScriptSetting $deleteGuildScript;
     public ?LogSetting $logSetting;
     
     public function __construct(
@@ -47,6 +48,7 @@ class NamespaceOptions {
         ?ScriptSetting $joinGuildScript = null,
         ?ScriptSetting $leaveGuildScript = null,
         ?ScriptSetting $changeRoleScript = null,
+        ?ScriptSetting $deleteGuildScript = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
@@ -61,6 +63,7 @@ class NamespaceOptions {
         $this->joinGuildScript = $joinGuildScript;
         $this->leaveGuildScript = $leaveGuildScript;
         $this->changeRoleScript = $changeRoleScript;
+        $this->deleteGuildScript = $deleteGuildScript;
         $this->logSetting = $logSetting;
     }}
 

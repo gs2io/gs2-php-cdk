@@ -20,6 +20,7 @@ use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Schedule\Ref\MasterDataObjectRef;
 use Gs2Cdk\Schedule\StampSheet\TriggerByUserId;
+use Gs2Cdk\Schedule\StampSheet\ExtendTriggerByUserId;
 use Gs2Cdk\Schedule\StampSheet\DeleteTriggerByUserId;
 use Gs2Cdk\Schedule\StampSheet\VerifyTriggerByUserId;
 use Gs2Cdk\Schedule\StampSheet\VerifyEventByUserId;
@@ -46,6 +47,19 @@ class NamespaceRef {
             $triggerStrategy,
             $ttl,
             $eventId,
+            $userId,
+        ));
+    }
+
+    public function extendTrigger(
+        string $triggerName,
+        int $extendSeconds,
+        ?string $userId = "#{userId}",
+    ): ExtendTriggerByUserId {
+        return (new ExtendTriggerByUserId(
+            $this->namespaceName,
+            $triggerName,
+            $extendSeconds,
             $userId,
         ));
     }

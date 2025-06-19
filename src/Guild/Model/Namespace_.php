@@ -44,6 +44,7 @@ class Namespace_ extends CdkResource {
     private ?ScriptSetting $joinGuildScript = null;
     private ?ScriptSetting $leaveGuildScript = null;
     private ?ScriptSetting $changeRoleScript = null;
+    private ?ScriptSetting $deleteGuildScript = null;
     private ?LogSetting $logSetting = null;
 
     public function __construct(
@@ -69,6 +70,7 @@ class Namespace_ extends CdkResource {
         $this->joinGuildScript = $options?->joinGuildScript ?? null;
         $this->leaveGuildScript = $options?->leaveGuildScript ?? null;
         $this->changeRoleScript = $options?->changeRoleScript ?? null;
+        $this->deleteGuildScript = $options?->deleteGuildScript ?? null;
         $this->logSetting = $options?->logSetting ?? null;
         $stack->addResource(
             $this,
@@ -138,6 +140,10 @@ class Namespace_ extends CdkResource {
         }
         if ($this->changeRoleScript != null) {
             $properties["ChangeRoleScript"] = $this->changeRoleScript?->properties(
+            );
+        }
+        if ($this->deleteGuildScript != null) {
+            $properties["DeleteGuildScript"] = $this->deleteGuildScript?->properties(
             );
         }
         if ($this->logSetting != null) {
