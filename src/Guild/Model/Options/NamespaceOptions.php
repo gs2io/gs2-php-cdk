@@ -30,6 +30,7 @@ class NamespaceOptions {
     public ?ScriptSetting $createGuildScript;
     public ?ScriptSetting $updateGuildScript;
     public ?ScriptSetting $joinGuildScript;
+    public ?ScriptSetting $receiveJoinRequestScript;
     public ?ScriptSetting $leaveGuildScript;
     public ?ScriptSetting $changeRoleScript;
     public ?ScriptSetting $deleteGuildScript;
@@ -46,6 +47,7 @@ class NamespaceOptions {
         ?ScriptSetting $createGuildScript = null,
         ?ScriptSetting $updateGuildScript = null,
         ?ScriptSetting $joinGuildScript = null,
+        ?ScriptSetting $receiveJoinRequestScript = null,
         ?ScriptSetting $leaveGuildScript = null,
         ?ScriptSetting $changeRoleScript = null,
         ?ScriptSetting $deleteGuildScript = null,
@@ -61,6 +63,7 @@ class NamespaceOptions {
         $this->createGuildScript = $createGuildScript;
         $this->updateGuildScript = $updateGuildScript;
         $this->joinGuildScript = $joinGuildScript;
+        $this->receiveJoinRequestScript = $receiveJoinRequestScript;
         $this->leaveGuildScript = $leaveGuildScript;
         $this->changeRoleScript = $changeRoleScript;
         $this->deleteGuildScript = $deleteGuildScript;

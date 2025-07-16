@@ -42,6 +42,7 @@ class Namespace_ extends CdkResource {
     private ?ScriptSetting $createGuildScript = null;
     private ?ScriptSetting $updateGuildScript = null;
     private ?ScriptSetting $joinGuildScript = null;
+    private ?ScriptSetting $receiveJoinRequestScript = null;
     private ?ScriptSetting $leaveGuildScript = null;
     private ?ScriptSetting $changeRoleScript = null;
     private ?ScriptSetting $deleteGuildScript = null;
@@ -68,6 +69,7 @@ class Namespace_ extends CdkResource {
         $this->createGuildScript = $options?->createGuildScript ?? null;
         $this->updateGuildScript = $options?->updateGuildScript ?? null;
         $this->joinGuildScript = $options?->joinGuildScript ?? null;
+        $this->receiveJoinRequestScript = $options?->receiveJoinRequestScript ?? null;
         $this->leaveGuildScript = $options?->leaveGuildScript ?? null;
         $this->changeRoleScript = $options?->changeRoleScript ?? null;
         $this->deleteGuildScript = $options?->deleteGuildScript ?? null;
@@ -132,6 +134,10 @@ class Namespace_ extends CdkResource {
         }
         if ($this->joinGuildScript != null) {
             $properties["JoinGuildScript"] = $this->joinGuildScript?->properties(
+            );
+        }
+        if ($this->receiveJoinRequestScript != null) {
+            $properties["ReceiveJoinRequestScript"] = $this->receiveJoinRequestScript?->properties(
             );
         }
         if ($this->leaveGuildScript != null) {
