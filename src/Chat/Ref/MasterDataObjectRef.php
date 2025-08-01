@@ -18,44 +18,17 @@ namespace Gs2Cdk\Chat\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
-use Gs2Cdk\Chat\Ref\CategoryModelRef;
-use Gs2Cdk\Chat\Ref\MasterDataObjectRef;
+use Gs2Cdk\Chat\Ref\MasterDataVersionRef;
 
-class NamespaceRef {
+class MasterDataObjectRef {
     private string $namespaceName;
+    private string $objectKey;
 
     public function __construct(
         string $namespaceName,
+        string $objectKey,
     ) {
         $this->namespaceName = $namespaceName;
-    }
-
-    public function categoryModel(
-        int $category,
-    ): CategoryModelRef {
-        return (new CategoryModelRef(
-            $this->namespaceName,
-            $category,
-        ));
-    }
-
-    public function grn(
-    ): string {
-        return (new Join(
-            ":",
-            [
-                "grn",
-                "gs2",
-                GetAttr::region(
-                )->str(
-                ),
-                GetAttr::ownerId(
-                )->str(
-                ),
-                "chat",
-                $this->namespaceName,
-            ],
-        ))->str(
-        );
+        $this->objectKey = $objectKey;
     }
 }

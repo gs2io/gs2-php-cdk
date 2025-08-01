@@ -24,6 +24,8 @@ use Gs2Cdk\Core\Model\NotificationSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 use Gs2Cdk\Chat\Ref\NamespaceRef;
+use Gs2Cdk\Chat\Model\CurrentMasterData;
+use Gs2Cdk\Chat\Model\CategoryModel;
 
 use Gs2Cdk\Chat\Model\Options\NamespaceOptions;
 
@@ -140,5 +142,18 @@ class Namespace_ extends CdkResource {
             "Item.NamespaceId",
             null,
         ));
+    }
+
+    public function masterData(
+        array $categoryModels,
+    ): Namespace_ {
+        (new CurrentMasterData(
+            $this->stack,
+            $this->name,
+            $categoryModels,
+        ))->addDependsOn(
+            $this,
+        );
+        return $this;
     }
 }

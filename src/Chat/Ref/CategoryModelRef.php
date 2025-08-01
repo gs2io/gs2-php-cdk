@@ -18,25 +18,17 @@ namespace Gs2Cdk\Chat\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
-use Gs2Cdk\Chat\Ref\CategoryModelRef;
-use Gs2Cdk\Chat\Ref\MasterDataObjectRef;
 
-class NamespaceRef {
+class CategoryModelRef {
     private string $namespaceName;
+    private int $category;
 
     public function __construct(
         string $namespaceName,
+        int $category,
     ) {
         $this->namespaceName = $namespaceName;
-    }
-
-    public function categoryModel(
-        int $category,
-    ): CategoryModelRef {
-        return (new CategoryModelRef(
-            $this->namespaceName,
-            $category,
-        ));
+        $this->category = $category;
     }
 
     public function grn(
@@ -54,6 +46,8 @@ class NamespaceRef {
                 ),
                 "chat",
                 $this->namespaceName,
+                "model",
+                $this->category,
             ],
         ))->str(
         );
