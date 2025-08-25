@@ -35,7 +35,6 @@ class Namespace_ extends CdkResource {
     private ?string $description = null;
     private ?TransactionSetting $transactionSetting = null;
     private ?string $lotteryTriggerScriptId = null;
-    private ?string $choicePrizeTableScriptId = null;
     private ?LogSetting $logSetting = null;
 
     public function __construct(
@@ -52,7 +51,6 @@ class Namespace_ extends CdkResource {
         $this->description = $options?->description ?? null;
         $this->transactionSetting = $options?->transactionSetting ?? null;
         $this->lotteryTriggerScriptId = $options?->lotteryTriggerScriptId ?? null;
-        $this->choicePrizeTableScriptId = $options?->choicePrizeTableScriptId ?? null;
         $this->logSetting = $options?->logSetting ?? null;
         $stack->addResource(
             $this,
@@ -86,9 +84,6 @@ class Namespace_ extends CdkResource {
         }
         if ($this->lotteryTriggerScriptId != null) {
             $properties["LotteryTriggerScriptId"] = $this->lotteryTriggerScriptId;
-        }
-        if ($this->choicePrizeTableScriptId != null) {
-            $properties["ChoicePrizeTableScriptId"] = $this->choicePrizeTableScriptId;
         }
         if ($this->logSetting != null) {
             $properties["LogSetting"] = $this->logSetting?->properties(

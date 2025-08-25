@@ -22,7 +22,6 @@ class NamespaceOptions {
     public ?string $description;
     public ?TransactionSetting $transactionSetting;
     public ?string $lotteryTriggerScriptId;
-    public ?string $choicePrizeTableScriptId;
     public ?LogSetting $logSetting;
     public ?string $queueNamespaceId;
     public ?string $keyId;
@@ -31,7 +30,6 @@ class NamespaceOptions {
         ?string $description = null,
         ?TransactionSetting $transactionSetting = null,
         ?string $lotteryTriggerScriptId = null,
-        ?string $choicePrizeTableScriptId = null,
         ?LogSetting $logSetting = null,
         ?string $queueNamespaceId = null,
         ?string $keyId = null,
@@ -39,7 +37,6 @@ class NamespaceOptions {
         $this->description = $description;
         $this->transactionSetting = $transactionSetting;
         $this->lotteryTriggerScriptId = $lotteryTriggerScriptId;
-        $this->choicePrizeTableScriptId = $choicePrizeTableScriptId;
         $this->logSetting = $logSetting;
         $this->queueNamespaceId = $queueNamespaceId;
         $this->keyId = $keyId;
