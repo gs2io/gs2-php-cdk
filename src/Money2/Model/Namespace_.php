@@ -41,6 +41,7 @@ class Namespace_ extends CdkResource {
     private ?string $description = null;
     private ?ScriptSetting $depositBalanceScript = null;
     private ?ScriptSetting $withdrawBalanceScript = null;
+    private ?ScriptSetting $verifyReceiptScript = null;
     private ?string $subscribeScript = null;
     private ?string $renewScript = null;
     private ?string $unsubscribeScript = null;
@@ -68,6 +69,7 @@ class Namespace_ extends CdkResource {
         $this->description = $options?->description ?? null;
         $this->depositBalanceScript = $options?->depositBalanceScript ?? null;
         $this->withdrawBalanceScript = $options?->withdrawBalanceScript ?? null;
+        $this->verifyReceiptScript = $options?->verifyReceiptScript ?? null;
         $this->subscribeScript = $options?->subscribeScript ?? null;
         $this->renewScript = $options?->renewScript ?? null;
         $this->unsubscribeScript = $options?->unsubscribeScript ?? null;
@@ -116,6 +118,10 @@ class Namespace_ extends CdkResource {
         }
         if ($this->withdrawBalanceScript != null) {
             $properties["WithdrawBalanceScript"] = $this->withdrawBalanceScript?->properties(
+            );
+        }
+        if ($this->verifyReceiptScript != null) {
+            $properties["VerifyReceiptScript"] = $this->verifyReceiptScript?->properties(
             );
         }
         if ($this->subscribeScript != null) {

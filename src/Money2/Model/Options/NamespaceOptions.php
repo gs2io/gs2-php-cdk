@@ -24,6 +24,7 @@ class NamespaceOptions {
     public ?string $description;
     public ?ScriptSetting $depositBalanceScript;
     public ?ScriptSetting $withdrawBalanceScript;
+    public ?ScriptSetting $verifyReceiptScript;
     public ?string $subscribeScript;
     public ?string $renewScript;
     public ?string $unsubscribeScript;
@@ -35,6 +36,7 @@ class NamespaceOptions {
         ?string $description = null,
         ?ScriptSetting $depositBalanceScript = null,
         ?ScriptSetting $withdrawBalanceScript = null,
+        ?ScriptSetting $verifyReceiptScript = null,
         ?string $subscribeScript = null,
         ?string $renewScript = null,
         ?string $unsubscribeScript = null,
@@ -45,6 +47,7 @@ class NamespaceOptions {
         $this->description = $description;
         $this->depositBalanceScript = $depositBalanceScript;
         $this->withdrawBalanceScript = $withdrawBalanceScript;
+        $this->verifyReceiptScript = $verifyReceiptScript;
         $this->subscribeScript = $subscribeScript;
         $this->renewScript = $renewScript;
         $this->unsubscribeScript = $unsubscribeScript;
