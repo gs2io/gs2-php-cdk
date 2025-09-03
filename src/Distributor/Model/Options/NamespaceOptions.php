@@ -15,11 +15,13 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Distributor\Model\Options;
+use Gs2Cdk\Core\Model\TransactionSetting;
 use Gs2Cdk\Core\Model\NotificationSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    public ?TransactionSetting $transactionSetting;
     public ?string $assumeUserId;
     public ?NotificationSetting $autoRunStampSheetNotification;
     public ?NotificationSetting $autoRunTransactionNotification;
@@ -27,12 +29,14 @@ class NamespaceOptions {
     
     public function __construct(
         ?string $description = null,
+        ?TransactionSetting $transactionSetting = null,
         ?string $assumeUserId = null,
         ?NotificationSetting $autoRunStampSheetNotification = null,
         ?NotificationSetting $autoRunTransactionNotification = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
+        $this->transactionSetting = $transactionSetting;
         $this->assumeUserId = $assumeUserId;
         $this->autoRunStampSheetNotification = $autoRunStampSheetNotification;
         $this->autoRunTransactionNotification = $autoRunTransactionNotification;

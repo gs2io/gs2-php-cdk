@@ -15,12 +15,14 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Friend\Model\Options;
+use Gs2Cdk\Core\Model\TransactionSetting;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\NotificationSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    public ?TransactionSetting $transactionSetting;
     public ?ScriptSetting $followScript;
     public ?ScriptSetting $unfollowScript;
     public ?ScriptSetting $sendRequestScript;
@@ -39,6 +41,7 @@ class NamespaceOptions {
     
     public function __construct(
         ?string $description = null,
+        ?TransactionSetting $transactionSetting = null,
         ?ScriptSetting $followScript = null,
         ?ScriptSetting $unfollowScript = null,
         ?ScriptSetting $sendRequestScript = null,
@@ -56,6 +59,7 @@ class NamespaceOptions {
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
+        $this->transactionSetting = $transactionSetting;
         $this->followScript = $followScript;
         $this->unfollowScript = $unfollowScript;
         $this->sendRequestScript = $sendRequestScript;

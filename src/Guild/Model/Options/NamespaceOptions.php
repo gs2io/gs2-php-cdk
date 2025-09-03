@@ -15,12 +15,14 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Guild\Model\Options;
+use Gs2Cdk\Core\Model\TransactionSetting;
 use Gs2Cdk\Core\Model\NotificationSetting;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    public ?TransactionSetting $transactionSetting;
     public ?NotificationSetting $changeNotification;
     public ?NotificationSetting $joinNotification;
     public ?NotificationSetting $leaveNotification;
@@ -38,6 +40,7 @@ class NamespaceOptions {
     
     public function __construct(
         ?string $description = null,
+        ?TransactionSetting $transactionSetting = null,
         ?NotificationSetting $changeNotification = null,
         ?NotificationSetting $joinNotification = null,
         ?NotificationSetting $leaveNotification = null,
@@ -54,6 +57,7 @@ class NamespaceOptions {
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
+        $this->transactionSetting = $transactionSetting;
         $this->changeNotification = $changeNotification;
         $this->joinNotification = $joinNotification;
         $this->leaveNotification = $leaveNotification;

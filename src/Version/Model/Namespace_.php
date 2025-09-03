@@ -19,6 +19,7 @@ namespace Gs2Cdk\Version\Model;
 use Gs2Cdk\Core\Model\CdkResource;
 use Gs2Cdk\Core\Model\Stack;
 use Gs2Cdk\Core\Func\GetAttr;
+use Gs2Cdk\Core\Model\TransactionSetting;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
@@ -33,6 +34,7 @@ class Namespace_ extends CdkResource {
     private string $name;
     private string $assumeUserId;
     private ?string $description = null;
+    private ?TransactionSetting $transactionSetting = null;
     private ?ScriptSetting $acceptVersionScript = null;
     private ?string $checkVersionTriggerScriptId = null;
     private ?LogSetting $logSetting = null;
@@ -51,6 +53,7 @@ class Namespace_ extends CdkResource {
         $this->name = $name;
         $this->assumeUserId = $assumeUserId;
         $this->description = $options?->description ?? null;
+        $this->transactionSetting = $options?->transactionSetting ?? null;
         $this->acceptVersionScript = $options?->acceptVersionScript ?? null;
         $this->checkVersionTriggerScriptId = $options?->checkVersionTriggerScriptId ?? null;
         $this->logSetting = $options?->logSetting ?? null;
@@ -79,6 +82,10 @@ class Namespace_ extends CdkResource {
         }
         if ($this->description != null) {
             $properties["Description"] = $this->description;
+        }
+        if ($this->transactionSetting != null) {
+            $properties["TransactionSetting"] = $this->transactionSetting?->properties(
+            );
         }
         if ($this->assumeUserId != null) {
             $properties["AssumeUserId"] = $this->assumeUserId;

@@ -19,6 +19,7 @@ namespace Gs2Cdk\Matchmaking\Model;
 use Gs2Cdk\Core\Model\CdkResource;
 use Gs2Cdk\Core\Model\Stack;
 use Gs2Cdk\Core\Func\GetAttr;
+use Gs2Cdk\Core\Model\TransactionSetting;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\NotificationSetting;
 use Gs2Cdk\Core\Model\LogSetting;
@@ -40,6 +41,7 @@ class Namespace_ extends CdkResource {
     private NamespaceCreateGatheringTriggerType $createGatheringTriggerType;
     private NamespaceCompleteMatchmakingTriggerType $completeMatchmakingTriggerType;
     private ?string $description = null;
+    private ?TransactionSetting $transactionSetting = null;
     private ?bool $enableRating = null;
     private ?NamespaceEnableDisconnectDetection $enableDisconnectDetection = null;
     private ?int $disconnectDetectionTimeoutSeconds = null;
@@ -73,6 +75,7 @@ class Namespace_ extends CdkResource {
         $this->createGatheringTriggerType = $createGatheringTriggerType;
         $this->completeMatchmakingTriggerType = $completeMatchmakingTriggerType;
         $this->description = $options?->description ?? null;
+        $this->transactionSetting = $options?->transactionSetting ?? null;
         $this->enableRating = $options?->enableRating ?? null;
         $this->enableDisconnectDetection = $options?->enableDisconnectDetection ?? null;
         $this->disconnectDetectionTimeoutSeconds = $options?->disconnectDetectionTimeoutSeconds ?? null;
@@ -114,6 +117,10 @@ class Namespace_ extends CdkResource {
         }
         if ($this->description != null) {
             $properties["Description"] = $this->description;
+        }
+        if ($this->transactionSetting != null) {
+            $properties["TransactionSetting"] = $this->transactionSetting?->properties(
+            );
         }
         if ($this->enableRating != null) {
             $properties["EnableRating"] = $this->enableRating;

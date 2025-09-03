@@ -19,6 +19,7 @@ namespace Gs2Cdk\Money2\Model;
 use Gs2Cdk\Core\Model\CdkResource;
 use Gs2Cdk\Core\Model\Stack;
 use Gs2Cdk\Core\Func\GetAttr;
+use Gs2Cdk\Core\Model\TransactionSetting;
 use Gs2Cdk\Money2\Model\PlatformSetting;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\NotificationSetting;
@@ -39,6 +40,7 @@ class Namespace_ extends CdkResource {
     private bool $sharedFreeCurrency;
     private PlatformSetting $platformSetting;
     private ?string $description = null;
+    private ?TransactionSetting $transactionSetting = null;
     private ?ScriptSetting $depositBalanceScript = null;
     private ?ScriptSetting $withdrawBalanceScript = null;
     private ?ScriptSetting $verifyReceiptScript = null;
@@ -67,6 +69,7 @@ class Namespace_ extends CdkResource {
         $this->sharedFreeCurrency = $sharedFreeCurrency;
         $this->platformSetting = $platformSetting;
         $this->description = $options?->description ?? null;
+        $this->transactionSetting = $options?->transactionSetting ?? null;
         $this->depositBalanceScript = $options?->depositBalanceScript ?? null;
         $this->withdrawBalanceScript = $options?->withdrawBalanceScript ?? null;
         $this->verifyReceiptScript = $options?->verifyReceiptScript ?? null;
@@ -104,6 +107,10 @@ class Namespace_ extends CdkResource {
         }
         if ($this->description != null) {
             $properties["Description"] = $this->description;
+        }
+        if ($this->transactionSetting != null) {
+            $properties["TransactionSetting"] = $this->transactionSetting?->properties(
+            );
         }
         if ($this->sharedFreeCurrency != null) {
             $properties["SharedFreeCurrency"] = $this->sharedFreeCurrency;

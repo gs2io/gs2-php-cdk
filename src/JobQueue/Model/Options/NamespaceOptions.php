@@ -15,11 +15,13 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\JobQueue\Model\Options;
+use Gs2Cdk\Core\Model\TransactionSetting;
 use Gs2Cdk\Core\Model\NotificationSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    public ?TransactionSetting $transactionSetting;
     public ?bool $enableAutoRun;
     public ?NotificationSetting $pushNotification;
     public ?NotificationSetting $runNotification;
@@ -27,12 +29,14 @@ class NamespaceOptions {
     
     public function __construct(
         ?string $description = null,
+        ?TransactionSetting $transactionSetting = null,
         ?bool $enableAutoRun = null,
         ?NotificationSetting $pushNotification = null,
         ?NotificationSetting $runNotification = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
+        $this->transactionSetting = $transactionSetting;
         $this->enableAutoRun = $enableAutoRun;
         $this->pushNotification = $pushNotification;
         $this->runNotification = $runNotification;

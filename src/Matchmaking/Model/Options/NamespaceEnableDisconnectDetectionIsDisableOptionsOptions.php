@@ -15,6 +15,7 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Matchmaking\Model\Options;
+use Gs2Cdk\Core\Model\TransactionSetting;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\NotificationSetting;
 use Gs2Cdk\Core\Model\LogSetting;
@@ -25,6 +26,7 @@ use Gs2Cdk\Matchmaking\Model\Enums\NamespaceEnableCollaborateSeasonRating;
 
 class NamespaceEnableDisconnectDetectionIsDisableOptions {
     public ?string $description;
+    public ?TransactionSetting $transactionSetting;
     public ?ScriptSetting $changeRatingScript;
     public ?NotificationSetting $joinNotification;
     public ?NotificationSetting $leaveNotification;
@@ -35,6 +37,7 @@ class NamespaceEnableDisconnectDetectionIsDisableOptions {
     
     public function __construct(
         ?string $description = null,
+        ?TransactionSetting $transactionSetting = null,
         ?ScriptSetting $changeRatingScript = null,
         ?NotificationSetting $joinNotification = null,
         ?NotificationSetting $leaveNotification = null,
@@ -44,6 +47,7 @@ class NamespaceEnableDisconnectDetectionIsDisableOptions {
         ?int $revision = null,
     ) {
         $this->description = $description;
+        $this->transactionSetting = $transactionSetting;
         $this->changeRatingScript = $changeRatingScript;
         $this->joinNotification = $joinNotification;
         $this->leaveNotification = $leaveNotification;

@@ -15,11 +15,13 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Inventory\Model\Options;
+use Gs2Cdk\Core\Model\TransactionSetting;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    public ?TransactionSetting $transactionSetting;
     public ?ScriptSetting $acquireScript;
     public ?ScriptSetting $overflowScript;
     public ?ScriptSetting $consumeScript;
@@ -31,6 +33,7 @@ class NamespaceOptions {
     
     public function __construct(
         ?string $description = null,
+        ?TransactionSetting $transactionSetting = null,
         ?ScriptSetting $acquireScript = null,
         ?ScriptSetting $overflowScript = null,
         ?ScriptSetting $consumeScript = null,
@@ -41,6 +44,7 @@ class NamespaceOptions {
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
+        $this->transactionSetting = $transactionSetting;
         $this->acquireScript = $acquireScript;
         $this->overflowScript = $overflowScript;
         $this->consumeScript = $consumeScript;

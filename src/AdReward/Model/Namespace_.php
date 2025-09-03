@@ -19,6 +19,7 @@ namespace Gs2Cdk\AdReward\Model;
 use Gs2Cdk\Core\Model\CdkResource;
 use Gs2Cdk\Core\Model\Stack;
 use Gs2Cdk\Core\Func\GetAttr;
+use Gs2Cdk\Core\Model\TransactionSetting;
 use Gs2Cdk\AdReward\Model\AdMob;
 use Gs2Cdk\AdReward\Model\UnityAd;
 use Gs2Cdk\AdReward\Model\AppLovinMax;
@@ -33,10 +34,11 @@ use Gs2Cdk\AdReward\Model\Options\NamespaceOptions;
 class Namespace_ extends CdkResource {
     private Stack $stack;
     private string $name;
+    private ?string $description = null;
+    private ?TransactionSetting $transactionSetting = null;
     private ?AdMob $admob = null;
     private ?UnityAd $unityAd = null;
     private ?array $appLovinMaxes = null;
-    private ?string $description = null;
     private ?ScriptSetting $acquirePointScript = null;
     private ?ScriptSetting $consumePointScript = null;
     private ?NotificationSetting $changePointNotification = null;
@@ -53,10 +55,11 @@ class Namespace_ extends CdkResource {
 
         $this->stack = $stack;
         $this->name = $name;
+        $this->description = $options?->description ?? null;
+        $this->transactionSetting = $options?->transactionSetting ?? null;
         $this->admob = $options?->admob ?? null;
         $this->unityAd = $options?->unityAd ?? null;
         $this->appLovinMaxes = $options?->appLovinMaxes ?? null;
-        $this->description = $options?->description ?? null;
         $this->acquirePointScript = $options?->acquirePointScript ?? null;
         $this->consumePointScript = $options?->consumePointScript ?? null;
         $this->changePointNotification = $options?->changePointNotification ?? null;
@@ -84,6 +87,13 @@ class Namespace_ extends CdkResource {
         if ($this->name != null) {
             $properties["Name"] = $this->name;
         }
+        if ($this->description != null) {
+            $properties["Description"] = $this->description;
+        }
+        if ($this->transactionSetting != null) {
+            $properties["TransactionSetting"] = $this->transactionSetting?->properties(
+            );
+        }
         if ($this->admob != null) {
             $properties["Admob"] = $this->admob?->properties(
             );
@@ -100,9 +110,6 @@ class Namespace_ extends CdkResource {
                 },
                 $this->appLovinMaxes
             );
-        }
-        if ($this->description != null) {
-            $properties["Description"] = $this->description;
         }
         if ($this->acquirePointScript != null) {
             $properties["AcquirePointScript"] = $this->acquirePointScript?->properties(

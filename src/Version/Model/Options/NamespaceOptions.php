@@ -15,22 +15,26 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Version\Model\Options;
+use Gs2Cdk\Core\Model\TransactionSetting;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    public ?TransactionSetting $transactionSetting;
     public ?ScriptSetting $acceptVersionScript;
     public ?string $checkVersionTriggerScriptId;
     public ?LogSetting $logSetting;
     
     public function __construct(
         ?string $description = null,
+        ?TransactionSetting $transactionSetting = null,
         ?ScriptSetting $acceptVersionScript = null,
         ?string $checkVersionTriggerScriptId = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
+        $this->transactionSetting = $transactionSetting;
         $this->acceptVersionScript = $acceptVersionScript;
         $this->checkVersionTriggerScriptId = $checkVersionTriggerScriptId;
         $this->logSetting = $logSetting;

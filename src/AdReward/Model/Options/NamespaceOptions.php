@@ -15,6 +15,7 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\AdReward\Model\Options;
+use Gs2Cdk\Core\Model\TransactionSetting;
 use Gs2Cdk\AdReward\Model\AdMob;
 use Gs2Cdk\AdReward\Model\UnityAd;
 use Gs2Cdk\AdReward\Model\AppLovinMax;
@@ -23,29 +24,32 @@ use Gs2Cdk\Core\Model\NotificationSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
+    public ?string $description;
+    public ?TransactionSetting $transactionSetting;
     public ?AdMob $admob;
     public ?UnityAd $unityAd;
     public ?array $appLovinMaxes;
-    public ?string $description;
     public ?ScriptSetting $acquirePointScript;
     public ?ScriptSetting $consumePointScript;
     public ?NotificationSetting $changePointNotification;
     public ?LogSetting $logSetting;
     
     public function __construct(
+        ?string $description = null,
+        ?TransactionSetting $transactionSetting = null,
         ?AdMob $admob = null,
         ?UnityAd $unityAd = null,
         ?array $appLovinMaxes = null,
-        ?string $description = null,
         ?ScriptSetting $acquirePointScript = null,
         ?ScriptSetting $consumePointScript = null,
         ?NotificationSetting $changePointNotification = null,
         ?LogSetting $logSetting = null,
     ) {
+        $this->description = $description;
+        $this->transactionSetting = $transactionSetting;
         $this->admob = $admob;
         $this->unityAd = $unityAd;
         $this->appLovinMaxes = $appLovinMaxes;
-        $this->description = $description;
         $this->acquirePointScript = $acquirePointScript;
         $this->consumePointScript = $consumePointScript;
         $this->changePointNotification = $changePointNotification;

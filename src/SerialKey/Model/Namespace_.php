@@ -19,6 +19,7 @@ namespace Gs2Cdk\SerialKey\Model;
 use Gs2Cdk\Core\Model\CdkResource;
 use Gs2Cdk\Core\Model\Stack;
 use Gs2Cdk\Core\Func\GetAttr;
+use Gs2Cdk\Core\Model\TransactionSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 use Gs2Cdk\SerialKey\Ref\NamespaceRef;
@@ -31,6 +32,7 @@ class Namespace_ extends CdkResource {
     private Stack $stack;
     private string $name;
     private ?string $description = null;
+    private ?TransactionSetting $transactionSetting = null;
     private ?LogSetting $logSetting = null;
 
     public function __construct(
@@ -45,6 +47,7 @@ class Namespace_ extends CdkResource {
         $this->stack = $stack;
         $this->name = $name;
         $this->description = $options?->description ?? null;
+        $this->transactionSetting = $options?->transactionSetting ?? null;
         $this->logSetting = $options?->logSetting ?? null;
         $stack->addResource(
             $this,
@@ -71,6 +74,10 @@ class Namespace_ extends CdkResource {
         }
         if ($this->description != null) {
             $properties["Description"] = $this->description;
+        }
+        if ($this->transactionSetting != null) {
+            $properties["TransactionSetting"] = $this->transactionSetting?->properties(
+            );
         }
         if ($this->logSetting != null) {
             $properties["LogSetting"] = $this->logSetting?->properties(

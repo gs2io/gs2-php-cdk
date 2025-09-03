@@ -19,6 +19,7 @@ namespace Gs2Cdk\JobQueue\Model;
 use Gs2Cdk\Core\Model\CdkResource;
 use Gs2Cdk\Core\Model\Stack;
 use Gs2Cdk\Core\Func\GetAttr;
+use Gs2Cdk\Core\Model\TransactionSetting;
 use Gs2Cdk\Core\Model\NotificationSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
@@ -30,6 +31,7 @@ class Namespace_ extends CdkResource {
     private Stack $stack;
     private string $name;
     private ?string $description = null;
+    private ?TransactionSetting $transactionSetting = null;
     private ?bool $enableAutoRun = null;
     private ?NotificationSetting $pushNotification = null;
     private ?NotificationSetting $runNotification = null;
@@ -47,6 +49,7 @@ class Namespace_ extends CdkResource {
         $this->stack = $stack;
         $this->name = $name;
         $this->description = $options?->description ?? null;
+        $this->transactionSetting = $options?->transactionSetting ?? null;
         $this->pushNotification = $options?->pushNotification ?? null;
         $this->runNotification = $options?->runNotification ?? null;
         $this->logSetting = $options?->logSetting ?? null;
@@ -75,6 +78,10 @@ class Namespace_ extends CdkResource {
         }
         if ($this->description != null) {
             $properties["Description"] = $this->description;
+        }
+        if ($this->transactionSetting != null) {
+            $properties["TransactionSetting"] = $this->transactionSetting?->properties(
+            );
         }
         if ($this->enableAutoRun != null) {
             $properties["EnableAutoRun"] = $this->enableAutoRun;

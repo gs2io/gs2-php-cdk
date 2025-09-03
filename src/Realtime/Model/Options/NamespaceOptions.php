@@ -15,20 +15,24 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Realtime\Model\Options;
+use Gs2Cdk\Core\Model\TransactionSetting;
 use Gs2Cdk\Core\Model\NotificationSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    public ?TransactionSetting $transactionSetting;
     public ?NotificationSetting $createNotification;
     public ?LogSetting $logSetting;
     
     public function __construct(
         ?string $description = null,
+        ?TransactionSetting $transactionSetting = null,
         ?NotificationSetting $createNotification = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
+        $this->transactionSetting = $transactionSetting;
         $this->createNotification = $createNotification;
         $this->logSetting = $logSetting;
     }}

@@ -15,11 +15,13 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Money\Model\Options;
+use Gs2Cdk\Core\Model\TransactionSetting;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    public ?TransactionSetting $transactionSetting;
     public ?string $appleKey;
     public ?string $googleKey;
     public ?bool $enableFakeReceipt;
@@ -30,6 +32,7 @@ class NamespaceOptions {
     
     public function __construct(
         ?string $description = null,
+        ?TransactionSetting $transactionSetting = null,
         ?string $appleKey = null,
         ?string $googleKey = null,
         ?bool $enableFakeReceipt = null,
@@ -39,6 +42,7 @@ class NamespaceOptions {
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
+        $this->transactionSetting = $transactionSetting;
         $this->appleKey = $appleKey;
         $this->googleKey = $googleKey;
         $this->enableFakeReceipt = $enableFakeReceipt;

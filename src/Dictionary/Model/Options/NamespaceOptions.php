@@ -15,22 +15,26 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Dictionary\Model\Options;
+use Gs2Cdk\Core\Model\TransactionSetting;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    public ?TransactionSetting $transactionSetting;
     public ?ScriptSetting $entryScript;
     public ?string $duplicateEntryScript;
     public ?LogSetting $logSetting;
     
     public function __construct(
         ?string $description = null,
+        ?TransactionSetting $transactionSetting = null,
         ?ScriptSetting $entryScript = null,
         ?string $duplicateEntryScript = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
+        $this->transactionSetting = $transactionSetting;
         $this->entryScript = $entryScript;
         $this->duplicateEntryScript = $duplicateEntryScript;
         $this->logSetting = $logSetting;

@@ -19,6 +19,7 @@ namespace Gs2Cdk\Money\Model;
 use Gs2Cdk\Core\Model\CdkResource;
 use Gs2Cdk\Core\Model\Stack;
 use Gs2Cdk\Core\Func\GetAttr;
+use Gs2Cdk\Core\Model\TransactionSetting;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
@@ -35,6 +36,7 @@ class Namespace_ extends CdkResource {
     private bool $shareFree;
     private NamespaceCurrency $currency;
     private ?string $description = null;
+    private ?TransactionSetting $transactionSetting = null;
     private ?string $appleKey = null;
     private ?string $googleKey = null;
     private ?bool $enableFakeReceipt = null;
@@ -61,6 +63,7 @@ class Namespace_ extends CdkResource {
         $this->shareFree = $shareFree;
         $this->currency = $currency;
         $this->description = $options?->description ?? null;
+        $this->transactionSetting = $options?->transactionSetting ?? null;
         $this->appleKey = $options?->appleKey ?? null;
         $this->googleKey = $options?->googleKey ?? null;
         $this->enableFakeReceipt = $options?->enableFakeReceipt ?? null;
@@ -93,6 +96,10 @@ class Namespace_ extends CdkResource {
         }
         if ($this->description != null) {
             $properties["Description"] = $this->description;
+        }
+        if ($this->transactionSetting != null) {
+            $properties["TransactionSetting"] = $this->transactionSetting?->properties(
+            );
         }
         if ($this->priority != null) {
             $properties["Priority"] = $this->priority;

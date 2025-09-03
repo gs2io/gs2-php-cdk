@@ -15,11 +15,13 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Account\Model\Options;
+use Gs2Cdk\Core\Model\TransactionSetting;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    public ?TransactionSetting $transactionSetting;
     public ?bool $changePasswordIfTakeOver;
     public ?bool $differentUserIdForLoginAndDataRetention;
     public ?ScriptSetting $createAccountScript;
@@ -32,6 +34,7 @@ class NamespaceOptions {
     
     public function __construct(
         ?string $description = null,
+        ?TransactionSetting $transactionSetting = null,
         ?bool $changePasswordIfTakeOver = null,
         ?bool $differentUserIdForLoginAndDataRetention = null,
         ?ScriptSetting $createAccountScript = null,
@@ -43,6 +46,7 @@ class NamespaceOptions {
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
+        $this->transactionSetting = $transactionSetting;
         $this->changePasswordIfTakeOver = $changePasswordIfTakeOver;
         $this->differentUserIdForLoginAndDataRetention = $differentUserIdForLoginAndDataRetention;
         $this->createAccountScript = $createAccountScript;

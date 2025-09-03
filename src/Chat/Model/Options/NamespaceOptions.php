@@ -15,12 +15,14 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Chat\Model\Options;
+use Gs2Cdk\Core\Model\TransactionSetting;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\NotificationSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    public ?TransactionSetting $transactionSetting;
     public ?bool $allowCreateRoom;
     public ?int $messageLifeTimeDays;
     public ?ScriptSetting $postMessageScript;
@@ -33,6 +35,7 @@ class NamespaceOptions {
     
     public function __construct(
         ?string $description = null,
+        ?TransactionSetting $transactionSetting = null,
         ?bool $allowCreateRoom = null,
         ?int $messageLifeTimeDays = null,
         ?ScriptSetting $postMessageScript = null,
@@ -44,6 +47,7 @@ class NamespaceOptions {
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
+        $this->transactionSetting = $transactionSetting;
         $this->allowCreateRoom = $allowCreateRoom;
         $this->messageLifeTimeDays = $messageLifeTimeDays;
         $this->postMessageScript = $postMessageScript;

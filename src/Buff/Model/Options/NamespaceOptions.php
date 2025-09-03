@@ -15,20 +15,24 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Buff\Model\Options;
+use Gs2Cdk\Core\Model\TransactionSetting;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    public ?TransactionSetting $transactionSetting;
     public ?ScriptSetting $applyBuffScript;
     public ?LogSetting $logSetting;
     
     public function __construct(
         ?string $description = null,
+        ?TransactionSetting $transactionSetting = null,
         ?ScriptSetting $applyBuffScript = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
+        $this->transactionSetting = $transactionSetting;
         $this->applyBuffScript = $applyBuffScript;
         $this->logSetting = $logSetting;
     }}

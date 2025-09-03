@@ -15,20 +15,24 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Datastore\Model\Options;
+use Gs2Cdk\Core\Model\TransactionSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 use Gs2Cdk\Core\Model\ScriptSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    public ?TransactionSetting $transactionSetting;
     public ?LogSetting $logSetting;
     public ?ScriptSetting $doneUploadScript;
     
     public function __construct(
         ?string $description = null,
+        ?TransactionSetting $transactionSetting = null,
         ?LogSetting $logSetting = null,
         ?ScriptSetting $doneUploadScript = null,
     ) {
         $this->description = $description;
+        $this->transactionSetting = $transactionSetting;
         $this->logSetting = $logSetting;
         $this->doneUploadScript = $doneUploadScript;
     }}

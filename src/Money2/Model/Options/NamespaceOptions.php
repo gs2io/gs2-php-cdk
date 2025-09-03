@@ -15,6 +15,7 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Money2\Model\Options;
+use Gs2Cdk\Core\Model\TransactionSetting;
 use Gs2Cdk\Money2\Model\PlatformSetting;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\NotificationSetting;
@@ -22,6 +23,7 @@ use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    public ?TransactionSetting $transactionSetting;
     public ?ScriptSetting $depositBalanceScript;
     public ?ScriptSetting $withdrawBalanceScript;
     public ?ScriptSetting $verifyReceiptScript;
@@ -34,6 +36,7 @@ class NamespaceOptions {
     
     public function __construct(
         ?string $description = null,
+        ?TransactionSetting $transactionSetting = null,
         ?ScriptSetting $depositBalanceScript = null,
         ?ScriptSetting $withdrawBalanceScript = null,
         ?ScriptSetting $verifyReceiptScript = null,
@@ -45,6 +48,7 @@ class NamespaceOptions {
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
+        $this->transactionSetting = $transactionSetting;
         $this->depositBalanceScript = $depositBalanceScript;
         $this->withdrawBalanceScript = $withdrawBalanceScript;
         $this->verifyReceiptScript = $verifyReceiptScript;
