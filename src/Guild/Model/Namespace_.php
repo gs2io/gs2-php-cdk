@@ -39,6 +39,7 @@ class Namespace_ extends CdkResource {
     private ?NotificationSetting $joinNotification = null;
     private ?NotificationSetting $leaveNotification = null;
     private ?NotificationSetting $changeMemberNotification = null;
+    private ?bool $changeMemberNotificationIgnoreChangeMetadata = null;
     private ?NotificationSetting $receiveRequestNotification = null;
     private ?NotificationSetting $removeRequestNotification = null;
     private ?ScriptSetting $createGuildScript = null;
@@ -67,6 +68,7 @@ class Namespace_ extends CdkResource {
         $this->joinNotification = $options?->joinNotification ?? null;
         $this->leaveNotification = $options?->leaveNotification ?? null;
         $this->changeMemberNotification = $options?->changeMemberNotification ?? null;
+        $this->changeMemberNotificationIgnoreChangeMetadata = $options?->changeMemberNotificationIgnoreChangeMetadata ?? null;
         $this->receiveRequestNotification = $options?->receiveRequestNotification ?? null;
         $this->removeRequestNotification = $options?->removeRequestNotification ?? null;
         $this->createGuildScript = $options?->createGuildScript ?? null;
@@ -122,6 +124,9 @@ class Namespace_ extends CdkResource {
         if ($this->changeMemberNotification != null) {
             $properties["ChangeMemberNotification"] = $this->changeMemberNotification?->properties(
             );
+        }
+        if ($this->changeMemberNotificationIgnoreChangeMetadata != null) {
+            $properties["ChangeMemberNotificationIgnoreChangeMetadata"] = $this->changeMemberNotificationIgnoreChangeMetadata;
         }
         if ($this->receiveRequestNotification != null) {
             $properties["ReceiveRequestNotification"] = $this->receiveRequestNotification?->properties(

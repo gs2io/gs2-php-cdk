@@ -27,6 +27,7 @@ class NamespaceOptions {
     public ?NotificationSetting $joinNotification;
     public ?NotificationSetting $leaveNotification;
     public ?NotificationSetting $changeMemberNotification;
+    public ?bool $changeMemberNotificationIgnoreChangeMetadata;
     public ?NotificationSetting $receiveRequestNotification;
     public ?NotificationSetting $removeRequestNotification;
     public ?ScriptSetting $createGuildScript;
@@ -45,6 +46,7 @@ class NamespaceOptions {
         ?NotificationSetting $joinNotification = null,
         ?NotificationSetting $leaveNotification = null,
         ?NotificationSetting $changeMemberNotification = null,
+        ?bool $changeMemberNotificationIgnoreChangeMetadata = null,
         ?NotificationSetting $receiveRequestNotification = null,
         ?NotificationSetting $removeRequestNotification = null,
         ?ScriptSetting $createGuildScript = null,
@@ -62,6 +64,7 @@ class NamespaceOptions {
         $this->joinNotification = $joinNotification;
         $this->leaveNotification = $leaveNotification;
         $this->changeMemberNotification = $changeMemberNotification;
+        $this->changeMemberNotificationIgnoreChangeMetadata = $changeMemberNotificationIgnoreChangeMetadata;
         $this->receiveRequestNotification = $receiveRequestNotification;
         $this->removeRequestNotification = $removeRequestNotification;
         $this->createGuildScript = $createGuildScript;
