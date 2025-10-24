@@ -20,6 +20,7 @@ use Gs2Cdk\Core\Model\CdkResource;
 use Gs2Cdk\Core\Model\Stack;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Model\TransactionSetting;
+use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 use Gs2Cdk\Limit\Ref\NamespaceRef;
@@ -33,6 +34,7 @@ class Namespace_ extends CdkResource {
     private string $name;
     private ?string $description = null;
     private ?TransactionSetting $transactionSetting = null;
+    private ?ScriptSetting $countUpScript = null;
     private ?LogSetting $logSetting = null;
 
     public function __construct(
@@ -48,6 +50,7 @@ class Namespace_ extends CdkResource {
         $this->name = $name;
         $this->description = $options?->description ?? null;
         $this->transactionSetting = $options?->transactionSetting ?? null;
+        $this->countUpScript = $options?->countUpScript ?? null;
         $this->logSetting = $options?->logSetting ?? null;
         $stack->addResource(
             $this,
@@ -77,6 +80,10 @@ class Namespace_ extends CdkResource {
         }
         if ($this->transactionSetting != null) {
             $properties["TransactionSetting"] = $this->transactionSetting?->properties(
+            );
+        }
+        if ($this->countUpScript != null) {
+            $properties["CountUpScript"] = $this->countUpScript?->properties(
             );
         }
         if ($this->logSetting != null) {
