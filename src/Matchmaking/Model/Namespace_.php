@@ -38,15 +38,15 @@ use Gs2Cdk\Matchmaking\Model\Options\NamespaceOptions;
 class Namespace_ extends CdkResource {
     private Stack $stack;
     private string $name;
-    private NamespaceCreateGatheringTriggerType $createGatheringTriggerType;
-    private NamespaceCompleteMatchmakingTriggerType $completeMatchmakingTriggerType;
     private ?string $description = null;
     private ?TransactionSetting $transactionSetting = null;
     private ?bool $enableRating = null;
     private ?NamespaceEnableDisconnectDetection $enableDisconnectDetection = null;
     private ?int $disconnectDetectionTimeoutSeconds = null;
+    private ?NamespaceCreateGatheringTriggerType $createGatheringTriggerType = null;
     private ?string $createGatheringTriggerRealtimeNamespaceId = null;
     private ?string $createGatheringTriggerScriptId = null;
+    private ?NamespaceCompleteMatchmakingTriggerType $completeMatchmakingTriggerType = null;
     private ?string $completeMatchmakingTriggerRealtimeNamespaceId = null;
     private ?string $completeMatchmakingTriggerScriptId = null;
     private ?NamespaceEnableCollaborateSeasonRating $enableCollaborateSeasonRating = null;
@@ -62,8 +62,6 @@ class Namespace_ extends CdkResource {
     public function __construct(
         Stack $stack,
         string $name,
-        NamespaceCreateGatheringTriggerType $createGatheringTriggerType,
-        NamespaceCompleteMatchmakingTriggerType $completeMatchmakingTriggerType,
         ?NamespaceOptions $options = null,
     ) {
         parent::__construct(
@@ -72,15 +70,15 @@ class Namespace_ extends CdkResource {
 
         $this->stack = $stack;
         $this->name = $name;
-        $this->createGatheringTriggerType = $createGatheringTriggerType;
-        $this->completeMatchmakingTriggerType = $completeMatchmakingTriggerType;
         $this->description = $options?->description ?? null;
         $this->transactionSetting = $options?->transactionSetting ?? null;
         $this->enableRating = $options?->enableRating ?? null;
         $this->enableDisconnectDetection = $options?->enableDisconnectDetection ?? null;
         $this->disconnectDetectionTimeoutSeconds = $options?->disconnectDetectionTimeoutSeconds ?? null;
+        $this->createGatheringTriggerType = $options?->createGatheringTriggerType ?? null;
         $this->createGatheringTriggerRealtimeNamespaceId = $options?->createGatheringTriggerRealtimeNamespaceId ?? null;
         $this->createGatheringTriggerScriptId = $options?->createGatheringTriggerScriptId ?? null;
+        $this->completeMatchmakingTriggerType = $options?->completeMatchmakingTriggerType ?? null;
         $this->completeMatchmakingTriggerRealtimeNamespaceId = $options?->completeMatchmakingTriggerRealtimeNamespaceId ?? null;
         $this->completeMatchmakingTriggerScriptId = $options?->completeMatchmakingTriggerScriptId ?? null;
         $this->enableCollaborateSeasonRating = $options?->enableCollaborateSeasonRating ?? null;
