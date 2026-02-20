@@ -38,6 +38,9 @@ class AttachSecurityPolicy extends CdkResource {
         $this->stack = $stack;
         $this->userName = $userName;
         $this->securityPolicyId = $securityPolicyId;
+        $stack->addResource(
+            $this
+        );
     }
 
     public function resourceType(): String {
