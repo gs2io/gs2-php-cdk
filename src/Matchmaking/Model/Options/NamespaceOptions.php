@@ -17,19 +17,25 @@
  * deny overwrite
  */
 namespace Gs2Cdk\Matchmaking\Model\Options;
+use Gs2Cdk\Core\Model\TransactionSetting;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\NotificationSetting;
 use Gs2Cdk\Core\Model\LogSetting;
+use Gs2Cdk\Matchmaking\Model\Enums\NamespaceCompleteMatchmakingTriggerType;
+use Gs2Cdk\Matchmaking\Model\Enums\NamespaceCreateGatheringTriggerType;
 use Gs2Cdk\Matchmaking\Model\Enums\NamespaceEnableCollaborateSeasonRating;
 use Gs2Cdk\Matchmaking\Model\Enums\NamespaceEnableDisconnectDetection;
 
 class NamespaceOptions {
     public ?string $description;
+    public ?TransactionSetting $transactionSetting;
     public ?bool $enableRating;
     public ?NamespaceEnableDisconnectDetection $enableDisconnectDetection;
     public ?int $disconnectDetectionTimeoutSeconds;
+    public ?NamespaceCreateGatheringTriggerType $createGatheringTriggerType;
     public ?string $createGatheringTriggerRealtimeNamespaceId;
     public ?string $createGatheringTriggerScriptId;
+    public ?NamespaceCompleteMatchmakingTriggerType $completeMatchmakingTriggerType;
     public ?string $completeMatchmakingTriggerRealtimeNamespaceId;
     public ?string $completeMatchmakingTriggerScriptId;
     public ?NamespaceEnableCollaborateSeasonRating $enableCollaborateSeasonRating;
@@ -44,11 +50,14 @@ class NamespaceOptions {
     
     public function __construct(
         ?string $description = null,
+        ?TransactionSetting $transactionSetting = null,
         ?bool $enableRating = null,
         ?NamespaceEnableDisconnectDetection $enableDisconnectDetection = null,
         ?int $disconnectDetectionTimeoutSeconds = null,
+        ?NamespaceCreateGatheringTriggerType $createGatheringTriggerType = null,
         ?string $createGatheringTriggerRealtimeNamespaceId = null,
         ?string $createGatheringTriggerScriptId = null,
+        ?NamespaceCompleteMatchmakingTriggerType $completeMatchmakingTriggerType = null,
         ?string $completeMatchmakingTriggerRealtimeNamespaceId = null,
         ?string $completeMatchmakingTriggerScriptId = null,
         ?NamespaceEnableCollaborateSeasonRating $enableCollaborateSeasonRating = null,
@@ -62,11 +71,13 @@ class NamespaceOptions {
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
+        $this->transactionSetting = $transactionSetting;
         $this->enableRating = $enableRating;
         $this->enableDisconnectDetection = $enableDisconnectDetection;
         $this->disconnectDetectionTimeoutSeconds = $disconnectDetectionTimeoutSeconds;
         $this->createGatheringTriggerRealtimeNamespaceId = $createGatheringTriggerRealtimeNamespaceId;
         $this->createGatheringTriggerScriptId = $createGatheringTriggerScriptId;
+        $this->createGatheringTriggerType = $createGatheringTriggerType;
         $this->completeMatchmakingTriggerRealtimeNamespaceId = $completeMatchmakingTriggerRealtimeNamespaceId;
         $this->completeMatchmakingTriggerScriptId = $completeMatchmakingTriggerScriptId;
         $this->enableCollaborateSeasonRating = $enableCollaborateSeasonRating;

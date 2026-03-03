@@ -18,6 +18,7 @@ namespace Gs2Cdk\StateMachine\Model\Options;
 use Gs2Cdk\Core\Model\TransactionSetting;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\LogSetting;
+use Gs2Cdk\StateMachine\Model\Enums\NamespaceSupportSpeculativeExecution;
 
 class NamespaceOptions {
     public ?string $description;

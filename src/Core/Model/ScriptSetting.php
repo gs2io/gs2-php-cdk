@@ -16,33 +16,40 @@
  */
 
 namespace Gs2Cdk\Core\Model;
+use Gs2Cdk\Core\Model\Enums\ScriptSettingDoneTriggerTargetType;
 
 class ScriptSetting
 {
 
-    public String $triggerScriptId;
-    public String $doneTriggerTargetType;
-    public String $doneTriggerScriptId;
-    public String $doneTriggerQueueNamespaceId;
+    public ?String $triggerScriptId;
+    public ?ScriptSettingDoneTriggerTargetType $doneTriggerTargetType;
+    public ?String $doneTriggerScriptId;
+    public ?String $doneTriggerQueueNamespaceId;
 
     public function __construct(
-        String $triggerScriptId = null,
-        String $doneTriggerTargetType = null,
-        String $doneTriggerScriptId = null,
-        String $doneTriggerQueueNamespaceId = null,
+        ?ScriptSettingOptions $options = null,
     ) {
-        $this->triggerScriptId = $triggerScriptId;
-        $this->doneTriggerTargetType = $doneTriggerTargetType;
-        $this->doneTriggerScriptId = $doneTriggerScriptId;
-        $this->doneTriggerQueueNamespaceId = $doneTriggerQueueNamespaceId;
+        $this->triggerScriptId = $options?->triggerScriptId ?? null;
+        $this->doneTriggerTargetType = $options?->doneTriggerTargetType ?? ScriptSettingDoneTriggerTargetType::NONE;
+        $this->doneTriggerScriptId = $options?->doneTriggerScriptId ?? null;
+        $this->doneTriggerQueueNamespaceId = $options?->doneTriggerQueueNamespaceId ?? null;
     }
 
     public function properties(): array {
-        return [
-            "TriggerScriptId" => $triggerScriptId,
-            "DoneTriggerTargetType" => $doneTriggerTargetType,
-            "DoneTriggerScriptId" => $doneTriggerScriptId,
-            "DoneTriggerQueueNamespaceId" => $doneTriggerQueueNamespaceId,
-        ];
+        $properties = [];
+
+        if ($this->triggerScriptId != null) {
+            $properties["TriggerScriptId"] = $this->triggerScriptId;
+        }
+        if ($this->doneTriggerTargetType != null) {
+            $properties["DoneTriggerTargetType"] = $this->doneTriggerTargetType;
+        }
+        if ($this->doneTriggerScriptId != null) {
+            $properties["DoneTriggerScriptId"] = $this->doneTriggerScriptId;
+        }
+        if ($this->doneTriggerQueueNamespaceId != null) {
+            $properties["DoneTriggerQueueNamespaceId"] = $this->doneTriggerQueueNamespaceId;
+        }
+        return $properties;
     }
 }

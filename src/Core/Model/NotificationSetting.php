@@ -16,13 +16,15 @@
  */
 
 namespace Gs2Cdk\Core\Model;
+use Gs2Cdk\Core\Model\Enums\NotificationSettingEnable;
 
 class NotificationSetting
 {
 
-    public String $gatewayNamespaceId;
-    public ?String $enableTransferMobileNotification;
+    public ?String $gatewayNamespaceId;
+    public ?bool $enableTransferMobileNotification;
     public ?String $sound;
+    public ?NotificationSettingEnable $enable;
 
     public function __construct(
         NotificationSettingOptions $options = null,
@@ -30,6 +32,7 @@ class NotificationSetting
         $this->gatewayNamespaceId = $options?->gatewayNamespaceId ?? null;
         $this->enableTransferMobileNotification = $options?->enableTransferMobileNotification ?? null;
         $this->sound = $options?->sound ?? null;
+        $this->enable = $options?->enable ?? null;
     }
 
     public function properties(): array {
@@ -43,6 +46,9 @@ class NotificationSetting
         }
         if ($this->sound != null) {
             $properties["Sound"] = $this->sound;
+        }
+        if ($this->enable != null) {
+            $properties["Enable"] = $this->enable;
         }
 
         return $properties;

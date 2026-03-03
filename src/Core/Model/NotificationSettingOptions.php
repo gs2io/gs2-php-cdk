@@ -15,19 +15,23 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Core\Model;
+use Gs2Cdk\Core\Model\Enums\NotificationSettingEnable;
 
 class NotificationSettingOptions {
     public ?String $gatewayNamespaceId = null;
-    public ?String $enableTransferMobileNotification = null;
+    public ?bool $enableTransferMobileNotification = null;
     public ?String $sound = null;
+    public ?NotificationSettingEnable $enable = null;
     
     public function __construct(
         ?String $gatewayNamespaceId = null,
-        ?String $enableTransferMobileNotification = null,
+        ?bool $enableTransferMobileNotification = null,
         ?String $sound = null,
+        ?NotificationSettingEnable $enable = null,
     ) {
         $this->gatewayNamespaceId = $gatewayNamespaceId;
         $this->enableTransferMobileNotification = $enableTransferMobileNotification;
         $this->sound = $sound;
+        $this->enable = $enable;
     }}
 

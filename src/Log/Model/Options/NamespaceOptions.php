@@ -19,6 +19,7 @@
 namespace Gs2Cdk\Log\Model\Options;
 
 use Gs2Cdk\Log\Model\Enums\NamespaceType;
+use Gs2Cdk\Log\Model\Enums\NamespaceFirehoseCompressData;
 
 class NamespaceOptions {
     public ?string $description;
@@ -30,6 +31,7 @@ class NamespaceOptions {
     public ?string $awsAccessKeyId;
     public ?string $awsSecretAccessKey;
     public ?string $firehoseStreamName;
+    public ?NamespaceFirehoseCompressData $firehoseCompressData;
     
     public function __construct(
         ?string $description = null,
@@ -41,6 +43,7 @@ class NamespaceOptions {
         ?string $awsAccessKeyId = null,
         ?string $awsSecretAccessKey = null,
         ?string $firehoseStreamName = null,
+        ?NamespaceFirehoseCompressData $firehoseCompressData = null,
     ) {
         $this->description = $description;
         $this->type = $type;
@@ -51,5 +54,6 @@ class NamespaceOptions {
         $this->awsAccessKeyId = $awsAccessKeyId;
         $this->awsSecretAccessKey = $awsSecretAccessKey;
         $this->firehoseStreamName = $firehoseStreamName;
+        $this->firehoseCompressData = $firehoseCompressData;
     }}
 
