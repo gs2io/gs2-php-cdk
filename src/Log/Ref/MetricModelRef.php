@@ -18,36 +18,16 @@ namespace Gs2Cdk\Log\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
-use Gs2Cdk\Log\Ref\FacetModelRef;
-use Gs2Cdk\Log\Ref\DashboardRef;
-use Gs2Cdk\Log\Ref\MetricModelRef;
 
-class NamespaceRef {
+class MetricModelRef {
     private string $namespaceName;
+    private string $name;
 
     public function __construct(
         string $namespaceName,
+        string $name,
     ) {
         $this->namespaceName = $namespaceName;
-    }
-
-    public function grn(
-    ): string {
-        return (new Join(
-            ":",
-            [
-                "grn",
-                "gs2",
-                GetAttr::region(
-                )->str(
-                ),
-                GetAttr::ownerId(
-                )->str(
-                ),
-                "log",
-                $this->namespaceName,
-            ],
-        ))->str(
-        );
+        $this->name = $name;
     }
 }

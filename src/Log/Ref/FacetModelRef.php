@@ -18,17 +18,17 @@ namespace Gs2Cdk\Log\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
-use Gs2Cdk\Log\Ref\FacetModelRef;
-use Gs2Cdk\Log\Ref\DashboardRef;
-use Gs2Cdk\Log\Ref\MetricModelRef;
 
-class NamespaceRef {
+class FacetModelRef {
     private string $namespaceName;
+    private string $field;
 
     public function __construct(
         string $namespaceName,
+        string $field,
     ) {
         $this->namespaceName = $namespaceName;
+        $this->field = $field;
     }
 
     public function grn(
@@ -46,6 +46,9 @@ class NamespaceRef {
                 ),
                 "log",
                 $this->namespaceName,
+                "model",
+                "facet",
+                $this->field,
             ],
         ))->str(
         );
