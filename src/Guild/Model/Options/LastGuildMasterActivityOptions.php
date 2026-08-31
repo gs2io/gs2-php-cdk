@@ -17,8 +17,11 @@
 namespace Gs2Cdk\Guild\Model\Options;
 
 class LastGuildMasterActivityOptions {
+    public ?int $revision;
     
     public function __construct(
+        ?int $revision = null,
     ) {
+        $this->revision = $revision;
     }}
 

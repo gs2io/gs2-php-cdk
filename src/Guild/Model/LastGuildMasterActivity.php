@@ -19,12 +19,14 @@ use Gs2Cdk\Guild\Model\Options\LastGuildMasterActivityOptions;
 
 class LastGuildMasterActivity {
     private string $userId;
+    private ?int $revision = null;
 
     public function __construct(
         string $userId,
         ?LastGuildMasterActivityOptions $options = null,
     ) {
         $this->userId = $userId;
+        $this->revision = $options?->revision ?? null;
     }
 
     public function properties(
