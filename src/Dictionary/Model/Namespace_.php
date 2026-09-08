@@ -20,6 +20,7 @@ use Gs2Cdk\Core\Model\CdkResource;
 use Gs2Cdk\Core\Model\Stack;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Model\TransactionSetting;
+use Gs2Cdk\Dictionary\Model\TransactionSettingV2;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
@@ -33,7 +34,9 @@ class Namespace_ extends CdkResource {
     private Stack $stack;
     private string $name;
     private ?string $description = null;
+    /** @deprecated */
     private ?TransactionSetting $transactionSetting = null;
+    private ?TransactionSettingV2 $transactionSettingV2 = null;
     private ?ScriptSetting $entryScript = null;
     private ?string $duplicateEntryScript = null;
     private ?LogSetting $logSetting = null;
@@ -51,6 +54,7 @@ class Namespace_ extends CdkResource {
         $this->name = $name;
         $this->description = $options?->description ?? null;
         $this->transactionSetting = $options?->transactionSetting ?? null;
+        $this->transactionSettingV2 = $options?->transactionSettingV2 ?? null;
         $this->entryScript = $options?->entryScript ?? null;
         $this->duplicateEntryScript = $options?->duplicateEntryScript ?? null;
         $this->logSetting = $options?->logSetting ?? null;
@@ -82,6 +86,10 @@ class Namespace_ extends CdkResource {
         }
         if ($this->transactionSetting != null) {
             $properties["TransactionSetting"] = $this->transactionSetting?->properties(
+            );
+        }
+        if ($this->transactionSettingV2 != null) {
+            $properties["TransactionSettingV2"] = $this->transactionSettingV2?->properties(
             );
         }
         if ($this->entryScript != null) {

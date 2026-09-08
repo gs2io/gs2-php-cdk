@@ -16,20 +16,25 @@
  */
 namespace Gs2Cdk\SerialKey\Model\Options;
 use Gs2Cdk\Core\Model\TransactionSetting;
+use Gs2Cdk\SerialKey\Model\TransactionSettingV2;
 use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    /** @deprecated */
     public ?TransactionSetting $transactionSetting;
+    public ?TransactionSettingV2 $transactionSettingV2;
     public ?LogSetting $logSetting;
     
     public function __construct(
         ?string $description = null,
         ?TransactionSetting $transactionSetting = null,
+        ?TransactionSettingV2 $transactionSettingV2 = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
         $this->transactionSetting = $transactionSetting;
+        $this->transactionSettingV2 = $transactionSettingV2;
         $this->logSetting = $logSetting;
     }}
 

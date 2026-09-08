@@ -16,23 +16,28 @@
  */
 namespace Gs2Cdk\Limit\Model\Options;
 use Gs2Cdk\Core\Model\TransactionSetting;
+use Gs2Cdk\Limit\Model\TransactionSettingV2;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    /** @deprecated */
     public ?TransactionSetting $transactionSetting;
+    public ?TransactionSettingV2 $transactionSettingV2;
     public ?ScriptSetting $countUpScript;
     public ?LogSetting $logSetting;
     
     public function __construct(
         ?string $description = null,
         ?TransactionSetting $transactionSetting = null,
+        ?TransactionSettingV2 $transactionSettingV2 = null,
         ?ScriptSetting $countUpScript = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
         $this->transactionSetting = $transactionSetting;
+        $this->transactionSettingV2 = $transactionSettingV2;
         $this->countUpScript = $countUpScript;
         $this->logSetting = $logSetting;
     }}

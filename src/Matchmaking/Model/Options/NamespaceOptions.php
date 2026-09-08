@@ -13,22 +13,23 @@
  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
- *
- * deny overwrite
  */
 namespace Gs2Cdk\Matchmaking\Model\Options;
 use Gs2Cdk\Core\Model\TransactionSetting;
+use Gs2Cdk\Matchmaking\Model\TransactionSettingV2;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\NotificationSetting;
 use Gs2Cdk\Core\Model\LogSetting;
-use Gs2Cdk\Matchmaking\Model\Enums\NamespaceCompleteMatchmakingTriggerType;
-use Gs2Cdk\Matchmaking\Model\Enums\NamespaceCreateGatheringTriggerType;
-use Gs2Cdk\Matchmaking\Model\Enums\NamespaceEnableCollaborateSeasonRating;
 use Gs2Cdk\Matchmaking\Model\Enums\NamespaceEnableDisconnectDetection;
+use Gs2Cdk\Matchmaking\Model\Enums\NamespaceCreateGatheringTriggerType;
+use Gs2Cdk\Matchmaking\Model\Enums\NamespaceCompleteMatchmakingTriggerType;
+use Gs2Cdk\Matchmaking\Model\Enums\NamespaceEnableCollaborateSeasonRating;
 
 class NamespaceOptions {
     public ?string $description;
+    /** @deprecated */
     public ?TransactionSetting $transactionSetting;
+    public ?TransactionSettingV2 $transactionSettingV2;
     public ?bool $enableRating;
     public ?NamespaceEnableDisconnectDetection $enableDisconnectDetection;
     public ?int $disconnectDetectionTimeoutSeconds;
@@ -51,6 +52,7 @@ class NamespaceOptions {
     public function __construct(
         ?string $description = null,
         ?TransactionSetting $transactionSetting = null,
+        ?TransactionSettingV2 $transactionSettingV2 = null,
         ?bool $enableRating = null,
         ?NamespaceEnableDisconnectDetection $enableDisconnectDetection = null,
         ?int $disconnectDetectionTimeoutSeconds = null,
@@ -72,12 +74,14 @@ class NamespaceOptions {
     ) {
         $this->description = $description;
         $this->transactionSetting = $transactionSetting;
+        $this->transactionSettingV2 = $transactionSettingV2;
         $this->enableRating = $enableRating;
         $this->enableDisconnectDetection = $enableDisconnectDetection;
         $this->disconnectDetectionTimeoutSeconds = $disconnectDetectionTimeoutSeconds;
+        $this->createGatheringTriggerType = $createGatheringTriggerType;
         $this->createGatheringTriggerRealtimeNamespaceId = $createGatheringTriggerRealtimeNamespaceId;
         $this->createGatheringTriggerScriptId = $createGatheringTriggerScriptId;
-        $this->createGatheringTriggerType = $createGatheringTriggerType;
+        $this->completeMatchmakingTriggerType = $completeMatchmakingTriggerType;
         $this->completeMatchmakingTriggerRealtimeNamespaceId = $completeMatchmakingTriggerRealtimeNamespaceId;
         $this->completeMatchmakingTriggerScriptId = $completeMatchmakingTriggerScriptId;
         $this->enableCollaborateSeasonRating = $enableCollaborateSeasonRating;

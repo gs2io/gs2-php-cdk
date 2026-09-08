@@ -16,6 +16,7 @@
  */
 namespace Gs2Cdk\Inbox\Model\Options;
 use Gs2Cdk\Core\Model\TransactionSetting;
+use Gs2Cdk\Inbox\Model\TransactionSettingV2;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\NotificationSetting;
 use Gs2Cdk\Core\Model\LogSetting;
@@ -23,7 +24,9 @@ use Gs2Cdk\Core\Model\LogSetting;
 class NamespaceOptions {
     public ?string $description;
     public ?bool $isAutomaticDeletingEnabled;
+    /** @deprecated */
     public ?TransactionSetting $transactionSetting;
+    public ?TransactionSettingV2 $transactionSettingV2;
     public ?ScriptSetting $receiveMessageScript;
     public ?ScriptSetting $readMessageScript;
     public ?ScriptSetting $deleteMessageScript;
@@ -36,6 +39,7 @@ class NamespaceOptions {
         ?string $description = null,
         ?bool $isAutomaticDeletingEnabled = null,
         ?TransactionSetting $transactionSetting = null,
+        ?TransactionSettingV2 $transactionSettingV2 = null,
         ?ScriptSetting $receiveMessageScript = null,
         ?ScriptSetting $readMessageScript = null,
         ?ScriptSetting $deleteMessageScript = null,
@@ -47,6 +51,7 @@ class NamespaceOptions {
         $this->description = $description;
         $this->isAutomaticDeletingEnabled = $isAutomaticDeletingEnabled;
         $this->transactionSetting = $transactionSetting;
+        $this->transactionSettingV2 = $transactionSettingV2;
         $this->receiveMessageScript = $receiveMessageScript;
         $this->readMessageScript = $readMessageScript;
         $this->deleteMessageScript = $deleteMessageScript;

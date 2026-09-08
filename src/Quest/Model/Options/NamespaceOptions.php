@@ -16,12 +16,15 @@
  */
 namespace Gs2Cdk\Quest\Model\Options;
 use Gs2Cdk\Core\Model\TransactionSetting;
+use Gs2Cdk\Quest\Model\TransactionSettingV2;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    /** @deprecated */
     public ?TransactionSetting $transactionSetting;
+    public ?TransactionSettingV2 $transactionSettingV2;
     public ?ScriptSetting $startQuestScript;
     public ?ScriptSetting $completeQuestScript;
     public ?ScriptSetting $failedQuestScript;
@@ -32,6 +35,7 @@ class NamespaceOptions {
     public function __construct(
         ?string $description = null,
         ?TransactionSetting $transactionSetting = null,
+        ?TransactionSettingV2 $transactionSettingV2 = null,
         ?ScriptSetting $startQuestScript = null,
         ?ScriptSetting $completeQuestScript = null,
         ?ScriptSetting $failedQuestScript = null,
@@ -41,6 +45,7 @@ class NamespaceOptions {
     ) {
         $this->description = $description;
         $this->transactionSetting = $transactionSetting;
+        $this->transactionSettingV2 = $transactionSettingV2;
         $this->startQuestScript = $startQuestScript;
         $this->completeQuestScript = $completeQuestScript;
         $this->failedQuestScript = $failedQuestScript;

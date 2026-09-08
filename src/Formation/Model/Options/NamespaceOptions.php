@@ -16,12 +16,15 @@
  */
 namespace Gs2Cdk\Formation\Model\Options;
 use Gs2Cdk\Core\Model\TransactionSetting;
+use Gs2Cdk\Formation\Model\TransactionSettingV2;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    /** @deprecated */
     public ?TransactionSetting $transactionSetting;
+    public ?TransactionSettingV2 $transactionSettingV2;
     public ?ScriptSetting $updateMoldScript;
     public ?ScriptSetting $updateFormScript;
     public ?ScriptSetting $updatePropertyFormScript;
@@ -30,6 +33,7 @@ class NamespaceOptions {
     public function __construct(
         ?string $description = null,
         ?TransactionSetting $transactionSetting = null,
+        ?TransactionSettingV2 $transactionSettingV2 = null,
         ?ScriptSetting $updateMoldScript = null,
         ?ScriptSetting $updateFormScript = null,
         ?ScriptSetting $updatePropertyFormScript = null,
@@ -37,6 +41,7 @@ class NamespaceOptions {
     ) {
         $this->description = $description;
         $this->transactionSetting = $transactionSetting;
+        $this->transactionSettingV2 = $transactionSettingV2;
         $this->updateMoldScript = $updateMoldScript;
         $this->updateFormScript = $updateFormScript;
         $this->updatePropertyFormScript = $updatePropertyFormScript;

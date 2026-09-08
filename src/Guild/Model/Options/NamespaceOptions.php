@@ -16,13 +16,16 @@
  */
 namespace Gs2Cdk\Guild\Model\Options;
 use Gs2Cdk\Core\Model\TransactionSetting;
+use Gs2Cdk\Guild\Model\TransactionSettingV2;
 use Gs2Cdk\Core\Model\NotificationSetting;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    /** @deprecated */
     public ?TransactionSetting $transactionSetting;
+    public ?TransactionSettingV2 $transactionSettingV2;
     public ?NotificationSetting $changeNotification;
     public ?NotificationSetting $joinNotification;
     public ?NotificationSetting $leaveNotification;
@@ -42,6 +45,7 @@ class NamespaceOptions {
     public function __construct(
         ?string $description = null,
         ?TransactionSetting $transactionSetting = null,
+        ?TransactionSettingV2 $transactionSettingV2 = null,
         ?NotificationSetting $changeNotification = null,
         ?NotificationSetting $joinNotification = null,
         ?NotificationSetting $leaveNotification = null,
@@ -60,6 +64,7 @@ class NamespaceOptions {
     ) {
         $this->description = $description;
         $this->transactionSetting = $transactionSetting;
+        $this->transactionSettingV2 = $transactionSettingV2;
         $this->changeNotification = $changeNotification;
         $this->joinNotification = $joinNotification;
         $this->leaveNotification = $leaveNotification;

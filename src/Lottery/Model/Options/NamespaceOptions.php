@@ -16,11 +16,14 @@
  */
 namespace Gs2Cdk\Lottery\Model\Options;
 use Gs2Cdk\Core\Model\TransactionSetting;
+use Gs2Cdk\Lottery\Model\TransactionSettingV2;
 use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    /** @deprecated */
     public ?TransactionSetting $transactionSetting;
+    public ?TransactionSettingV2 $transactionSettingV2;
     public ?string $lotteryTriggerScriptId;
     public ?LogSetting $logSetting;
     public ?string $queueNamespaceId;
@@ -29,6 +32,7 @@ class NamespaceOptions {
     public function __construct(
         ?string $description = null,
         ?TransactionSetting $transactionSetting = null,
+        ?TransactionSettingV2 $transactionSettingV2 = null,
         ?string $lotteryTriggerScriptId = null,
         ?LogSetting $logSetting = null,
         ?string $queueNamespaceId = null,
@@ -36,6 +40,7 @@ class NamespaceOptions {
     ) {
         $this->description = $description;
         $this->transactionSetting = $transactionSetting;
+        $this->transactionSettingV2 = $transactionSettingV2;
         $this->lotteryTriggerScriptId = $lotteryTriggerScriptId;
         $this->logSetting = $logSetting;
         $this->queueNamespaceId = $queueNamespaceId;

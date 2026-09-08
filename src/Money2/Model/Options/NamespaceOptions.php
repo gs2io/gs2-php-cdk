@@ -16,14 +16,18 @@
  */
 namespace Gs2Cdk\Money2\Model\Options;
 use Gs2Cdk\Core\Model\TransactionSetting;
+use Gs2Cdk\Money2\Model\TransactionSettingV2;
 use Gs2Cdk\Money2\Model\PlatformSetting;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\NotificationSetting;
 use Gs2Cdk\Core\Model\LogSetting;
+use Gs2Cdk\Money2\Model\Enums\NamespaceCurrencyUsagePriority;
 
 class NamespaceOptions {
     public ?string $description;
+    /** @deprecated */
     public ?TransactionSetting $transactionSetting;
+    public ?TransactionSettingV2 $transactionSettingV2;
     public ?ScriptSetting $depositBalanceScript;
     public ?ScriptSetting $withdrawBalanceScript;
     public ?ScriptSetting $verifyReceiptScript;
@@ -37,6 +41,7 @@ class NamespaceOptions {
     public function __construct(
         ?string $description = null,
         ?TransactionSetting $transactionSetting = null,
+        ?TransactionSettingV2 $transactionSettingV2 = null,
         ?ScriptSetting $depositBalanceScript = null,
         ?ScriptSetting $withdrawBalanceScript = null,
         ?ScriptSetting $verifyReceiptScript = null,
@@ -49,6 +54,7 @@ class NamespaceOptions {
     ) {
         $this->description = $description;
         $this->transactionSetting = $transactionSetting;
+        $this->transactionSettingV2 = $transactionSettingV2;
         $this->depositBalanceScript = $depositBalanceScript;
         $this->withdrawBalanceScript = $withdrawBalanceScript;
         $this->verifyReceiptScript = $verifyReceiptScript;

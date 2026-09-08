@@ -20,6 +20,7 @@ use Gs2Cdk\Core\Model\CdkResource;
 use Gs2Cdk\Core\Model\Stack;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Model\TransactionSetting;
+use Gs2Cdk\Exchange\Model\TransactionSettingV2;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
@@ -36,7 +37,9 @@ class Namespace_ extends CdkResource {
     private ?string $description = null;
     private ?bool $enableAwaitExchange = null;
     private ?bool $enableDirectExchange = null;
+    /** @deprecated */
     private ?TransactionSetting $transactionSetting = null;
+    private ?TransactionSettingV2 $transactionSettingV2 = null;
     private ?ScriptSetting $exchangeScript = null;
     private ?ScriptSetting $incrementalExchangeScript = null;
     private ?ScriptSetting $acquireAwaitScript = null;
@@ -57,6 +60,7 @@ class Namespace_ extends CdkResource {
         $this->enableAwaitExchange = $options?->enableAwaitExchange ?? null;
         $this->enableDirectExchange = $options?->enableDirectExchange ?? null;
         $this->transactionSetting = $options?->transactionSetting ?? null;
+        $this->transactionSettingV2 = $options?->transactionSettingV2 ?? null;
         $this->exchangeScript = $options?->exchangeScript ?? null;
         $this->incrementalExchangeScript = $options?->incrementalExchangeScript ?? null;
         $this->acquireAwaitScript = $options?->acquireAwaitScript ?? null;
@@ -95,6 +99,10 @@ class Namespace_ extends CdkResource {
         }
         if ($this->transactionSetting != null) {
             $properties["TransactionSetting"] = $this->transactionSetting?->properties(
+            );
+        }
+        if ($this->transactionSettingV2 != null) {
+            $properties["TransactionSettingV2"] = $this->transactionSettingV2?->properties(
             );
         }
         if ($this->exchangeScript != null) {

@@ -16,12 +16,15 @@
  */
 namespace Gs2Cdk\Inventory\Model\Options;
 use Gs2Cdk\Core\Model\TransactionSetting;
+use Gs2Cdk\Inventory\Model\TransactionSettingV2;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    /** @deprecated */
     public ?TransactionSetting $transactionSetting;
+    public ?TransactionSettingV2 $transactionSettingV2;
     public ?ScriptSetting $acquireScript;
     public ?ScriptSetting $overflowScript;
     public ?ScriptSetting $consumeScript;
@@ -34,6 +37,7 @@ class NamespaceOptions {
     public function __construct(
         ?string $description = null,
         ?TransactionSetting $transactionSetting = null,
+        ?TransactionSettingV2 $transactionSettingV2 = null,
         ?ScriptSetting $acquireScript = null,
         ?ScriptSetting $overflowScript = null,
         ?ScriptSetting $consumeScript = null,
@@ -45,6 +49,7 @@ class NamespaceOptions {
     ) {
         $this->description = $description;
         $this->transactionSetting = $transactionSetting;
+        $this->transactionSettingV2 = $transactionSettingV2;
         $this->acquireScript = $acquireScript;
         $this->overflowScript = $overflowScript;
         $this->consumeScript = $consumeScript;

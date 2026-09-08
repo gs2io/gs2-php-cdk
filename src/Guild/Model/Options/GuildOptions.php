@@ -16,6 +16,7 @@
  */
 namespace Gs2Cdk\Guild\Model\Options;
 use Gs2Cdk\Guild\Model\RoleModel;
+use Gs2Cdk\Guild\Model\Enums\GuildJoinPolicy;
 
 class GuildOptions {
     public ?int $attribute1;

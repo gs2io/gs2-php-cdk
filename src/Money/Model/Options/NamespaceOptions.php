@@ -16,12 +16,17 @@
  */
 namespace Gs2Cdk\Money\Model\Options;
 use Gs2Cdk\Core\Model\TransactionSetting;
+use Gs2Cdk\Money\Model\TransactionSettingV2;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\LogSetting;
+use Gs2Cdk\Money\Model\Enums\NamespacePriority;
+use Gs2Cdk\Money\Model\Enums\NamespaceCurrency;
 
 class NamespaceOptions {
     public ?string $description;
+    /** @deprecated */
     public ?TransactionSetting $transactionSetting;
+    public ?TransactionSettingV2 $transactionSettingV2;
     public ?string $appleKey;
     public ?string $googleKey;
     public ?bool $enableFakeReceipt;
@@ -33,6 +38,7 @@ class NamespaceOptions {
     public function __construct(
         ?string $description = null,
         ?TransactionSetting $transactionSetting = null,
+        ?TransactionSettingV2 $transactionSettingV2 = null,
         ?string $appleKey = null,
         ?string $googleKey = null,
         ?bool $enableFakeReceipt = null,
@@ -43,6 +49,7 @@ class NamespaceOptions {
     ) {
         $this->description = $description;
         $this->transactionSetting = $transactionSetting;
+        $this->transactionSettingV2 = $transactionSettingV2;
         $this->appleKey = $appleKey;
         $this->googleKey = $googleKey;
         $this->enableFakeReceipt = $enableFakeReceipt;

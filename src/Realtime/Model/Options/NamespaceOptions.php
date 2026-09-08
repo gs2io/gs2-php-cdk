@@ -16,23 +16,30 @@
  */
 namespace Gs2Cdk\Realtime\Model\Options;
 use Gs2Cdk\Core\Model\TransactionSetting;
+use Gs2Cdk\Realtime\Model\TransactionSettingV2;
 use Gs2Cdk\Core\Model\NotificationSetting;
 use Gs2Cdk\Core\Model\LogSetting;
+use Gs2Cdk\Realtime\Model\Enums\NamespaceServerType;
+use Gs2Cdk\Realtime\Model\Enums\NamespaceServerSpec;
 
 class NamespaceOptions {
     public ?string $description;
+    /** @deprecated */
     public ?TransactionSetting $transactionSetting;
+    public ?TransactionSettingV2 $transactionSettingV2;
     public ?NotificationSetting $createNotification;
     public ?LogSetting $logSetting;
     
     public function __construct(
         ?string $description = null,
         ?TransactionSetting $transactionSetting = null,
+        ?TransactionSettingV2 $transactionSettingV2 = null,
         ?NotificationSetting $createNotification = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
         $this->transactionSetting = $transactionSetting;
+        $this->transactionSettingV2 = $transactionSettingV2;
         $this->createNotification = $createNotification;
         $this->logSetting = $logSetting;
     }}

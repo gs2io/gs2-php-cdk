@@ -20,6 +20,7 @@ use Gs2Cdk\Core\Model\CdkResource;
 use Gs2Cdk\Core\Model\Stack;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Model\TransactionSetting;
+use Gs2Cdk\AdReward\Model\TransactionSettingV2;
 use Gs2Cdk\AdReward\Model\AdMob;
 use Gs2Cdk\AdReward\Model\UnityAd;
 use Gs2Cdk\AdReward\Model\AppLovinMax;
@@ -35,7 +36,9 @@ class Namespace_ extends CdkResource {
     private Stack $stack;
     private string $name;
     private ?string $description = null;
+    /** @deprecated */
     private ?TransactionSetting $transactionSetting = null;
+    private ?TransactionSettingV2 $transactionSettingV2 = null;
     private ?AdMob $admob = null;
     private ?UnityAd $unityAd = null;
     private ?array $appLovinMaxes = null;
@@ -57,6 +60,7 @@ class Namespace_ extends CdkResource {
         $this->name = $name;
         $this->description = $options?->description ?? null;
         $this->transactionSetting = $options?->transactionSetting ?? null;
+        $this->transactionSettingV2 = $options?->transactionSettingV2 ?? null;
         $this->admob = $options?->admob ?? null;
         $this->unityAd = $options?->unityAd ?? null;
         $this->appLovinMaxes = $options?->appLovinMaxes ?? null;
@@ -92,6 +96,10 @@ class Namespace_ extends CdkResource {
         }
         if ($this->transactionSetting != null) {
             $properties["TransactionSetting"] = $this->transactionSetting?->properties(
+            );
+        }
+        if ($this->transactionSettingV2 != null) {
+            $properties["TransactionSettingV2"] = $this->transactionSettingV2?->properties(
             );
         }
         if ($this->admob != null) {

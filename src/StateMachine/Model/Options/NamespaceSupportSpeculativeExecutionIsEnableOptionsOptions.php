@@ -16,6 +16,7 @@
  */
 namespace Gs2Cdk\StateMachine\Model\Options;
 use Gs2Cdk\Core\Model\TransactionSetting;
+use Gs2Cdk\StateMachine\Model\TransactionSettingV2;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 use Gs2Cdk\StateMachine\Model\Enums\NamespaceSupportSpeculativeExecution;
@@ -23,6 +24,7 @@ use Gs2Cdk\StateMachine\Model\Enums\NamespaceSupportSpeculativeExecution;
 class NamespaceSupportSpeculativeExecutionIsEnableOptions {
     public ?string $description;
     public ?TransactionSetting $transactionSetting;
+    public ?TransactionSettingV2 $transactionSettingV2;
     public ?ScriptSetting $startScript;
     public ?ScriptSetting $passScript;
     public ?ScriptSetting $errorScript;
@@ -33,6 +35,7 @@ class NamespaceSupportSpeculativeExecutionIsEnableOptions {
     public function __construct(
         ?string $description = null,
         ?TransactionSetting $transactionSetting = null,
+        ?TransactionSettingV2 $transactionSettingV2 = null,
         ?ScriptSetting $startScript = null,
         ?ScriptSetting $passScript = null,
         ?ScriptSetting $errorScript = null,
@@ -42,6 +45,7 @@ class NamespaceSupportSpeculativeExecutionIsEnableOptions {
     ) {
         $this->description = $description;
         $this->transactionSetting = $transactionSetting;
+        $this->transactionSettingV2 = $transactionSettingV2;
         $this->startScript = $startScript;
         $this->passScript = $passScript;
         $this->errorScript = $errorScript;

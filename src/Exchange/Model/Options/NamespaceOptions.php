@@ -16,6 +16,7 @@
  */
 namespace Gs2Cdk\Exchange\Model\Options;
 use Gs2Cdk\Core\Model\TransactionSetting;
+use Gs2Cdk\Exchange\Model\TransactionSettingV2;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
@@ -23,7 +24,9 @@ class NamespaceOptions {
     public ?string $description;
     public ?bool $enableAwaitExchange;
     public ?bool $enableDirectExchange;
+    /** @deprecated */
     public ?TransactionSetting $transactionSetting;
+    public ?TransactionSettingV2 $transactionSettingV2;
     public ?ScriptSetting $exchangeScript;
     public ?ScriptSetting $incrementalExchangeScript;
     public ?ScriptSetting $acquireAwaitScript;
@@ -36,6 +39,7 @@ class NamespaceOptions {
         ?bool $enableAwaitExchange = null,
         ?bool $enableDirectExchange = null,
         ?TransactionSetting $transactionSetting = null,
+        ?TransactionSettingV2 $transactionSettingV2 = null,
         ?ScriptSetting $exchangeScript = null,
         ?ScriptSetting $incrementalExchangeScript = null,
         ?ScriptSetting $acquireAwaitScript = null,
@@ -47,6 +51,7 @@ class NamespaceOptions {
         $this->enableAwaitExchange = $enableAwaitExchange;
         $this->enableDirectExchange = $enableDirectExchange;
         $this->transactionSetting = $transactionSetting;
+        $this->transactionSettingV2 = $transactionSettingV2;
         $this->exchangeScript = $exchangeScript;
         $this->incrementalExchangeScript = $incrementalExchangeScript;
         $this->acquireAwaitScript = $acquireAwaitScript;

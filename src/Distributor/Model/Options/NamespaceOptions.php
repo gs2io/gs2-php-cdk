@@ -16,12 +16,15 @@
  */
 namespace Gs2Cdk\Distributor\Model\Options;
 use Gs2Cdk\Core\Model\TransactionSetting;
+use Gs2Cdk\Distributor\Model\TransactionSettingV2;
 use Gs2Cdk\Core\Model\NotificationSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    /** @deprecated */
     public ?TransactionSetting $transactionSetting;
+    public ?TransactionSettingV2 $transactionSettingV2;
     public ?string $assumeUserId;
     public ?NotificationSetting $autoRunStampSheetNotification;
     public ?NotificationSetting $autoRunTransactionNotification;
@@ -30,6 +33,7 @@ class NamespaceOptions {
     public function __construct(
         ?string $description = null,
         ?TransactionSetting $transactionSetting = null,
+        ?TransactionSettingV2 $transactionSettingV2 = null,
         ?string $assumeUserId = null,
         ?NotificationSetting $autoRunStampSheetNotification = null,
         ?NotificationSetting $autoRunTransactionNotification = null,
@@ -37,6 +41,7 @@ class NamespaceOptions {
     ) {
         $this->description = $description;
         $this->transactionSetting = $transactionSetting;
+        $this->transactionSettingV2 = $transactionSettingV2;
         $this->assumeUserId = $assumeUserId;
         $this->autoRunStampSheetNotification = $autoRunStampSheetNotification;
         $this->autoRunTransactionNotification = $autoRunTransactionNotification;

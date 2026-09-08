@@ -16,12 +16,15 @@
  */
 namespace Gs2Cdk\Idle\Model\Options;
 use Gs2Cdk\Core\Model\TransactionSetting;
+use Gs2Cdk\Idle\Model\TransactionSettingV2;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    /** @deprecated */
     public ?TransactionSetting $transactionSetting;
+    public ?TransactionSettingV2 $transactionSettingV2;
     public ?ScriptSetting $receiveScript;
     public ?string $overrideAcquireActionsScriptId;
     public ?LogSetting $logSetting;
@@ -29,12 +32,14 @@ class NamespaceOptions {
     public function __construct(
         ?string $description = null,
         ?TransactionSetting $transactionSetting = null,
+        ?TransactionSettingV2 $transactionSettingV2 = null,
         ?ScriptSetting $receiveScript = null,
         ?string $overrideAcquireActionsScriptId = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
         $this->transactionSetting = $transactionSetting;
+        $this->transactionSettingV2 = $transactionSettingV2;
         $this->receiveScript = $receiveScript;
         $this->overrideAcquireActionsScriptId = $overrideAcquireActionsScriptId;
         $this->logSetting = $logSetting;

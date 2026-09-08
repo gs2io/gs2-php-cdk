@@ -13,11 +13,10 @@
  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
- *
- * deny overwrite
  */
 namespace Gs2Cdk\StateMachine\Model\Options;
 use Gs2Cdk\Core\Model\TransactionSetting;
+use Gs2Cdk\StateMachine\Model\TransactionSettingV2;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 use Gs2Cdk\StateMachine\Model\Enums\NamespaceSupportSpeculativeExecution;
@@ -25,7 +24,9 @@ use Gs2Cdk\StateMachine\Model\Enums\NamespaceSupportSpeculativeExecution;
 class NamespaceOptions {
     public ?string $description;
     public ?NamespaceSupportSpeculativeExecution $supportSpeculativeExecution;
+    /** @deprecated */
     public ?TransactionSetting $transactionSetting;
+    public ?TransactionSettingV2 $transactionSettingV2;
     public ?ScriptSetting $startScript;
     public ?ScriptSetting $passScript;
     public ?ScriptSetting $errorScript;
@@ -36,6 +37,7 @@ class NamespaceOptions {
         ?string $description = null,
         ?NamespaceSupportSpeculativeExecution $supportSpeculativeExecution = null,
         ?TransactionSetting $transactionSetting = null,
+        ?TransactionSettingV2 $transactionSettingV2 = null,
         ?ScriptSetting $startScript = null,
         ?ScriptSetting $passScript = null,
         ?ScriptSetting $errorScript = null,
@@ -45,6 +47,7 @@ class NamespaceOptions {
         $this->description = $description;
         $this->supportSpeculativeExecution = $supportSpeculativeExecution;
         $this->transactionSetting = $transactionSetting;
+        $this->transactionSettingV2 = $transactionSettingV2;
         $this->startScript = $startScript;
         $this->passScript = $passScript;
         $this->errorScript = $errorScript;

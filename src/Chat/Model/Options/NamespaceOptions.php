@@ -16,13 +16,16 @@
  */
 namespace Gs2Cdk\Chat\Model\Options;
 use Gs2Cdk\Core\Model\TransactionSetting;
+use Gs2Cdk\Chat\Model\TransactionSettingV2;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\NotificationSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    /** @deprecated */
     public ?TransactionSetting $transactionSetting;
+    public ?TransactionSettingV2 $transactionSettingV2;
     public ?bool $allowCreateRoom;
     public ?int $messageLifeTimeDays;
     public ?ScriptSetting $postMessageScript;
@@ -36,6 +39,7 @@ class NamespaceOptions {
     public function __construct(
         ?string $description = null,
         ?TransactionSetting $transactionSetting = null,
+        ?TransactionSettingV2 $transactionSettingV2 = null,
         ?bool $allowCreateRoom = null,
         ?int $messageLifeTimeDays = null,
         ?ScriptSetting $postMessageScript = null,
@@ -48,6 +52,7 @@ class NamespaceOptions {
     ) {
         $this->description = $description;
         $this->transactionSetting = $transactionSetting;
+        $this->transactionSettingV2 = $transactionSettingV2;
         $this->allowCreateRoom = $allowCreateRoom;
         $this->messageLifeTimeDays = $messageLifeTimeDays;
         $this->postMessageScript = $postMessageScript;

@@ -16,6 +16,7 @@
  */
 namespace Gs2Cdk\Matchmaking\Model\Options;
 use Gs2Cdk\Core\Model\TransactionSetting;
+use Gs2Cdk\Matchmaking\Model\TransactionSettingV2;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\NotificationSetting;
 use Gs2Cdk\Core\Model\LogSetting;
@@ -27,6 +28,7 @@ use Gs2Cdk\Matchmaking\Model\Enums\NamespaceEnableCollaborateSeasonRating;
 class NamespaceCreateGatheringTriggerTypeIsGs2RealtimeOptions {
     public ?string $description;
     public ?TransactionSetting $transactionSetting;
+    public ?TransactionSettingV2 $transactionSettingV2;
     public ?ScriptSetting $changeRatingScript;
     public ?NotificationSetting $joinNotification;
     public ?NotificationSetting $leaveNotification;
@@ -38,6 +40,7 @@ class NamespaceCreateGatheringTriggerTypeIsGs2RealtimeOptions {
     public function __construct(
         ?string $description = null,
         ?TransactionSetting $transactionSetting = null,
+        ?TransactionSettingV2 $transactionSettingV2 = null,
         ?ScriptSetting $changeRatingScript = null,
         ?NotificationSetting $joinNotification = null,
         ?NotificationSetting $leaveNotification = null,
@@ -48,6 +51,7 @@ class NamespaceCreateGatheringTriggerTypeIsGs2RealtimeOptions {
     ) {
         $this->description = $description;
         $this->transactionSetting = $transactionSetting;
+        $this->transactionSettingV2 = $transactionSettingV2;
         $this->changeRatingScript = $changeRatingScript;
         $this->joinNotification = $joinNotification;
         $this->leaveNotification = $leaveNotification;

@@ -16,6 +16,7 @@
  */
 namespace Gs2Cdk\AdReward\Model\Options;
 use Gs2Cdk\Core\Model\TransactionSetting;
+use Gs2Cdk\AdReward\Model\TransactionSettingV2;
 use Gs2Cdk\AdReward\Model\AdMob;
 use Gs2Cdk\AdReward\Model\UnityAd;
 use Gs2Cdk\AdReward\Model\AppLovinMax;
@@ -25,7 +26,9 @@ use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    /** @deprecated */
     public ?TransactionSetting $transactionSetting;
+    public ?TransactionSettingV2 $transactionSettingV2;
     public ?AdMob $admob;
     public ?UnityAd $unityAd;
     public ?array $appLovinMaxes;
@@ -37,6 +40,7 @@ class NamespaceOptions {
     public function __construct(
         ?string $description = null,
         ?TransactionSetting $transactionSetting = null,
+        ?TransactionSettingV2 $transactionSettingV2 = null,
         ?AdMob $admob = null,
         ?UnityAd $unityAd = null,
         ?array $appLovinMaxes = null,
@@ -47,6 +51,7 @@ class NamespaceOptions {
     ) {
         $this->description = $description;
         $this->transactionSetting = $transactionSetting;
+        $this->transactionSettingV2 = $transactionSettingV2;
         $this->admob = $admob;
         $this->unityAd = $unityAd;
         $this->appLovinMaxes = $appLovinMaxes;

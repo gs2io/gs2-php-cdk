@@ -16,13 +16,16 @@
  */
 namespace Gs2Cdk\Friend\Model\Options;
 use Gs2Cdk\Core\Model\TransactionSetting;
+use Gs2Cdk\Friend\Model\TransactionSettingV2;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\NotificationSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    /** @deprecated */
     public ?TransactionSetting $transactionSetting;
+    public ?TransactionSettingV2 $transactionSettingV2;
     public ?ScriptSetting $followScript;
     public ?ScriptSetting $unfollowScript;
     public ?ScriptSetting $sendRequestScript;
@@ -42,6 +45,7 @@ class NamespaceOptions {
     public function __construct(
         ?string $description = null,
         ?TransactionSetting $transactionSetting = null,
+        ?TransactionSettingV2 $transactionSettingV2 = null,
         ?ScriptSetting $followScript = null,
         ?ScriptSetting $unfollowScript = null,
         ?ScriptSetting $sendRequestScript = null,
@@ -60,6 +64,7 @@ class NamespaceOptions {
     ) {
         $this->description = $description;
         $this->transactionSetting = $transactionSetting;
+        $this->transactionSettingV2 = $transactionSettingV2;
         $this->followScript = $followScript;
         $this->unfollowScript = $unfollowScript;
         $this->sendRequestScript = $sendRequestScript;

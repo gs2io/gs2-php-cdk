@@ -16,23 +16,28 @@
  */
 namespace Gs2Cdk\Datastore\Model\Options;
 use Gs2Cdk\Core\Model\TransactionSetting;
+use Gs2Cdk\Datastore\Model\TransactionSettingV2;
 use Gs2Cdk\Core\Model\LogSetting;
 use Gs2Cdk\Core\Model\ScriptSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    /** @deprecated */
     public ?TransactionSetting $transactionSetting;
+    public ?TransactionSettingV2 $transactionSettingV2;
     public ?LogSetting $logSetting;
     public ?ScriptSetting $doneUploadScript;
     
     public function __construct(
         ?string $description = null,
         ?TransactionSetting $transactionSetting = null,
+        ?TransactionSettingV2 $transactionSettingV2 = null,
         ?LogSetting $logSetting = null,
         ?ScriptSetting $doneUploadScript = null,
     ) {
         $this->description = $description;
         $this->transactionSetting = $transactionSetting;
+        $this->transactionSettingV2 = $transactionSettingV2;
         $this->logSetting = $logSetting;
         $this->doneUploadScript = $doneUploadScript;
     }}

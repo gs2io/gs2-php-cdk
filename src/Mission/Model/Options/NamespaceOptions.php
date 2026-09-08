@@ -16,13 +16,16 @@
  */
 namespace Gs2Cdk\Mission\Model\Options;
 use Gs2Cdk\Core\Model\TransactionSetting;
+use Gs2Cdk\Mission\Model\TransactionSettingV2;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\NotificationSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    /** @deprecated */
     public ?TransactionSetting $transactionSetting;
+    public ?TransactionSettingV2 $transactionSettingV2;
     public ?ScriptSetting $missionCompleteScript;
     public ?ScriptSetting $counterIncrementScript;
     public ?ScriptSetting $receiveRewardsScript;
@@ -34,6 +37,7 @@ class NamespaceOptions {
     public function __construct(
         ?string $description = null,
         ?TransactionSetting $transactionSetting = null,
+        ?TransactionSettingV2 $transactionSettingV2 = null,
         ?ScriptSetting $missionCompleteScript = null,
         ?ScriptSetting $counterIncrementScript = null,
         ?ScriptSetting $receiveRewardsScript = null,
@@ -44,6 +48,7 @@ class NamespaceOptions {
     ) {
         $this->description = $description;
         $this->transactionSetting = $transactionSetting;
+        $this->transactionSettingV2 = $transactionSettingV2;
         $this->missionCompleteScript = $missionCompleteScript;
         $this->counterIncrementScript = $counterIncrementScript;
         $this->receiveRewardsScript = $receiveRewardsScript;

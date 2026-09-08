@@ -16,12 +16,15 @@
  */
 namespace Gs2Cdk\SkillTree\Model\Options;
 use Gs2Cdk\Core\Model\TransactionSetting;
+use Gs2Cdk\SkillTree\Model\TransactionSettingV2;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    /** @deprecated */
     public ?TransactionSetting $transactionSetting;
+    public ?TransactionSettingV2 $transactionSettingV2;
     public ?ScriptSetting $releaseScript;
     public ?ScriptSetting $restrainScript;
     public ?LogSetting $logSetting;
@@ -29,12 +32,14 @@ class NamespaceOptions {
     public function __construct(
         ?string $description = null,
         ?TransactionSetting $transactionSetting = null,
+        ?TransactionSettingV2 $transactionSettingV2 = null,
         ?ScriptSetting $releaseScript = null,
         ?ScriptSetting $restrainScript = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
         $this->transactionSetting = $transactionSetting;
+        $this->transactionSettingV2 = $transactionSettingV2;
         $this->releaseScript = $releaseScript;
         $this->restrainScript = $restrainScript;
         $this->logSetting = $logSetting;

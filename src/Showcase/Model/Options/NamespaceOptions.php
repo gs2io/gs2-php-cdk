@@ -16,12 +16,15 @@
  */
 namespace Gs2Cdk\Showcase\Model\Options;
 use Gs2Cdk\Core\Model\TransactionSetting;
+use Gs2Cdk\Showcase\Model\TransactionSettingV2;
 use Gs2Cdk\Core\Model\ScriptSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
     public ?string $description;
+    /** @deprecated */
     public ?TransactionSetting $transactionSetting;
+    public ?TransactionSettingV2 $transactionSettingV2;
     public ?ScriptSetting $buyScript;
     public ?string $queueNamespaceId;
     public ?string $keyId;
@@ -30,6 +33,7 @@ class NamespaceOptions {
     public function __construct(
         ?string $description = null,
         ?TransactionSetting $transactionSetting = null,
+        ?TransactionSettingV2 $transactionSettingV2 = null,
         ?ScriptSetting $buyScript = null,
         ?string $queueNamespaceId = null,
         ?string $keyId = null,
@@ -37,6 +41,7 @@ class NamespaceOptions {
     ) {
         $this->description = $description;
         $this->transactionSetting = $transactionSetting;
+        $this->transactionSettingV2 = $transactionSettingV2;
         $this->buyScript = $buyScript;
         $this->queueNamespaceId = $queueNamespaceId;
         $this->keyId = $keyId;
