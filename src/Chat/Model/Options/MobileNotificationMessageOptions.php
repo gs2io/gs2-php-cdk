@@ -14,18 +14,20 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\Gateway\Model\Options;
-use Gs2Cdk\Gateway\Model\MobileNotificationMessage;
+namespace Gs2Cdk\Chat\Model\Options;
 
-class SendNotificationEntryOptions {
-    public ?string $sound;
-    public ?array $mobileNotificationMessages;
+class MobileNotificationMessageOptions {
+    public ?string $locale;
+    public ?string $title;
+    public ?string $message;
     
     public function __construct(
-        ?string $sound = null,
-        ?array $mobileNotificationMessages = null,
+        ?string $locale = null,
+        ?string $title = null,
+        ?string $message = null,
     ) {
-        $this->sound = $sound;
-        $this->mobileNotificationMessages = $mobileNotificationMessages;
+        $this->locale = $locale;
+        $this->title = $title;
+        $this->message = $message;
     }}
 

@@ -15,6 +15,7 @@
  * permissions and limitations under the License.
  */
 namespace Gs2Cdk\Gateway\Model;
+use Gs2Cdk\Gateway\Model\MobileNotificationMessage;
 use Gs2Cdk\Gateway\Model\Options\SendNotificationEntryOptions;
 
 class SendNotificationEntry {
@@ -24,6 +25,7 @@ class SendNotificationEntry {
     private string $payload;
     private bool $enableTransferMobileNotification;
     private ?string $sound = null;
+    private ?array $mobileNotificationMessages = null;
 
     public function __construct(
         string $userId,
@@ -39,6 +41,7 @@ class SendNotificationEntry {
         $this->payload = $payload;
         $this->enableTransferMobileNotification = $enableTransferMobileNotification;
         $this->sound = $options?->sound ?? null;
+        $this->mobileNotificationMessages = $options?->mobileNotificationMessages ?? null;
     }
 
     public function properties(
@@ -62,6 +65,15 @@ class SendNotificationEntry {
         }
         if ($this->sound != null) {
             $properties["sound"] = $this->sound;
+        }
+        if ($this->mobileNotificationMessages != null) {
+            $properties["mobileNotificationMessages"] = array_map(
+                function ($v) {
+                    return $v->properties(
+                    );
+                },
+                $this->mobileNotificationMessages
+            );
         }
 
         return $properties;
