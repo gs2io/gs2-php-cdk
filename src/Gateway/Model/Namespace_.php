@@ -34,7 +34,9 @@ class Namespace_ extends CdkResource {
     /** @deprecated */
     private ?TransactionSetting $transactionSetting = null;
     private ?TransactionSettingV2 $transactionSettingV2 = null;
+    /** @deprecated */
     private ?string $firebaseSecret = null;
+    private ?string $firebaseProjectId = null;
     private ?LogSetting $logSetting = null;
 
     public function __construct(
@@ -52,6 +54,7 @@ class Namespace_ extends CdkResource {
         $this->transactionSetting = $options?->transactionSetting ?? null;
         $this->transactionSettingV2 = $options?->transactionSettingV2 ?? null;
         $this->firebaseSecret = $options?->firebaseSecret ?? null;
+        $this->firebaseProjectId = $options?->firebaseProjectId ?? null;
         $this->logSetting = $options?->logSetting ?? null;
         $stack->addResource(
             $this,
@@ -89,6 +92,9 @@ class Namespace_ extends CdkResource {
         }
         if ($this->firebaseSecret != null) {
             $properties["FirebaseSecret"] = $this->firebaseSecret;
+        }
+        if ($this->firebaseProjectId != null) {
+            $properties["FirebaseProjectId"] = $this->firebaseProjectId;
         }
         if ($this->logSetting != null) {
             $properties["LogSetting"] = $this->logSetting?->properties(

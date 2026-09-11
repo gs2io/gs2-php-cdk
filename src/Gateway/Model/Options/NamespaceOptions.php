@@ -24,7 +24,9 @@ class NamespaceOptions {
     /** @deprecated */
     public ?TransactionSetting $transactionSetting;
     public ?TransactionSettingV2 $transactionSettingV2;
+    /** @deprecated */
     public ?string $firebaseSecret;
+    public ?string $firebaseProjectId;
     public ?LogSetting $logSetting;
     
     public function __construct(
@@ -32,12 +34,14 @@ class NamespaceOptions {
         ?TransactionSetting $transactionSetting = null,
         ?TransactionSettingV2 $transactionSettingV2 = null,
         ?string $firebaseSecret = null,
+        ?string $firebaseProjectId = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
         $this->transactionSetting = $transactionSetting;
         $this->transactionSettingV2 = $transactionSettingV2;
         $this->firebaseSecret = $firebaseSecret;
+        $this->firebaseProjectId = $firebaseProjectId;
         $this->logSetting = $logSetting;
     }}
 
