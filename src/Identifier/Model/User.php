@@ -24,6 +24,7 @@ use Gs2Cdk\Identifier\Model\AttachSecurityPolicy;
 use Gs2Cdk\Identifier\Model\SecurityPolicy;
 
 use Gs2Cdk\Identifier\Ref\UserRef;
+use Gs2Cdk\Identifier\Model\Enums\UserDataStoreKeyScheme;
 
 use Gs2Cdk\Identifier\Model\Options\UserOptions;
 
