@@ -17,22 +17,17 @@
 namespace Gs2Cdk\Enhance\Model\Options;
 use Gs2Cdk\Enhance\Model\UnleashIndividualMaterialSetting;
 use Gs2Cdk\Enhance\Model\UnleashQuantityMaterialSetting;
-use Gs2Cdk\Enhance\Model\UnleashMaterial;
-use Gs2Cdk\Enhance\Model\UnleashRecipe;
-use Gs2Cdk\Enhance\Model\UnleashRateEntryModel;
+use Gs2Cdk\Enhance\Model\Enums\UnleashMaterialMaterialType;
 
-class UnleashRateModelOptions {
-    public ?string $description;
-    public ?string $metadata;
-    public ?array $groupKeyHierarchy;
+class UnleashMaterialOptions {
+    public ?UnleashIndividualMaterialSetting $individualSetting;
+    public ?UnleashQuantityMaterialSetting $quantitySetting;
     
     public function __construct(
-        ?string $description = null,
-        ?string $metadata = null,
-        ?array $groupKeyHierarchy = null,
+        ?UnleashIndividualMaterialSetting $individualSetting = null,
+        ?UnleashQuantityMaterialSetting $quantitySetting = null,
     ) {
-        $this->description = $description;
-        $this->metadata = $metadata;
-        $this->groupKeyHierarchy = $groupKeyHierarchy;
+        $this->individualSetting = $individualSetting;
+        $this->quantitySetting = $quantitySetting;
     }}
 

@@ -18,33 +18,23 @@ namespace Gs2Cdk\Enhance\Model;
 use Gs2Cdk\Enhance\Model\UnleashIndividualMaterialSetting;
 use Gs2Cdk\Enhance\Model\UnleashQuantityMaterialSetting;
 use Gs2Cdk\Enhance\Model\UnleashMaterial;
-use Gs2Cdk\Enhance\Model\UnleashRecipe;
-use Gs2Cdk\Enhance\Model\UnleashRateEntryModel;
-use Gs2Cdk\Enhance\Model\Options\UnleashRateModelOptions;
+use Gs2Cdk\Enhance\Model\Options\UnleashRecipeOptions;
 
-class UnleashRateModel {
+class UnleashRecipe {
     private string $name;
-    private string $targetInventoryModelId;
-    private string $gradeModelId;
-    private array $gradeEntries;
-    private ?string $description = null;
+    private array $materials;
     private ?string $metadata = null;
-    private ?array $groupKeyHierarchy = null;
+    private ?array $targetGroupKeys = null;
 
     public function __construct(
         string $name,
-        string $targetInventoryModelId,
-        string $gradeModelId,
-        array $gradeEntries,
-        ?UnleashRateModelOptions $options = null,
+        array $materials,
+        ?UnleashRecipeOptions $options = null,
     ) {
         $this->name = $name;
-        $this->targetInventoryModelId = $targetInventoryModelId;
-        $this->gradeModelId = $gradeModelId;
-        $this->gradeEntries = $gradeEntries;
-        $this->description = $options?->description ?? null;
+        $this->materials = $materials;
         $this->metadata = $options?->metadata ?? null;
-        $this->groupKeyHierarchy = $options?->groupKeyHierarchy ?? null;
+        $this->targetGroupKeys = $options?->targetGroupKeys ?? null;
     }
 
     public function properties(
@@ -54,28 +44,19 @@ class UnleashRateModel {
         if ($this->name != null) {
             $properties["name"] = $this->name;
         }
-        if ($this->description != null) {
-            $properties["description"] = $this->description;
-        }
         if ($this->metadata != null) {
             $properties["metadata"] = $this->metadata;
         }
-        if ($this->targetInventoryModelId != null) {
-            $properties["targetInventoryModelId"] = $this->targetInventoryModelId;
+        if ($this->targetGroupKeys != null) {
+            $properties["targetGroupKeys"] = $this->targetGroupKeys;
         }
-        if ($this->gradeModelId != null) {
-            $properties["gradeModelId"] = $this->gradeModelId;
-        }
-        if ($this->groupKeyHierarchy != null) {
-            $properties["groupKeyHierarchy"] = $this->groupKeyHierarchy;
-        }
-        if ($this->gradeEntries != null) {
-            $properties["gradeEntries"] = array_map(
+        if ($this->materials != null) {
+            $properties["materials"] = array_map(
                 function ($v) {
                     return $v->properties(
                     );
                 },
-                $this->gradeEntries
+                $this->materials
             );
         }
 

@@ -19,6 +19,7 @@ namespace Gs2Cdk\Enhance\StampSheet;
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
 use Gs2Cdk\Core\Model\VerifyAction;
+use Gs2Cdk\Enhance\Model\UnleashMaterialSelection;
 use Gs2Cdk\Core\Model\Config;
 
 class UnleashByUserId extends AcquireAction {
@@ -27,7 +28,9 @@ class UnleashByUserId extends AcquireAction {
         string $namespaceName,
         string $rateName,
         string $targetItemSetId,
-        array $materials,
+        ?array $materials = null,
+        ?string $recipeName = null,
+        ?array $recipeMaterials = null,
         ?array $config = null,
         ?string $userId = "#{userId}",
     ) {
@@ -37,6 +40,8 @@ class UnleashByUserId extends AcquireAction {
         $properties["rateName"] = $rateName;
         $properties["targetItemSetId"] = $targetItemSetId;
         $properties["materials"] = $materials;
+        $properties["recipeName"] = $recipeName;
+        $properties["recipeMaterials"] = $recipeMaterials;
         $properties["config"] = $config;
         $properties["userId"] = $userId;
 

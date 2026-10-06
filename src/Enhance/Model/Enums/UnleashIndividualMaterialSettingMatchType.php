@@ -14,22 +14,21 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-namespace Gs2Cdk\Enhance\Model\Options;
-use Gs2Cdk\Enhance\Model\UnleashIndividualMaterialSetting;
-use Gs2Cdk\Enhance\Model\UnleashQuantityMaterialSetting;
-use Gs2Cdk\Enhance\Model\UnleashMaterial;
-use Gs2Cdk\Enhance\Model\UnleashRecipe;
-use Gs2Cdk\Enhance\Model\Enums\UnleashRateEntryModelType;
 
-class UnleashRateEntryModelOptions {
-    public ?int $needCount;
-    public ?array $recipes;
-    
-    public function __construct(
-        ?int $needCount = null,
-        ?array $recipes = null,
-    ) {
-        $this->needCount = $needCount;
-        $this->recipes = $recipes;
-    }}
+namespace Gs2Cdk\Enhance\Model\Enums;
 
+
+enum UnleashIndividualMaterialSettingMatchType {
+    case SAME_ITEM;
+    case SAME_GROUP;
+
+    public function toString(): String {
+        switch ($this) {
+            case self::SAME_ITEM:
+                return "sameItem";
+            case self::SAME_GROUP:
+                return "sameGroup";
+        }
+        return "unknown";
+    }
+}

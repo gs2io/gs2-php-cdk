@@ -18,21 +18,16 @@ namespace Gs2Cdk\Enhance\Model\Options;
 use Gs2Cdk\Enhance\Model\UnleashIndividualMaterialSetting;
 use Gs2Cdk\Enhance\Model\UnleashQuantityMaterialSetting;
 use Gs2Cdk\Enhance\Model\UnleashMaterial;
-use Gs2Cdk\Enhance\Model\UnleashRecipe;
-use Gs2Cdk\Enhance\Model\UnleashRateEntryModel;
 
-class UnleashRateModelOptions {
-    public ?string $description;
+class UnleashRecipeOptions {
     public ?string $metadata;
-    public ?array $groupKeyHierarchy;
+    public ?array $targetGroupKeys;
     
     public function __construct(
-        ?string $description = null,
         ?string $metadata = null,
-        ?array $groupKeyHierarchy = null,
+        ?array $targetGroupKeys = null,
     ) {
-        $this->description = $description;
         $this->metadata = $metadata;
-        $this->groupKeyHierarchy = $groupKeyHierarchy;
+        $this->targetGroupKeys = $targetGroupKeys;
     }}
 
