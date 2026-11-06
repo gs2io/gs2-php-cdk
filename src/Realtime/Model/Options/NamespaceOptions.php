@@ -27,6 +27,9 @@ class NamespaceOptions {
     /** @deprecated */
     public ?TransactionSetting $transactionSetting;
     public ?TransactionSettingV2 $transactionSettingV2;
+    public ?string $objectCatalog;
+    public ?string $stateMachineNamespaceId;
+    public ?int $stateMachineVersion;
     public ?NotificationSetting $createNotification;
     public ?LogSetting $logSetting;
     
@@ -34,12 +37,18 @@ class NamespaceOptions {
         ?string $description = null,
         ?TransactionSetting $transactionSetting = null,
         ?TransactionSettingV2 $transactionSettingV2 = null,
+        ?string $objectCatalog = null,
+        ?string $stateMachineNamespaceId = null,
+        ?int $stateMachineVersion = null,
         ?NotificationSetting $createNotification = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
         $this->transactionSetting = $transactionSetting;
         $this->transactionSettingV2 = $transactionSettingV2;
+        $this->objectCatalog = $objectCatalog;
+        $this->stateMachineNamespaceId = $stateMachineNamespaceId;
+        $this->stateMachineVersion = $stateMachineVersion;
         $this->createNotification = $createNotification;
         $this->logSetting = $logSetting;
     }}

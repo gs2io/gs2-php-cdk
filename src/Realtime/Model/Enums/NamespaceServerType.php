@@ -20,11 +20,17 @@ namespace Gs2Cdk\Realtime\Model\Enums;
 
 enum NamespaceServerType {
     case RELAY;
+    case SYNC;
+    case STATE_MACHINE;
 
     public function toString(): String {
         switch ($this) {
             case self::RELAY:
                 return "relay";
+            case self::SYNC:
+                return "sync";
+            case self::STATE_MACHINE:
+                return "stateMachine";
         }
         return "unknown";
     }
