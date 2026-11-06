@@ -21,6 +21,8 @@ use Gs2Cdk\Core\Model\Stack;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Model\TransactionSetting;
 use Gs2Cdk\Realtime\Model\TransactionSettingV2;
+use Gs2Cdk\Realtime\Model\SyncSetting;
+use Gs2Cdk\Realtime\Model\StateMachineSetting;
 use Gs2Cdk\Core\Model\NotificationSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
@@ -39,9 +41,8 @@ class Namespace_ extends CdkResource {
     /** @deprecated */
     private ?TransactionSetting $transactionSetting = null;
     private ?TransactionSettingV2 $transactionSettingV2 = null;
-    private ?string $objectCatalog = null;
-    private ?string $stateMachineNamespaceId = null;
-    private ?int $stateMachineVersion = null;
+    private ?SyncSetting $syncSetting = null;
+    private ?StateMachineSetting $stateMachineSetting = null;
     private ?NotificationSetting $createNotification = null;
     private ?LogSetting $logSetting = null;
 
@@ -63,9 +64,8 @@ class Namespace_ extends CdkResource {
         $this->description = $options?->description ?? null;
         $this->transactionSetting = $options?->transactionSetting ?? null;
         $this->transactionSettingV2 = $options?->transactionSettingV2 ?? null;
-        $this->objectCatalog = $options?->objectCatalog ?? null;
-        $this->stateMachineNamespaceId = $options?->stateMachineNamespaceId ?? null;
-        $this->stateMachineVersion = $options?->stateMachineVersion ?? null;
+        $this->syncSetting = $options?->syncSetting ?? null;
+        $this->stateMachineSetting = $options?->stateMachineSetting ?? null;
         $this->createNotification = $options?->createNotification ?? null;
         $this->logSetting = $options?->logSetting ?? null;
         $stack->addResource(
@@ -108,14 +108,13 @@ class Namespace_ extends CdkResource {
         if ($this->serverSpec != null) {
             $properties["ServerSpec"] = $this->serverSpec;
         }
-        if ($this->objectCatalog != null) {
-            $properties["ObjectCatalog"] = $this->objectCatalog;
+        if ($this->syncSetting != null) {
+            $properties["SyncSetting"] = $this->syncSetting?->properties(
+            );
         }
-        if ($this->stateMachineNamespaceId != null) {
-            $properties["StateMachineNamespaceId"] = $this->stateMachineNamespaceId;
-        }
-        if ($this->stateMachineVersion != null) {
-            $properties["StateMachineVersion"] = $this->stateMachineVersion;
+        if ($this->stateMachineSetting != null) {
+            $properties["StateMachineSetting"] = $this->stateMachineSetting?->properties(
+            );
         }
         if ($this->createNotification != null) {
             $properties["CreateNotification"] = $this->createNotification?->properties(

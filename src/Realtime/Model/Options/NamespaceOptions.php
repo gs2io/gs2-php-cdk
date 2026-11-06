@@ -17,6 +17,8 @@
 namespace Gs2Cdk\Realtime\Model\Options;
 use Gs2Cdk\Core\Model\TransactionSetting;
 use Gs2Cdk\Realtime\Model\TransactionSettingV2;
+use Gs2Cdk\Realtime\Model\SyncSetting;
+use Gs2Cdk\Realtime\Model\StateMachineSetting;
 use Gs2Cdk\Core\Model\NotificationSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 use Gs2Cdk\Realtime\Model\Enums\NamespaceServerType;
@@ -27,9 +29,8 @@ class NamespaceOptions {
     /** @deprecated */
     public ?TransactionSetting $transactionSetting;
     public ?TransactionSettingV2 $transactionSettingV2;
-    public ?string $objectCatalog;
-    public ?string $stateMachineNamespaceId;
-    public ?int $stateMachineVersion;
+    public ?SyncSetting $syncSetting;
+    public ?StateMachineSetting $stateMachineSetting;
     public ?NotificationSetting $createNotification;
     public ?LogSetting $logSetting;
     
@@ -37,18 +38,16 @@ class NamespaceOptions {
         ?string $description = null,
         ?TransactionSetting $transactionSetting = null,
         ?TransactionSettingV2 $transactionSettingV2 = null,
-        ?string $objectCatalog = null,
-        ?string $stateMachineNamespaceId = null,
-        ?int $stateMachineVersion = null,
+        ?SyncSetting $syncSetting = null,
+        ?StateMachineSetting $stateMachineSetting = null,
         ?NotificationSetting $createNotification = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
         $this->transactionSetting = $transactionSetting;
         $this->transactionSettingV2 = $transactionSettingV2;
-        $this->objectCatalog = $objectCatalog;
-        $this->stateMachineNamespaceId = $stateMachineNamespaceId;
-        $this->stateMachineVersion = $stateMachineVersion;
+        $this->syncSetting = $syncSetting;
+        $this->stateMachineSetting = $stateMachineSetting;
         $this->createNotification = $createNotification;
         $this->logSetting = $logSetting;
     }}

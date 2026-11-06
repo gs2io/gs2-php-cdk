@@ -17,6 +17,8 @@
 namespace Gs2Cdk\Realtime\Model\Options;
 use Gs2Cdk\Core\Model\TransactionSetting;
 use Gs2Cdk\Realtime\Model\TransactionSettingV2;
+use Gs2Cdk\Realtime\Model\SyncSetting;
+use Gs2Cdk\Realtime\Model\StateMachineSetting;
 use Gs2Cdk\Realtime\Model\MobileNotificationMessage;
 use Gs2Cdk\Core\Model\NotificationSetting;
 use Gs2Cdk\Core\Model\LogSetting;
@@ -27,7 +29,7 @@ class NamespaceServerTypeIsSyncOptions {
     public ?string $description;
     public ?TransactionSetting $transactionSetting;
     public ?TransactionSettingV2 $transactionSettingV2;
-    public ?int $stateMachineVersion;
+    public ?SyncSetting $syncSetting;
     public ?NotificationSetting $createNotification;
     public ?LogSetting $logSetting;
     public ?int $revision;
@@ -36,7 +38,7 @@ class NamespaceServerTypeIsSyncOptions {
         ?string $description = null,
         ?TransactionSetting $transactionSetting = null,
         ?TransactionSettingV2 $transactionSettingV2 = null,
-        ?int $stateMachineVersion = null,
+        ?SyncSetting $syncSetting = null,
         ?NotificationSetting $createNotification = null,
         ?LogSetting $logSetting = null,
         ?int $revision = null,
@@ -44,7 +46,7 @@ class NamespaceServerTypeIsSyncOptions {
         $this->description = $description;
         $this->transactionSetting = $transactionSetting;
         $this->transactionSettingV2 = $transactionSettingV2;
-        $this->stateMachineVersion = $stateMachineVersion;
+        $this->syncSetting = $syncSetting;
         $this->createNotification = $createNotification;
         $this->logSetting = $logSetting;
         $this->revision = $revision;
