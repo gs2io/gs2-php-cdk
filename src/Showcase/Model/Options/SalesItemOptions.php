@@ -18,19 +18,23 @@ namespace Gs2Cdk\Showcase\Model\Options;
 use Gs2Cdk\Core\Model\VerifyAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
 use Gs2Cdk\Core\Model\AcquireAction;
+use Gs2Cdk\Showcase\Model\Bonus;
 
 class SalesItemOptions {
     public ?string $metadata;
     public ?array $verifyActions;
     public ?array $consumeActions;
+    public ?array $bonuses;
     
     public function __construct(
         ?string $metadata = null,
         ?array $verifyActions = null,
         ?array $consumeActions = null,
+        ?array $bonuses = null,
     ) {
         $this->metadata = $metadata;
         $this->verifyActions = $verifyActions;
         $this->consumeActions = $consumeActions;
+        $this->bonuses = $bonuses;
     }}
 

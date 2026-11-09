@@ -18,6 +18,7 @@ namespace Gs2Cdk\Showcase\Model;
 use Gs2Cdk\Core\Model\VerifyAction;
 use Gs2Cdk\Core\Model\ConsumeAction;
 use Gs2Cdk\Core\Model\AcquireAction;
+use Gs2Cdk\Showcase\Model\Bonus;
 use Gs2Cdk\Showcase\Model\Options\SalesItemOptions;
 
 class SalesItem {
@@ -26,6 +27,7 @@ class SalesItem {
     private ?string $metadata = null;
     private ?array $verifyActions = null;
     private ?array $consumeActions = null;
+    private ?array $bonuses = null;
 
     public function __construct(
         string $name,
@@ -37,6 +39,7 @@ class SalesItem {
         $this->metadata = $options?->metadata ?? null;
         $this->verifyActions = $options?->verifyActions ?? null;
         $this->consumeActions = $options?->consumeActions ?? null;
+        $this->bonuses = $options?->bonuses ?? null;
     }
 
     public function properties(
@@ -74,6 +77,15 @@ class SalesItem {
                     );
                 },
                 $this->acquireActions
+            );
+        }
+        if ($this->bonuses != null) {
+            $properties["bonuses"] = array_map(
+                function ($v) {
+                    return $v->properties(
+                    );
+                },
+                $this->bonuses
             );
         }
 
