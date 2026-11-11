@@ -19,6 +19,7 @@ use Gs2Cdk\Core\Model\TransactionSetting;
 use Gs2Cdk\Realtime\Model\TransactionSettingV2;
 use Gs2Cdk\Realtime\Model\SyncSetting;
 use Gs2Cdk\Realtime\Model\StateMachineSetting;
+use Gs2Cdk\Realtime\Model\ParticipantSetting;
 use Gs2Cdk\Realtime\Model\MobileNotificationMessage;
 use Gs2Cdk\Core\Model\NotificationSetting;
 use Gs2Cdk\Core\Model\LogSetting;
@@ -30,6 +31,7 @@ class NamespaceServerTypeIsRelayOptions {
     public ?TransactionSetting $transactionSetting;
     public ?TransactionSettingV2 $transactionSettingV2;
     public ?SyncSetting $syncSetting;
+    public ?ParticipantSetting $participantSetting;
     public ?NotificationSetting $createNotification;
     public ?LogSetting $logSetting;
     public ?int $revision;
@@ -39,6 +41,7 @@ class NamespaceServerTypeIsRelayOptions {
         ?TransactionSetting $transactionSetting = null,
         ?TransactionSettingV2 $transactionSettingV2 = null,
         ?SyncSetting $syncSetting = null,
+        ?ParticipantSetting $participantSetting = null,
         ?NotificationSetting $createNotification = null,
         ?LogSetting $logSetting = null,
         ?int $revision = null,
@@ -47,6 +50,7 @@ class NamespaceServerTypeIsRelayOptions {
         $this->transactionSetting = $transactionSetting;
         $this->transactionSettingV2 = $transactionSettingV2;
         $this->syncSetting = $syncSetting;
+        $this->participantSetting = $participantSetting;
         $this->createNotification = $createNotification;
         $this->logSetting = $logSetting;
         $this->revision = $revision;

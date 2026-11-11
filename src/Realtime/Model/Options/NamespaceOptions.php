@@ -19,6 +19,7 @@ use Gs2Cdk\Core\Model\TransactionSetting;
 use Gs2Cdk\Realtime\Model\TransactionSettingV2;
 use Gs2Cdk\Realtime\Model\SyncSetting;
 use Gs2Cdk\Realtime\Model\StateMachineSetting;
+use Gs2Cdk\Realtime\Model\ParticipantSetting;
 use Gs2Cdk\Core\Model\NotificationSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 use Gs2Cdk\Realtime\Model\Enums\NamespaceServerType;
@@ -31,6 +32,7 @@ class NamespaceOptions {
     public ?TransactionSettingV2 $transactionSettingV2;
     public ?SyncSetting $syncSetting;
     public ?StateMachineSetting $stateMachineSetting;
+    public ?ParticipantSetting $participantSetting;
     public ?NotificationSetting $createNotification;
     public ?LogSetting $logSetting;
     
@@ -40,6 +42,7 @@ class NamespaceOptions {
         ?TransactionSettingV2 $transactionSettingV2 = null,
         ?SyncSetting $syncSetting = null,
         ?StateMachineSetting $stateMachineSetting = null,
+        ?ParticipantSetting $participantSetting = null,
         ?NotificationSetting $createNotification = null,
         ?LogSetting $logSetting = null,
     ) {
@@ -48,6 +51,7 @@ class NamespaceOptions {
         $this->transactionSettingV2 = $transactionSettingV2;
         $this->syncSetting = $syncSetting;
         $this->stateMachineSetting = $stateMachineSetting;
+        $this->participantSetting = $participantSetting;
         $this->createNotification = $createNotification;
         $this->logSetting = $logSetting;
     }}

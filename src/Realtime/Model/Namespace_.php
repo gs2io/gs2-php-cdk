@@ -23,6 +23,7 @@ use Gs2Cdk\Core\Model\TransactionSetting;
 use Gs2Cdk\Realtime\Model\TransactionSettingV2;
 use Gs2Cdk\Realtime\Model\SyncSetting;
 use Gs2Cdk\Realtime\Model\StateMachineSetting;
+use Gs2Cdk\Realtime\Model\ParticipantSetting;
 use Gs2Cdk\Core\Model\NotificationSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
@@ -43,6 +44,7 @@ class Namespace_ extends CdkResource {
     private ?TransactionSettingV2 $transactionSettingV2 = null;
     private ?SyncSetting $syncSetting = null;
     private ?StateMachineSetting $stateMachineSetting = null;
+    private ?ParticipantSetting $participantSetting = null;
     private ?NotificationSetting $createNotification = null;
     private ?LogSetting $logSetting = null;
 
@@ -66,6 +68,7 @@ class Namespace_ extends CdkResource {
         $this->transactionSettingV2 = $options?->transactionSettingV2 ?? null;
         $this->syncSetting = $options?->syncSetting ?? null;
         $this->stateMachineSetting = $options?->stateMachineSetting ?? null;
+        $this->participantSetting = $options?->participantSetting ?? null;
         $this->createNotification = $options?->createNotification ?? null;
         $this->logSetting = $options?->logSetting ?? null;
         $stack->addResource(
@@ -114,6 +117,10 @@ class Namespace_ extends CdkResource {
         }
         if ($this->stateMachineSetting != null) {
             $properties["StateMachineSetting"] = $this->stateMachineSetting?->properties(
+            );
+        }
+        if ($this->participantSetting != null) {
+            $properties["ParticipantSetting"] = $this->participantSetting?->properties(
             );
         }
         if ($this->createNotification != null) {
