@@ -18,6 +18,7 @@ namespace Gs2Cdk\Account\Model\Options;
 use Gs2Cdk\Core\Model\TransactionSetting;
 use Gs2Cdk\Account\Model\TransactionSettingV2;
 use Gs2Cdk\Core\Model\ScriptSetting;
+use Gs2Cdk\Account\Model\AccountDeletionSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 class NamespaceOptions {
@@ -33,6 +34,10 @@ class NamespaceOptions {
     public ?ScriptSetting $doTakeOverScript;
     public ?ScriptSetting $banScript;
     public ?ScriptSetting $unBanScript;
+    public ?AccountDeletionSetting $accountDeletionSetting;
+    public ?ScriptSetting $requestDeletionScript;
+    public ?ScriptSetting $cancelDeletionScript;
+    public ?ScriptSetting $executeDeletionScript;
     public ?LogSetting $logSetting;
     
     public function __construct(
@@ -47,6 +52,10 @@ class NamespaceOptions {
         ?ScriptSetting $doTakeOverScript = null,
         ?ScriptSetting $banScript = null,
         ?ScriptSetting $unBanScript = null,
+        ?AccountDeletionSetting $accountDeletionSetting = null,
+        ?ScriptSetting $requestDeletionScript = null,
+        ?ScriptSetting $cancelDeletionScript = null,
+        ?ScriptSetting $executeDeletionScript = null,
         ?LogSetting $logSetting = null,
     ) {
         $this->description = $description;
@@ -60,6 +69,10 @@ class NamespaceOptions {
         $this->doTakeOverScript = $doTakeOverScript;
         $this->banScript = $banScript;
         $this->unBanScript = $unBanScript;
+        $this->accountDeletionSetting = $accountDeletionSetting;
+        $this->requestDeletionScript = $requestDeletionScript;
+        $this->cancelDeletionScript = $cancelDeletionScript;
+        $this->executeDeletionScript = $executeDeletionScript;
         $this->logSetting = $logSetting;
     }}
 

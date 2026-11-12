@@ -22,6 +22,7 @@ use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Model\TransactionSetting;
 use Gs2Cdk\Account\Model\TransactionSettingV2;
 use Gs2Cdk\Core\Model\ScriptSetting;
+use Gs2Cdk\Account\Model\AccountDeletionSetting;
 use Gs2Cdk\Core\Model\LogSetting;
 
 use Gs2Cdk\Account\Ref\NamespaceRef;
@@ -45,6 +46,10 @@ class Namespace_ extends CdkResource {
     private ?ScriptSetting $doTakeOverScript = null;
     private ?ScriptSetting $banScript = null;
     private ?ScriptSetting $unBanScript = null;
+    private ?AccountDeletionSetting $accountDeletionSetting = null;
+    private ?ScriptSetting $requestDeletionScript = null;
+    private ?ScriptSetting $cancelDeletionScript = null;
+    private ?ScriptSetting $executeDeletionScript = null;
     private ?LogSetting $logSetting = null;
 
     public function __construct(
@@ -69,6 +74,10 @@ class Namespace_ extends CdkResource {
         $this->doTakeOverScript = $options?->doTakeOverScript ?? null;
         $this->banScript = $options?->banScript ?? null;
         $this->unBanScript = $options?->unBanScript ?? null;
+        $this->accountDeletionSetting = $options?->accountDeletionSetting ?? null;
+        $this->requestDeletionScript = $options?->requestDeletionScript ?? null;
+        $this->cancelDeletionScript = $options?->cancelDeletionScript ?? null;
+        $this->executeDeletionScript = $options?->executeDeletionScript ?? null;
         $this->logSetting = $options?->logSetting ?? null;
         $stack->addResource(
             $this,
@@ -132,6 +141,22 @@ class Namespace_ extends CdkResource {
         }
         if ($this->unBanScript != null) {
             $properties["UnBanScript"] = $this->unBanScript?->properties(
+            );
+        }
+        if ($this->accountDeletionSetting != null) {
+            $properties["AccountDeletionSetting"] = $this->accountDeletionSetting?->properties(
+            );
+        }
+        if ($this->requestDeletionScript != null) {
+            $properties["RequestDeletionScript"] = $this->requestDeletionScript?->properties(
+            );
+        }
+        if ($this->cancelDeletionScript != null) {
+            $properties["CancelDeletionScript"] = $this->cancelDeletionScript?->properties(
+            );
+        }
+        if ($this->executeDeletionScript != null) {
+            $properties["ExecuteDeletionScript"] = $this->executeDeletionScript?->properties(
             );
         }
         if ($this->logSetting != null) {
