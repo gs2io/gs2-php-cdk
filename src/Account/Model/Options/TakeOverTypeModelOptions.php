@@ -17,13 +17,21 @@
 namespace Gs2Cdk\Account\Model\Options;
 use Gs2Cdk\Account\Model\ScopeValue;
 use Gs2Cdk\Account\Model\OpenIdConnectSetting;
+use Gs2Cdk\Account\Model\IssuedCodeSetting;
+use Gs2Cdk\Account\Model\Enums\TakeOverTypeModelTakeOverMethod;
 
 class TakeOverTypeModelOptions {
     public ?string $metadata;
+    public ?OpenIdConnectSetting $openIdConnectSetting;
+    public ?IssuedCodeSetting $issuedCodeSetting;
     
     public function __construct(
         ?string $metadata = null,
+        ?OpenIdConnectSetting $openIdConnectSetting = null,
+        ?IssuedCodeSetting $issuedCodeSetting = null,
     ) {
         $this->metadata = $metadata;
+        $this->openIdConnectSetting = $openIdConnectSetting;
+        $this->issuedCodeSetting = $issuedCodeSetting;
     }}
 
