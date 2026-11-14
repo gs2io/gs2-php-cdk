@@ -20,6 +20,7 @@ use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\AdReward\StampSheet\AcquirePointByUserId;
 use Gs2Cdk\AdReward\StampSheet\ConsumePointByUserId;
+use Gs2Cdk\AdReward\StampSheet\VerifyPointByUserId;
 
 class NamespaceRef {
     private string $namespaceName;
@@ -48,6 +49,21 @@ class NamespaceRef {
         return (new ConsumePointByUserId(
             $this->namespaceName,
             $point,
+            $userId,
+        ));
+    }
+
+    public function verifyPoint(
+        string $verifyType,
+        int $point,
+        bool $multiplyValueSpecifyingQuantity,
+        ?string $userId = "#{userId}",
+    ): VerifyPointByUserId {
+        return (new VerifyPointByUserId(
+            $this->namespaceName,
+            $verifyType,
+            $point,
+            $multiplyValueSpecifyingQuantity,
             $userId,
         ));
     }
