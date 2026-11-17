@@ -22,6 +22,7 @@ use Gs2Cdk\Matchmaking\Ref\RatingModelRef;
 use Gs2Cdk\Matchmaking\Ref\SeasonModelRef;
 use Gs2Cdk\Matchmaking\Ref\MasterDataObjectRef;
 use Gs2Cdk\Matchmaking\StampSheet\VerifyIncludeParticipantByUserId;
+use Gs2Cdk\Matchmaking\StampSheet\VerifyRatingByUserId;
 
 class NamespaceRef {
     private string $namespaceName;
@@ -65,6 +66,21 @@ class NamespaceRef {
             $tier,
             $seasonGatheringName,
             $verifyType,
+            $userId,
+        ));
+    }
+
+    public function verifyRating(
+        string $ratingName,
+        string $verifyType,
+        float $rateValue,
+        ?string $userId = "#{userId}",
+    ): VerifyRatingByUserId {
+        return (new VerifyRatingByUserId(
+            $this->namespaceName,
+            $ratingName,
+            $verifyType,
+            $rateValue,
             $userId,
         ));
     }

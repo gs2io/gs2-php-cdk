@@ -18,6 +18,7 @@ namespace Gs2Cdk\Matchmaking\Ref;
 
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
+use Gs2Cdk\Matchmaking\StampSheet\VerifyRatingByUserId;
 
 class RatingModelRef {
     private string $namespaceName;
@@ -29,6 +30,20 @@ class RatingModelRef {
     ) {
         $this->namespaceName = $namespaceName;
         $this->ratingName = $ratingName;
+    }
+
+    public function verifyRating(
+        string $verifyType,
+        float $rateValue,
+        ?string $userId = "#{userId}",
+    ): VerifyRatingByUserId {
+        return (new VerifyRatingByUserId(
+            $this->namespaceName,
+            $this->ratingName,
+            $verifyType,
+            $rateValue,
+            $userId,
+        ));
     }
 
     public function grn(
