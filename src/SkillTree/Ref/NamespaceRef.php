@@ -22,6 +22,7 @@ use Gs2Cdk\SkillTree\Ref\NodeModelRef;
 use Gs2Cdk\SkillTree\Ref\MasterDataObjectRef;
 use Gs2Cdk\SkillTree\StampSheet\MarkReleaseByUserId;
 use Gs2Cdk\SkillTree\StampSheet\MarkRestrainByUserId;
+use Gs2Cdk\SkillTree\StampSheet\VerifyStatusByUserId;
 
 class NamespaceRef {
     private string $namespaceName;
@@ -63,6 +64,21 @@ class NamespaceRef {
             $this->namespaceName,
             $propertyId,
             $nodeModelNames,
+            $userId,
+        ));
+    }
+
+    public function verifyStatus(
+        string $propertyId,
+        string $nodeModelName,
+        string $verifyType,
+        ?string $userId = "#{userId}",
+    ): VerifyStatusByUserId {
+        return (new VerifyStatusByUserId(
+            $this->namespaceName,
+            $propertyId,
+            $nodeModelName,
+            $verifyType,
             $userId,
         ));
     }
