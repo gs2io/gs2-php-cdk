@@ -23,6 +23,7 @@ use Gs2Cdk\Quest\Ref\MasterDataObjectRef;
 use Gs2Cdk\Quest\StampSheet\CreateProgressByUserId;
 use Gs2Cdk\Quest\Model\Array;
 use Gs2Cdk\Quest\StampSheet\DeleteProgressByUserId;
+use Gs2Cdk\Quest\StampSheet\VerifyCompletedQuestListByUserId;
 
 class NamespaceRef {
     private string $namespaceName;
@@ -62,6 +63,21 @@ class NamespaceRef {
     ): DeleteProgressByUserId {
         return (new DeleteProgressByUserId(
             $this->namespaceName,
+            $userId,
+        ));
+    }
+
+    public function verifyCompletedQuestList(
+        string $questGroupName,
+        string $questName,
+        string $verifyType,
+        ?string $userId = "#{userId}",
+    ): VerifyCompletedQuestListByUserId {
+        return (new VerifyCompletedQuestListByUserId(
+            $this->namespaceName,
+            $questGroupName,
+            $questName,
+            $verifyType,
             $userId,
         ));
     }
