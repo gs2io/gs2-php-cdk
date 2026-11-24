@@ -26,6 +26,7 @@ use Gs2Cdk\Enchant\StampSheet\SetBalanceParameterStatusByUserId;
 use Gs2Cdk\Enchant\StampSheet\ReDrawRarityParameterStatusByUserId;
 use Gs2Cdk\Enchant\StampSheet\AddRarityParameterStatusByUserId;
 use Gs2Cdk\Enchant\StampSheet\SetRarityParameterStatusByUserId;
+use Gs2Cdk\Enchant\StampSheet\VerifyBalanceParameterStatusByUserId;
 use Gs2Cdk\Enchant\StampSheet\VerifyRarityParameterStatusByUserId;
 
 class NamespaceRef {
@@ -126,6 +127,25 @@ class NamespaceRef {
             $parameterName,
             $propertyId,
             $parameterValues,
+            $userId,
+        ));
+    }
+
+    public function verifyBalanceParameterStatus(
+        string $parameterName,
+        string $propertyId,
+        string $parameterValueName,
+        string $verifyType,
+        int $parameterValue,
+        ?string $userId = "#{userId}",
+    ): VerifyBalanceParameterStatusByUserId {
+        return (new VerifyBalanceParameterStatusByUserId(
+            $this->namespaceName,
+            $parameterName,
+            $propertyId,
+            $parameterValueName,
+            $verifyType,
+            $parameterValue,
             $userId,
         ));
     }
