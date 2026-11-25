@@ -23,6 +23,7 @@ use Gs2Cdk\Dictionary\Ref\MasterDataObjectRef;
 use Gs2Cdk\Dictionary\StampSheet\AddEntriesByUserId;
 use Gs2Cdk\Dictionary\StampSheet\DeleteEntriesByUserId;
 use Gs2Cdk\Dictionary\StampSheet\VerifyEntryByUserId;
+use Gs2Cdk\Dictionary\StampSheet\VerifyEntryCountByUserId;
 
 class NamespaceRef {
     private string $namespaceName;
@@ -73,6 +74,21 @@ class NamespaceRef {
             $this->namespaceName,
             $entryModelName,
             $verifyType,
+            $userId,
+        ));
+    }
+
+    public function verifyEntryCount(
+        string $verifyType,
+        int $count,
+        ?array $entryModelNames = null,
+        ?string $userId = "#{userId}",
+    ): VerifyEntryCountByUserId {
+        return (new VerifyEntryCountByUserId(
+            $this->namespaceName,
+            $verifyType,
+            $count,
+            $entryModelNames,
             $userId,
         ));
     }

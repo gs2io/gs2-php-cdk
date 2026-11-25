@@ -19,6 +19,9 @@ namespace Gs2Cdk\Friend\Ref;
 use Gs2Cdk\Core\Func\GetAttr;
 use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Friend\StampSheet\UpdateProfileByUserId;
+use Gs2Cdk\Friend\StampSheet\VerifyFollowByUserId;
+use Gs2Cdk\Friend\StampSheet\VerifyFriendByUserId;
+use Gs2Cdk\Friend\StampSheet\VerifyFriendCountByUserId;
 
 class NamespaceRef {
     private string $namespaceName;
@@ -40,6 +43,45 @@ class NamespaceRef {
             $publicProfile,
             $followerProfile,
             $friendProfile,
+            $userId,
+        ));
+    }
+
+    public function verifyFollow(
+        string $targetUserId,
+        string $verifyType,
+        ?string $userId = "#{userId}",
+    ): VerifyFollowByUserId {
+        return (new VerifyFollowByUserId(
+            $this->namespaceName,
+            $targetUserId,
+            $verifyType,
+            $userId,
+        ));
+    }
+
+    public function verifyFriend(
+        string $targetUserId,
+        string $verifyType,
+        ?string $userId = "#{userId}",
+    ): VerifyFriendByUserId {
+        return (new VerifyFriendByUserId(
+            $this->namespaceName,
+            $targetUserId,
+            $verifyType,
+            $userId,
+        ));
+    }
+
+    public function verifyFriendCount(
+        string $verifyType,
+        int $count,
+        ?string $userId = "#{userId}",
+    ): VerifyFriendCountByUserId {
+        return (new VerifyFriendCountByUserId(
+            $this->namespaceName,
+            $verifyType,
+            $count,
             $userId,
         ));
     }

@@ -21,6 +21,7 @@ use Gs2Cdk\Core\Func\Join;
 use Gs2Cdk\Dictionary\StampSheet\AddEntriesByUserId;
 use Gs2Cdk\Dictionary\StampSheet\DeleteEntriesByUserId;
 use Gs2Cdk\Dictionary\StampSheet\VerifyEntryByUserId;
+use Gs2Cdk\Dictionary\StampSheet\VerifyEntryCountByUserId;
 
 class EntryModelRef {
     private string $namespaceName;
@@ -64,6 +65,21 @@ class EntryModelRef {
             $this->namespaceName,
             $this->entryModelName,
             $verifyType,
+            $userId,
+        ));
+    }
+
+    public function verifyEntryCount(
+        string $verifyType,
+        int $count,
+        ?array $entryModelNames = null,
+        ?string $userId = "#{userId}",
+    ): VerifyEntryCountByUserId {
+        return (new VerifyEntryCountByUserId(
+            $this->namespaceName,
+            $verifyType,
+            $count,
+            $entryModelNames,
             $userId,
         ));
     }
