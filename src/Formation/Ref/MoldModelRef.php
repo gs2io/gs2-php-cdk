@@ -26,6 +26,7 @@ use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Formation\Model\Array;
 use Gs2Cdk\Formation\StampSheet\SetFormByUserId;
 use Gs2Cdk\Formation\StampSheet\SubMoldCapacityByUserId;
+use Gs2Cdk\Formation\StampSheet\VerifyFormByUserId;
 
 class MoldModelRef {
     private string $namespaceName;
@@ -109,6 +110,28 @@ class MoldModelRef {
             $this->namespaceName,
             $this->moldModelName,
             $capacity,
+            $userId,
+        ));
+    }
+
+    public function verifyForm(
+        int $index,
+        string $propertyIdRegex,
+        string $countType,
+        string $verifyType,
+        int $count,
+        ?string $slotName = null,
+        ?string $userId = "#{userId}",
+    ): VerifyFormByUserId {
+        return (new VerifyFormByUserId(
+            $this->namespaceName,
+            $this->moldModelName,
+            $index,
+            $propertyIdRegex,
+            $countType,
+            $verifyType,
+            $count,
+            $slotName,
             $userId,
         ));
     }
