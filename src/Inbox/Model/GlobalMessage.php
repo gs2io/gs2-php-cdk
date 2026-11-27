@@ -17,6 +17,7 @@
 namespace Gs2Cdk\Inbox\Model;
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Inbox\Model\TimeSpan;
+use Gs2Cdk\Core\Model\VerifyAction;
 use Gs2Cdk\Inbox\Model\Options\GlobalMessageOptions;
 
 class GlobalMessage {
@@ -26,6 +27,7 @@ class GlobalMessage {
     private ?TimeSpan $expiresTimeSpan = null;
     private ?int $expiresAt = null;
     private ?string $messageReceptionPeriodEventId = null;
+    private ?array $verifyActions = null;
 
     public function __construct(
         string $name,
@@ -38,6 +40,7 @@ class GlobalMessage {
         $this->expiresTimeSpan = $options?->expiresTimeSpan ?? null;
         $this->expiresAt = $options?->expiresAt ?? null;
         $this->messageReceptionPeriodEventId = $options?->messageReceptionPeriodEventId ?? null;
+        $this->verifyActions = $options?->verifyActions ?? null;
     }
 
     public function properties(
@@ -68,6 +71,15 @@ class GlobalMessage {
         }
         if ($this->messageReceptionPeriodEventId != null) {
             $properties["messageReceptionPeriodEventId"] = $this->messageReceptionPeriodEventId;
+        }
+        if ($this->verifyActions != null) {
+            $properties["verifyActions"] = array_map(
+                function ($v) {
+                    return $v->properties(
+                    );
+                },
+                $this->verifyActions
+            );
         }
 
         return $properties;

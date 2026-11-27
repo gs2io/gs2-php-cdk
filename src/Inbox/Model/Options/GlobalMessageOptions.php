@@ -17,22 +17,26 @@
 namespace Gs2Cdk\Inbox\Model\Options;
 use Gs2Cdk\Core\Model\AcquireAction;
 use Gs2Cdk\Inbox\Model\TimeSpan;
+use Gs2Cdk\Core\Model\VerifyAction;
 
 class GlobalMessageOptions {
     public ?array $readAcquireActions;
     public ?TimeSpan $expiresTimeSpan;
     public ?int $expiresAt;
     public ?string $messageReceptionPeriodEventId;
+    public ?array $verifyActions;
     
     public function __construct(
         ?array $readAcquireActions = null,
         ?TimeSpan $expiresTimeSpan = null,
         ?int $expiresAt = null,
         ?string $messageReceptionPeriodEventId = null,
+        ?array $verifyActions = null,
     ) {
         $this->readAcquireActions = $readAcquireActions;
         $this->expiresTimeSpan = $expiresTimeSpan;
         $this->expiresAt = $expiresAt;
         $this->messageReceptionPeriodEventId = $messageReceptionPeriodEventId;
+        $this->verifyActions = $verifyActions;
     }}
 
